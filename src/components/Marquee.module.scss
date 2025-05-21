@@ -1,0 +1,45 @@
+.marquee {
+  --marquee-speed: 20s;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.track {
+  width: fit-content;
+  display: flex;
+  will-change: transform;
+  animation: marquee var(--marquee-speed) linear infinite;
+}
+
+.content {
+  flex-shrink: 0;
+  padding: 0 2rem;
+}
+
+.pauseOnHover:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.33%);
+  }
+}

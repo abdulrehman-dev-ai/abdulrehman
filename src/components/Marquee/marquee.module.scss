@@ -1,0 +1,35 @@
+.marquee {
+  --marquee-speed: 30s;
+  --marquee-direction: normal;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+
+  &[data-pause-on-hover="true"]:hover .content {
+    animation-play-state: paused;
+  }
+}
+
+.content {
+  display: flex;
+  gap: var(--static-space-48);
+  white-space: nowrap;
+  animation: scroll var(--marquee-speed) linear infinite;
+  animation-direction: var(--marquee-direction);
+  animation-play-state: running;
+  padding-left: var(--static-space-48);
+
+  > * {
+    flex-shrink: 0;
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--static-space-48)));
+  }
+}
