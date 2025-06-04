@@ -13,7 +13,7 @@ const person = {
   avatar: "/images/avatar.png", 
   displayLocation: "Pakistan/Lahore", // Changed from .jpg to .png
   location: "Pakistan/Lahore", // Updated to show only Pakistan/Lahore
-  languages: ["English", "Urdu", "Punjabi"],
+  languages: ["English", "Urdu",],
 };
 
 const newsletter = {
