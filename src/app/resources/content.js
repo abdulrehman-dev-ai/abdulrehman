@@ -132,19 +132,19 @@ const about = {
     title: "Work Experience",
     experiences: [
       //experience 1
-      {
+     {
   company: "HiSkyTech",
-  timeframe: "2025 (Summer Internship)",
+  timeframe: "2025 (Summer Internship, Ongoing)",
   role: "MERN Stack Developer Intern",
   achievements: [
     <span key="hiskytech-achievement-1">
-      Completed a full-stack SaaS Freelancing Marketplace project individually, including both frontend and backend.
+      Currently building a full-stack SaaS Freelancing Marketplace as part of a remote internship project.
     </span>,
     <span key="hiskytech-achievement-2">
-      Implemented core modules such as authentication with role-based access, job posting and bidding system, task tracking, chat messaging, and feedback/rating features.
+      Working on core modules such as authentication with role-based access, job posting and bidding system, task tracking, chat messaging, and feedback/rating features.
     </span>,
     <span key="hiskytech-achievement-3">
-      Practiced modular MERN architecture, using MongoDB, Express.js, React.js, and Node.js to deliver a production-ready application.
+      Practicing modular MERN architecture using MongoDB, Express.js, React.js, and Node.js to deliver a production-ready application.
     </span>,
   ],
   images: [
