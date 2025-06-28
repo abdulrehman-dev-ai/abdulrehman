@@ -44,12 +44,12 @@ const social = [
   {
     name: "Facebook",
     icon: "facebook", // Make sure this matches exactly with the icon name in icons.ts
-    link: "https://facebook.com/abdulrehman.techie",
+    link: "https://web.facebook.com/abdulrehman.bit",
   },
   {
     name: "Instagram",
     icon: "instagram", // Make sure this matches exactly with the icon name in icons.ts
-    link: "https://instagram.com/abdulrehman.techie",
+    link: "https://instagram.com/abdulrehman.bit",
   },
   {
     name: "Email",
