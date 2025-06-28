@@ -133,6 +133,33 @@ const about = {
     experiences: [
       //experience 1
       {
+  company: "HiSkyTech",
+  timeframe: "2025 (Summer Internship)",
+  role: "MERN Stack Developer Intern",
+  achievements: [
+    <span key="hiskytech-achievement-1">
+      Completed a full-stack SaaS Freelancing Marketplace project individually, including both frontend and backend.
+    </span>,
+    <span key="hiskytech-achievement-2">
+      Implemented core modules such as authentication with role-based access, job posting and bidding system, task tracking, chat messaging, and feedback/rating features.
+    </span>,
+    <span key="hiskytech-achievement-3">
+      Practiced modular MERN architecture, using MongoDB, Express.js, React.js, and Node.js to deliver a production-ready application.
+    </span>,
+  ],
+  images: [
+    // optional: add your screenshots here
+    // Example:
+    // {
+    //   src: "/images/projects/hiskytech-project.png",
+    //   alt: "HiSkyTech Internship Project",
+    //   width: 16,
+    //   height: 9,
+    // },
+  ],
+},
+    //experience 3
+      {
         company: "Auto Levels Pvt.Ltd",
         timeframe: "2022 - 2025",
         role: "IT Manager & CTO",
@@ -154,7 +181,7 @@ const about = {
           },
         ],
       },
-      //experience 2
+      //experience 4
       {
         company: "Internee.pk",
         timeframe: "2024",
@@ -175,7 +202,7 @@ const about = {
           },
         ],
       },
-      //experience 3
+      //experience 5
       {
         company: "Youth Impact",
         timeframe: "2022 - 2024",
@@ -207,7 +234,7 @@ const about = {
           },
         ],
       },
-      //experience 4
+      //experience 5
       {
         company: "Dar e Arqam Schools",
         timeframe: "2021",
