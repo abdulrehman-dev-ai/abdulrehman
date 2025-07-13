@@ -131,7 +131,61 @@ const about = {
     display: true, // set to false to hide this section
     title: "Work Experience",
     experiences: [
-      //experience 1
+      // experience 1
+{
+  company: "ACM-UET Lahore",
+  timeframe: "2025 (Fellowship Program)",
+  role: "Mobile App Development (Flutter)",
+  achievements: [
+    <span key="acm-achievement-1">
+      Selected for a competitive fellowship program focused on hands-on mobile app development using Flutter.
+    </span>,
+    <span key="acm-achievement-2">
+      Gained experience designing cross-platform UI, managing state, and integrating REST APIs.
+    </span>,
+    <span key="acm-achievement-3">
+      Collaborated with peers and mentors to build functional mobile prototypes aimed at solving real-world use cases.
+    </span>,
+  ],
+  images: [
+    // optional: add your screenshots here
+    // Example:
+    // {
+    //   src: "/images/projects/acm-uet-lahore-project.png",
+    //   alt: "ACM-UET Lahore Fellowship Project",
+    //   width: 16,
+    //   height: 9,
+    // },
+  ],
+}, 
+      // experience 2
+{
+  company: "Nexium",
+  timeframe: "2025 (Summer Internship, Ongoing)",
+  role: "AI Enhanced Web App Development Intern",
+  achievements: [
+    <span key="nexium-achievement-1">
+      Collaborating on AI-integrated web applications with a focus on innovative UX and smart automation features.
+    </span>,
+    <span key="nexium-achievement-2">
+      Learning to leverage AI APIs and tools to enhance user experience and business workflows.
+    </span>,
+    <span key="nexium-achievement-3">
+      Working under mentorship to follow best practices in modern web development, component-based design, and performance optimization.
+    </span>,
+  ],
+  images: [
+    // optional: add your screenshots here
+    // Example:
+    // {
+    //   src: "/images/projects/nexium-project.png",
+    //   alt: "Nexium Internship Project",
+    //   width: 16,
+    //   height: 9,
+    // },
+  ],
+},
+      //experience 3
      {
   company: "HiSkyTech",
   timeframe: "2025 (Summer Internship, Ongoing)",
@@ -158,7 +212,7 @@ const about = {
     // },
   ],
 },
-    //experience 3
+    //experience 4
       {
         company: "Auto Levels Pvt.Ltd",
         timeframe: "2022 - 2025",
@@ -181,7 +235,41 @@ const about = {
           },
         ],
       },
-      //experience 4
+    
+    // experience 4
+{
+  company: "Digital Pakistan – Cybersecurity Hackathon 2024",
+  timeframe: "2024 (Multiple Rounds & Workshops)",
+  role: "Participant – Hands-on Cybersecurity Training & CTF",
+  achievements: [
+    <span key="cyberhackathon-achievement-1">
+      Participated in national-level hackathon program organized by Ignite, with hands-on CTF competitions, blue teaming challenges, and real-world cybersecurity scenarios.
+    </span>,
+    <span key="cyberhackathon-achievement-2">
+      Completed <strong>Basic Cybersecurity Workshop (Sep 27–29, 2024)</strong> at University of Central Punjab, Lahore — focusing on practical vulnerability analysis, incident response, and Linux security.
+    </span>,
+    <span key="cyberhackathon-achievement-3">
+      Attended <strong>Advanced Cybersecurity Workshop (Oct 19–20, 2024)</strong> at Bahria University, Karachi — advanced topics in network defense, threat hunting, and exploit mitigation.
+    </span>,
+    <span key="cyberhackathon-achievement-4">
+      Successfully qualified for the pre-qualifying round as <strong>Team Lead of St0rm Reapers</strong>, solving CTF challenges and blue teaming tasks in timed online competition.
+    </span>,
+    <span key="cyberhackathon-achievement-5">
+      Gained experience in solving real-world simulated attacks while collaborating with national-level participants, improving analytical and teamwork skills in high-pressure environments.
+    </span>,
+  ],
+  images: [
+    // optional: add your screenshots here
+    // Example:
+    // {
+    //   src: "/images/projects/cyberhackathon2024.png",
+    //   alt: "Digital Pakistan Cybersecurity Hackathon 2024",
+    //   width: 16,
+    //   height: 9,
+    // },
+  ],
+},
+      //experience 5
       {
         company: "Internee.pk",
         timeframe: "2024",
@@ -202,7 +290,7 @@ const about = {
           },
         ],
       },
-      //experience 5
+      //experience 6
       {
         company: "Youth Impact",
         timeframe: "2022 - 2024",
@@ -234,7 +322,7 @@ const about = {
           },
         ],
       },
-      //experience 5
+      //experience 7
       {
         company: "Dar e Arqam Schools",
         timeframe: "2021",
