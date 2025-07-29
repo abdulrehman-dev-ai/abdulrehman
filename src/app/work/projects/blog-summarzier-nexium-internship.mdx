@@ -1,7 +1,7 @@
 ---
-title: "AI Blog Summarizer – Multilingual NLP-Powered Reader"
+title: "AI Blog Summarizer – Urdu Translation & Dual DB Storage"
 publishedAt: "2025-07-20"
-summary: "A web-based AI tool that reads and summarizes online blogs in real-time, with both English summaries and Urdu translations. Designed to showcase practical applications of AI in web development using modern tools like Gemini API, Next.js, and Tailwind."
+summary: "A modern web app that extracts and summarizes blog content in real-time, then translates summaries into Urdu. Built using Next.js 15, Tailwind CSS, and integrated with Supabase and MongoDB for scalable, bilingual storage."
 images:
   - "/images/projects/project-03/blog-summarizer_project.png"
 team:
@@ -14,37 +14,118 @@ link: "https://nexium-abdul-rehman-blog-summarizer.vercel.app/"
 
 ## Overview
 
-The **AI Blog Summarizer** is a real-time, multilingual content analysis tool. Built as part of Nexium’s AI Enhanced Web Internship program, it leverages the power of **Google Gemini API** to extract, process, and summarize live blog content directly from the user-provided URL. It outputs a concise English summary alongside a native **Urdu translation**, making it a dual-language educational and productivity tool.
+**Blog Summariser & Urdu Translator** is a full-stack AI-inspired web application designed to process blog URLs, extract their content, generate meaningful English summaries, and translate them into Urdu for multilingual accessibility.
 
-This project demonstrates practical integration of AI with full-stack web development for enhanced user experience and accessibility.
-
-## Key Features
-
-- **Real-Time Blog Scraping**: Dynamically extracts text from external blog URLs provided by the user.
-- **AI-Powered Text Summarization**: Uses Gemini’s LLM to produce structured and relevant summaries.
-- **Urdu Translation Support**: Auto-generates native Urdu translations of summaries for bilingual users.
-- **User-Friendly Interface**: Minimal UI with clean components, responsive layout, and interactive loading states.
-- **Save Functionality** *(Coming Soon)*: Summaries can be saved for offline review and study.
-
-## Technologies Used
-
-- **Next.js (App Router)**: Framework used for routing, API routes, and optimized server-client interactivity.
-- **Tailwind CSS**: For fast and elegant styling with a mobile-first approach.
-- **Google Gemini API**: LLM-based summarization and translation engine.
-- **React Hook Form + Zod**: Input validation and form handling.
-- **Cheerio + Axios**: For scraping blog content and extracting clean HTML text.
-
-## Challenges and Learnings
-
-- **Dynamic Content Extraction**: Parsing blogs reliably using Cheerio required understanding HTML patterns and noise removal.
-- **Gemini Prompt Engineering**: Writing structured prompts to get high-quality, relevant summaries and translations was a key learning.
-- **Handling Cross-Origin Content**: Dealing with CORS and ensuring stable API requests from different domains added complexity to the backend logic.
-- **Multilingual Output Rendering**: Managing Urdu text direction (`rtl`) and font handling within a consistent UI layout.
-
-## Outcome
-
-This project demonstrates the power of combining **AI, NLP, and full-stack web development**. It is a prime example of how AI can automate research, assist in education, and improve digital accessibility. The AI Blog Summarizer not only simplifies content consumption but also serves as a technical showcase of **LLM integration with real-world user input**.
+Developed as part of Nexium Ltd's Summer Internship Program, this project demonstrates practical use of **natural language processing, translation APIs**, and **dual-database architecture** using **Supabase** and **MongoDB**. The result is a polished, real-time summarization tool with a beautiful and responsive interface.
 
 ---
 
-A practical, bilingual blog reader built to make AI summarization accessible, clear, and ready for your next reading sprint.
+## 🔍 Key Features
+
+- 🔗 **Live Blog Scraping**: Automatically extracts content from user-submitted blog URLs using `@extractus/article-extractor`.
+- 🤖 **Simulated AI Summary**: Custom logic intelligently summarizes blog content.
+- 🌐 **Urdu Translation**: Summaries translated using MyMemory Translation API.
+- 💾 **Dual Database Storage**: 
+  - **Supabase** stores summaries.
+  - **MongoDB** stores full blog content and metadata.
+- 🎨 **Modern UI**: Built with ShadCN UI, Tailwind CSS, and Framer Motion.
+- 📱 **Fully Responsive**: Optimized for mobile and desktop devices.
+- 📋 **Copy to Clipboard**: One-click sharing for summaries.
+
+---
+
+## 🧰 Tech Stack
+
+- **Framework**: Next.js 15 (App Router) + React 19
+- **Styling**: Tailwind CSS + ShadCN UI
+- **Animations**: Framer Motion
+- **Content Extraction**: [`@extractus/article-extractor`](https://www.npmjs.com/package/@extractus/article-extractor)
+- **Translation API**: [MyMemory Translation API](https://mymemory.translated.net/)
+- **Databases**: 
+  - Supabase (PostgreSQL) – summary data
+  - MongoDB – full blog content
+
+---
+
+## 🗃️ Data Models
+
+### Supabase – `blog_summaries`
+
+```ts
+interface BlogSummary {
+  id: string;
+  url: string;
+  title?: string;
+  english_summary: string;
+  urdu_summary: string;
+  word_count?: number;
+  reading_time?: number;
+  created_at: string;
+}
+```
+
+### MongoDB – `blog_contents`
+
+```ts
+interface BlogContent {
+  _id: string;
+  url: string;
+  title?: string;
+  fullText: string;
+  metadata?: {
+    author?: string;
+    publishDate?: string;
+    wordCount: number;
+    extractedAt: Date;
+  };
+  createdAt: Date;
+}
+```
+
+---
+
+## 🧪 Backend API Endpoint
+
+### `POST /api/process-blog`
+
+**Request:**
+```json
+{
+  "url": "https://example.com/blog-post"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "title": "Blog Title",
+    "englishSummary": "Generated summary...",
+    "urduSummary": "اردو خلاصہ...",
+    "wordCount": 1500,
+    "readingTime": 8,
+    "mongoId": "...",
+    "supabaseId": "..."
+  }
+}
+```
+
+---
+
+## 🧠 Challenges & Learnings
+
+- **Blog Text Extraction**: Some blogs resist scraping, requiring smart fallback logic.
+- **Translation Reliability**: MyMemory API provides free tier translation but needs retries or throttling under load.
+- **Bilingual UI Support**: Displaying Urdu correctly (RTL layout) with Tailwind required careful styling.
+- **Dual Data Persistence**: Coordinating writes to both Supabase and MongoDB needed atomic handling and error fallbacks.
+
+---
+
+## ✅ Results & Impact
+
+This app offers a powerful demonstration of how modern tools and open APIs can deliver a production-grade NLP experience without relying on expensive LLMs. It simplifies research and learning by giving users an English summary and a native Urdu translation in seconds—backed by structured storage and a responsive UI.
+
+---
+
+> **Made with ❤️ as part of Nexium.ltd AI Internship – Summer 2025**
