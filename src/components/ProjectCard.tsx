@@ -2,6 +2,7 @@
 
 import {
   AvatarGroup,
+  Card,
   Carousel,
   Column,
   Flex,
@@ -9,6 +10,7 @@ import {
   SmartLink,
   Text,
 } from "@/once-ui/components";
+import styles from "./ProjectCard.module.scss";
 
 interface ProjectCardProps {
   href: string;
@@ -31,66 +33,84 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
 }) => {
   return (
-    <Column fillWidth gap="m">
+    <Card
+      fillWidth
+      direction="column"
+      gap="0"
+      radius="l"
+      overflow="hidden"
+      border="neutral-alpha-weak"
+      background="surface"
+      className={styles.projectCard}
+    >
       <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        aspectRatio="16 / 10"
         images={images.map((image) => ({
           src: image,
           alt: title,
         }))}
       />
-      <Flex
-        mobileDirection="column"
+      <Column
         fillWidth
-        paddingX="s"
-        paddingTop="12"
-        paddingBottom="24"
-        gap="l"
+        gap="0"
+        className={styles.cardContent}
       >
         {title && (
-          <Flex flex={5}>
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl">
-              {title}
-            </Heading>
+          <Heading 
+            as="h2" 
+            wrap="balance" 
+            variant="heading-strong-xl"
+            marginBottom="s"
+            className={styles.cardTitle}
+          >
+            {title}
+          </Heading>
+        )}
+        
+        {description?.trim() && (
+          <Text 
+            wrap="balance" 
+            variant="body-default-m" 
+            onBackground="neutral-medium"
+            marginBottom="m"
+            className={styles.cardDescription}
+          >
+            {description}
+          </Text>
+        )}
+        
+        <Flex gap="l" wrap marginTop="auto" className={styles.actionButtons}>
+          {avatars?.length > 0 && (
+            <AvatarGroup
+              avatars={avatars.map((avatar) => ({ ...avatar }))} 
+              size="s"
+              reverse
+              className={styles.avatarGroup}
+            />
+          )}
+          <Flex gap="l" wrap className={styles.buttonGroup}>
+            {content?.trim() && (
+              <SmartLink
+                suffixIcon="arrowRight"
+                style={{ margin: "0", width: "fit-content" }}
+                href={href}
+              >
+                <Text variant="body-default-s" onBackground="accent-strong">Read case study</Text>
+              </SmartLink>
+            )}
+            {link && (
+              <SmartLink
+                suffixIcon="arrowUpRightFromSquare"
+                style={{ margin: "0", width: "fit-content" }}
+                href={link}
+              >
+                <Text variant="body-default-s" onBackground="accent-strong">View project</Text>
+              </SmartLink>
+            )}
           </Flex>
-        )}
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-          <Column flex={7} gap="16">
-            {avatars?.length > 0 && (
-              <AvatarGroup
-                avatars={avatars.map((avatar) => ({ ...avatar }))} 
-                size="m"
-                reverse
-              />
-            )}
-            {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
-                {description}
-              </Text>
-            )}
-            <Flex gap="24" wrap>
-              {content?.trim() && (
-                <SmartLink
-                  suffixIcon="arrowRight"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={href}
-                >
-                  <Text variant="body-default-s">Read case study</Text>
-                </SmartLink>
-              )}
-              {link && (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">View project</Text>
-                </SmartLink>
-              )}
-            </Flex>
-          </Column>
-        )}
-      </Flex>
-    </Column>
+        </Flex>
+      </Column>
+    </Card>
   );
 };
