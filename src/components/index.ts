@@ -6,3 +6,4 @@ export { HeadingLink } from "@/components/HeadingLink";
 export { RouteGuard } from "@/components/RouteGuard";
 export { MarqueeText } from "@/components/MarqueeText";
 export { GoogleAnalytics } from "@/components/GoogleAnalytics";
+export { LocationGif } from "@/components/LocationGif";
