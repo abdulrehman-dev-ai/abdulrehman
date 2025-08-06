@@ -161,7 +161,7 @@ const about = {
       // experience 2
 {
   company: "Nexium",
-  timeframe: "2025 (Summer Internship, Ongoing)",
+  timeframe: "June-Aug-2025 (Summer Internship)",
   role: "AI Enhanced Web App Development Intern",
   achievements: [
     <span key="nexium-achievement-1">
