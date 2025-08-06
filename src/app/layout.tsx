@@ -1,7 +1,7 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 import classNames from "classnames";
-import { Footer, Header, RouteGuard, MarqueeText } from "@/components";
+import { Footer, Header, RouteGuard, MarqueeText, GoogleAnalytics } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
 import { Inter, Source_Code_Pro } from "next/font/google";
 import { person, home } from "@/app/resources/content";
@@ -127,6 +127,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     >
       <ToastProvider>
         <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
+          <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
           <Background
             mask={{
               cursor: effects.mask.cursor,
