@@ -27,7 +27,7 @@ export const LocationGif = () => {
         height={120}
         unoptimized
         style={{
-          display: "block",
+          display: "none",
           objectFit: "contain",
         }}
       />
