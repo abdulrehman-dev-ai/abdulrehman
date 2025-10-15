@@ -56,6 +56,16 @@ const social = [
     icon: "email",
     link: "mailto:iamabdulrehman.technophile@gmail.com",
   },
+  {
+    name: "Fiverr",
+    icon: "fiverr",
+    link: "https://www.fiverr.com/tenacious_pro", // replace with your Fiverr profile
+  },
+  {
+    name: "Upwork",
+    icon: "upwork",
+    link: "https://www.upwork.com/freelancers/~your-id", // replace with your Upwork profile
+  },
 ];
 
 const home = {

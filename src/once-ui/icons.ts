@@ -53,6 +53,8 @@ import {
   FaFacebook, 
   FaInstagram 
 } from "react-icons/fa6";
+import { SiFiverr, SiUpwork } from "react-icons/si";
+import FiverrIcon from "./components/FiverrIcon";
 
 type IconLibraryType = {
   [key: string]: IconType | string;
@@ -87,6 +89,9 @@ export const iconLibrary: IconLibraryType = {
   instagram: FaInstagram,
   discord: FaDiscord,
   x: FaXTwitter,
+  // Use the supplied React SVG component for Fiverr to ensure consistent rendering
+  fiverr: FiverrIcon,
+  upwork: SiUpwork,
 
   // Navigation icons
   home: PiHouseDuotone,

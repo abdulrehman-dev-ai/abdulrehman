@@ -47,9 +47,9 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(
       return () => clearTimeout(timer);
     }, [isHover]);
     
-    const IconComponent = iconLibrary[name] as IconType;
+    const IconEntry = iconLibrary[name];
 
-    if (!IconComponent) {
+    if (!IconEntry) {
       console.warn(`Icon "${name}" does not exist in the library.`);
       return null;
     }
@@ -85,7 +85,22 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(
         onMouseLeave={() => setIsHover(false)}
         {...rest}
       >
-        <IconComponent />
+        {typeof IconEntry === "string" ? (
+          // treat as image path
+          // derive pixel sizes roughly from token size
+          <img
+            src={IconEntry}
+            alt={name}
+            style={{
+              width: size === "xs" ? 12 : size === "s" ? 16 : size === "m" ? 20 : size === "l" ? 24 : 28,
+              height: size === "xs" ? 12 : size === "s" ? 16 : size === "m" ? 20 : size === "l" ? 24 : 28,
+              objectFit: "contain",
+            }}
+          />
+        ) : (
+          // react-icon component
+          React.createElement(IconEntry as IconType)
+        )}
         {tooltip && isTooltipVisible && (
           <Flex position="absolute" zIndex={1} className={iconStyles[tooltipPosition]}>
             <Tooltip label={tooltip} />
