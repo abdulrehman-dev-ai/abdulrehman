@@ -64,7 +64,7 @@ const social = [
   {
     name: "Upwork",
     icon: "upwork",
-    link: "https://www.upwork.com/freelancers/~your-id", // replace with your Upwork profile
+    link: "https://www.upwork.com/freelancers/~015f955fbbf0997968?mp_source=share", // replace with your Upwork profile
   },
 ];
 
