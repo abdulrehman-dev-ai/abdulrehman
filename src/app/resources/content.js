@@ -102,7 +102,7 @@ const about = {
     description: (
       <>
       <p style={{ textAlign: "justify" }}>
-        I am a results-driven <strong>Cyber Security Researcher</strong> and <strong>AI assisted Software Engineer</strong> specialized in <strong>AI Red Team Engineer</strong> passionate about building secure, intelligent, and scalable digital solutions. I combines <strong>AI-driven automation</strong> with <strong>offensive security methodologies</strong>, <strong>vulnerability assessment</strong>, to identify, exploit, and mitigate vulnerabilities before real adversaries can. With hands-on experience across <strong>AI assisted Web App development</strong>, I contributed to organizations like <strong>Trillium Information Security Systems</strong>, <strong>Nexium</strong>, and <strong>Rayonix Solutions</strong>. My expertise extends to <strong>penetration testing, threat intelligence, AI-enhanced automation,</strong> and <strong>secure web architectures</strong>. Driven by curiosity and innovation, he strives to bridge the gap between <strong>software engineering</strong> and <strong>cybersecurity</strong> ensuring that technology is not only smart but also safe.
+        I am a results-driven <strong>Cyber Security Researcher</strong> and <strong>AI assisted Software Engineer</strong> specialized in <strong>AI Red Team Engineer</strong> passionate about building secure, intelligent, and scalable digital solutions. I combines <strong>AI-driven automation</strong> with <strong>offensives ecurity methodologies</strong>, <strong>vulnerability assessment</strong>, to identify, exploit, and mitigate vulnerabilities before real adversaries can. With hands-on experience across <strong>AI assisted Web App development</strong>, I contributed to organizations like <strong>Trillium Information Security Systems</strong>, <strong>Nexium</strong>, and <strong>Rayonix Solutions</strong>. My expertise extends to <strong>penetration testing, threat intelligence, AI-enhanced automation,</strong> and <strong>secure web architectures</strong>. Driven by curiosity and innovation, he strives to bridge the gap between <strong>software engineering</strong> and <strong>cybersecurity</strong> ensuring that technology is not only smart but also safe.
       </p>
     </>
     ),
@@ -140,8 +140,39 @@ const about = {
     experiences: [
       // experience 1
 {
+  company: "Rayonix Solutions",
+  timeframe: "Aug-Sep, 2025 (Summer Internship-Remote)",
+  role: "Cyber Security Intern (Vulnerability Assessment & Penetration Testing)",
+  achievements: [
+    <span key="rayonix-achievement-1">
+      Conducted comprehensive vulnerability assessments and penetration testing on live web applications and corporate networks.
+    </span>,
+    <span key="rayonix-achievement-2">
+      Utilized tools such as Nmap, Burp Suite, and Metasploit to identify, exploit, and document critical security vulnerabilities.
+    </span>,
+    <span key="rayonix-achievement-3">
+      Assisted in creating automated security testing scripts and reports using Python and Bash for improved workflow efficiency.
+    </span>,
+    <span key="rayonix-achievement-4">
+      Collaborated with senior engineers to perform AI-assisted threat detection and strengthen red team methodologies.
+    </span>,
+  ],
+  images: [
+    // optional: add relevant screenshots or project visuals here
+    // Example:
+    // {
+    //   src: "/images/projects/rayonix-security-dashboard.png",
+    //   alt: "Rayonix Solutions VAPT Project",
+    //   width: 16,
+    //   height: 9,
+    // },
+  ],
+},
+
+      // experience 1
+{
   company: "ACM-UET Lahore",
-  timeframe: "2025 (Fellowship Program)",
+  timeframe: "July-Sep, 2025 (Fellowship Program-Remote)",
   role: "Mobile App Development (Flutter)",
   achievements: [
     <span key="acm-achievement-1">
@@ -168,7 +199,7 @@ const about = {
       // experience 2
 {
   company: "Nexium",
-  timeframe: "June-Aug-2025 (Summer Internship)",
+  timeframe: "June-Aug, 2025 (Summer Internship-Remote)",
   role: "AI Enhanced Web App Development Intern",
   achievements: [
     <span key="nexium-achievement-1">
@@ -195,7 +226,7 @@ const about = {
       //experience 3
      {
   company: "HiSkyTech",
-  timeframe: "2025 (Summer Internship, Ongoing)",
+  timeframe: "June-Aug, 2025 (Summer Internship-Remote)",
   role: "MERN Stack Developer Intern",
   achievements: [
     <span key="hiskytech-achievement-1">
@@ -222,7 +253,7 @@ const about = {
     //experience 4
       {
         company: "Auto Levels Pvt.Ltd",
-        timeframe: "2022 - 2025",
+        timeframe: "2022 - 2025 (Onsite)",
         role: "IT Manager & CTO",
         achievements: [
           <span key="autolevels-achievement-1">
@@ -276,27 +307,6 @@ const about = {
     // },
   ],
 },
-      //experience 5
-      {
-        company: "Internee.pk",
-        timeframe: "2024",
-        role: "Cyber Security Researcher",
-        achievements: [
-          <span key="internee-achievement-1">
-            Performed comprehensive security assessments, including vulnerability scanning, penetration
-            testing, and configuration compliance audits, to identify and mitigate potential security
-            risks in computer systems and networks.
-          </span>,
-        ],
-        images: [
-          {
-            src: "/images/projects/project-01/internee.png",
-            alt: "internee.pk Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
       //experience 6
       {
         company: "Youth Impact",
