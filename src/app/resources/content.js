@@ -101,11 +101,10 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Abdul Rehman is a dedicated software engineer and cyber security researcher focused on 
-        building secure, scalable solutions. His expertise spans full-stack development and 
-        advanced penetration testing, combining technical excellence with robust security 
-        principles to deliver high-quality, protected digital solutions.
-      </>
+      <p style={{ textAlign: "justify" }}>
+        I am a results-driven <strong>Cyber Security Researcher</strong> and <strong>AI assisted Software Engineer</strong> specialized in <strong>AI Red Team Engineer</strong> passionate about building secure, intelligent, and scalable digital solutions. I combines <strong>AI-driven automation</strong> with <strong>offensive security methodologies</strong>, <strong>vulnerability assessment</strong>, to identify, exploit, and mitigate vulnerabilities before real adversaries can. With hands-on experience across <strong>AI assisted Web App development</strong>, I contributed to organizations like <strong>Trillium Information Security Systems</strong>, <strong>Nexium</strong>, and <strong>Rayonix Solutions</strong>. My expertise extends to <strong>penetration testing, threat intelligence, AI-enhanced automation,</strong> and <strong>secure web architectures</strong>. Driven by curiosity and innovation, he strives to bridge the gap between <strong>software engineering</strong> and <strong>cybersecurity</strong> ensuring that technology is not only smart but also safe.
+      </p>
+    </>
     ),
   },
   techStack: {
@@ -120,9 +119,7 @@ const about = {
       {
         icon: "/images/icons/c++.ico"
       },
-      {
-        icon: "/images/icons/java.ico"
-      },
+      // Java icon removed per request
       {
         icon: "/images/icons/react.ico"
       },
