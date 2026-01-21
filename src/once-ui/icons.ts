@@ -35,6 +35,7 @@ import {
   HiComputerDesktop,
   HiWrench,
   HiClipboardDocument,
+  HiArrowDownTray,
 } from "react-icons/hi2";
 
 import {
@@ -113,6 +114,7 @@ export const iconLibrary: IconLibraryType = {
   
   // Action icons
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
+  download: HiArrowDownTray,
   
   // Tech Stack icons
   vscode: "/images/icons/vscode.png",

@@ -193,7 +193,31 @@ export default function About() {
             vertical="center"
             marginBottom="32"
           >
-            {about.calendar.display && (
+            <Flex gap="16" wrap vertical="center" marginBottom="m">
+              {about.calendar.display && (
+                <Flex
+                  fitWidth
+                  border="brand-alpha-medium"
+                  className={styles.blockAlign}
+                  style={{
+                    backdropFilter: "blur(var(--static-space-1))",
+                  }}
+                  background="brand-alpha-weak"
+                  radius="full"
+                  padding="4"
+                  gap="8"
+                  vertical="center"
+                >
+                  <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
+                  <Flex paddingX="8">Schedule a call</Flex>
+                  <IconButton
+                    href={about.calendar.link}
+                    data-border="rounded"
+                    variant="secondary"
+                    icon="chevronRight"
+                  />
+                </Flex>
+              )}
               <Flex
                 fitWidth
                 border="brand-alpha-medium"
@@ -205,19 +229,18 @@ export default function About() {
                 radius="full"
                 padding="4"
                 gap="8"
-                marginBottom="m"
                 vertical="center"
               >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
+                <Icon paddingLeft="12" name="person" onBackground="brand-weak" />
+                <Flex paddingX="8">Resume</Flex>
                 <IconButton
-                  href={about.calendar.link}
+                  href="https://drive.google.com/file/d/1RTvkeUmRnmdqGJS76BkFASEF94wQE9Id/view?usp=sharing"
                   data-border="rounded"
                   variant="secondary"
-                  icon="chevronRight"
+                  icon="download"
                 />
               </Flex>
-            )}
+            </Flex>
             <Heading className={styles.textAlign} variant="display-strong-xl">
               {person.name}
             </Heading>
