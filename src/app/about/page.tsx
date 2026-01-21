@@ -193,7 +193,7 @@ export default function About() {
             vertical="center"
             marginBottom="32"
           >
-            <Flex gap="16" wrap vertical="center" marginBottom="m">
+            <Flex fillWidth gap="16" wrap horizontal="center" vertical="center" marginBottom="m">
               {about.calendar.display && (
                 <Flex
                   fitWidth
