@@ -234,7 +234,7 @@ export default function About() {
                 <Icon paddingLeft="12" name="person" onBackground="brand-weak" />
                 <Flex paddingX="8">Resume</Flex>
                 <IconButton
-                  href="https://drive.google.com/file/d/1RTvkeUmRnmdqGJS76BkFASEF94wQE9Id/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1lKl0QTRHvilr6q6A9S5xnp5Qlh8mwHK4/view?usp=sharing"
                   data-border="rounded"
                   variant="secondary"
                   icon="download"
