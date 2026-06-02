@@ -13,8 +13,9 @@ export const MarqueeText = () => {
         weight="strong"
         variant="body-strong-xl"
         className={styles.outlinedText}
+        style={{ whiteSpace: 'nowrap', paddingRight: '2rem' }}
       >
-        Abdul Rehman • Software Engineer • Cyber Security Researcher
+        Cloud & DevOps • Linux Automation • Infrastructure Hardening • System Administration • Leveraging AI • 
       </Text>
     </Marquee>
   );

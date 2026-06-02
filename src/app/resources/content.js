@@ -9,11 +9,11 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: <span style={{ fontSize: "0.7em" }}>Software Engineer | Cyber Security Researcher</span>,
+  role: "Associate Cloud & DevOps Engineer",
   avatar: "/images/avatar.png", 
-  displayLocation: "Pakistan/Lahore", // Changed from .jpg to .png
-  location: "Pakistan/Lahore", // Updated to show only Pakistan/Lahore
-  languages: ["English", "Urdu",],
+  displayLocation: "Pakistan/Lahore",
+  location: "Pakistan/Lahore",
+  languages: ["English", "Urdu"],
 };
 
 const newsletter = {
@@ -75,8 +75,9 @@ const home = {
   headline: <>Abdul Rehman</>,
   subline: (
     <>
-      "Software engineering is not just about writing code; it's about solving problems
-      <br /> and creating solutions that make a difference in people's lives."
+      I build high-performance web applications engineered with a defensive security mindset fortifying
+      <br />
+      backend architecture, streamlining CI/CD pipelines, and leveraging AI to rapidly build secure MVPs.
     </>
   ),
 };
@@ -102,43 +103,51 @@ const about = {
     description: (
       <>
       <p style={{ textAlign: "justify" }}>
-        I am a results-driven <strong>Cyber Security Researcher</strong> and <strong>AI assisted Software Engineer</strong> specialized in <strong>AI Red Team Engineer</strong> passionate about building secure, intelligent, and scalable digital solutions. I combines <strong>AI-driven automation</strong> with <strong>offensives security methodologies</strong>, <strong>vulnerability assessment</strong>, to identify, exploit, and mitigate vulnerabilities before real adversaries can. With hands-on experience across <strong>AI assisted Web App development</strong>, I contributed to organizations like <strong>Trillium Information Security Systems</strong>, <strong>Nexium</strong>, and <strong>Rayonix Solutions</strong>. My expertise extends to <strong>penetration testing, threat intelligence, AI-enhanced automation,</strong> and <strong>secure web architectures</strong>. Driven by curiosity and innovation, I strives to bridge the gap between <strong>software engineering</strong> and <strong>cybersecurity</strong> ensuring that technology is not only smart but also safe.
-      </p>
+  I am a results-driven <strong>Associate Cloud & DevOps Engineer</strong> specialized in <strong>AWS, Infrastructure & Security</strong> passionate about building secure, intelligent, and scalable digital solutions. I combine <strong>AI-driven automation</strong> with <strong>Linux automation methodologies</strong>, <strong>vulnerability assessment</strong>, to identify, isolate, and mitigate infrastructure risks before real adversaries can. With hands-on experience across <strong>leveraging AI for rapid MVP development</strong>, I contributed to organizations like <strong>Trillium Information Security Systems</strong>, <strong>Nexium</strong>, and <strong>Rayonix Solutions</strong>. My expertise extends to <strong>system administration, threat intelligence, automated shell scripting,</strong> and <strong>secure cloud architectures</strong>. Driven by curiosity and innovation, I strive to bridge the gap between <strong>systems administration</strong> and <strong>cloud engineering</strong> ensuring that technology is not only highly optimized but also resilient fundamentally breaking systems to build them stronger.
+</p>
     </>
     ),
   },
+  //tech stack section
+  // 2. Tech Stack Section (MOVED HERE)
   techStack: {
     display: true,
     icons: [
-      {
-        icon: "/images/icons/linux.ico"
-      },
-      {
-        icon: "/images/icons/vscode.ico"
-      },
-      {
-        icon: "/images/icons/c++.ico"
-      },
-      // Java icon removed per request
-      {
-        icon: "/images/icons/react.ico"
-      },
-      {
-        icon: "/images/icons/flutter.ico"
-      },
-      {
-        icon: "/images/icons/firebase.ico"
-      },
-      {
-        icon: "/images/icons/copoilet.ico"
-      },
+      { icon: "/images/icons/cloud.png" },
+      { icon: "/images/icons/devops.png" },
+      { icon: "/images/icons/cyber-security.png" },
+      { icon: "/images/icons/developer.png" },
+      { icon: "/images/icons/linux.ico" },
+      { icon: "/images/icons/ai.png" },
     ],
   },
+  // work experience section
   work: {
     display: true, // set to false to hide this section
     title: "Work Experience",
     experiences: [
       // experience 1
+      {
+  company: "Independent Freelance / Consulting",
+  timeframe: "2025 - Present",
+  role: "Cloud, DevOps & Systems Infrastructure Engineer",
+  achievements: [
+    <span key="cloud-ext-1">
+      Successfully architected and executed full-scale live server migrations (including Atlanta-to-Chicago data center transitions), ensuring zero downtime and complete data integrity for client WordPress and web applications.
+    </span>,
+    <span key="cloud-ext-2">
+      Built and deployed automated Bash/Shell scripts to optimize Linux system administration tasks, cron job scheduling, log monitoring, and backup routines.
+    </span>,
+    <span key="cloud-ext-3">
+      Containerized monolithic applications using Docker, implementing secure multi-stage builds and restrictive system permissions to minimize attack surfaces.
+    </span>,
+    <span key="cloud-ext-4">
+      Configured cloud infrastructure environments utilizing secure Identity & Access Management (IAM) policies, firewall rules, and automated CI/CD deployment pipelines via GitHub Actions.
+    </span>,
+  ],
+  images: [],
+},
+// experience 2
 {
   company: "Rayonix Solutions",
   timeframe: "Aug-Sep, 2025 (Summer Internship-Remote)",
@@ -265,12 +274,7 @@ const about = {
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.png",
-            alt: "Autolevels.pk Project",
-            width: 16,
-            height: 9,
-          },
+        
         ],
       },
     
@@ -331,12 +335,7 @@ const about = {
           </span>,
         ],
         images: [
-          {
-            src: "/images/projects/project-01/youthimpact.png",
-            alt: "Youth Impact Project",
-            width: 16,
-            height: 9,
-          },
+          
         ],
       },
       //experience 7
@@ -625,70 +624,53 @@ const about = {
     ],
     skills: [
       {
-        title: "Cybersecurity & Hacking",
-        icon: "skillShield",
-        description: [
-          <span key="cyber-1">Ethical Hacking: Penetration Testing, Vulnerability Assessment, Metasploit Framework</span>,
-          <span key="cyber-2">OWASP Top 10, Cyber Threat Hunting (CTH), Cyber Threat Intelligence (CTI)</span>,
-          <span key="cyber-3">Network Security: CCNA, Network Administration, Packet Analysis</span>,
-          <span key="cyber-4">System Security: Information Security Management, Security Policies, Risk Management</span>,
-          <span key="cyber-5">Dark Web & Anonymity: Cryptocurrency, Blockchain, Tor Network</span>
-        ],
-      },
-      {
-        title: "Programming & Development",
-        icon: "skillCode",
-        description: [
-          <span key="prog-1">Languages: C++, Java, Dart, PHP, Bash/Shell Scripting, HTML/CSS</span>,
-          <span key="prog-2">Frameworks: Flutter, Laravel, Linux CLI</span>,
-          <span key="prog-3">Version Control: Git & GitHub</span>,
-          <span key="prog-4">Databases: MySQL, SQLite, Database Normalization</span>
-        ],
-      },
-      {
-        title: "Systems & Tools",
-        icon: "skillTerminal",
-        description: [
-          <span key="sys-1">Linux Ecosystem: Kali Linux, GNU/Linux, Ubuntu, Debian</span>,
-          <span key="sys-2">Security Tools: Metasploit, Nmap, Wireshark, Burp Suite</span>,
-          <span key="sys-3">Advanced Tools: John the Ripper, Hydra</span>
-        ],
-      },
-      {
-        title: "Project Management",
-        icon: "skillDoc",
-        description: [
-          <span key="pm-1">Team Building & Management, Project Planning & Execution</span>,
-          <span key="pm-2">Hackathon & CTF Team Leadership</span>,
-          <span key="pm-3">Tools: Google Sheets, Budgeting, Agile Methodologies</span>,
-          <span key="pm-4">Task Prioritization and Delegation</span>
-        ],
-      },
-      {
-        title: "IT Operations",
+        title: "Cloud & Infrastructure",
         icon: "skillServer",
         description: [
-          <span key="it-1">System Administration & Technical Support</span>,
-          <span key="it-2">Software Troubleshooting & Local Server Hosting</span>,
-          <span key="it-3">Asset Tracking & Management</span>
+          <span key="cloud-1">AWS Cloud Fundamentals, Virtualization, Server Administration</span>,
+          <span key="cloud-2">Identity & Access Management (IAM), Cloud Security Posture Management</span>,
+          <span key="cloud-3">Linux Server Architecture (Ubuntu, Debian, Kali Linux)</span>,
+          <span key="cloud-4">Secure Live Server Migrations & Infrastructure Automation</span>
         ],
       },
       {
-        title: "Marketing & Design",
-        icon: "skillDesign",
+        title: "DevSecOps & Automation",
+        icon: "skillTerminal",
         description: [
-          <span key="md-1">Digital Marketing: Campaign Planning, Content Strategy</span>,
-          <span key="md-2">Design Tools: Canva, Adobe Photoshop (Basic)</span>,
-          <span key="md-3">Media Production: Video Editing, Basic Photography</span>
+          <span key="ds-1">CI/CD Automation Pipelines, GitHub Actions</span>,
+          <span key="ds-2">Docker Containerization & Container Security Hardening</span>,
+          <span key="ds-3">Automated Shell Scripting (Bash), Linux CLI, System Permissions</span>,
+          <span key="ds-4">Log Monitoring, Access Control Policies, Risk Remediation</span>
         ],
       },
       {
-        title: "Business Operations",
+        title: "Full-Stack Development",
+        icon: "skillCode",
+        description: [
+          <span key="fs-1">Frameworks: Next.js, React.js, Node.js, Express</span>,
+          <span key="fs-2">Languages: TypeScript, JavaScript, Dart (Flutter)</span>,
+          <span key="fs-3">Databases: MongoDB, Supabase, MySQL, SQLite</span>,
+          <span key="fs-4">AI-Augmented Engineering: Rapid MVP Development & Workflow Automation</span>
+        ],
+      },
+      {
+        title: "Network Security & VAPT",
+        icon: "skillShield",
+        description: [
+          <span key="sec-1">Vulnerability Assessment & Penetration Testing (VAPT)</span>,
+          <span key="sec-2">OWASP Top 10 Assessment, Secure Coding Practices</span>,
+          <span key="sec-3">Traffic & Log Analysis (Wireshark, Nmap, Burp Suite, Metasploit)</span>,
+          <span key="sec-4">Network Security Fundamentals, Cisco CCNA Enterprise Protocols</span>
+        ],
+      },
+      {
+        title: "Management & Leadership",
         icon: "skillDoc",
         description: [
-          <span key="bo-1">Vehicle Booking & Customer Management</span>,
-          <span key="bo-2">Deal Pricing & Invoicing System Design</span>,
-          <span key="bo-3">Expense Management & Reconciliation</span>
+          <span key="mgmt-1">IT Operations Management & Infrastructure Ownership</span>,
+          <span key="mgmt-2">Agile Project Planning, Task Prioritization, and Delegation</span>,
+          <span key="mgmt-3">Hackathon & CTF Team Leadership (Team Lead - St0rm Reapers)</span>,
+          <span key="mgmt-4">Cross-Functional Coordination & Technical Documentation</span>
         ],
       },
       {
