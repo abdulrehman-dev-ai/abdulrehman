@@ -3,9 +3,17 @@ const baseURL = "https://abdulrehmansarwar.vercel.app/";
 const routes = {
   "/": true,
   "/about": true,
+  "/services": true,
   "/work": true,
   "/blog": true,
   "/gallery": true,
+  "/contact": true,
+  "/privacy-policy": true,
+  "/terms": true,
+  "/refund-policy": true,
+  "/service-policy": true,
+  "/order/success": true,
+  "/order/failed": true,
   "/secure-access": true,
 };
 

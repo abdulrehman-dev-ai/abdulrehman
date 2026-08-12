@@ -2,6 +2,14 @@ import { Flex, IconButton, SmartLink, Text } from "@/once-ui/components";
 import { person, social } from "@/app/resources/content";
 import styles from "./Footer.module.scss";
 
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms" },
+  { label: "Refund Policy", href: "/refund-policy" },
+  { label: "Service Policy", href: "/service-policy" },
+  { label: "Contact", href: "/contact" },
+];
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -22,7 +30,17 @@ export const Footer = () => {
         gap="16"
         horizontal="space-between"
         vertical="center"
+        direction="column"
       >
+        <Flex gap="12" wrap horizontal="center">
+          {legalLinks.map((link) => (
+            <SmartLink key={link.href} href={link.href}>
+              <Text variant="body-default-xs" onBackground="neutral-weak">
+                {link.label}
+              </Text>
+            </SmartLink>
+          ))}
+        </Flex>
         <Text variant="body-default-xs" onBackground="neutral-strong" style={{ letterSpacing: '-0.01em' }}>
           <Text onBackground="neutral-strong">©{currentYear}</Text>
           <Text paddingX="2" onBackground="neutral-strong">

@@ -6,12 +6,11 @@ import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
+import { Metadata } from "next";
 
-interface WorkParams {
-  params: {
-    slug: string;
-  };
-}
+type WorkParams = Promise<{
+  slug: string;
+}>;
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -20,14 +19,19 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-export function generateMetadata({ params: { slug } }: WorkParams) {
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: WorkParams;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPosts(["src", "app", "work", "projects"]).find((item) => item.slug === slug);
 
   if (!post) {
-    return;
+    return {};
   }
 
-  let {
+  const {
     title,
     publishedAt: publishedTime,
     summary: description,
@@ -35,7 +39,7 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
     image,
     team,
   } = post.metadata;
-  let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
+  const ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
 
   return {
     title,
@@ -63,16 +67,17 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
   };
 }
 
-export default function Project({ params }: WorkParams) {
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === params.slug);
+export default async function Project({ params }: { params: WorkParams }) {
+  const { slug } = await params;
+  const post = getPosts(["src", "app", "work", "projects"]).find((item) => item.slug === slug);
 
   if (!post) {
     notFound();
   }
 
   const avatars =
-    post.metadata.team?.map((person) => ({
-      src: person.avatar,
+    post.metadata.team?.map((member) => ({
+      src: member.avatar,
     })) || [];
 
   return (

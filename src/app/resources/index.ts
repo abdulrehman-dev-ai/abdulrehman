@@ -10,6 +10,11 @@ export {
 } from "@/app/resources/config";
 export {
   person,
+  business,
+  payments,
+  services,
+  contact,
+  legal,
   social,
   newsletter,
   home,

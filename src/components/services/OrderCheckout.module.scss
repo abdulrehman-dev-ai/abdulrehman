@@ -1,0 +1,27 @@
+.checkout {
+  scroll-margin-top: 120px;
+}
+
+.form {
+  width: 100%;
+}
+
+.methodCard {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--neutral-border-medium);
+  background: var(--neutral-background-weak);
+  border-radius: var(--radius-m);
+  padding: var(--static-space-16);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.methodCard:hover {
+  border-color: var(--brand-border-medium);
+}
+
+.methodCardActive {
+  border-color: var(--brand-border-strong);
+  background: var(--brand-background-weak);
+}

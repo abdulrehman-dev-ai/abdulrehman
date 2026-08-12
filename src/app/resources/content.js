@@ -16,6 +16,75 @@ const person = {
   languages: ["English", "Urdu"],
 };
 
+const business = {
+  name: "Abdul Rehman Tech Solutions",
+  tagline: "Cloud, DevOps & Cybersecurity Services",
+  email: "iamabdulrehman.technophile@gmail.com",
+  phone: "+92 308 0305828",
+  address: " F66w+9J6, Near Muhammadi Hostel, Lahore, Punjab 54000, Pakistan",
+  whatsapp: "https://wa.link/zp9qa7",
+  hours: "Monday – Saturday, 10:00 AM – 7:00 PM (PKT)",
+};
+
+const payments = {
+  currency: "PKR",
+  bankTransfer: {
+    bankName: "Meezan Bank",
+    accountTitle: "Abdul Rehman",
+    accountNumber: "0209113649735",
+    iban: "PK00MEZN000209113749735",
+    instructions:
+      "Transfer the exact order amount and use your Order ID as the payment reference. Share the transfer receipt on WhatsApp or email after payment.",
+  },
+  methods: [
+    {
+      id: "bank_transfer",
+      label: "Bank Transfer",
+      description: "Pay directly to our business bank account",
+    },
+    {
+      id: "card",
+      label: "Card Payment",
+      description: "Visa & Mastercard via PayFast secure checkout",
+    },
+  ],
+};
+
+const services = {
+  label: "Services",
+  title: "Professional Services",
+  description: `Cloud, DevOps, cybersecurity, and web development services by ${person.name}`,
+};
+
+const contact = {
+  label: "Contact",
+  title: "Get in Touch",
+  description: `Contact ${person.name} for cloud, DevOps, cybersecurity, and web development services`,
+};
+
+const legal = {
+  privacy: {
+    label: "Privacy Policy",
+    title: "Privacy Policy",
+    lastUpdated: "August 12, 2026",
+  },
+  terms: {
+    label: "Terms & Conditions",
+    title: "Terms & Conditions",
+    lastUpdated: "August 12, 2026",
+  },
+  refund: {
+    label: "Refund Policy",
+    title: "Return & Refund Policy",
+    lastUpdated: "August 12, 2026",
+  },
+  servicePolicy: {
+    label: "Service Policy",
+    title: "Shipping & Service Delivery Policy",
+    lastUpdated: "August 12, 2026",
+  },
+};
+
 const newsletter = {
   display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
@@ -791,4 +860,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, business, payments, services, contact, legal, social, newsletter, home, about, blog, work, gallery };

@@ -8,30 +8,29 @@ import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
 import { Metadata } from "next";
 
-// Properly define the params using Next.js types
-type Params = {
+type BlogParams = Promise<{
   slug: string;
-};
+}>;
 
-// Update the generateMetadata function with proper types
 export async function generateMetadata({
   params,
 }: {
-  params: Params;
+  params: BlogParams;
 }): Promise<Metadata> {
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === params.slug);
+  const { slug } = await params;
+  const post = getPosts(["src", "app", "blog", "posts"]).find((item) => item.slug === slug);
 
   if (!post) {
     return {};
   }
 
-  let {
+  const {
     title,
     publishedAt: publishedTime,
     summary: description,
     image,
   } = post.metadata;
-  let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
+  const ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
 
   return {
     title,
@@ -57,21 +56,17 @@ export async function generateMetadata({
   };
 }
 
-// Update the Blog component to match Next.js 15.3.0 page component signature
-export default async function Blog({
-  params,
-}: {
-  params: Params;
-}) {
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === params.slug);
+export default async function Blog({ params }: { params: BlogParams }) {
+  const { slug } = await params;
+  const post = getPosts(["src", "app", "blog", "posts"]).find((item) => item.slug === slug);
 
   if (!post) {
     notFound();
   }
 
   const avatars =
-    post.metadata.team?.map((person) => ({
-      src: person.avatar,
+    post.metadata.team?.map((member) => ({
+      src: member.avatar,
     })) || [];
 
   return (
@@ -116,7 +111,6 @@ export default async function Blog({
   );
 }
 
-// Use consistent type for generateStaticParams
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "blog", "posts"]);
   return posts.map((post) => ({
