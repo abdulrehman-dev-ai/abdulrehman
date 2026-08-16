@@ -21,7 +21,7 @@ const business = {
   tagline: "Cloud, DevOps & Cybersecurity Services",
   email: "iamabdulrehman.technophile@gmail.com",
   phone: "+92 308 0305828",
-  address: " F66w+9J6, Near Muhammadi Hostel, Lahore, Punjab 54000, Pakistan",
+  address: " H No.20 Ali Town R Rd Lahore, Punjab 54000, Pakistan",
   whatsapp: "https://wa.link/zp9qa7",
   hours: "Monday – Saturday, 10:00 AM – 7:00 PM (PKT)",
 };
