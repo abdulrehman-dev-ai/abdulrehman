@@ -1,3 +1,5 @@
+> **Cloudflare migration:** The new portfolio and D1-backed admin/order/blog platform is in [`cloudflare/`](cloudflare/README.md). The original Next.js/Vercel application below remains intact until the migration is configured and verified.
+
 # Abdul Rehman's Portfolio
 
 Welcome to **Abdul Rehman's Portfolio**, a modern, responsive, and interactive website showcasing my work as a **Software Engineer** and **Cyber Security Researcher**. This portfolio highlights my skills, projects, certifications, and professional experience in a visually appealing and user-friendly manner.
