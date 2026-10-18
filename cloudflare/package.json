@@ -1,0 +1,14 @@
+{
+  "name": "abdul-portfolio-cloudflare",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev public",
+    "test": "node --test test/*.test.js",
+    "db:local": "wrangler d1 migrations apply portfolio --local",
+    "db:remote": "wrangler d1 migrations apply portfolio --remote",
+    "deploy": "wrangler pages deploy public --project-name abdul-portfolio",
+    "admin:password": "node scripts/password.js"
+  },
+  "devDependencies": {"wrangler": "4.143.1"}
+}
