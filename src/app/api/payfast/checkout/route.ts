@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Service not found." }, { status: 404 });
     }
 
-    const amount = parsePrice(service.metadata.price);
+    const amount = parsePrice(service.metadata.price || "");
 
     if (!amount) {
       return NextResponse.json({ error: "Invalid service price." }, { status: 400 });
