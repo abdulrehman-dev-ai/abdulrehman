@@ -1,0 +1,14 @@
+# Copy to .dev.vars for local use. Never commit real credentials.
+ADMIN_EMAIL=your-inbox@example.com
+EMAIL_FROM=Abdul Rehman <hello@your-verified-domain.example>
+RESEND_API_KEY=
+# Generate the three following values using npm run admin:password.
+ADMIN_PASSWORD_SALT=
+ADMIN_PASSWORD_HASH=
+SESSION_SECRET=
+SITE_URL=http://localhost:8788
+ORDERS_ENABLED=false
+
+# disabled | test | live. Test mode sends ONLY to your Resend signup inbox.
+EMAIL_MODE=disabled
+TEST_EMAIL=
