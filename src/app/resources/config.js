@@ -9,6 +9,7 @@ const routes = {
   "/blog": true,
   "/gallery": true,
   "/contact": true,
+  "/reviews": true,
   "/privacy-policy": true,
   "/terms": true,
   "/refund-policy": true,
