@@ -1,6 +1,4 @@
 import { createHash, randomBytes } from "crypto";
-import { promises as fs } from "fs";
-import path from "path";
 
 export type PaymentMethod = "bank_transfer" | "card";
 export type OrderStatus =
@@ -28,53 +26,48 @@ export interface OrderRecord {
   payfastTransactionId?: string;
 }
 
-const ORDERS_DIR = path.join(process.cwd(), "data", "orders");
-
-async function ensureOrdersDir() {
-  await fs.mkdir(ORDERS_DIR, { recursive: true });
-}
+import { d1Query } from "./d1-rest";
 
 export function generateOrderId() {
   const timestamp = Date.now().toString(36).toUpperCase();
-  const random = randomBytes(3).toString("hex").toUpperCase();
+  const random = randomBytes(8).toString("hex").toUpperCase();
   return `ORD-${timestamp}-${random}`;
 }
 
 export async function saveOrder(order: OrderRecord) {
-  await ensureOrdersDir();
-  const filePath = path.join(ORDERS_DIR, `${order.id}.json`);
-  await fs.writeFile(filePath, JSON.stringify(order, null, 2), "utf-8");
+  await d1Query(
+    `INSERT INTO orders (id, service_slug, service_title, amount, currency, customer_name, customer_email,
+      customer_phone, company, notes, payment_method, status, created_at, updated_at, payfast_transaction_id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(id) DO UPDATE SET status=excluded.status, updated_at=excluded.updated_at,
+      payfast_transaction_id=excluded.payfast_transaction_id`,
+    [order.id, order.serviceSlug, order.serviceTitle, order.amount, order.currency,
+      order.customerName, order.customerEmail, order.customerPhone, order.company || null,
+      order.notes || null, order.paymentMethod, order.status, order.createdAt, order.updatedAt,
+      order.payfastTransactionId || null],
+  );
   return order;
 }
 
 export async function getOrder(orderId: string) {
-  try {
-    const filePath = path.join(ORDERS_DIR, `${orderId}.json`);
-    const content = await fs.readFile(filePath, "utf-8");
-    return JSON.parse(content) as OrderRecord;
-  } catch {
-    return null;
-  }
+  if (!/^ORD-[A-Z0-9-]+$/.test(orderId)) return null;
+  const rows = await d1Query("SELECT * FROM orders WHERE id = ? LIMIT 1", [orderId]);
+  const row = rows[0];
+  if (!row) return null;
+  return {
+    id: row.id, serviceSlug: row.service_slug, serviceTitle: row.service_title,
+    amount: row.amount, currency: row.currency, customerName: row.customer_name,
+    customerEmail: row.customer_email, customerPhone: row.customer_phone,
+    company: row.company, notes: row.notes, paymentMethod: row.payment_method,
+    status: row.status, createdAt: row.created_at, updatedAt: row.updated_at,
+    payfastTransactionId: row.payfast_transaction_id,
+  } as OrderRecord;
 }
 
-export async function updateOrderStatus(
-  orderId: string,
-  status: OrderStatus,
-  extra: Partial<OrderRecord> = {},
-) {
+export async function updateOrderStatus(orderId: string, status: OrderStatus, extra: Partial<OrderRecord> = {}) {
   const order = await getOrder(orderId);
-  if (!order) {
-    return null;
-  }
-
-  const updatedOrder: OrderRecord = {
-    ...order,
-    ...extra,
-    status,
-    updatedAt: new Date().toISOString(),
-  };
-
-  return saveOrder(updatedOrder);
+  if (!order) return null;
+  return saveOrder({ ...order, ...extra, status, updatedAt: new Date().toISOString() });
 }
 
 export function parsePrice(price: string) {

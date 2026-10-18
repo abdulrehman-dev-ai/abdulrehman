@@ -88,7 +88,7 @@ export default function ServicesPage() {
       <Flex
         fillWidth
         maxWidth="m"
-        marginX="auto"
+        style={{ marginInline: "auto" }}
         border="neutral-medium"
         radius="l"
         padding="24"

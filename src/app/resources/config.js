@@ -1,4 +1,5 @@
-const baseURL = "https://abdulrehmansarwar.vercel.app/";
+// Hostname only: callers construct absolute URLs using https://${baseURL}.
+const baseURL = "abdulrehmansarwar.vercel.app";
 
 const routes = {
   "/": true,
@@ -8,6 +9,7 @@ const routes = {
   "/blog": true,
   "/gallery": true,
   "/contact": true,
+  "/reviews": true,
   "/privacy-policy": true,
   "/terms": true,
   "/refund-policy": true,

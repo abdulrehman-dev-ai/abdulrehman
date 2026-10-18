@@ -97,6 +97,30 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
+      <section aria-label="Capabilities" style={{
+        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+        gap: "1rem", width: "100%", paddingBlock: "1rem",
+      }}>
+        {[
+          { title: "Cloud & Infrastructure", description: "Linux, cloud architecture, secure migrations and resilient deployment workflows." },
+          { title: "Application Engineering", description: "Full-stack web products, role-based portals and operational dashboards." },
+          { title: "Security & Automation", description: "Threat-aware development, infrastructure hardening and AI-assisted delivery." },
+        ].map((capability) => (
+          <article key={capability.title} style={{
+            border: "1px solid var(--neutral-alpha-medium)",
+            borderRadius: "1.25rem", padding: "1.5rem",
+            background: "var(--surface-background)",
+            backdropFilter: "blur(14px)", minHeight: "155px",
+          }}>
+            <h2 style={{ fontSize: "1.08rem", fontWeight: 650, marginBottom: "0.6rem" }}>{capability.title}</h2>
+            <p style={{ opacity: 0.8, lineHeight: 1.65 }}>{capability.description}</p>
+          </article>
+        ))}
+      </section>
+      <nav aria-label="Primary actions" style={{ display: "flex", gap: "0.8rem", flexWrap: "wrap", width: "100%" }}>
+        <Button href="/work" variant="primary" size="m" arrowIcon>Explore Case Studies</Button>
+        <Button href="/contact" variant="secondary" size="m" arrowIcon>Start a Conversation</Button>
+      </nav>
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 3]} /> {/* Display first 3 projects */}
       </RevealFx>

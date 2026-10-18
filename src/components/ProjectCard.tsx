@@ -80,7 +80,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </Text>
         )}
         
-        <Flex gap="l" wrap marginTop="auto" className={styles.actionButtons}>
+        <Flex gap="l" wrap style={{ marginTop: "auto" }} className={styles.actionButtons}>
           {avatars?.length > 0 && (
             <AvatarGroup
               avatars={avatars.map((avatar) => ({ ...avatar }))} 
