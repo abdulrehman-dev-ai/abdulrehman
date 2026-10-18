@@ -18,6 +18,16 @@ function getServiceBySlug(slug: string) {
 }
 
 export async function POST(request: NextRequest) {
+  // Explicit launch gate: Vercel's filesystem is ephemeral and the current
+  // JSON order store is not a durable production database.
+  // Keep checkout disabled until D1 persistence, callback verification,
+  // abuse controls and end-to-end order tests are complete.
+  if (process.env.ORDER_CHECKOUT_ENABLED !== "true") {
+    return NextResponse.json(
+      { error: "Online ordering is not available yet. Please contact us for a quote." },
+      { status: 503, headers: { "Cache-Control": "no-store" } },
+    );
+  }
   try {
     const body = (await request.json()) as CheckoutRequestBody;
     const { serviceSlug, customerName, customerEmail, customerPhone, company, notes } = body;
