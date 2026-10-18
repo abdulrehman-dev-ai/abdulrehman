@@ -104,7 +104,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           </Flex>
         )}
 
-        <Flex gap="l" wrap marginTop="auto" className={styles.actionButtons}>
+        <Flex gap="l" wrap style={{ marginTop: "auto" }} className={styles.actionButtons}>
           <Flex gap="l" wrap className={styles.buttonGroup}>
             <SmartLink
               suffixIcon="arrowRight"
