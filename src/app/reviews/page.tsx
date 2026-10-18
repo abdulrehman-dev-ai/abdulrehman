@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { d1Query } from "@/lib/d1-rest";
+import ReviewSubmission from "@/components/ReviewSubmission";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Client Reviews", description: "Moderated reviews of completed projects." };
@@ -22,5 +23,6 @@ export default async function ReviewsPage() {
         <p>— {r.author}</p>
       </article>)}
     </div>}
+    <ReviewSubmission siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} />
   </main>;
 }
