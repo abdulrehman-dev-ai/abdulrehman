@@ -36,3 +36,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .qodo
+
+# Cloudflare local state and secrets
+cloudflare/node_modules/
+cloudflare/.wrangler/
+cloudflare/.dev.vars
+cloudflare/.dev.vars.*
+!cloudflare/.dev.vars.example

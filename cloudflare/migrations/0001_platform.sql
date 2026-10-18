@@ -1,0 +1,13 @@
+PRAGMA foreign_keys = ON;
+CREATE TABLE settings (id TEXT PRIMARY KEY, data TEXT NOT NULL, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE content (id TEXT PRIMARY KEY, kind TEXT NOT NULL CHECK(kind IN ('projects','posts','services','testimonials')), slug TEXT NOT NULL, title TEXT NOT NULL, summary TEXT NOT NULL DEFAULT '', body TEXT NOT NULL DEFAULT '', status TEXT NOT NULL DEFAULT 'draft' CHECK(status IN ('draft','published')), data TEXT NOT NULL DEFAULT '{}', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, UNIQUE(kind,slug));
+CREATE INDEX content_public ON content(kind,status,created_at);
+CREATE TABLE orders (id TEXT PRIMARY KEY, customer_name TEXT NOT NULL, email TEXT NOT NULL, service_id TEXT NOT NULL, service_title TEXT NOT NULL, amount INTEGER NOT NULL CHECK(amount>=0), currency TEXT NOT NULL DEFAULT 'PKR', notes TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'requested' CHECK(status IN ('requested','accepted','awaiting_payment','paid','in_progress','completed','cancelled','refunded')), request_key TEXT NOT NULL UNIQUE, last_event TEXT, review_hash TEXT UNIQUE, review_expires INTEGER, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX orders_date ON orders(created_at);
+CREATE TABLE messages (id TEXT PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL, message TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'new', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE reviews (id TEXT PRIMARY KEY, order_id TEXT NOT NULL UNIQUE REFERENCES orders(id), name TEXT NOT NULL, rating INTEGER NOT NULL CHECK(rating BETWEEN 1 AND 5), body TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending','published','rejected')), created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX review_public ON reviews(status,created_at);
+CREATE TABLE outbox (id TEXT PRIMARY KEY, recipient TEXT NOT NULL, subject TEXT NOT NULL, body TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', attempts INTEGER NOT NULL DEFAULT 0, last_error TEXT, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, sent_at TEXT);
+CREATE INDEX outbox_pending ON outbox(status,attempts);
+CREATE TABLE rate_limits (id TEXT PRIMARY KEY, count INTEGER NOT NULL DEFAULT 1, expires INTEGER NOT NULL);
+CREATE TABLE audit (id TEXT PRIMARY KEY, action TEXT NOT NULL, target TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);

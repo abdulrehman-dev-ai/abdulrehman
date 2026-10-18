@@ -1,0 +1,16 @@
+name = "abdul-portfolio"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio"
+# Replace after running: npx wrangler d1 create portfolio
+# This deliberately invalid value prevents accidental production deployment.
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+[vars]
+ORDERS_ENABLED = "false"
+EMAIL_MODE = "disabled"
+# SITE_URL, EMAIL_FROM, ADMIN_EMAIL and secrets are configured per environment.
