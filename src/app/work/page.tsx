@@ -1,5 +1,5 @@
 import { getPosts } from "@/app/utils/utils";
-import { Column } from "@/once-ui/components";
+import { Column, Heading, Text } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import { baseURL } from "@/app/resources";
 import { person, work } from "@/app/resources/content";
@@ -34,10 +34,11 @@ export async function generateMetadata() {
 }
 
 export default function Work() {
-  let allProjects = getPosts(["src", "app", "work", "projects"]);
+  const allProjects = getPosts(["src", "app", "work", "projects"]);
+  const featuredProjects = allProjects.filter((project) => (project.metadata.featuredRank || 0) > 0);
 
   return (
-    <Column maxWidth="xl">
+    <Column maxWidth="xl" gap="xl">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -47,23 +48,30 @@ export default function Work() {
             "@type": "CollectionPage",
             headline: work.title,
             description: work.description,
-            url: `https://${baseURL}/projects`,
-            image: `${baseURL}/og?title=Design%20Projects`,
+            url: `https://${baseURL}/work`,
+            image: `https://${baseURL}/og?title=Client%20Case%20Studies`,
             author: {
               "@type": "Person",
               name: person.name,
             },
-            hasPart: allProjects.map((project) => ({
+            hasPart: featuredProjects.map((project) => ({
               "@type": "CreativeWork",
               headline: project.metadata.title,
               description: project.metadata.summary,
-              url: `https://${baseURL}/projects/${project.slug}`,
-              image: `${baseURL}/${project.metadata.image}`,
+              url: `https://${baseURL}/work/${project.slug}`,
+              image: project.metadata.image ? `https://${baseURL}${project.metadata.image}` : `https://${baseURL}/og?title=${encodeURIComponent(project.metadata.title)}`,
             })),
           }),
         }}
       />
-      <Projects />
+      <Column maxWidth="m" paddingY="l" gap="m">
+        <Text variant="label-default-s" onBackground="accent-medium">PRODUCTION WORK & CLIENT BUILDS</Text>
+        <Heading as="h1" variant="display-strong-m" wrap="balance">Work that goes beyond a demo.</Heading>
+        <Text variant="heading-default-l" onBackground="neutral-weak" wrap="balance">
+          Delivered web platforms, operational workflows and e-commerce implementations. Each case study explains the scope, technology and real delivery status.
+        </Text>
+      </Column>
+      <Projects clientWorkOnly columns="2" />
     </Column>
   );
 }
