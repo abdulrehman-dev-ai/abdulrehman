@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getPosts } from "@/app/utils/utils";
 import styles from "./ClientShowcase.module.scss";
 import ProjectArtImage from "./ProjectArtImage";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 type Project = ReturnType<typeof getPosts>[number];
 const visuals: Record<string, { src?: string; label: string; kind: string; tools: string[] }> = {
@@ -76,7 +77,7 @@ function SmallCard({ project, index }: { project: Project; index: number }) {
         <h3><Link href={"/work/" + project.slug}>{title}</Link></h3>
         <p>{project.metadata.summary}</p>
         <div className={styles.smallFooter}>
-          <Link href={"/work/" + project.slug}>Explore the case study <span aria-hidden="true">↗</span></Link>
+          <ActionLink href={"/work/" + project.slug} size="sm" variant="quiet">Explore case study</ActionLink>
         </div>
       </div>
     </article>
@@ -103,8 +104,8 @@ export function ClientShowcase({ mode = "home" }: { mode?: "home" | "all" }) {
             {(visual?.tools || []).map((tool) => <span key={tool}>{tool}</span>)}
           </div>
           <div className={styles.leadActions}>
-            <Link href={"/work/" + lead.slug} className={styles.primaryLink}>Explore case study <span aria-hidden="true">↗</span></Link>
-            {lead.metadata.link && <a href={lead.metadata.link} target="_blank" rel="noopener noreferrer">View live platform ↗</a>}
+            <ActionLink href={"/work/" + lead.slug} variant="primary">Explore case study</ActionLink>
+            {lead.metadata.link && <ActionLink href={lead.metadata.link} variant="quiet">View live platform</ActionLink>}
           </div>
         </div>
       </article>

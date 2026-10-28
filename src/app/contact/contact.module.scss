@@ -26,3 +26,11 @@
 .steps {border:1px solid var(--neo-border);border-radius:24px;padding:clamp(1.5rem,3vw,2.7rem);background:linear-gradient(145deg,#112d27,#091d19);box-shadow:var(--neo-shadow),var(--neo-rim);gap:1rem;}
 .steps>div {padding:1.2rem;border-radius:16px;border:1px solid rgba(139,239,196,.12);background:#0c2922;box-shadow:var(--neo-inset),var(--neo-rim);}
 @media(max-width:650px){.header{padding:1.5rem;border-radius:20px;}.left,.steps{padding:1.3rem;border-radius:19px;}}
+
+/* Contact options behave as tactile and keyboard-discoverable links */
+.links a { transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+@media (hover:hover) {
+  .links a:hover { transform: translateY(-2px);background:#133b30;box-shadow:var(--neo-shadow-small),var(--neo-rim); }
+}
+.links a:active { transform:translateY(0);box-shadow:var(--neo-inset); }
+@media (prefers-reduced-motion: reduce) { .links a {transition:none;} }

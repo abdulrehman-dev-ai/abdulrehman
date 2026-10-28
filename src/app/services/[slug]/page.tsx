@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
 import {
-  Button,
   Column,
   Flex,
   Heading,
@@ -16,6 +15,7 @@ import ScrollToHash from "@/components/ScrollToHash";
 import { OrderCheckout } from "@/components/services/OrderCheckout";
 import { Metadata } from "next";
 import styles from "./service-detail.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 type ServiceParams = Promise<{
   slug: string;
@@ -105,15 +105,7 @@ export default async function ServiceDetail({ params }: { params: ServiceParams 
       />
 
       <Column fillWidth gap="16" className={styles.intro}>
-        <Button
-          href="/services"
-          variant="tertiary"
-          weight="default"
-          size="s"
-          prefixIcon="chevronLeft"
-        >
-          Services
-        </Button>
+        <ActionLink href="/services" variant="quiet" size="sm" icon="arrow-left">Back to services</ActionLink>
         <Flex gap="8" wrap vertical="center">
           {metadata.category && <Tag size="m">{metadata.category}</Tag>}
           {metadata.deliveryTime && (
