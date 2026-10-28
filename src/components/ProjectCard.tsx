@@ -34,6 +34,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   avatars,
   link,
 }) => {
+  const tone = href.includes("ocean-yacht") ? styles.toneOcean
+    : href.includes("auto-levels") ? styles.toneAutomotive
+    : href.includes("maqwi") ? styles.toneOrganics
+    : href.includes("rico-scents") ? styles.toneFragrance
+    : styles.toneDefault;
+  const shortTitle = title.split(" — ")[0];
   return (
     <Card
       fillWidth
@@ -55,9 +61,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           }))}
         />
       ) : (
-        <div className={styles.projectVisual} aria-label={category || "Portfolio case study"}>
-          <span className={styles.projectEyebrow}>SELECTED WORK / REAL-WORLD DELIVERY</span>
-          <span className={styles.projectCategory}>{category || "Engineering project"}</span>
+        <div className={`${styles.projectVisual} ${tone}`} role="img" aria-label={`Editorial brand artwork for ${shortTitle}; not a screenshot`}>
+          <div className={styles.visualTop}>
+            <span>CLIENT PROJECT / PORTFOLIO</span>
+            <span className={styles.visualAccent} aria-hidden="true" />
+          </div>
+          <div className={styles.visualBody}>
+            <strong>{shortTitle}</strong>
+            <span>{category || "Engineering project"}</span>
+          </div>
           <span className={styles.projectDecoration} aria-hidden="true">↗</span>
         </div>
       )}
