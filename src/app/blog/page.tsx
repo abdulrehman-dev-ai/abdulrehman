@@ -1,72 +1,40 @@
-import { Column, Flex, Heading } from "@/once-ui/components";
-import { Mailchimp } from "@/components";
-import { Posts } from "@/components/blog/Posts";
+import { Column } from "@/once-ui/components";
+import { getPosts } from "@/app/utils/utils";
 import { baseURL } from "@/app/resources";
-import { blog, person, newsletter } from "@/app/resources/content";
+import { person } from "@/app/resources/content";
+import styles from "./blog.module.scss";
 
 export async function generateMetadata() {
-  const title = blog.title;
-  const description = blog.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `https://${baseURL}/blog` },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `https://${baseURL}/blog`,
-      images: [
-        {
-          url: ogImage,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  const title="Engineering Journal";
+  const description="Notes on real deployments, application architecture, security and solving practical problems.";
+  const img="https://" + baseURL + "/og?title=" + encodeURIComponent(title);
+  return {title,description,alternates:{canonical:"https://" + baseURL + "/blog"},
+    openGraph:{title,description,url:"https://" + baseURL + "/blog",images:[{url:img}]},
+    twitter:{card:"summary_large_image",title,description,images:[img]}};
 }
-
 export default function Blog() {
-  return (
-    <Column maxWidth="s">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            headline: blog.title,
-            description: blog.description,
-            url: `https://${baseURL}/blog`,
-            image: `https://${baseURL}/og?title=${encodeURIComponent(blog.title)}`,
-            author: {
-              "@type": "Person",
-              name: person.name,
-              image: {
-                "@type": "ImageObject",
-                url: `https://${baseURL}${person.avatar}`,
-              },
-            },
-          }),
-        }}
-      />
-      <Heading marginBottom="l" variant="display-strong-s">
-        {blog.title}
-      </Heading>
-      <Column fillWidth flex={1}>
-        <Posts range={[1, 3]} thumbnail />
-        <Posts range={[4]} columns="2" />
-      </Column>
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
-    </Column>
-  );
+  const posts=getPosts(["src","app","blog","posts"]);
+  return <Column maxWidth="xl" fillWidth gap="xl">
+    <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{__html:JSON.stringify({
+      "@context":"https://schema.org","@type":"Blog",name:"Engineering Journal",author:{"@type":"Person",name:person.name},
+      url:"https://" + baseURL + "/blog"
+    })}}/>
+    <header className={styles.header}><p className={styles.kicker}>THE JOURNAL / ENGINEERING NOTES</p>
+      <h1>From the workbench.</h1>
+      <p>Practical writing on building products, debugging infrastructure, shipping safely, and learning from real work.</p>
+    </header>
+    <section className={styles.list} aria-label="Journal articles">
+      {posts.map((post,index)=><a className={styles.entry} key={post.slug} href={"/blog/"+post.slug}>
+        <div className={styles.number}>/ {String(index+1).padStart(2,"0")}</div>
+        <div className={styles.details}>
+          <div className={styles.meta}><time dateTime={post.metadata.publishedAt}>{new Date(post.metadata.publishedAt).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})}</time>
+            {post.metadata.tag && <span>{String(post.metadata.tag).split(",")[0]}</span>}</div>
+          <h2>{post.metadata.title}</h2>
+          <p>{post.metadata.summary}</p>
+        </div>
+        <span className={styles.arrow} aria-hidden="true">↗</span>
+      </a>)}
+    </section>
+    <aside className={styles.cta}><div><span className={styles.kicker}>BEYOND THE ARTICLES</span><h2>Want to see the work behind the writing?</h2></div><a href="/work">Explore case studies ↗</a></aside>
+  </Column>;
 }

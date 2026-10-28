@@ -1,6 +1,5 @@
-import React from "react";
 import { Heading, Button, Column } from "@/once-ui/components";
-import { Projects } from "@/components/work/Projects";
+import { ClientShowcase } from "@/components/work/ClientShowcase";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, routes } from "@/app/resources";
 import { home, person } from "@/app/resources/content";
@@ -9,93 +8,90 @@ import styles from "./page.module.scss";
 export async function generateMetadata() {
   const title = home.title;
   const description = home.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-  return {
-    title,
-    description,
-    alternates: { canonical: `https://${baseURL}/` },
-    openGraph: {
-      title, description, type: "website", url: `https://${baseURL}/`,
-      images: [{ url: ogImage, alt: title }],
-    },
-    twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  };
+  const ogImage = "https://" + baseURL + "/og?title=" + encodeURIComponent(title);
+  return { title, description, alternates: { canonical: "https://" + baseURL + "/" },
+    openGraph: { title, description, type: "website" as const, url: "https://" + baseURL + "/", images: [{url:ogImage,alt:title}] },
+    twitter: { card:"summary_large_image", title, description, images:[ogImage] } };
 }
 
 export default function Home() {
-  return (
-    <Column maxWidth="m" gap="xl" horizontal="center" fillWidth>
-      <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ProfilePage",
-          name: home.title,
-          description: home.description,
-          url: `https://${baseURL}/`,
-          image: `https://${baseURL}/og?title=${encodeURIComponent(home.title)}`,
-          mainEntity: {
-            "@type": "Person", name: person.name,
-            image: `https://${baseURL}${person.avatar}`,
-            jobTitle: "Full-Stack, Cloud & Security Engineer",
-          },
-        }),
-      }} />
-      <section aria-labelledby="hero-title" className={styles.hero}>
-        <span className={styles.eyebrow}><span className={styles.pulse} aria-hidden="true" />FULL-STACK ENGINEERING / CLOUD / SECURITY</span>
-        <Heading as="h1" id="hero-title" variant="display-strong-l" wrap="balance" className={styles.heroTitle}>
-          {home.headline}
+  return <Column maxWidth="xl" gap="xl" fillWidth horizontal="center">
+    <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{__html:JSON.stringify({
+      "@context":"https://schema.org","@type":"ProfilePage",name:home.title,
+      description:home.description,url:"https://" + baseURL + "/",
+      mainEntity:{"@type":"Person",name:person.name,image:"https://" + baseURL + person.avatar,
+        jobTitle:"Full-Stack, Cloud & Security Engineer"}
+    })}} />
+    <section className={styles.hero} aria-labelledby="home-intro">
+      <div className={styles.heroCopy}>
+        <p className={styles.kicker}><span className={styles.liveDot} /> INDEPENDENT ENGINEERING CONSULTANT · LAHORE, PAKISTAN</p>
+        <Heading as="h1" id="home-intro" className={styles.display} wrap="balance">
+          Engineering the digital products <em>businesses rely on.</em>
         </Heading>
-        <div className={styles.heroSummary}>{home.subline}</div>
-        <div className={styles.heroActions}>
-          <Button href="/work" variant="primary" size="m" arrowIcon>Explore client work</Button>
-          <Button href="/contact" variant="secondary" size="m" arrowIcon>Start a project</Button>
+        <p className={styles.lead}>I’m Abdul Rehman. I turn business requirements into secure applications, dependable cloud infrastructure and websites built for real customers.</p>
+        <div className={styles.actions}>
+          <Button href="/work" variant="primary" size="m" arrowIcon>See selected work</Button>
+          <Button href="/contact" variant="secondary" size="m" arrowIcon>Discuss a project</Button>
         </div>
-        <div className={styles.heroFoot}>
-          <span>ABDUL REHMAN</span>
-          <span>ENGINEERED FOR DELIVERY, NOT JUST DEMOS</span>
+        <p className={styles.proof}><span>IN PRACTICE</span> Full-stack delivery / Cloud & DevOps / Security-aware implementation</p>
+      </div>
+      <aside className={styles.heroAside} aria-label="Meet the engineer">
+        <div className={styles.portraitWrap}>
+          <img src="/images/avatar.png" alt="Portrait of Abdul Rehman" className={styles.portrait} />
+          <span className={styles.portraitOverlay}>ABDUL REHMAN <small>INDEPENDENT ENGINEER</small></span>
         </div>
-      </section>
-
-      <section className={styles.expertise} aria-label="Core expertise">
-        <span><strong>01</strong> Full-stack platforms</span>
-        <span><strong>02</strong> Cloud & DevOps</span>
-        <span><strong>03</strong> Security-first delivery</span>
-      </section>
-
-      <section id="selected-work" aria-labelledby="work-title" className={styles.work}>
-        <div className={styles.sectionHead}>
-          <div>
-            <p className={styles.sectionLabel}>01 / SELECTED CLIENT WORK</p>
-            <Heading id="work-title" as="h2" variant="display-strong-s" wrap="balance">Real projects. Real delivery.</Heading>
-            <p className={styles.sectionDescription}>A closer look at production systems, client websites and commerce work — with clear, honest delivery status.</p>
-          </div>
-          <Button href="/work" variant="secondary" size="s" arrowIcon>All case studies</Button>
+        <div className={styles.asideBottom}>
+          <span>DESIGN → BUILD → DEPLOY</span>
+          <span>OPEN TO CLIENT ENGAGEMENTS</span>
         </div>
-        <Projects range={[1, 4]} columns="2" />
-      </section>
-
-      {routes["/blog"] && (
-        <section aria-labelledby="blog-title" className={styles.writing}>
-          <div className={styles.sectionHead}>
-            <div>
-              <p className={styles.sectionLabel}>02 / JOURNAL</p>
-              <Heading id="blog-title" as="h2" variant="display-strong-xs">Notes from the field.</Heading>
-              <p className={styles.sectionDescription}>Engineering decisions, useful lessons and ideas worth sharing.</p>
-            </div>
-            <Button href="/blog" variant="tertiary" size="s" arrowIcon>Read all articles</Button>
-          </div>
-          <Posts range={[1, 2]} columns="2" />
-        </section>
-      )}
-
-      <aside className={styles.contactPanel} aria-label="Work together">
-        <div>
-          <p className={styles.sectionLabel}>HAVE A PROJECT IN MIND?</p>
-          <Heading as="h2" variant="display-strong-xs" wrap="balance">Let's build something that works.</Heading>
-          <p className={styles.sectionDescription}>From client-ready websites to secure applications and cloud infrastructure — tell me what you're building.</p>
-        </div>
-        <Button href="/contact" variant="primary" size="m" arrowIcon>Discuss your project</Button>
       </aside>
-    </Column>
-  );
+    </section>
+    <section className={styles.servicesRibbon} aria-label="What I do">
+      <div><span>01 /</span><strong>Build</strong><small>Platforms & commerce</small></div>
+      <div><span>02 /</span><strong>Operate</strong><small>Cloud & automation</small></div>
+      <div><span>03 /</span><strong>Secure</strong><small>Hardening & resilience</small></div>
+    </section>
+    <section className={styles.selected} aria-labelledby="featured-title">
+      <div className={styles.sectionHead}>
+        <div>
+          <p className={styles.kicker}>SELECTED WORK / 2025—2026</p>
+          <Heading as="h2" id="featured-title" className={styles.sectionTitle}>Built for real businesses.</Heading>
+          <p className={styles.sectionSub}>Client platforms, commerce systems and operational engineering — the work, the approach, and its delivery status.</p>
+        </div>
+        <a className={styles.more} href="/work">Explore the portfolio ↗</a>
+      </div>
+      <ClientShowcase mode="home" />
+    </section>
+    <section className={styles.approach} aria-labelledby="approach-title">
+      <div>
+        <p className={styles.kicker}>HOW I WORK</p>
+        <Heading as="h2" id="approach-title" className={styles.sectionTitle}>More than a polished interface.</Heading>
+        <p className={styles.sectionSub}>A good product needs a clear workflow, sound technical choices and a responsible release process. My work spans all three.</p>
+        <a href="/services" className={styles.more}>Explore engineering services ↗</a>
+      </div>
+      <div className={styles.process}>
+        <article><span>01</span><div><h3>Understand the operation</h3><p>Define real users, roles, workflows and constraints before building.</p></div></article>
+        <article><span>02</span><div><h3>Engineer for maintainability</h3><p>Develop practical interfaces, server-side rules and infrastructure that can be operated.</p></div></article>
+        <article><span>03</span><div><h3>Verify and deliver</h3><p>Test critical journeys, deploy carefully and document what is ready — and what is not.</p></div></article>
+      </div>
+    </section>
+    {routes["/blog"] && <section className={styles.journal} aria-labelledby="journal-title">
+      <div className={styles.sectionHead}>
+        <div>
+          <p className={styles.kicker}>FIELD NOTES / JOURNAL</p>
+          <Heading as="h2" id="journal-title" className={styles.sectionTitle}>Things worth documenting.</Heading>
+          <p className={styles.sectionSub}>Engineering decisions, lessons from delivery and security-minded development.</p>
+        </div>
+        <a href="/blog" className={styles.more}>Read the journal ↗</a>
+      </div>
+      <Posts range={[1, 2]} columns="2" thumbnail />
+    </section>}
+    <aside className={styles.contactPanel}>
+      <div><p className={styles.kicker}>NEW ENGAGEMENTS</p>
+        <Heading as="h2" className={styles.sectionTitle}>Have something ambitious to build?</Heading>
+        <p className={styles.sectionSub}>Tell me what you're planning and I'll help define a practical approach.</p>
+      </div>
+      <Button href="/contact" variant="primary" size="m" arrowIcon>Start the conversation</Button>
+    </aside>
+  </Column>;
 }
