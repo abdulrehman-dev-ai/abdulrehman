@@ -157,7 +157,7 @@ export default async function ServiceDetail({ params }: { params: ServiceParams 
       <OrderCheckout
         serviceSlug={slug}
         serviceTitle={metadata.title}
-        price={metadata.price}
+        price={metadata.price || ""}
         currency={metadata.currency}
         priceNote={metadata.priceNote}
       />

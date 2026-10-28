@@ -44,8 +44,6 @@ export async function generateMetadata({
   return {
     title,
     description,
-    images,
-    team,
     openGraph: {
       title,
       description,

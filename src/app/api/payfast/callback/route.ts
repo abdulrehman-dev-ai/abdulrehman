@@ -1,51 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
-import { updateOrderStatus } from "@/lib/orders";
+import { NextResponse } from "next/server";
 
-export async function POST(request: NextRequest) {
-  try {
-    const contentType = request.headers.get("content-type") || "";
-    let payload: Record<string, string> = {};
-
-    if (contentType.includes("application/json")) {
-      payload = await request.json();
-    } else {
-      const formData = await request.formData();
-      formData.forEach((value, key) => {
-        payload[key] = String(value);
-      });
-    }
-
-    const orderId =
-      payload.order_id ||
-      payload.BASKET_ID ||
-      payload.basket_id ||
-      request.nextUrl.searchParams.get("order_id");
-
-    const status = (payload.STATUS || payload.status || payload.transaction_status || "").toLowerCase();
-    const transactionId =
-      payload.TRANSACTION_ID || payload.transaction_id || payload.transactionId;
-
-    if (!orderId) {
-      return NextResponse.json({ error: "Order ID missing." }, { status: 400 });
-    }
-
-    if (["success", "completed", "paid", "00"].includes(status)) {
-      await updateOrderStatus(orderId, "paid", {
-        payfastTransactionId: transactionId,
-      });
-    } else if (status) {
-      await updateOrderStatus(orderId, "failed", {
-        payfastTransactionId: transactionId,
-      });
-    }
-
-    return NextResponse.json({ received: true });
-  } catch (error) {
-    console.error("PayFast callback failed:", error);
-    return NextResponse.json({ error: "Callback processing failed." }, { status: 500 });
-  }
+// Never update an order based on unverified browser/query/form parameters.
+// Payment callbacks must be authenticated, checked against the processor,
+// and applied idempotently to durable order storage before being enabled.
+export async function POST() {
+  return NextResponse.json(
+    { error: "Payment callbacks are unavailable pending verified gateway integration." },
+    { status: 503, headers: { "Cache-Control": "no-store" } },
+  );
 }
 
-export async function GET(request: NextRequest) {
-  return POST(request);
+export async function GET() {
+  return NextResponse.json({ error: "Method not allowed." }, { status: 405 });
 }

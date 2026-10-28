@@ -115,6 +115,23 @@ export function OrderCheckout({
     }
   };
 
+  // Until a durable database and production payment flows are verified,
+  // show a contact-first inquiry path rather than collecting order details.
+  if (process.env.NEXT_PUBLIC_ORDER_CHECKOUT_ENABLED !== "true") {
+    return (
+      <Column id="order" fillWidth maxWidth="xs" border="neutral-medium" radius="l" padding="24" gap="16" background="surface">
+        <Heading as="h2" variant="heading-strong-l">Discuss Your Project</Heading>
+        <Text variant="body-default-m" onBackground="neutral-weak">
+          Interested in {serviceTitle}? Tell me about your requirements and I will share a tailored proposal.
+        </Text>
+        <Text variant="heading-strong-m">{currency} {price} {priceNote && `· ${priceNote}`}</Text>
+        <Button href={`mailto:${business.email}?subject=${encodeURIComponent(`Service inquiry: ${serviceTitle}`)}`} variant="primary" fillWidth>
+          Request a Quote
+        </Button>
+      </Column>
+    );
+  }
+
   return (
     <Column
       id="order"

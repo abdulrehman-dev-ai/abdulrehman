@@ -4,12 +4,19 @@ import { ProjectCard } from "@/components";
 
 interface ProjectsProps {
   range?: [number, number?];
+  columns?: "2" | "3";
 }
 
-export function Projects({ range }: ProjectsProps) {
+export function Projects({ range, columns = "3" }: ProjectsProps) {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
+  // Client delivery first; dated learning and academic projects remain available below.
   const sortedProjects = allProjects.sort((a, b) => {
+    const aRank = a.metadata.featuredRank || 0;
+    const bRank = b.metadata.featuredRank || 0;
+    if (aRank && bRank) return aRank - bRank;
+    if (aRank) return -1;
+    if (bRank) return 1;
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 
@@ -23,7 +30,7 @@ export function Projects({ range }: ProjectsProps) {
       gap="xl" 
       marginBottom="40"
       paddingX="m"
-      columns="3"
+      columns={columns}
       tabletColumns="2"
       mobileColumns="1"
       style={{
@@ -39,6 +46,7 @@ export function Projects({ range }: ProjectsProps) {
           images={post.metadata.images}
           title={post.metadata.title}
           description={post.metadata.summary}
+          category={post.metadata.category}
           content={post.content}
           avatars={post.metadata.team?.map((member) => ({ 
             src: member.avatar,

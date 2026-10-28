@@ -1,6 +1,7 @@
 import { Button, Column, Flex, Heading, Icon, Text } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
 import { business, contact } from "@/app/resources/content";
+import ContactInquiry from "@/components/ContactInquiry";
 
 export async function generateMetadata() {
   const title = contact.title;
@@ -119,6 +120,11 @@ export default function ContactPage() {
           WhatsApp
         </Button>
       </Flex>
+
+      <Column gap="16" paddingTop="l">
+        <Heading variant="heading-strong-l">Project Inquiry</Heading>
+        <ContactInquiry siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} email={business.email} />
+      </Column>
 
       <Column gap="8" paddingTop="l">
         <Text variant="heading-strong-m">Support & Inquiries</Text>
