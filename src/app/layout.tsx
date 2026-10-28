@@ -1,7 +1,7 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 import classNames from "classnames";
-import { Footer, Header, RouteGuard, MarqueeText, GoogleAnalytics, LocationGif } from "@/components";
+import { Footer, Header, RouteGuard, GoogleAnalytics, LocationGif } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
 import { Inter, Source_Code_Pro } from "next/font/google";
 import { person, home } from "@/app/resources/content";
@@ -18,10 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(`https://${baseURL}`),
     title: {
       template: "%s | Abdul Rehman",
-      default: "Abdul Rehman – Software Engineer & Cyber Security Researcher",
+      default: "Abdul Rehman | Full-Stack, Cloud & Security Engineer",
     },
-    description: "Portfolio of Abdul Rehman, a passionate Software Engineer and Cyber Security Researcher from Pakistan, showcasing innovative projects and creative solutions.",
-    keywords: ["Abdul Rehman", "Software Engineer", "Developer", "Cyber Security", "Flutter", "Portfolio", "React", "Next.js"],
+    description: home.description,
+    keywords: ["Abdul Rehman", "Full-Stack Development", "Cloud Engineering", "DevOps", "Cybersecurity", "Client Case Studies", "Next.js"],
     authors: [{ name: person.name, url: `https://${baseURL}` }],
     creator: person.name,
     publisher: person.name,
@@ -38,8 +38,8 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "en_US",
       url: `https://${baseURL}`,
       siteName: "Abdul Rehman Portfolio",
-      title: "Abdul Rehman – Software Engineer & Cyber Security Researcher",
-      description: "Portfolio of Abdul Rehman, a passionate Software Engineer and Cyber Security Researcher from Pakistan, showcasing innovative projects and creative solutions.",
+      title: "Abdul Rehman | Full-Stack, Cloud & Security Engineer",
+      description: home.description,
       images: [
         {
           url: ogImageUrl,
@@ -61,8 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Abdul Rehman – Software Engineer & Cyber Security Researcher",
       description: "Portfolio of Abdul Rehman, a passionate Software Engineer and Cyber Security Researcher from Pakistan, showcasing innovative projects and creative solutions.",
-      creator: "@abdulsrehman", // Replace with your actual Twitter handle if you have one
-      images: [twitterImageUrl],
+            images: [twitterImageUrl],
     },
     
     // Additional structured metadata
@@ -85,7 +84,7 @@ export async function generateMetadata(): Promise<Metadata> {
     
     // Verification for search engines
     verification: {
-      google: "google-site-verification-code", // Replace with your actual verification code if you have one
+      google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
     },
   };
 }
@@ -191,7 +190,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <RouteGuard>{children}</RouteGuard>
   </Flex>
 </Flex>
-          <MarqueeText />
           <Footer />
         </Column>
       </ToastProvider>
