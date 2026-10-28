@@ -52,12 +52,38 @@ async function inspect(route, viewport, label) {
     if (!item.background.includes("linear-gradient")) failures.push(label+": expected neumorphic gradient "+item.text);
     if (item.height < 40) failures.push(label+": insufficient tap height "+item.text);
   }
+  const type = await page.evaluate(() => {
+    const h1=document.querySelector("h1");
+    const h2=document.querySelector("h2");
+    const paragraph=document.querySelector("main p, section p, article p, p");
+    const family=(el)=>el?getComputedStyle(el).fontFamily:"";
+    const size=(el)=>el?parseFloat(getComputedStyle(el).fontSize):0;
+    const bounding=h1?.getBoundingClientRect();
+    return {
+      bodyFont:family(document.body),
+      headingFont:family(h1),
+      sectionFont:family(h2),
+      textFont:family(paragraph),
+      h1Size:size(h1),
+      h2Size:size(h2),
+      paragraphSize:size(paragraph),
+      lineHeight:paragraph?getComputedStyle(paragraph).lineHeight:"",
+      fontReady:document.fonts.status,
+      overflow:h1?bounding.right>innerWidth+6:false,
+    };
+  });
+  if(!/inter/i.test(type.bodyFont)) failures.push(label+": Inter body font not applied: "+type.bodyFont);
+  if(!/manrope/i.test(type.headingFont)) failures.push(label+": Manrope headline not applied: "+type.headingFont);
+  if(type.h1Size<32) failures.push(label+": headline too small: "+type.h1Size);
+  if(type.overflow) failures.push(label+": headline extends beyond viewport");
+  if(type.fontReady!=="loaded") failures.push(label+": font resources not loaded");
+  console.log(label+" typography "+JSON.stringify(type));
   const width=await page.evaluate(() => ({
     doc:document.documentElement.scrollWidth,
     viewport:window.innerWidth,
   }));
   if (viewport.width===390 && width.doc>width.viewport+5) failures.push(label+": horizontal overflow "+JSON.stringify(width));
-  samples.push({label,route,viewport,buttons:info,layout:width});
+  samples.push({label,route,viewport,buttons:info,typography:type,layout:width});
   console.log(label+": "+info.length+" unified buttons; "+info.map(x=>x.text+" ["+x.variant+"] "+x.radius).join(" | "));
   await page.close();
 }
@@ -67,6 +93,10 @@ try {
   await inspect("/work/ocean-yacht-registration",{width:1280,height:800},"case-study-desktop");
   await inspect("/services",{width:390,height:844},"services-mobile");
   await inspect("/contact",{width:390,height:844},"contact-mobile");
+  await inspect("/about",{width:390,height:844},"about-mobile");
+  await inspect("/blog",{width:390,height:844},"journal-mobile");
+  await inspect("/work",{width:1280,height:800},"work-desktop");
+  await inspect("/blog/registration-platform-lessons",{width:1280,height:800},"article-desktop");
 } finally {await browser.close();}
 fs.writeFileSync("button-check/results.json",JSON.stringify({samples,failures},null,2));
 console.log("CHECK RESULTS",JSON.stringify({pages:samples.length,buttons:samples.reduce((n,a)=>n+a.buttons.length,0),failures},null,2));
