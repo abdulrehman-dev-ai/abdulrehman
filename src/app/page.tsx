@@ -121,9 +121,17 @@ export default function Home() {
         <Button href="/work" variant="primary" size="m" arrowIcon>Explore Case Studies</Button>
         <Button href="/contact" variant="secondary" size="m" arrowIcon>Start a Conversation</Button>
       </nav>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 3]} /> {/* Display first 3 projects */}
-      </RevealFx>
+      <section aria-label="Featured client projects" style={{ width: "100%", display: "flex", flexDirection: "column", gap: "1.4rem" }}>
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
+          <div>
+            <Text variant="label-default-s" onBackground="accent-medium">SELECTED CLIENT WORK</Text>
+            <Heading as="h2" variant="display-strong-s" wrap="balance">Built for real businesses.</Heading>
+            <Text onBackground="neutral-weak" variant="body-default-m">Explore the architecture, challenges and delivery status behind each project.</Text>
+          </div>
+          <Button href="/work" variant="secondary" size="s" arrowIcon>All case studies</Button>
+        </div>
+        <Projects range={[1, 4]} columns="2" />
+      </section>
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l">
