@@ -11,7 +11,7 @@ export function Footer(){
       <div className={styles.left}>
         <span className={styles.eyebrow}>INDEPENDENT ENGINEERING / LAHORE · WORLDWIDE</span>
         <h2>Good work.<br/><em>Built to last.</em></h2>
-        <ActionLink href={"/contact"} variant="primary" className={styles.mail}>Let's talk about your project</ActionLink>
+        <ActionLink href={"/contact"} variant="primary">Let's talk about your project</ActionLink>
       </div>
       <div className={styles.right}>
         <div><p>EXPLORE</p><nav aria-label="Footer navigation">

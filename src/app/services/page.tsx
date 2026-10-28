@@ -37,7 +37,7 @@ export default function ServicesPage() {
       <p className={styles.kicker}>WAYS TO WORK TOGETHER / ENGINEERING SERVICES</p>
       <h1>Solutions first. <em>Technology with purpose.</em></h1>
       <p>Whether you need a working product, reliable infrastructure or a safer system, I scope the work around your goals, constraints and operations.</p>
-      <ActionLink href="/contact" variant="primary" className={styles.mainLink}>Discuss your requirements</ActionLink>
+      <div className={styles.heroAction}><ActionLink href="/contact" variant="primary">Discuss your requirements</ActionLink></div>
     </header>
     <div className={styles.groups}>
       {groups.map(g=><section key={g.n} className={styles.group} aria-labelledby={"group-"+g.n}>

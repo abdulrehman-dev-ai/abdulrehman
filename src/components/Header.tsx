@@ -37,7 +37,7 @@ export function Header(){
           {item.label}
         </Link>)}
       </nav>
-      <ActionLink href="/contact" size="sm" variant="secondary" className={styles.contact}>Let's talk</ActionLink>
+      <ActionLink href="/contact" size="sm" variant="secondary">Let's talk</ActionLink>
     </div>
   </header>;
 }

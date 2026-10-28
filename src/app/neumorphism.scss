@@ -68,111 +68,86 @@ html.neo-portfolio[data-theme="dark"] :where(input:not([type="hidden"]),textarea
   }
 }
 
-
-/* Unified actionable controls. Never turn ordinary reading links into buttons. */
+/* Shared premium dark-neumorphic button system: one shape, border and elevation.
+   Variant adjusts only surface emphasis, never geometry. */
+html.neo-portfolio[data-theme="dark"] {
+  --neo-btn-radius: 13px;
+  --neo-btn-border: rgba(154,243,197,.34);
+  --neo-btn-text: #e4fff0;
+  --neo-btn-face: linear-gradient(145deg,#153b31,#0c2923);
+  --neo-btn-hover: linear-gradient(145deg,#1b4b3c,#10362b);
+  --neo-btn-shadow: 6px 7px 15px rgba(0,0,0,.44), -5px -5px 14px rgba(67,145,106,.13),
+    inset 1px 1px 1px rgba(213,255,233,.17), inset -1px -1px 1px rgba(0,0,0,.22);
+}
 html.neo-portfolio[data-theme="dark"] .neo-action {
-  --neo-action-background: linear-gradient(145deg,#163a31,#0c2822);
-  --neo-action-foreground: #e2fff0;
-  display: inline-flex;
-  box-sizing: border-box;
-  max-width: 100%;
-  width: fit-content;
-  min-height: 43px;
-  padding: .72rem 1.08rem;
-  gap: .68rem;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(163,252,207,.24);
-  border-radius: 13px;
-  background: var(--neo-action-background);
-  box-shadow: var(--neo-shadow-small),var(--neo-rim);
-  color: var(--neo-action-foreground);
-  text-decoration: none;
-  font-family: inherit;
-  font-size: .82rem;
-  font-weight: 740;
-  line-height: 1.25;
-  letter-spacing: -.005em;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
-  isolation: isolate;
-  transition: transform .18s ease, box-shadow .18s ease,
-    border-color .18s ease, color .18s ease, background .18s ease;
+  --btn-face: var(--neo-btn-face);
+  --btn-hover: var(--neo-btn-hover);
+  --btn-color: var(--neo-btn-text);
+  box-sizing:border-box; display:inline-flex; gap:.62rem; align-items:center; justify-content:center;
+  flex:0 0 auto; max-width:100%; width:max-content; min-height:44px; padding:.62rem 1.05rem;
+  margin:0; border:1px solid var(--neo-btn-border); border-radius:var(--neo-btn-radius);
+  background:var(--btn-face); box-shadow:var(--neo-btn-shadow); color:var(--btn-color);
+  font-family:inherit; font-size:.82rem; font-weight:700; line-height:1.35; letter-spacing:0;
+  text-decoration:none; text-align:center; text-wrap:balance; cursor:pointer; touch-action:manipulation;
+  user-select:none; -webkit-tap-highlight-color:transparent; position:relative; isolation:isolate;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease,background .18s ease,color .18s ease;
 }
 html.neo-portfolio[data-theme="dark"] .neo-action--primary {
-  --neo-action-background: linear-gradient(145deg,#b5f8d6,#85ddba);
-  --neo-action-foreground: #09271e;
-  border-color: rgba(204,255,226,.8);
-  box-shadow: 6px 7px 16px rgba(0,0,0,.37),-4px -4px 13px rgba(66,162,121,.18),inset 1px 1px 1px rgba(255,255,255,.77);
+  --btn-face:linear-gradient(145deg,#205640,#133d31);
+  --btn-hover:linear-gradient(145deg,#28684f,#184d3b);
+  --btn-color:#ebfff3;
+  border-color:rgba(181,253,216,.53);
 }
 html.neo-portfolio[data-theme="dark"] .neo-action--secondary {
-  --neo-action-background: linear-gradient(145deg,#19483a,#0b2b23);
-  --neo-action-foreground: #ddffeb;
+  --btn-face:linear-gradient(145deg,#153e33,#0c2c26);
+  --btn-hover:linear-gradient(145deg,#1d503f,#12372d);
+  --btn-color:#e4fff0;
 }
 html.neo-portfolio[data-theme="dark"] .neo-action--quiet {
-  --neo-action-background: linear-gradient(145deg,#132e28,#0c211c);
-  --neo-action-foreground: #b9f7d7;
-  border-color: rgba(155,238,198,.15);
+  --btn-face:linear-gradient(145deg,#113029,#0b241f);
+  --btn-hover:linear-gradient(145deg,#1a4336,#102e26);
+  --btn-color:#c7f5dc;
+  border-color:rgba(153,236,196,.22);
 }
-html.neo-portfolio[data-theme="dark"] .neo-action--sm {
-  min-height: 38px;
-  padding: .52rem .85rem;
-  border-radius: 11px;
-  font-size: .75rem;
-}
-html.neo-portfolio[data-theme="dark"] .neo-action--lg {
-  min-height: 48px;
-  padding: .89rem 1.28rem;
-  border-radius: 14px;
-}
-html.neo-portfolio[data-theme="dark"] .neo-action--full { width: 100%; }
+html.neo-portfolio[data-theme="dark"] .neo-action--sm {min-height:42px;padding:.55rem .9rem;font-size:.78rem;}
+html.neo-portfolio[data-theme="dark"] .neo-action--lg {min-height:48px;padding:.8rem 1.22rem;font-size:.85rem;}
+html.neo-portfolio[data-theme="dark"] .neo-action--full {width:100%;}
 html.neo-portfolio[data-theme="dark"] .neo-action__icon {
-  font-family: inherit;
-  font-size: 1.07em;
-  line-height: 1;
-  flex: 0 0 auto;
-  transition: transform .18s ease;
+  display:inline-grid;place-items:center;flex:0 0 22px;width:22px;height:22px;
+  border-radius:7px;border:1px solid rgba(165,248,202,.15);background:rgba(2,18,14,.16);
+  box-shadow:inset 1px 2px 4px rgba(0,0,0,.27),inset -1px -1px 3px rgba(138,238,197,.10);
+  color:inherit;font-family:inherit;font-size:1rem;font-weight:600;line-height:1;
+  transition:transform .18s ease;
 }
-@media (hover:hover) {
+@media(hover:hover) {
   html.neo-portfolio[data-theme="dark"] .neo-action:hover:not(:disabled):not([aria-disabled="true"]) {
-    transform: translateY(-2px);
-    border-color: rgba(185,255,222,.58);
-    box-shadow: 10px 12px 22px rgba(0,0,0,.54),-7px -7px 18px rgba(44,125,89,.18),var(--neo-rim);
+    transform:translateY(-2px);background:var(--btn-hover);border-color:rgba(189,255,226,.69);
+    color:var(--btn-color);box-shadow:8px 10px 19px rgba(0,0,0,.49), -6px -6px 16px rgba(66,156,112,.18),
+      inset 1px 1px 1px rgba(211,255,229,.2);
   }
-  html.neo-portfolio[data-theme="dark"] .neo-action--primary:hover:not(:disabled) {
-    background: linear-gradient(145deg,#d4ffe7,#9debc8);
-    color: #09251b;
-  }
-  html.neo-portfolio[data-theme="dark"] .neo-action:hover .neo-action__icon {
-    transform: translate(2px,-2px);
-  }
+  html.neo-portfolio[data-theme="dark"] .neo-action:hover .neo-action__icon {transform:translate(1px,-1px);}
 }
 html.neo-portfolio[data-theme="dark"] .neo-action:active:not(:disabled) {
-  transform: translateY(0) scale(.985);
-  box-shadow: var(--neo-inset),var(--neo-rim);
+  transform:translateY(0) scale(.985);background:var(--btn-face);box-shadow:var(--neo-inset);
 }
+html.neo-portfolio[data-theme="dark"] .neo-action:focus-visible {outline:2px solid #bfffe0!important;outline-offset:4px;}
 html.neo-portfolio[data-theme="dark"] .neo-action:disabled,
 html.neo-portfolio[data-theme="dark"] .neo-action[aria-disabled="true"] {
-  opacity: .48;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: var(--neo-inset);
+  opacity:.46;cursor:not-allowed;transform:none;box-shadow:var(--neo-inset);
 }
-html.neo-portfolio[data-theme="dark"] .neo-action:focus-visible {
-  outline: 2px solid #c4ffe1 !important;
-  outline-offset: 4px;
-}
-@media (max-width: 480px) {
-  html.neo-portfolio[data-theme="dark"] .neo-action {
-    min-height: 44px;
-    padding-inline: .9rem;
-  }
-}
-@media (prefers-reduced-motion:reduce) {
+@media(max-width:480px) {
   html.neo-portfolio[data-theme="dark"] .neo-action,
-  html.neo-portfolio[data-theme="dark"] .neo-action__icon {
-    transition: none;
-  }
+  html.neo-portfolio[data-theme="dark"] .neo-action--sm {min-height:44px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  html.neo-portfolio[data-theme="dark"] .neo-action,
+  html.neo-portfolio[data-theme="dark"] .neo-action__icon {transition:none;}
+}
+/* Keep legacy Once UI buttons visually compatible where still used in older features. */
+html.neo-portfolio[data-theme="dark"] :is(a.button,button.button):not(.neo-action) {
+  border-radius:var(--neo-btn-radius);background:var(--neo-btn-face);
+  border-color:var(--neo-btn-border);color:var(--neo-btn-text);box-shadow:var(--neo-btn-shadow);
+}
+html.neo-portfolio[data-theme="dark"] :is(a.button,button.button):not(.neo-action):hover:not(:disabled) {
+  background:var(--neo-btn-hover);
 }

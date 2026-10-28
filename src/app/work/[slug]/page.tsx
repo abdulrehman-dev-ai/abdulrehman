@@ -44,8 +44,8 @@ export default async function ProjectPage({params}:{params:Params}){
       <h1>{shortTitle}<span className={styles.titleSuffix}>{title.includes(" — ")?" — "+title.split(" — ").slice(1).join(" — "):""}</span></h1>
       <p className={styles.summary}>{post.metadata.summary}</p>
       <div className={styles.headerActions}>
-        {post.metadata.link && <ActionLink href={post.metadata.link} variant="primary" className={styles.primary}>Open public project</ActionLink>}
-        <ActionLink href="/contact" variant="secondary" className={styles.secondary}>Discuss a similar project</ActionLink>
+        {post.metadata.link && <ActionLink href={post.metadata.link} variant="primary">Open public project</ActionLink>}
+        <ActionLink href="/contact" variant="secondary">Discuss a similar project</ActionLink>
       </div>
     </header>
     <div className={styles.visual}><ProjectVisual slug={slug} title={shortTitle} large /></div>

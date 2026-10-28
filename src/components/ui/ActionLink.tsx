@@ -39,9 +39,9 @@ export function ActionLink({
   const external = /^https?:\/\//i.test(href);
   const special = /^(mailto:|tel:)/i.test(href);
   if (external || special) {
-    return <a href={href} className={classes} aria-label={ariaLabel}
+    return <a href={href} className={classes} data-neo-action={variant} aria-label={ariaLabel}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{content}</a>;
   }
 
-  return <Link href={href} className={classes} aria-label={ariaLabel}>{content}</Link>;
+  return <Link href={href} className={classes} data-neo-action={variant} aria-label={ariaLabel}>{content}</Link>;
 }
