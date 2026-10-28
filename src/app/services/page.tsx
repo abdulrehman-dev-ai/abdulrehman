@@ -12,6 +12,7 @@ export async function generateMetadata() {
   return {
     title,
     description,
+    alternates: { canonical: `https://${baseURL}/services` },
     openGraph: {
       title,
       description,
@@ -88,7 +89,7 @@ export default function ServicesPage() {
       <Flex
         fillWidth
         maxWidth="m"
-        marginX="auto"
+        style={{ marginInline: "auto" }}
         border="neutral-medium"
         radius="l"
         padding="24"

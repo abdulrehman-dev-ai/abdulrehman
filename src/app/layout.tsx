@@ -65,11 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     
     // Additional structured metadata
-    alternates: {
-      canonical: `https://${baseURL}`,
-    },
-    
-    // Robots directive
+// Robots directive
     robots: {
       index: true,
       follow: true,

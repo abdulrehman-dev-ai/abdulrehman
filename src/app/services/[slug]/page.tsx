@@ -49,6 +49,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: { canonical: `https://${baseURL}/services/${service.slug}` },
     openGraph: {
       title,
       description,
@@ -157,7 +158,7 @@ export default async function ServiceDetail({ params }: { params: ServiceParams 
       <OrderCheckout
         serviceSlug={slug}
         serviceTitle={metadata.title}
-        price={metadata.price}
+        price={metadata.price || ""}
         currency={metadata.currency}
         priceNote={metadata.priceNote}
       />

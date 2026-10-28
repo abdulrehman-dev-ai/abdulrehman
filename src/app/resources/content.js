@@ -86,7 +86,7 @@ const legal = {
 };
 
 const newsletter = {
-  display: true,
+  display: false, // Mailchimp action is a placeholder; do not collect emails until connected.
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -143,11 +143,7 @@ const home = {
   description: `Real client case studies in full-stack engineering, cloud delivery, secure business platforms and e-commerce by ${person.name}.`,
   headline: <>Real products. Shipped with care.</>,
   subline: (
-    <>
-      I’m Abdul Rehman — a full-stack, cloud and security engineer building practical digital products for real businesses.
-      <br />
-      Explore live client platforms, technical case studies and e-commerce implementations with transparent delivery status.
-    </>
+    <>I’m Abdul Rehman. I build secure websites, business platforms and cloud infrastructure — from planning and architecture to dependable delivery.</>
   ),
 };
 
