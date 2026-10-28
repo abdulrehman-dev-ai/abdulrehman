@@ -1,0 +1,30 @@
+name: Portfolio Production CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci
+      - name: TypeScript check
+        run: npx tsc --noEmit
+      - name: Production build
+        env:
+          ORDER_CHECKOUT_ENABLED: 'false'
+          NEXT_PUBLIC_ORDER_CHECKOUT_ENABLED: 'false'
+        run: npm run build
