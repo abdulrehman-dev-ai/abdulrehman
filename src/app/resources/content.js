@@ -9,7 +9,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Associate Cloud & DevOps Engineer",
+  role: "Full-Stack, Cloud & Security Engineer",
   avatar: "/images/avatar.png", 
   displayLocation: "Pakistan/Lahore",
   location: "Pakistan/Lahore",
@@ -141,12 +141,12 @@ const home = {
   label: "Home",
   title: `${person.name}`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Abdul Rehman</>,
+  headline: <>Real products. Shipped with care.</>,
   subline: (
     <>
-      I build high-performance web applications engineered with a defensive security mindset fortifying
+      I’m Abdul Rehman — a full-stack, cloud and security engineer building practical digital products for real businesses.
       <br />
-      backend architecture, streamlining CI/CD pipelines, and leveraging AI to rapidly build secure MVPs.
+      Explore live client platforms, deployment architecture and honest case studies — not just internship assignments.
     </>
   ),
 };
@@ -172,8 +172,13 @@ const about = {
     description: (
       <>
       <p style={{ textAlign: "justify" }}>
-  I am a results-driven <strong>Associate Cloud & DevOps Engineer</strong> specialized in <strong>AWS, Infrastructure & Security</strong> passionate about building secure, intelligent, and scalable digital solutions. I combine <strong>AI-driven automation</strong> with <strong>Linux automation methodologies</strong>, <strong>vulnerability assessment</strong>, to identify, isolate, and mitigate infrastructure risks before real adversaries can. With hands-on experience across <strong>leveraging AI for rapid MVP development</strong>, I contributed to organizations like <strong>Trillium Information Security Systems</strong>, <strong>Nexium</strong>, and <strong>Rayonix Solutions</strong>. My expertise extends to <strong>system administration, threat intelligence, automated shell scripting,</strong> and <strong>secure cloud architectures</strong>. Driven by curiosity and innovation, I strive to bridge the gap between <strong>systems administration</strong> and <strong>cloud engineering</strong> ensuring that technology is not only highly optimized but also resilient fundamentally breaking systems to build them stronger.
-</p>
+        I engineer and deliver full-stack applications, e-commerce experiences and cloud infrastructure for real businesses.
+        Recent work includes the live <strong>Ocean Yacht Registration</strong> platform, the <strong>Auto Levels</strong>
+        business website and e-commerce projects such as <strong>Maqwi Organics</strong> and <strong>Rico Scents</strong>.
+        My delivery approach combines accessible interfaces, server-side validation, role-aware workflows, secure data
+        handling and careful release verification. Earlier internships and certifications remain part of my background,
+        while the main portfolio focuses on client work and demonstrable systems.
+      </p>
     </>
     ),
   },
@@ -195,6 +200,16 @@ const about = {
     display: true, // set to false to hide this section
     title: "Work Experience",
     experiences: [
+      {
+        company: "Ocean Yacht Registration",
+        timeframe: "2026 (Client project · delivered)",
+        role: "Full-Stack Platform & Cloud Engineering",
+        achievements: [
+          <span key="oyr-case-1">Delivered a live yacht-registration platform with public and dealer journeys, an admin workspace, registration tracking and protected document submission.</span>,
+          <span key="oyr-case-2">Implemented Cloudflare Workers/D1 infrastructure, Supabase integrations, server-side pricing rules, regression tests and isolated staging releases.</span>,
+        ],
+        images: [],
+      },
       // experience 1
       {
   company: "Independent Freelance / Consulting",
