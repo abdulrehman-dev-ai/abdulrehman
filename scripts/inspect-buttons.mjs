@@ -10,7 +10,19 @@ const samples = [];
 
 async function inspect(route, viewport, label) {
   const page = await browser.newPage({viewport,deviceScaleFactor:1});
-  await page.goto(ROOT+route+"?visual-check="+Date.now(), {waitUntil:"networkidle",timeout:60000});
+  const response = await page.goto(ROOT+route, {waitUntil:"networkidle",timeout:60000});
+  await page.waitForTimeout(600);
+  const diagnostic = await page.evaluate(() => ({
+    url:location.href,
+    rootClass:document.documentElement.className,
+    theme:document.documentElement.getAttribute("data-theme"),
+    heading:document.querySelector("h1")?.textContent?.slice(0,100),
+    body:document.body?.innerText?.slice(0,650),
+    allAnchors:document.querySelectorAll("a[href]").length,
+    actionAnchors:document.querySelectorAll(".neo-action").length,
+    versionedAnchors:document.querySelectorAll("[data-button-system]").length,
+  }));
+  console.log(label+" diagnostic "+JSON.stringify({status:response?.status(),...diagnostic}));
   await page.screenshot({path:path.join("button-check", label+".png"),fullPage:true});
   const info = await page.locator('a[data-button-system="unified-v3"]').evaluateAll(elements =>
     elements.map(a => {
