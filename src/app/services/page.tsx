@@ -4,6 +4,7 @@ import { Column } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
 import { services, person } from "@/app/resources/content";
 import styles from "./services.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 export async function generateMetadata() {
   const title = "Engineering Services";
@@ -36,7 +37,7 @@ export default function ServicesPage() {
       <p className={styles.kicker}>WAYS TO WORK TOGETHER / ENGINEERING SERVICES</p>
       <h1>Solutions first. <em>Technology with purpose.</em></h1>
       <p>Whether you need a working product, reliable infrastructure or a safer system, I scope the work around your goals, constraints and operations.</p>
-      <Link href="/contact" className={styles.mainLink}>Discuss your requirements <span aria-hidden="true">↗</span></Link>
+      <ActionLink href="/contact" variant="primary" className={styles.mainLink}>Discuss your requirements</ActionLink>
     </header>
     <div className={styles.groups}>
       {groups.map(g=><section key={g.n} className={styles.group} aria-labelledby={"group-"+g.n}>
@@ -71,7 +72,7 @@ export default function ServicesPage() {
     </section>
     <aside className={styles.cta}>
       <div><p className={styles.kicker}>YOUR PROJECT IS UNIQUE</p><h2>Let's define the right solution.</h2><p>Starting prices are indicative. A written proposal confirms scope and cost before any work begins. Online checkout is not currently enabled.</p></div>
-      <Link href="/contact">Request a proposal ↗</Link>
+      <ActionLink href="/contact" variant="primary">Request a proposal</ActionLink>
     </aside>
   </Column>;
 }

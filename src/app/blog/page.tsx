@@ -3,6 +3,7 @@ import { getPosts } from "@/app/utils/utils";
 import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
 import styles from "./blog.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 export async function generateMetadata() {
   const title="Engineering Journal";
@@ -38,6 +39,6 @@ export default function Blog() {
         <span className={styles.arrow} aria-hidden="true">↗</span>
       </a>)}
     </section>
-    <aside className={styles.cta}><div><span className={styles.kicker}>BEYOND THE ARTICLES</span><h2>Want to see the work behind the writing?</h2></div><a href="/work">Explore case studies ↗</a></aside>
+    <aside className={styles.cta}><div><span className={styles.kicker}>BEYOND THE ARTICLES</span><h2>Want to see the work behind the writing?</h2></div><ActionLink href="/work" variant="secondary">Explore case studies</ActionLink></aside>
   </Column>;
 }

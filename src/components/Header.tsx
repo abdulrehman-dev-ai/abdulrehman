@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 const navigation=[
   {href:"/work",label:"Work"},
@@ -36,7 +37,7 @@ export function Header(){
           {item.label}
         </Link>)}
       </nav>
-      <Link href="/contact" className={styles.contact}>Let's talk <span aria-hidden="true">↗</span></Link>
+      <ActionLink href="/contact" size="sm" variant="secondary" className={styles.contact}>Let's talk</ActionLink>
     </div>
   </header>;
 }

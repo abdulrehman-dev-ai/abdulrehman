@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { person, social, business } from "@/app/resources/content";
 import styles from "./Footer.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 const nav=[["Work","/work"],["Services","/services"],["About","/about"],["Journal","/blog"],["Contact","/contact"]];
 export function Footer(){
@@ -10,7 +11,7 @@ export function Footer(){
       <div className={styles.left}>
         <span className={styles.eyebrow}>INDEPENDENT ENGINEERING / LAHORE · WORLDWIDE</span>
         <h2>Good work.<br/><em>Built to last.</em></h2>
-        <a className={styles.mail} href={"mailto:"+business.email}>Let's talk about your project ↗</a>
+        <ActionLink href={"/contact"} variant="primary" className={styles.mail}>Let's talk about your project</ActionLink>
       </div>
       <div className={styles.right}>
         <div><p>EXPLORE</p><nav aria-label="Footer navigation">

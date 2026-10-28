@@ -4,6 +4,7 @@ import { ClientShowcase } from "@/components/work/ClientShowcase";
 import { baseURL } from "@/app/resources";
 import { work, person } from "@/app/resources/content";
 import styles from "./work.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 export async function generateMetadata() {
   const title = "Selected Engineering Work";
@@ -32,7 +33,7 @@ export default function Work() {
     <section className={styles.end}>
       <p>Have a similar challenge?</p>
       <h2>Build with someone who can take it to production.</h2>
-      <a href="/contact">Start a conversation <span aria-hidden="true">↗</span></a>
+      <ActionLink href="/contact" variant="primary">Start a conversation</ActionLink>
     </section>
   </Column>;
 }

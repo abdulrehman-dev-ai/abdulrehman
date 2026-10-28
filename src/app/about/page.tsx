@@ -2,6 +2,7 @@ import { Column } from "@/once-ui/components";
 import { person, about } from "@/app/resources/content";
 import { baseURL } from "@/app/resources";
 import styles from "./about.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 export async function generateMetadata() {
   const title="About Abdul Rehman";
@@ -25,7 +26,7 @@ export default function AboutPage() {
         <h1>Engineering is about <em>making things work.</em></h1>
         <p className={styles.lead}>I'm Abdul Rehman, an independent engineer based in Lahore. My work connects full-stack applications, cloud operations and practical security to real business requirements.</p>
         <p>I work on the things behind the interface too: access rules, workflows, data handling, deployments and the details that keep a product usable after launch.</p>
-        <div className={styles.links}><a href="/work">See client work ↗</a><a href="/contact">Start a conversation ↗</a></div>
+        <div className={styles.links}><ActionLink href="/work" variant="primary">See client work</ActionLink><ActionLink href="/contact">Start a conversation</ActionLink></div>
       </div>
       <div className={styles.portraitCard}>
         <img src={person.avatar} alt="Portrait of Abdul Rehman" />
@@ -53,6 +54,6 @@ export default function AboutPage() {
         {about.technical.certifications.slice(0,6).map(x=><article key={x.title}><small>TRAINING / CERTIFICATION</small>{x.link?<a href={x.link} target="_blank" rel="noopener noreferrer">{x.title} ↗</a>:<strong>{x.title}</strong>}</article>)}
       </div>
     </section>
-    <aside className={styles.cta}><p className={styles.kicker}>LET'S TALK ABOUT YOUR PROJECT</p><h2>Clarity, craft and responsibility.</h2><a href="/contact">Start a conversation ↗</a></aside>
+    <aside className={styles.cta}><p className={styles.kicker}>LET'S TALK ABOUT YOUR PROJECT</p><h2>Clarity, craft and responsibility.</h2><ActionLink href="/contact" variant="primary">Start a conversation</ActionLink></aside>
   </Column>;
 }

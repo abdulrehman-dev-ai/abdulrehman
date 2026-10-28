@@ -1,4 +1,5 @@
-import { Heading, Button, Column } from "@/once-ui/components";
+import { Heading, Column } from "@/once-ui/components";
+import { ActionLink } from "@/components/ui/ActionLink";
 import { ClientShowcase } from "@/components/work/ClientShowcase";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, routes } from "@/app/resources";
@@ -30,8 +31,8 @@ export default function Home() {
         </Heading>
         <p className={styles.lead}>I’m Abdul Rehman. I turn business requirements into secure applications, dependable cloud infrastructure and websites built for real customers.</p>
         <div className={styles.actions}>
-          <Button href="/work" variant="primary" size="m" arrowIcon>See selected work</Button>
-          <Button href="/contact" variant="secondary" size="m" arrowIcon>Discuss a project</Button>
+          <ActionLink href="/work" variant="primary">See selected work</ActionLink>
+          <ActionLink href="/contact">Discuss a project</ActionLink>
         </div>
         <p className={styles.proof}><span>IN PRACTICE</span> Full-stack delivery / Cloud & DevOps / Security-aware implementation</p>
       </div>
@@ -58,7 +59,7 @@ export default function Home() {
           <Heading as="h2" id="featured-title" className={styles.sectionTitle}>Built for real businesses.</Heading>
           <p className={styles.sectionSub}>Client platforms, commerce systems and operational engineering — the work, the approach, and its delivery status.</p>
         </div>
-        <a className={styles.more} href="/work">Explore the portfolio ↗</a>
+        <ActionLink href="/work" size="sm">Explore the portfolio</ActionLink>
       </div>
       <ClientShowcase mode="home" />
     </section>
@@ -67,7 +68,7 @@ export default function Home() {
         <p className={styles.kicker}>HOW I WORK</p>
         <Heading as="h2" id="approach-title" className={styles.sectionTitle}>More than a polished interface.</Heading>
         <p className={styles.sectionSub}>A good product needs a clear workflow, sound technical choices and a responsible release process. My work spans all three.</p>
-        <a href="/services" className={styles.more}>Explore engineering services ↗</a>
+        <ActionLink href="/services" size="sm">Explore engineering services</ActionLink>
       </div>
       <div className={styles.process}>
         <article><span>01</span><div><h3>Understand the operation</h3><p>Define real users, roles, workflows and constraints before building.</p></div></article>
@@ -82,7 +83,7 @@ export default function Home() {
           <Heading as="h2" id="journal-title" className={styles.sectionTitle}>Things worth documenting.</Heading>
           <p className={styles.sectionSub}>Engineering decisions, lessons from delivery and security-minded development.</p>
         </div>
-        <a href="/blog" className={styles.more}>Read the journal ↗</a>
+        <ActionLink href="/blog" size="sm">Read the journal</ActionLink>
       </div>
       <Posts range={[1, 2]} columns="2" thumbnail />
     </section>}
@@ -91,7 +92,7 @@ export default function Home() {
         <Heading as="h2" className={styles.sectionTitle}>Have something ambitious to build?</Heading>
         <p className={styles.sectionSub}>Tell me what you're planning and I'll help define a practical approach.</p>
       </div>
-      <Button href="/contact" variant="primary" size="m" arrowIcon>Start the conversation</Button>
+      <ActionLink href="/contact" variant="primary">Start the conversation</ActionLink>
     </aside>
   </Column>;
 }
