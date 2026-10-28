@@ -17,6 +17,10 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, s
 
   const copyURL = (id: string): void => {
     const url = `${window.location.origin}${window.location.pathname}#${id}`;
+    if (!navigator.clipboard?.writeText) {
+      addToast({ variant: "danger", message: "Clipboard is unavailable in this browser." });
+      return;
+    }
     navigator.clipboard.writeText(url).then(
       () => {
         addToast({
@@ -48,7 +52,6 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, s
   return (
     <Flex
       style={style}
-      onClick={() => copyURL(id)}
       className={styles.control}
       vertical="center"
       gap="4"
@@ -61,7 +64,9 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, s
         size="s"
         icon="openLink"
         variant="ghost"
-        tooltip="Copy"
+        tooltip="Copy link to heading"
+        type="button"
+        onClick={() => copyURL(id)}
         tooltipPosition="right"
       />
     </Flex>

@@ -22,3 +22,18 @@
     opacity: 0;
     transform: scale(0.875);
 }
+/* Copy heading-link is a real accessible button, not an invisible click target. */
+.control { cursor: default; }
+.control:hover .text { text-decoration: none; }
+.visibility {
+  opacity: .56;
+  transform: none;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: linear-gradient(145deg,#123629,#0a201b);
+  border:1px solid var(--neo-border);
+  box-shadow: var(--neo-shadow-small),var(--neo-rim);
+}
+.control:hover .visibility,.visibility:focus-visible { opacity: 1; }
+.visibility:active { box-shadow: var(--neo-inset); }
+@media(prefers-reduced-motion:reduce){.visibility{transition:none;}}

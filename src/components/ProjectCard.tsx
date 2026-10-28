@@ -7,10 +7,10 @@ import {
   Column,
   Flex,
   Heading,
-  SmartLink,
   Text,
 } from "@/once-ui/components";
 import styles from "./ProjectCard.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 interface ProjectCardProps {
   href: string;
@@ -113,22 +113,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           )}
           <Flex gap="l" wrap className={styles.buttonGroup}>
             {content?.trim() && (
-              <SmartLink
-                suffixIcon="arrowRight"
-                style={{ margin: "0", width: "fit-content" }}
-                href={href}
-              >
-                <Text variant="body-default-s" onBackground="accent-strong">Read case study</Text>
-              </SmartLink>
+              <ActionLink href={href} variant="primary" size="sm">Read case study</ActionLink>
             )}
             {link && (
-              <SmartLink
-                suffixIcon="arrowUpRightFromSquare"
-                style={{ margin: "0", width: "fit-content" }}
-                href={link}
-              >
-                <Text variant="body-default-s" onBackground="accent-strong">View project</Text>
-              </SmartLink>
+              <ActionLink href={link} variant="secondary" size="sm">View project</ActionLink>
             )}
           </Flex>
         </Flex>

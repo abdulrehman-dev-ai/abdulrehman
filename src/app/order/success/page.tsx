@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Button, Column, Heading, Text } from "@/once-ui/components";
+import { Column, Heading, Text } from "@/once-ui/components";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 export const metadata: Metadata = {
   title: "Online Checkout Unavailable",
@@ -15,7 +16,7 @@ export default function OrderStatusPage() {
         We are currently accepting project inquiries and tailored quote requests.
         No online order or payment has been processed through this page.
       </Text>
-      <Button href="/contact" variant="primary" arrowIcon>Request a project quote</Button>
+      <ActionLink href="/contact" variant="primary">Request a project quote</ActionLink>
     </Column>
   );
 }

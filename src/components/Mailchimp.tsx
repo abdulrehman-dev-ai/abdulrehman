@@ -19,6 +19,11 @@ type NewsletterProps = {
 };
 
 export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
+  if (!newsletter.display || !mailchimp.action || mailchimp.action.includes("url/subscribe/post?parameters")) return null;
+  return <NewsletterForm newsletter={newsletter} />;
+};
+
+const NewsletterForm = ({ newsletter }: { newsletter: NewsletterProps }) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);

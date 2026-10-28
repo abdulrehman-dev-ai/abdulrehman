@@ -6,11 +6,11 @@ import {
   Column,
   Flex,
   Heading,
-  SmartLink,
   Tag,
   Text,
 } from "@/once-ui/components";
 import styles from "./ServiceCard.module.scss";
+import { ActionLink } from "@/components/ui/ActionLink";
 
 interface ServiceCardProps {
   href: string;
@@ -106,24 +106,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 
         <Flex gap="l" wrap style={{ marginTop: "auto" }} className={styles.actionButtons}>
           <Flex gap="l" wrap className={styles.buttonGroup}>
-            <SmartLink
-              suffixIcon="arrowRight"
-              style={{ margin: "0", width: "fit-content" }}
-              href={href}
-            >
-              <Text variant="body-default-s" onBackground="accent-strong">
-                View details
-              </Text>
-            </SmartLink>
-            <SmartLink
-              suffixIcon="arrowUpRightFromSquare"
-              style={{ margin: "0", width: "fit-content" }}
-              href={`${href}#order`}
-            >
-              <Text variant="body-default-s" onBackground="accent-strong">
-                Request a quote
-              </Text>
-            </SmartLink>
+            <ActionLink href={href} variant="quiet" size="sm">View details</ActionLink>
+            <ActionLink href={href + "#order"} variant="primary" size="sm">Request a quote</ActionLink>
           </Flex>
         </Flex>
       </Column>
