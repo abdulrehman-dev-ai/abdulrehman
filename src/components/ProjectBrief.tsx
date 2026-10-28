@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./ProjectBrief.module.scss";
+import actionStyles from "./ui/ActionLink.module.scss";
 
 const categories = [
   "Full-stack application", "Business website / e-commerce",
@@ -99,10 +100,10 @@ export default function ProjectBrief({ email }: { email: string }) {
         onChange={e => setDetails(e.target.value)} placeholder="Timeline, existing stack, links or constraints…"/>
     </label>
     <div className={styles.actions}>
-      <button className="neo-action neo-action--primary" type="submit">
+      <button className={"neo-action neo-action--primary " + actionStyles.control + " " + actionStyles.primary} type="submit">
         Prepare email inquiry <span className="neo-action__icon" aria-hidden="true">↗</span>
       </button>
-      <button className="neo-action neo-action--secondary" type="button" onClick={copyInquiry}>
+      <button className={"neo-action neo-action--secondary " + actionStyles.control + " " + actionStyles.secondary} type="button" onClick={copyInquiry}>
         Copy inquiry <span className="neo-action__icon" aria-hidden="true">⧉</span>
       </button>
     </div>
