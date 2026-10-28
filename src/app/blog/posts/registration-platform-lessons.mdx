@@ -1,0 +1,53 @@
+---
+title: "Engineering a Registration Platform with Public and Dealer Journeys"
+publishedAt: "2026-10-28"
+summary: "Lessons from building real registration workflows: role boundaries, secure documents, server-side pricing and controlled deployment."
+tag: "Full-stack, Architecture, Cloudflare"
+---
+
+A registration website looks simple until it needs to become a business system.
+
+Behind the public form there are applications to review, supporting documents to protect, cases to track, and customers to update. If approved dealers can submit applications too, the distinction between a public customer and a dealer becomes an architectural decision, not merely a different button in the navigation.
+
+During the Ocean Yacht Registration engagement, those differences informed how I approached the application.
+
+## Give each role a clearly defined journey
+
+A direct customer needs a straightforward registration process. A dealer needs an authenticated space with access to their own submissions. An administrator needs visibility and workflow controls without exposing unnecessary private information.
+
+Those roles may share fields, but they should not share permissions by accident.
+
+Some principles that shaped the implementation:
+
+- Public registration and dealer-originated submissions have distinct entry points.
+- Dealer attribution is recorded and validated by the backend.
+- Customer records and supporting files are scoped by their intended permissions.
+- Administrative case tracking provides a view of progress without treating every user as an administrator.
+
+An identifier can help distinguish where an application originated. It is not a substitute for authorization.
+
+## Keep business rules on the server
+
+A browser can show a quote, but the server should validate pricing and save the relevant terms with the application.
+
+Why? Because the user interface is not a trusted authority. Values submitted from a form can be modified, and a price may change between the first page view and the final application.
+
+For a case-management workflow, the stored price and the relevant service details form part of the operational record. They help explain what was quoted when that particular application was received.
+
+## Treat private documents as private
+
+Identity evidence and registration documents do not belong in the same category as a public marketing image.
+
+A document workflow needs deliberate access boundaries, a durable link to its application, and careful consideration of who can upload, download or review a file. The user interface is just one layer of that protection.
+
+## Make deployment part of the design
+
+In systems that rely on database changes, authentication and third-party services, a successful local build is not enough. Separating staging from production and running smoke checks around the important journeys helps reduce the risk of disrupting a working business process.
+
+## The engineering takeaway
+
+Good client engineering is an exercise in translating real operations into roles, states, rules and safeguards.
+
+I value the visible result, but I spend just as much effort thinking about what happens after someone submits the form: who receives it, who may see it, what changes next, and how the system can be maintained.
+
+You can explore the broader project on the [Ocean Yacht Registration case-study page](/work/ocean-yacht-registration). This article intentionally excludes customer records, credentials and confidential application details.

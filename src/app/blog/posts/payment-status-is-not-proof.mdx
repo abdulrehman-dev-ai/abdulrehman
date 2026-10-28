@@ -1,0 +1,50 @@
+---
+title: "A Payment Success Screen Is Not Proof of Payment"
+publishedAt: "2026-10-27"
+summary: "What reliable service-order systems need before accepting payments: authenticated callbacks, durable records and safe state transitions."
+tag: "Security, Payments, Serverless"
+---
+
+A customer returning to a success page does not, by itself, prove that a payment has settled.
+
+It is an easy distinction to overlook while building a service-order flow. The developer sees a checkout button, a processor page and a success route. The business sees something more consequential: a financial record that may trigger delivery.
+
+Those are different responsibilities.
+
+## The trust boundary
+
+A browser redirect is a navigation event. Query parameters and form fields can be modified independently of the payment processor.
+
+If an application marks an order as paid solely because a browser submitted a success value, it is allowing a lower-trust source to authorize a financial state change.
+
+A safer design validates the provider's notification using its documented verification method and reconciles that result against a server-side order record.
+
+## Checks worth designing before launch
+
+I look for a few essential properties in a payment workflow:
+
+1. **Authenticity.** Can the application establish that the notification came from the configured provider?
+2. **Order identity.** Does the notification reference a real order with an appropriate current status?
+3. **Amount and currency.** Do the confirmed transaction details match what the server recorded?
+4. **Idempotency.** Can a provider retry the same event without duplicating fulfillment?
+5. **Auditability.** Can the business investigate a disputed or delayed transaction?
+
+The exact implementation depends on the payment provider. There is no safe universal signature-verification routine that should be copied between gateways without checking its protocol.
+
+## An order database must be durable
+
+Serverless platforms are excellent for many workloads, but files written during a request are not reliable long-term order storage.
+
+An order system needs durable persistence and deliberate handling of multiple concurrent requests. It must also be possible to reconcile a provider event with a stored record even when the customer's browser has already closed.
+
+## Sometimes the safest feature is a disabled feature
+
+During a new integration, I would rather show a clear request-a-quote path than give users an unfinished checkout that may show misleading confirmation messages.
+
+That was the choice made for my own portfolio's service-order flow while the database and gateway verification requirements were being addressed. Online payment collection should only begin after the correct sandbox, reconciliation and launch tests.
+
+## A simple rule
+
+Payment is a financial workflow, not just a user-interface interaction.
+
+A success page can reassure a customer about where they have been redirected. Only a validated processor event and a trustworthy order record can establish the payment state.
