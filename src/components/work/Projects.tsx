@@ -4,9 +4,10 @@ import { ProjectCard } from "@/components";
 
 interface ProjectsProps {
   range?: [number, number?];
+  columns?: "2" | "3";
 }
 
-export function Projects({ range }: ProjectsProps) {
+export function Projects({ range, columns = "3" }: ProjectsProps) {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
   // Client delivery first; dated learning and academic projects remain available below.
@@ -29,7 +30,7 @@ export function Projects({ range }: ProjectsProps) {
       gap="xl" 
       marginBottom="40"
       paddingX="m"
-      columns="3"
+      columns={columns}
       tabletColumns="2"
       mobileColumns="1"
       style={{
