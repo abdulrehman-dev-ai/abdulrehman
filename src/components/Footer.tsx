@@ -41,24 +41,14 @@ export const Footer = () => {
             </SmartLink>
           ))}
         </Flex>
-        <Text variant="body-default-xs" onBackground="neutral-strong" style={{ letterSpacing: '-0.01em' }}>
-          <Text onBackground="neutral-strong">©{currentYear}</Text>
-          <Text paddingX="2" onBackground="neutral-strong">
-            <SmartLink href="/" style={{ textDecoration: 'none' }}>
-              {person.name}
-            </SmartLink>
-          </Text>
-          <Text onBackground="neutral-strong">
-            Developed by{" "}
-            <Text>{person.name}</Text>
-            {" "}using{" "}
-            <SmartLink
-              style={{ marginLeft: "-0.125rem" }}
-              href="https://once-ui.com/templates/magic-portfolio"
-            >
-              Once UI
-            </SmartLink>
-          </Text>
+        <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textAlign: "center", lineHeight: 1.7 }}>
+          © {currentYear} {person.name}. Full-stack, cloud and security engineering.
+        </Text>
+        <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textAlign: "center" }}>
+          Adapted from{" "}
+          <SmartLink href="https://once-ui.com/templates/magic-portfolio">Once UI Magic Portfolio</SmartLink>
+          {" · "}
+          <SmartLink href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</SmartLink>
         </Text>
         <Flex gap="16">
           {social.map(
