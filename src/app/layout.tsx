@@ -1,5 +1,6 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
+import "./neumorphism.scss";
 import classNames from "classnames";
 import { Footer, Header, RouteGuard, GoogleAnalytics, LocationGif } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
@@ -118,7 +119,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       data-border={style.border}
       data-surface={style.surface}
       data-transition={style.transition}
-      className={classNames(primary.variable, code.variable)}
+      className={classNames("neo-portfolio", primary.variable, code.variable)}
     >
       <ToastProvider>
         <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">

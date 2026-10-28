@@ -11,3 +11,11 @@
 .bottom>div{display:flex;flex-wrap:wrap;gap:1rem;}.bottom a{color:inherit;text-decoration:none;}.credits{opacity:.8;}
 @media(max-width:850px){.main{grid-template-columns:1fr;gap:2.5rem;}.right{max-width:500px;}}
 @media(max-width:500px){.right{grid-template-columns:1fr 1fr;}.main{padding-top:2rem;}.bottom{flex-direction:column;align-items:start;}}
+
+/* Neumorphic footer: one intentional surface rather than a flat black band. */
+.outer { border-top:1px solid rgba(138,249,202,.13);background:radial-gradient(ellipse at 88% 0%,rgba(35,143,102,.11),transparent 60%),#091713; }
+.main { max-width:1230px;position:relative;margin:clamp(1rem,2vw,2rem) auto 0;border:1px solid var(--neo-border);border-radius:26px;padding:clamp(2rem,4vw,4rem);background:linear-gradient(140deg,#122b26,#081b18);box-shadow:var(--neo-shadow),var(--neo-rim); }
+.mail { display:inline-block;border:1px solid var(--neo-border);border-radius:13px;padding:.9rem 1.2rem;background:#0d2923;box-shadow:var(--neo-shadow-small),var(--neo-rim);color:#b8fadc; }
+.mail:hover {background:#194837;}
+.bottom { border:0;opacity:.86;padding-block:1.6rem 2rem; }
+@media(max-width:1280px){.main{margin-inline:clamp(.75rem,2vw,2rem);}}

@@ -5,3 +5,6 @@
         transform: translateX(var(--static-space-8));
     }
 }
+
+/* Journal thumbnails and rows inherit the shared recessed/raised language */
+:global(.neo-portfolio) .post { border-radius:19px; }
