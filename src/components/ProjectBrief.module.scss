@@ -6,3 +6,8 @@
 .form textarea{resize:vertical;}.form button{justify-self:start;background:#e4f7eb;color:#102219;border:0;padding:.95rem 1.4rem;border-radius:.6rem;font-size:.86rem;font-weight:750;cursor:pointer;}
 .form button:hover{background:white;}.notice{color:var(--neutral-on-background-weak);font-size:.73rem;line-height:1.65;}
 @media(max-width:600px){.grid{grid-template-columns:1fr;}}
+
+.form {border:1px solid var(--neo-border);border-radius:24px;padding:clamp(1.3rem,3vw,2.4rem);background:linear-gradient(145deg,#12372d,#081e1a);box-shadow:var(--neo-shadow),var(--neo-rim);}
+.form input,.form select,.form textarea {background:#0c2521;border:1px solid rgba(143,234,194,.2);border-radius:14px;box-shadow:var(--neo-inset),var(--neo-rim);}
+.form button {border-radius:13px;border:1px solid rgba(191,255,223,.55);background:linear-gradient(145deg,#1c6850,#105038);color:#e6fff1;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
+.form button:hover {background:#218261;color:white;}

@@ -29,3 +29,20 @@
 .cta h2{margin:.6rem 0 1rem;}.cta a{color:#a5ecca;font-weight:700;text-decoration:none;}
 @media(max-width:800px){.hero{grid-template-columns:1fr;}.portraitCard{max-width:380px;}.philosophy,.heading,.role,.credentials{grid-template-columns:1fr;gap:1rem;}}
 @media(max-width:540px){.credentialsList article{grid-template-columns:1fr;gap:.35rem;}}
+
+/* Soft raised portrait and a recessed professional timeline */
+.hero {position:relative;isolation:isolate;border:1px solid var(--neo-border);border-radius:28px;padding:clamp(1.5rem,4vw,3.4rem);background:radial-gradient(circle at 88% 10%,rgba(52,193,139,.12),transparent 52%),linear-gradient(145deg,#122d27,#091c1a);box-shadow:var(--neo-shadow),var(--neo-rim);overflow:hidden;}
+.hero::before {content:"";position:absolute;z-index:-1;right:-100px;top:-150px;width:340px;aspect-ratio:1;border-radius:50%;border:1px solid rgba(142,252,209,.12);box-shadow:0 0 0 56px rgba(133,235,195,.023),0 0 0 100px rgba(133,235,195,.013);}
+.portraitCard {border:8px solid #123a30;border-radius:25px;box-shadow:var(--neo-shadow),var(--neo-rim),0 0 24px rgba(52,188,128,.12);background:#0b2d24;}
+.portraitCard img {border-radius:15px;}.portraitCard span{z-index:2;}
+.philosophy {margin-top:1rem;border:1px solid var(--neo-border);border-radius:24px;padding:clamp(1.5rem,3vw,3rem);background:linear-gradient(145deg,#113027,#0a201b);box-shadow:var(--neo-shadow),var(--neo-rim);}
+.heading {border:0;}
+.role {gap:2rem;margin-bottom:.95rem;border:1px solid rgba(134,238,192,.16);border-radius:20px;background:linear-gradient(135deg,#102a24,#091c19);padding:clamp(1.2rem,2.5vw,2rem);box-shadow:var(--neo-shadow-small),var(--neo-rim);}
+.roleMeta strong {display:grid;place-items:center;border-radius:12px;width:2.7rem;height:2.7rem;background:#133e32;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
+.archive {border:1px solid var(--neo-border);border-radius:18px;background:#102722;box-shadow:var(--neo-inset);padding:0 1rem;}
+.archive summary {color:#c7f9e2;}
+.credentials {align-items:start;border:1px solid var(--neo-border);border-radius:25px;padding:clamp(1.5rem,3vw,3rem);background:linear-gradient(140deg,#112b26,#091b19);box-shadow:var(--neo-shadow),var(--neo-rim);}
+.credentialsList {border:0;display:grid;gap:.6rem;}.credentialsList article{border:1px solid rgba(138,236,195,.14);border-radius:13px;background:#0c2520;box-shadow:var(--neo-inset),var(--neo-rim);padding:1rem;}
+.cta {border:1px solid var(--neo-border);border-radius:22px;background:radial-gradient(circle at 88% 0%,rgba(40,208,144,.16),transparent 40%),linear-gradient(145deg,#13372b,#0a1b18);box-shadow:var(--neo-shadow),var(--neo-rim);}
+.cta a {display:inline-flex;margin-top:.6rem;border:1px solid var(--neo-border);border-radius:12px;padding:.9rem 1rem;background:#13382e;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
+@media(max-width:800px){.hero,.philosophy,.credentials{padding:1.5rem;}}

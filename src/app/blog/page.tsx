@@ -26,6 +26,9 @@ export default function Blog() {
     <section className={styles.list} aria-label="Journal articles">
       {posts.map((post,index)=><a className={styles.entry} key={post.slug} href={"/blog/"+post.slug}>
         <div className={styles.number}>/ {String(index+1).padStart(2,"0")}</div>
+        <div className={[styles.thumbnail, post.slug.includes("payment") ? styles.thumbnailPayment : post.slug.includes("ai-") ? styles.thumbnailAi : ""].join(" ")} aria-hidden="true">
+          <span>{post.slug.includes("payment") ? "✓" : post.slug.includes("ai-") ? "</>" : "▣"}</span>
+        </div>
         <div className={styles.details}>
           <div className={styles.meta}><time dateTime={post.metadata.publishedAt}>{new Date(post.metadata.publishedAt).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})}</time>
             {post.metadata.tag && <span>{String(post.metadata.tag).split(",")[0]}</span>}</div>
