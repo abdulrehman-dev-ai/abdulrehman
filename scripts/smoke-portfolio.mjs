@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 
 const origin = process.env.SMOKE_BASE_URL || "http://127.0.0.1:3100";
 const pages = [
-  ["/", ["href=\"/work\"", "href=\"/contact\""]],
-  ["/work", ["ocean-yacht-registration"]],
+  ["/", ["href=\"/work\"", "href=\"/contact\"", "href=\"/work/anyarabic\""]],
+  ["/work", ["ocean-yacht-registration", "/work/anyarabic"]],
   ["/work/ocean-yacht-registration", ["Ocean Yacht", "Discuss a similar project"]],
+  ["/work/anyarabic", ["AnyArabic", "Fiverr", "Vultr VPS", "Cloudflare"]],
   ["/services", ["Build", "Secure", "full-stack-web-development"]],
   ["/services/full-stack-web-development", ["Request a quote", "contact?service=full-stack-web-development"]],
   ["/about", ["Abdul Rehman"]],
