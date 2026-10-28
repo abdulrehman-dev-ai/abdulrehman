@@ -46,3 +46,18 @@
 .cta {border:1px solid var(--neo-border);border-radius:22px;background:radial-gradient(circle at 88% 0%,rgba(40,208,144,.16),transparent 40%),linear-gradient(145deg,#13372b,#0a1b18);box-shadow:var(--neo-shadow),var(--neo-rim);}
 .cta a {display:inline-flex;margin-top:.6rem;border:1px solid var(--neo-border);border-radius:12px;padding:.9rem 1rem;background:#13382e;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
 @media(max-width:800px){.hero,.philosophy,.credentials{padding:1.5rem;}}
+
+
+/* Resume / about: headings are expressive, facts stay readable. */
+.kicker {font-size:.72rem;letter-spacing:.11em;}
+.intro h1 {font-family:var(--type-display);font-size:clamp(2.85rem,5.8vw,5.35rem);letter-spacing:-.058em;line-height:1.09;font-weight:800;}
+.intro p:not(.kicker) {font-size:1rem;line-height:1.8;color:var(--type-secondary);}
+.intro .lead {font-size:1.15rem!important;line-height:1.72;}
+.philosophy h2,.heading h2,.credentials h2,.cta h2{font-family:var(--type-display);font-weight:770;letter-spacing:-.043em;line-height:1.2;}
+.role h3{font-family:var(--type-display);font-size:1.5rem;font-weight:760;letter-spacing:-.035em;}
+.role ul,.archive ul{font-size:.94rem;line-height:1.78;color:var(--type-secondary);}
+.role p{font-size:.93rem;line-height:1.6;}
+.roleMeta{font-size:.83rem;}
+.credentialsList small{font-size:.7rem;}
+.credentialsList strong,.credentialsList a{font-size:.94rem;line-height:1.65;}
+@media(max-width:600px){.intro h1{font-size:clamp(2.5rem,10.5vw,3.5rem);}.intro .lead{font-size:1.06rem!important;}.role h3{font-size:1.33rem;}}

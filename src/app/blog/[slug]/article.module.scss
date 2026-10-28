@@ -9,3 +9,14 @@
 .articleBody :global(blockquote){border-left:3px solid #91e4bc;padding:1rem 1.3rem;background:#112f27;border-radius:0 14px 14px 0;box-shadow:var(--neo-inset);}
 .articleBody :global(pre){border-radius:14px;box-shadow:var(--neo-inset);}
 @media(max-width:600px){.articleHeader,.articleBody{padding:1.3rem;border-radius:19px;}}
+
+
+/* Reading experience: wider line-height, restrained measure. */
+.articleHeader h1,.articleHeader h2{font-family:var(--type-display);font-size:clamp(2.4rem,4.9vw,4.45rem);font-weight:800;letter-spacing:-.054em;line-height:1.12;}
+.articleHeader p{font-size:.74rem;letter-spacing:.11em;}
+.articleBody{font-size:1.045rem;line-height:1.86;color:var(--type-secondary);}
+.articleBody :global(p){line-height:1.86;max-width:75ch;}
+.articleBody :global(li){line-height:1.8;}
+.articleBody :global(h2){font-family:var(--type-display);font-size:clamp(1.55rem,2.65vw,2.4rem);font-weight:770;letter-spacing:-.038em;line-height:1.2;}
+.articleBody :global(h3){font-family:var(--type-display);font-size:clamp(1.25rem,2vw,1.55rem);line-height:1.27;}
+@media(max-width:600px){.articleHeader h1,.articleHeader h2{font-size:clamp(2.15rem,8.4vw,3rem);}.articleBody{font-size:1rem;line-height:1.8;}}

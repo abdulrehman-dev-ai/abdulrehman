@@ -61,3 +61,20 @@
 .contactPanel { position:relative;overflow:hidden; }
 @media (max-width:850px) { .hero { padding:2rem 1.6rem; } }
 @media (max-width:600px) { .hero {margin-top:.5rem;border-radius:20px;padding:1.5rem;} .servicesRibbon{gap:.65rem;} .servicesRibbon div{padding:.8rem .9rem;} .servicesRibbon small{padding-left:0;} .portraitWrap{border-radius:20px;} .approach{padding:1.3rem;} .journal{padding:1.2rem;} }
+
+
+/* Typography: confident editorial hero, readable project narrative. */
+.kicker {font-family:var(--type-mono);font-size:.73rem;line-height:1.6;letter-spacing:.115em;}
+.display {font-family:var(--type-display)!important;font-size:clamp(3rem,6.4vw,6.1rem)!important;line-height:1.065!important;letter-spacing:-.065em;font-weight:800;margin:1.15rem 0 1.3rem;}
+.lead {font-size:clamp(1.035rem,1.38vw,1.18rem);line-height:1.74;color:var(--type-secondary);max-width:60ch;}
+.proof {font-size:.85rem;line-height:1.72;}
+.proof span {font-size:.7rem;}
+.sectionTitle {font-family:var(--type-display)!important;font-weight:770;font-size:clamp(2rem,3.35vw,3.25rem)!important;letter-spacing:-.052em;line-height:1.14!important;}
+.sectionSub {font-size:1rem;line-height:1.75;color:var(--type-secondary);max-width:66ch;}
+.process h3 {font-family:var(--type-display);font-size:1.14rem;letter-spacing:-.03em;font-weight:740;}
+.process p {font-size:.91rem;line-height:1.73;}
+.servicesRibbon strong {font-family:var(--type-display);font-size:1.07rem;letter-spacing:-.02em;}
+.servicesRibbon small {font-size:.82rem;line-height:1.5;}
+.asideBottom {font-size:.68rem;letter-spacing:.03em;}
+.portraitOverlay small {font-size:.69rem;letter-spacing:.1em;}
+@media(max-width:600px){.display{font-size:clamp(2.52rem,11.5vw,3.75rem)!important;line-height:1.08!important;letter-spacing:-.052em;}.sectionTitle{font-size:clamp(1.9rem,7.6vw,2.55rem)!important;}.lead{font-size:1.01rem;line-height:1.74;}.kicker{font-size:.69rem;}}

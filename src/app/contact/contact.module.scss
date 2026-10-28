@@ -34,3 +34,16 @@
 }
 .links a:active { transform:translateY(0);box-shadow:var(--neo-inset); }
 @media (prefers-reduced-motion: reduce) { .links a {transition:none;} }
+
+
+/* Contact content and form introductions. */
+.kicker{font-size:.73rem;letter-spacing:.11em;}
+.header h1{font-family:var(--type-display);font-size:clamp(2.95rem,5.7vw,5.45rem);font-weight:800;line-height:1.075;letter-spacing:-.055em;}
+.header>p:not(.kicker){font-size:1.12rem;line-height:1.75;color:var(--type-secondary);}
+.left h2{font-family:var(--type-display);font-size:clamp(1.8rem,3vw,2.45rem);letter-spacing:-.04em;}
+.left p:not(.kicker){font-size:.97rem;line-height:1.78;}
+.links span{font-size:.74rem;}
+.links strong{font-size:.93rem;line-height:1.55;}
+.steps strong{font-family:var(--type-display);font-size:.97rem;}
+.steps p{font-size:.88rem;line-height:1.72;}
+@media(max-width:600px){.header h1{font-size:clamp(2.55rem,9.5vw,3.35rem);}}

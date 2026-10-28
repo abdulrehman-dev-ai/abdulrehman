@@ -12,3 +12,11 @@
 .header h1 {max-width:850px;}
 .factline span {border:1px solid rgba(154,239,200,.16);background:#102a24;border-radius:10px;padding:.5rem .75rem;box-shadow:var(--neo-inset);}
 .end {border:1px solid var(--neo-border);border-radius:22px;padding:clamp(1.5rem,3vw,3rem);background:linear-gradient(140deg,#12332a,#091e1b);box-shadow:var(--neo-shadow),var(--neo-rim);}
+
+
+/* Project directory typography. */
+.overline{font-size:.73rem;letter-spacing:.11em;}
+.header h1{font-family:var(--type-display);font-weight:800;letter-spacing:-.058em;line-height:1.09;}
+.summary{font-size:clamp(1.02rem,1.6vw,1.17rem);line-height:1.75;color:var(--type-secondary);}
+.factline{font-size:.72rem;letter-spacing:.055em;line-height:1.6;}
+.end h2{font-family:var(--type-display);font-weight:770;letter-spacing:-.048em;}

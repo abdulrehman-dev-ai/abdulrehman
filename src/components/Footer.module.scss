@@ -17,3 +17,11 @@
 .main { max-width:1230px;position:relative;margin:clamp(1rem,2vw,2rem) auto 0;border:1px solid var(--neo-border);border-radius:26px;padding:clamp(2rem,4vw,4rem);background:linear-gradient(140deg,#122b26,#081b18);box-shadow:var(--neo-shadow),var(--neo-rim); }
 .bottom { border:0;opacity:.86;padding-block:1.6rem 2rem; }
 @media(max-width:1280px){.main{margin-inline:clamp(.75rem,2vw,2rem);}}
+
+
+/* Footer headline uses the same display family as the homepage. */
+.left h2{font-family:var(--type-display);font-size:clamp(3rem,5.6vw,5.55rem);font-weight:800;letter-spacing:-.058em;line-height:1.075;}
+.eyebrow,.right p{font-size:.74rem;letter-spacing:.105em;}
+.right a{font-size:.93rem;line-height:1.5;}
+.bottom{font-size:.77rem;line-height:1.75;color:var(--type-muted);}
+@media(max-width:600px){.left h2{font-size:clamp(2.65rem,10vw,3.6rem);}.bottom{font-size:.74rem;}}

@@ -8,3 +8,11 @@
 .article :global(p){max-width:80ch;}
 .article :global(li){line-height:1.85;}
 @media(max-width:600px){.intro,.article{padding:1.5rem;border-radius:19px;}.intro::after{opacity:.15;width:95px;height:95px;}}
+
+
+/* Technical service descriptions keep a comfortable reading measure. */
+.intro h1,.intro h2{font-family:var(--type-display);font-weight:790;letter-spacing:-.053em;line-height:1.11;}
+.article{font-size:1.03rem;line-height:1.85;color:var(--type-secondary);}
+.article :global(h2){font-family:var(--type-display);font-weight:770;letter-spacing:-.038em;line-height:1.23;}
+.article :global(p){line-height:1.82;max-width:75ch;}
+@media(max-width:600px){.article{font-size:1rem;line-height:1.8;}}

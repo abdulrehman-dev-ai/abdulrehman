@@ -1,0 +1,95 @@
+/*
+ * Editorial type system / 2026
+ * Manrope = structural/display headings, Inter = clear long-form text,
+ * Source Code Pro = technical metadata and overlines.
+ * This file follows Once UI and neumorphism so visual hierarchy stays stable.
+ */
+html.neo-portfolio {
+  --type-display: var(--font-secondary), "Arial", sans-serif;
+  --type-body: var(--font-primary), "Arial", sans-serif;
+  --type-mono: var(--font-code), "Courier New", monospace;
+  --type-ink: #ecf9f2;
+  --type-secondary: #bdd2c7;
+  --type-muted: #9ebcaf;
+  --type-leading: 1.74;
+  --font-family-heading: var(--type-display);
+  --font-family-body: var(--type-body);
+  --font-family-label: var(--type-body);
+  --font-family-code: var(--type-mono);
+  --font-weight-heading-default: 600;
+  --font-weight-heading-strong: 750;
+  --font-weight-display-default: 650;
+  --font-weight-display-strong: 800;
+  font-family: var(--type-body);
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+html.neo-portfolio body {
+  font-family: var(--type-body);
+  font-size: 1rem;
+  line-height: var(--type-leading);
+  color: var(--type-ink);
+}
+html.neo-portfolio :where(h1,h2,h3,h4,h5,h6,.font-display,.font-heading) {
+  font-family: var(--type-display);
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  font-synthesis: none;
+  text-wrap: balance;
+}
+html.neo-portfolio :where(h1,h2,h3,h4,h5,h6) {
+  color: var(--type-ink);
+  letter-spacing: -.045em;
+}
+html.neo-portfolio :where(h1) {
+  font-weight: 800;
+  line-height: 1.08;
+}
+html.neo-portfolio :where(h2) {
+  font-weight: 760;
+  line-height: 1.16;
+}
+html.neo-portfolio :where(h3) {
+  font-weight: 730;
+  line-height: 1.25;
+}
+html.neo-portfolio :where(p,li) {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+html.neo-portfolio :where(p) { line-height: inherit; }
+html.neo-portfolio :where(strong,b) { font-weight: 700; }
+html.neo-portfolio :where(input,select,textarea,button) {
+  font-family: var(--type-body);
+}
+html.neo-portfolio :where(code,pre,kbd,samp) {
+  font-family: var(--type-mono);
+  font-size: .91em;
+  font-variant-ligatures: none;
+}
+html.neo-portfolio :where(.font-code) {
+  font-family: var(--type-mono);
+}
+html.neo-portfolio :where(.font-display) {
+  letter-spacing: -.055em;
+}
+html.neo-portfolio :where(.font-heading) {
+  letter-spacing: -.032em;
+}
+html.neo-portfolio :where(a[data-button-system="unified-v3"]) {
+  font-family: var(--type-body);
+  font-weight: 700;
+  letter-spacing: -.006em;
+}
+@media (max-width: 600px) {
+  html.neo-portfolio {
+    --type-leading: 1.7;
+  }
+  html.neo-portfolio body { font-size: 1rem; }
+  html.neo-portfolio :where(h1,h2,h3,h4) { overflow-wrap: break-word; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html.neo-portfolio { scroll-behavior:auto; }
+}

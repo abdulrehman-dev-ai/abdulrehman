@@ -1,10 +1,11 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 import "./neumorphism.scss";
+import "./typography.scss";
 import classNames from "classnames";
 import { Footer, Header, RouteGuard, GoogleAnalytics, LocationGif } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
-import { Inter, Source_Code_Pro } from "next/font/google";
+import { Inter, Manrope, Source_Code_Pro } from "next/font/google";
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
 import { Metadata } from "next";
@@ -93,6 +94,13 @@ const primary = Inter({
   variable: "--font-primary",
 });
 
+const heading = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  variable: "--font-secondary",
+});
+
 const code = Source_Code_Pro({
   subsets: ["latin"],
   display: "swap",
@@ -119,7 +127,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       data-border={style.border}
       data-surface={style.surface}
       data-transition={style.transition}
-      className={classNames("neo-portfolio", primary.variable, code.variable)}
+      className={classNames("neo-portfolio", primary.variable, heading.variable, code.variable)}
     >
       <ToastProvider>
         <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">

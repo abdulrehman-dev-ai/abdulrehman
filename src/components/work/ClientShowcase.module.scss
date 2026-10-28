@@ -59,3 +59,15 @@
 .techs span { background:#0e2622;border:1px solid rgba(162,245,202,.2);box-shadow:var(--neo-inset);border-radius:11px;padding:.45rem .65rem; }
 .visualFallback { text-shadow:0 6px 20px rgba(0,0,0,.15); }
 @media(max-width:900px){.leadVisualLink{padding:8px;}.artLarge{min-height:310px;}}
+
+
+/* Project tiles prioritise names and scannable context. */
+.leadBody h3 {font-family:var(--type-display);font-size:clamp(2rem,3.65vw,3.3rem);line-height:1.12;letter-spacing:-.055em;font-weight:780;}
+.leadBody p {font-size:1rem;line-height:1.72;color:var(--type-secondary);}
+.smallBody h3 {font-family:var(--type-display);font-size:clamp(1.25rem,1.65vw,1.48rem);font-weight:760;letter-spacing:-.04em;line-height:1.25;}
+.smallBody p {font-size:.91rem;line-height:1.68;color:var(--type-secondary);}
+.itemOverline,.leadEyebrow{font-size:.71rem;letter-spacing:.055em;line-height:1.6;}
+.techs span {font-size:.76rem;line-height:1.4;}
+.browserTop,.artFoot {font-size:.68rem;line-height:1.4;letter-spacing:.045em;}
+.disclosure {font-size:.79rem;line-height:1.72;}
+@media(max-width:600px){.leadBody h3{font-size:clamp(1.85rem,7.5vw,2.35rem);}.smallBody h3{font-size:1.32rem;}.leadBody p,.smallBody p{font-size:.94rem;}}
