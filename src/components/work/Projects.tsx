@@ -5,9 +5,10 @@ import { ProjectCard } from "@/components";
 interface ProjectsProps {
   range?: [number, number?];
   columns?: "2" | "3";
+  clientWorkOnly?: boolean;
 }
 
-export function Projects({ range, columns = "3" }: ProjectsProps) {
+export function Projects({ range, columns = "3", clientWorkOnly = false }: ProjectsProps) {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
   // Client delivery first; dated learning and academic projects remain available below.
@@ -20,9 +21,12 @@ export function Projects({ range, columns = "3" }: ProjectsProps) {
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 
-  const displayedProjects = range
-    ? sortedProjects.slice(range[0] - 1, range[1] ?? sortedProjects.length)
+  const chosenProjects = clientWorkOnly
+    ? sortedProjects.filter((project) => (project.metadata.featuredRank || 0) > 0)
     : sortedProjects;
+  const displayedProjects = range
+    ? chosenProjects.slice(range[0] - 1, range[1] ?? chosenProjects.length)
+    : chosenProjects;
 
   return (
     <Grid 
