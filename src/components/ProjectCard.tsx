@@ -19,6 +19,7 @@ interface ProjectCardProps {
   title: string;
   content: string;
   description: string;
+  category?: string;
   avatars: { src: string }[];
   link: string;
 }
@@ -29,6 +30,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   content,
   description,
+  category,
   avatars,
   link,
 }) => {
@@ -43,14 +45,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       background="surface"
       className={styles.projectCard}
     >
-      <Carousel
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        aspectRatio="16 / 10"
-        images={images.map((image) => ({
-          src: image,
-          alt: title,
-        }))}
-      />
+      {images.length > 0 ? (
+        <Carousel
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          aspectRatio="16 / 10"
+          images={images.map((image) => ({
+            src: image,
+            alt: title,
+          }))}
+        />
+      ) : (
+        <div className={styles.projectVisual} aria-label={category || "Portfolio case study"}>
+          <span className={styles.projectEyebrow}>SELECTED WORK / REAL-WORLD DELIVERY</span>
+          <span className={styles.projectCategory}>{category || "Engineering project"}</span>
+          <span className={styles.projectDecoration} aria-hidden="true">↗</span>
+        </div>
+      )}
       <Column
         fillWidth
         gap="0"
