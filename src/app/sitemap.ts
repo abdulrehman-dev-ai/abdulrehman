@@ -1,5 +1,5 @@
 import { getPosts } from "@/app/utils/utils";
-import { baseURL, routes as routesConfig } from "@/app/resources";
+import { baseURL, display, routes as routesConfig } from "@/app/resources";
 
 export default async function sitemap() {
   const blogs = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
@@ -14,7 +14,8 @@ export default async function sitemap() {
 
   const activeRoutes = Object.keys(routesConfig)
     .filter((route) => routesConfig[route])
-    .filter((route) => route !== "/secure-access");
+    .filter((route) => !["/secure-access", "/order/success", "/order/failed"].includes(route))
+    .filter((route) => route !== "/gallery" || display.gallery);
 
   const routes = activeRoutes.map((route) => ({
     url: `https://${baseURL}${route !== "/" ? route : ""}`,
