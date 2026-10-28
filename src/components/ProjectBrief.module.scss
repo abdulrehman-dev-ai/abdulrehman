@@ -3,17 +3,14 @@
 .form label{display:flex;flex-direction:column;gap:.55rem;color:var(--neutral-on-background-medium);font-size:.75rem;font-weight:650;}
 .form input,.form select,.form textarea{width:100%;padding:.95rem;color:var(--neutral-on-background-strong);background:#101719;border:1px solid rgba(255,255,255,.19);border-radius:.6rem;font-size:.88rem;font-weight:400;line-height:1.5;font-family:inherit;}
 .form input:focus,.form select:focus,.form textarea:focus{outline:2px solid #a8eacf;outline-offset:1px;}
-.form textarea{resize:vertical;}.form button{justify-self:start;background:#e4f7eb;color:#102219;border:0;padding:.95rem 1.4rem;border-radius:.6rem;font-size:.86rem;font-weight:750;cursor:pointer;}
-.form button:hover{background:white;}.notice{color:var(--neutral-on-background-weak);font-size:.73rem;line-height:1.65;}
+.form textarea{resize:vertical;}
+
 @media(max-width:600px){.grid{grid-template-columns:1fr;}}
 
 .form {border:1px solid var(--neo-border);border-radius:24px;padding:clamp(1.3rem,3vw,2.4rem);background:linear-gradient(145deg,#12372d,#081e1a);box-shadow:var(--neo-shadow),var(--neo-rim);}
 .form input,.form select,.form textarea {background:#0c2521;border:1px solid rgba(143,234,194,.2);border-radius:14px;box-shadow:var(--neo-inset),var(--neo-rim);}
-.form button {border-radius:13px;border:1px solid rgba(191,255,223,.55);background:linear-gradient(145deg,#1c6850,#105038);color:#e6fff1;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
-.form button:hover {background:#218261;color:white;}
 
 .actions { display:flex;gap:.75rem;align-items:center;flex-wrap:wrap; }
-.form .actions button { border-radius:13px; }
 .feedback { border:1px solid rgba(164,241,202,.26);background:#113c2e;color:#dafce8;padding:.8rem 1rem;border-radius:12px;line-height:1.55;font-size:.84rem; }
 .selectedService { border:1px solid var(--neo-border);background:#102e25;box-shadow:var(--neo-inset);border-radius:12px;padding:.75rem 1rem;color:#c4f8d9;text-transform:capitalize;font-size:.85rem; }
-@media(max-width:480px){.actions>.neo-action {width:100%;}}
+@media(max-width:480px){.actions > :global(.neo-action) {width:100%;}}

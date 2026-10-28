@@ -12,7 +12,6 @@
 .arrow { color:#a0eaca; font-size:1.5rem; }
 .cta { padding:2.5rem 0 4rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.5rem; }
 .cta h2 { margin-top:.6rem; font-size:clamp(1.35rem,3vw,2.2rem); letter-spacing:-.04em; }
-.cta a { text-decoration:none; color:#a1eaca; font-weight:700; white-space:nowrap; font-size:.87rem; }
 @media(max-width:600px){.entry{grid-template-columns:28px 1fr 20px;gap:.7rem;}.header h1{font-size:2.7rem;}}
 
 /* Journal cards behave like lightly embossed reading surfaces */
@@ -32,6 +31,5 @@
 .arrow {display:grid;place-items:center;border-radius:50%;width:2.5rem;height:2.5rem;color:#b4ffe0;background:linear-gradient(135deg,#1d5445,#0d2a25);border:1px solid var(--neo-border);box-shadow:var(--neo-shadow-small),var(--neo-rim);}
 .meta span {border-radius:10px;padding:.25rem .6rem;box-shadow:var(--neo-inset);background:#0b2821;color:#b0e9cf;}
 .cta {border:1px solid var(--neo-border);border-radius:24px;padding:clamp(1.4rem,3vw,2.7rem);background:linear-gradient(145deg,#12362c,#09201c);box-shadow:var(--neo-shadow),var(--neo-rim);}
-.cta a {white-space:normal;border:1px solid var(--neo-border);border-radius:12px;padding:.85rem 1rem;background:#123d30;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
 @media(max-width:850px){.entry{grid-template-columns:42px minmax(110px,.4fr) minmax(0,1fr) 35px;}.thumbnail{height:155px;}.thumbnail span{width:70px;height:70px;font-size:2.5rem;}}
 @media(max-width:650px){.header{padding:1.5rem;border-radius:19px;}.entry{grid-template-columns:32px 1fr 32px;gap:.7rem;padding:1rem;}.thumbnail{grid-column:1/-1;grid-row:1;height:150px;}.number{grid-column:1;grid-row:2;}.details{grid-column:2;grid-row:2;}.arrow{grid-column:3;grid-row:2;}.thumbnail span{width:70px;height:70px;}.entry h2{font-size:1.3rem;}}

@@ -9,10 +9,8 @@
 .navigation::-webkit-scrollbar{display:none;}
 .navItem{display:block;padding:.62rem .92rem;border-radius:1.5rem;color:var(--neutral-on-background-medium);text-decoration:none;font-size:.77rem;font-weight:650;white-space:nowrap;transition:color .2s,background .2s;}
 .navItem:hover,.navItem[aria-current="page"]{color:var(--neutral-on-background-strong);background:rgba(171,238,199,.1);}
-.contact{display:inline-flex;align-items:center;gap:.4rem;border:1px solid rgba(255,255,255,.23);background:rgba(255,255,255,.065);color:white;border-radius:.65rem;text-decoration:none;padding:.75rem .95rem;font-size:.76rem;font-weight:740;white-space:nowrap;transition:background .2s;}
-.contact:hover{background:rgba(255,255,255,.12);}
-@media(max-width:700px){.shell{position:relative;padding:.7rem .65rem;}.inner{flex-wrap:wrap;gap:.6rem;}.brandText small{display:none;}.brandText{font-size:.76rem;}.monogram{height:34px;width:34px;}.navigation{order:3;width:100%;justify-content:space-between;padding:.18rem;}.navItem{padding:.58rem .78rem;font-size:.73rem;}.contact{font-size:.72rem;padding:.62rem .75rem;}}
-@media(prefers-reduced-motion:reduce){.navItem,.contact{transition:none;}}
+@media(max-width:700px){.shell{position:relative;padding:.7rem .65rem;}.inner{flex-wrap:wrap;gap:.6rem;}.brandText small{display:none;}.brandText{font-size:.76rem;}.monogram{height:34px;width:34px;}.navigation{order:3;width:100%;justify-content:space-between;padding:.18rem;}.navItem{padding:.58rem .78rem;font-size:.73rem;}}
+@media(prefers-reduced-motion:reduce){.navItem{transition:none;}}
 
 /* inset navigation with softly raised active states */
 .shell { background:linear-gradient(180deg,rgba(6,18,16,.94),rgba(8,21,18,.80) 82%,transparent); }
@@ -20,8 +18,6 @@
 .navigation { background:#0a1d1a;border:1px solid var(--neo-border);box-shadow:var(--neo-inset),0 7px 24px rgba(0,0,0,.27);border-radius:18px;padding:.36rem; }
 .navItem { border-radius:13px;transition:background .2s,box-shadow .2s,color .2s; }
 .navItem[aria-current="page"],.navItem:hover { background:linear-gradient(145deg,#205647,#103429);box-shadow:4px 5px 11px rgba(0,0,0,.45),-3px -3px 10px rgba(85,207,159,.11),var(--neo-rim);color:#ddffed; }
-.contact { border:1px solid var(--neo-border);border-radius:13px;background:linear-gradient(145deg,#164638,#0d2724);box-shadow:var(--neo-shadow-small),var(--neo-rim);color:#caffdf; }
-.contact:hover { background:linear-gradient(145deg,#1d6550,#0e3126); }
 @media (max-width:700px){.navigation {width:100%;} .navItem {border-radius:11px;}}
 
 /* Brand image — personal portrait inside the existing raised soft-UI badge. */

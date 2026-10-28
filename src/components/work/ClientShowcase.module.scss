@@ -27,8 +27,6 @@
 .techs { display:flex; flex-wrap:wrap; gap:.4rem; }
 .techs span { padding:.35rem .55rem; border:1px solid rgba(255,255,255,.12); border-radius:5rem; font-size:.67rem; color:var(--neutral-on-background-medium); }
 .leadActions { display:flex; flex-wrap:wrap; align-items:center; gap:1.15rem; margin-top:.45rem; }
-.leadActions a { font-size:.78rem; text-decoration:none; }
-.primaryLink { color:#b4f3d7!important; font-weight:700; }
 .supporting { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.15rem; }
 .smallCard { background:rgba(13,16,17,.83); border:1px solid rgba(255,255,255,.105); border-radius:1.1rem; overflow:hidden; min-width:0; display:flex; flex-direction:column; }
 .smallBody { padding:1.25rem 1.2rem 1.35rem; display:flex; flex-direction:column; flex:1; gap:.6rem; }
@@ -36,7 +34,6 @@
 .smallBody h3 { font-size:1.35rem; letter-spacing:-.035em; line-height:1.24; }
 .smallBody p { color:var(--neutral-on-background-medium); line-height:1.55; font-size:.82rem; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden; }
 .smallFooter { margin-top:auto; padding-top:1.1rem; }
-.smallFooter a { font-size:.76rem; font-weight:650; text-decoration:none; color:#a2e7c9; }
 .disclosure { font-size:.72rem; color:var(--neutral-on-background-weak); line-height:1.6; }
 @media (max-width:900px) { .lead {grid-template-columns:1fr;} .artLarge{min-height:310px;} .supporting{grid-template-columns:repeat(2,minmax(0,1fr));} }
 @media (max-width:600px) { .artLarge{min-height:250px;} .leadBody{padding:1.6rem;} .supporting{grid-template-columns:1fr;} .art{min-height:205px;} .leadBody h3{font-size:2.1rem;} }
@@ -60,8 +57,5 @@
 .smallCard .art {border-radius:15px;}
 .leadEyebrow .dot,.dot { box-shadow:0 0 0 5px rgba(124,230,189,.13),0 0 16px rgba(99,240,176,.28); }
 .techs span { background:#0e2622;border:1px solid rgba(162,245,202,.2);box-shadow:var(--neo-inset);border-radius:11px;padding:.45rem .65rem; }
-.leadActions a,.smallFooter a { border-radius:10px; }
-.primaryLink { padding:.8rem 1rem;background:#0e3028;box-shadow:var(--neo-shadow-small),var(--neo-rim);border:1px solid var(--neo-border); }
-.leadActions a:hover,.smallFooter a:hover { color:#e0ffef!important; }
 .visualFallback { text-shadow:0 6px 20px rgba(0,0,0,.15); }
 @media(max-width:900px){.leadVisualLink{padding:8px;}.artLarge{min-height:310px;}}

@@ -23,9 +23,7 @@
 .sectionHead { display:flex; align-items:end; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.9rem; }
 .sectionTitle { font-size:clamp(1.8rem,3.5vw,3.4rem)!important; line-height:1.13!important; letter-spacing:-.055em; margin-top:.65rem; }
 .sectionSub { color:var(--neutral-on-background-medium); line-height:1.75; max-width:650px; margin-top:.8rem; font-size:.96rem; }
-.more { color:#abe9cb; text-decoration:none; font-size:.82rem; font-weight:700; white-space:nowrap; padding-bottom:.3rem; }
 .approach { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.4rem,5vw,5rem); padding:clamp(2rem,5vw,5rem) 0; border-bottom:1px solid var(--neutral-alpha-medium); }
-.approach .more { display:inline-block; margin-top:1.7rem; }
 .process { border-top:1px solid var(--neutral-alpha-medium); }
 .process article { display:grid; grid-template-columns:45px 1fr; gap:1rem; padding:1.5rem .25rem; border-bottom:1px solid var(--neutral-alpha-medium); }
 .process article span { font-family:var(--font-code),monospace; color:#91e2c1; font-size:.78rem; }
@@ -61,7 +59,5 @@
 .contactPanel { border:1px solid var(--neo-border);border-radius:25px;background:radial-gradient(circle at 98% 6%,rgba(33,184,134,.13),transparent 44%),linear-gradient(145deg,#14392e,#071b18);box-shadow:var(--neo-shadow),var(--neo-rim); }
 .contactPanel::after { content:"";height:1px;width:28%;position:absolute;right:2%;top:0;background:linear-gradient(90deg,transparent,rgba(149,255,209,.3),transparent); }
 .contactPanel { position:relative;overflow:hidden; }
-.more { display:inline-flex;align-items:center;border:1px solid var(--neo-border);padding:.7rem 1rem;border-radius:12px;background:#102823;box-shadow:var(--neo-shadow-small),var(--neo-rim);white-space:normal; }
-.more:hover { background:#173f32; }
 @media (max-width:850px) { .hero { padding:2rem 1.6rem; } }
 @media (max-width:600px) { .hero {margin-top:.5rem;border-radius:20px;padding:1.5rem;} .servicesRibbon{gap:.65rem;} .servicesRibbon div{padding:.8rem .9rem;} .servicesRibbon small{padding-left:0;} .portraitWrap{border-radius:20px;} .approach{padding:1.3rem;} .journal{padding:1.2rem;} }
