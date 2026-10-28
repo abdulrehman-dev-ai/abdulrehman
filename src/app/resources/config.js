@@ -1,4 +1,5 @@
-const baseURL = "https://abdulrehmansarwar.vercel.app/";
+// Canonical hostname only; callers prepend https://.
+const baseURL = "abdulrehmansarwar.vercel.app";
 
 const routes = {
   "/": true,
