@@ -121,7 +121,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
               href={`${href}#order`}
             >
               <Text variant="body-default-s" onBackground="accent-strong">
-                Place order
+                Request a quote
               </Text>
             </SmartLink>
           </Flex>

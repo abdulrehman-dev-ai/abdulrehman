@@ -35,7 +35,7 @@ function sortedClientProjects(): Project[] {
     .sort((a, b) => Number(a.metadata.featuredRank || 99) - Number(b.metadata.featuredRank || 99));
 }
 
-function Visual({ slug, title, large = false }: { slug: string; title: string; large?: boolean }) {
+export function ProjectVisual({ slug, title, large = false }: { slug: string; title: string; large?: boolean }) {
   const visual = visuals[slug];
   const variant = slug === "ocean-yacht-registration" ? styles.ocean
     : slug === "maqwi-organics" ? styles.organic
@@ -66,7 +66,7 @@ function SmallCard({ project, index }: { project: Project; index: number }) {
   return (
     <article className={styles.smallCard}>
       <Link href={"/work/" + project.slug} className={styles.artLink} aria-label={"Read " + title + " case study"}>
-        <Visual slug={project.slug} title={title} />
+        <ProjectVisual slug={project.slug} title={title} />
       </Link>
       <div className={styles.smallBody}>
         <div className={styles.itemOverline}>
@@ -93,7 +93,7 @@ export function ClientShowcase({ mode = "home" }: { mode?: "home" | "all" }) {
     <div className={styles.showcase}>
       <article className={styles.lead}>
         <Link className={styles.leadVisualLink} href={"/work/" + lead.slug} aria-label={"Explore " + title}>
-          <Visual slug={lead.slug} title={title} large />
+          <ProjectVisual slug={lead.slug} title={title} large />
         </Link>
         <div className={styles.leadBody}>
           <div className={styles.leadEyebrow}><span className={styles.dot} /> 01 / FEATURED DELIVERY</div>

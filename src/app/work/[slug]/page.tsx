@@ -1,133 +1,64 @@
 import { notFound } from "next/navigation";
-import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
-import { AvatarGroup, Button, Column, Flex, Heading, SmartImage, Text } from "@/once-ui/components";
+import { CustomMDX } from "@/components/mdx";
+import { Column } from "@/once-ui/components";
+import { ProjectVisual } from "@/components/work/ClientShowcase";
 import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
-import { formatDate } from "@/app/utils/formatDate";
-import ScrollToHash from "@/components/ScrollToHash";
-import { Metadata } from "next";
+import styles from "./case-study.module.scss";
 
-type WorkParams = Promise<{
-  slug: string;
-}>;
-
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+type Params = Promise<{ slug:string }>;
+export async function generateStaticParams() {
+  return getPosts(["src","app","work","projects"]).map(p=>({slug:p.slug}));
 }
-
-export async function generateMetadata({
-  params,
-}: {
-  params: WorkParams;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getPosts(["src", "app", "work", "projects"]).find((item) => item.slug === slug);
-
-  if (!post) {
-    return {};
-  }
-
-  const {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    images,
-    image,
-    team,
-  } = post.metadata;
-  const ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `https://${baseURL}/work/${post.slug}` },
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      publishedTime,
-      url: `https://${baseURL}/work/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+export async function generateMetadata({params}:{params:Params}){
+  const {slug}=await params;
+  const post=getPosts(["src","app","work","projects"]).find(p=>p.slug===slug);
+  if(!post)return {};
+  const title=post.metadata.title;
+  const description=post.metadata.summary;
+  const image="https://" + baseURL + "/og?title=" + encodeURIComponent(title);
+  return {title,description,alternates:{canonical:"https://"+baseURL+"/work/"+slug},
+    openGraph:{title,description,type:"article" as const,url:"https://"+baseURL+"/work/"+slug,images:[{url:image}]},
+    twitter:{card:"summary_large_image",title,description,images:[image]}};
 }
-
-export default async function Project({ params }: { params: WorkParams }) {
-  const { slug } = await params;
-  const post = getPosts(["src", "app", "work", "projects"]).find((item) => item.slug === slug);
-
-  if (!post) {
-    notFound();
-  }
-
-  const avatars =
-    post.metadata.team?.map((member) => ({
-      src: member.avatar,
-    })) || [];
-
-  return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `https://${baseURL}${post.metadata.image}`
-              : `https://${baseURL}/og?title=${post.metadata.title}`,
-            url: `https://${baseURL}/work/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: person.name,
-            },
-          }),
-        }}
-      />
-      <Column maxWidth="xs" gap="16">
-        <Button href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
-          Projects
-        </Button>
-        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
-      </Column>
-      {post.metadata.images.length > 0 && (
-        <SmartImage
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={post.metadata.images[0]}
-        />
-      )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
-        <Flex gap="12" marginBottom="24" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
-          <Text variant="body-default-s" onBackground="neutral-weak">
-            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-          </Text>
-        </Flex>
-        <CustomMDX source={post.content} />
-      </Column>
-      <ScrollToHash />
-    </Column>
-  );
+export default async function ProjectPage({params}:{params:Params}){
+  const {slug}=await params;
+  const post=getPosts(["src","app","work","projects"]).find(p=>p.slug===slug);
+  if(!post)notFound();
+  const title=post.metadata.title;
+  const shortTitle=title.split(" — ")[0];
+  const category=post.metadata.category||"Engineering project";
+  const live=category.toLowerCase().includes("live")||category.toLowerCase().includes("delivered");
+  const status=category.toLowerCase().includes("pre-launch")?"Pre-launch":category.toLowerCase().includes("in progress")?"In progress":live?"Live / delivered":"Project documentation";
+  return <Column maxWidth="xl" fillWidth gap="xl">
+    <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{__html:JSON.stringify({
+      "@context":"https://schema.org","@type":"CreativeWork",name:title,
+      description:post.metadata.summary,url:"https://"+baseURL+"/work/"+slug,
+      author:{"@type":"Person",name:person.name}
+    })}}/>
+    <header className={styles.header}>
+      <a href="/work" className={styles.back}>← All case studies</a>
+      <div className={styles.tags}><span>{category}</span><span>{status}</span></div>
+      <h1>{shortTitle}<span className={styles.titleSuffix}>{title.includes(" — ")?" — "+title.split(" — ").slice(1).join(" — "):""}</span></h1>
+      <p className={styles.summary}>{post.metadata.summary}</p>
+      <div className={styles.headerActions}>
+        {post.metadata.link && <a href={post.metadata.link} target="_blank" rel="noopener noreferrer" className={styles.primary}>Open public project ↗</a>}
+        <a href="/contact" className={styles.secondary}>Discuss a similar project ↗</a>
+      </div>
+    </header>
+    <div className={styles.visual}><ProjectVisual slug={slug} title={shortTitle} large /></div>
+    <div className={styles.bodyLayout}>
+      <aside className={styles.sidebar}>
+        <p className={styles.eyebrow}>PROJECT OVERVIEW</p>
+        <div><small>STATUS</small><strong>{status}</strong></div>
+        <div><small>AREA</small><strong>{category}</strong></div>
+        <div><small>PUBLISHED</small><strong>{post.metadata.publishedAt}</strong></div>
+        <a href="/work">More projects ↗</a>
+      </aside>
+      <article className={styles.prose}><CustomMDX source={post.content} />
+        <div className={styles.end}><h2>Have a similar challenge?</h2><p>Let's talk about what your business needs — and how to build it responsibly.</p><a href="/contact">Start the conversation ↗</a></div>
+      </article>
+    </div>
+  </Column>;
 }
