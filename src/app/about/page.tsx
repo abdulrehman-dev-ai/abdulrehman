@@ -1,511 +1,58 @@
-import {
-  Avatar,
-  Button,
-  Column,
-  Flex,
-  Heading,
-  Icon,
-  IconButton,
-  SmartImage,
-  SmartLink,  // Add this import
-  Tag,
-  Text,
-} from "@/once-ui/components";
+import { Column } from "@/once-ui/components";
+import { person, about } from "@/app/resources/content";
 import { baseURL } from "@/app/resources";
-import TableOfContents from "@/components/about/TableOfContents";
-import styles from "@/components/about/about.module.scss";
-import { person, about, social } from "@/app/resources/content";
-import Image from 'next/image';
+import styles from "./about.module.scss";
 
 export async function generateMetadata() {
-  const title = about.title;
-  const description = about.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `https://${baseURL}/about` },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `https://${baseURL}/about`,
-      images: [
-        {
-          url: ogImage,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  const title="About Abdul Rehman";
+  const description="Independent full-stack, cloud and security engineer with experience delivering real applications, commerce and infrastructure.";
+  const img="https://" + baseURL + "/og?title=" + encodeURIComponent(title);
+  return {title,description,alternates:{canonical:"https://" + baseURL + "/about"},
+    openGraph:{title,description,url:"https://" + baseURL + "/about",images:[{url:img}]},
+    twitter:{card:"summary_large_image",title,description,images:[img]}};
 }
-
-// Move interfaces to the top, after imports
-interface Experience {
-  company: string;
-  role: string;
-  timeframe: string;
-  achievements: JSX.Element[];
-  images: Array<{
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-    style?: React.CSSProperties;
-  }>;
-}
-
-interface Institution {
-  name: string;
-  description: string;
-}
-
-interface Certification {
-  title: string;
-  href?: string;
-  content?: string;
-  link?: string;
-  description: JSX.Element[];
-  images?: Array<{
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-    style?: React.CSSProperties;
-  }>;
-}
-
-interface Skill {
-  title: string;
-  icon: string;
-  description: JSX.Element[] | string;
-}
-
-interface SocialItem {
-  name: string;
-  icon: string;
-  link: string;
-}
-
-// Keep only one export default function
-export default function About() {
-  const structure = [
-    {
-      title: about.intro.title,
-      display: about.intro.display,
-      items: [],
-    },
-    {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
-    },
-    {
-      title: about.studies.title,
-      display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
-    },
-    {
-      title: "Certifications",
-      display: about.technical.display,
-      items: about.technical.certifications.map((cert) => cert.title),
-    },
-    {
-      title: "Technical Skills",
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
-    },
-  ];
-  return (
-    <Column maxWidth="m">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: person.name,
-            jobTitle: person.role,
-            description: about.intro.description,
-            url: `https://${baseURL}/about`,
-            image: `https://${baseURL}${person.avatar}`,
-            sameAs: social
-              .filter((item) => item.link && !item.link.startsWith("mailto:")) // Filter out empty links and email links
-              .map((item) => item.link),
-            worksFor: {
-              "@type": "Organization",
-              name: about.work.experiences[0].company || "",
-            },
-          }),
-        }}
-      />
-      {about.tableOfContent.display && (
-        <Column
-          left="0"
-          style={{ top: "50%", transform: "translateY(-50%)" }}
-          position="fixed"
-          paddingLeft="24"
-          gap="32"
-          hide="s"
-        >
-          <TableOfContents structure={structure} about={about} />
-        </Column>
-      )}
-      <Flex fillWidth mobileDirection="column" horizontal="center">
-        {about.avatar.display && (
-          <Column
-            className={styles.avatar}
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="xl"
-            gap="m"
-            flex={3}
-            horizontal="center"
-          >
-            <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
-            </Flex>
-            {person.languages.length > 0 && (
-              <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
-                    {language}
-                  </Tag>
-                ))}
-              </Flex>
-            )}
-          </Column>
-        )}
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
-          <Column
-            id={about.intro.title}
-            fillWidth
-            minHeight="160"
-            vertical="center"
-            marginBottom="32"
-          >
-            <Flex fillWidth gap="16" wrap className={styles.flexCenterMobile} vertical="center" marginBottom="m">
-              {about.calendar.display && (
-                <Flex
-                  fitWidth
-                  border="brand-alpha-medium"
-                  className={styles.blockAlign}
-                  style={{
-                    backdropFilter: "blur(var(--static-space-1))",
-                  }}
-                  background="brand-alpha-weak"
-                  radius="full"
-                  padding="4"
-                  gap="8"
-                  vertical="center"
-                >
-                  <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                  <Flex paddingX="8">Schedule a call</Flex>
-                  <IconButton
-                    href={about.calendar.link}
-                    data-border="rounded"
-                    variant="secondary"
-                    icon="chevronRight"
-                  />
-                </Flex>
-              )}
-              <Flex
-                fitWidth
-                border="brand-alpha-medium"
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                vertical="center"
-              >
-                <Icon paddingLeft="12" name="person" onBackground="brand-weak" />
-                <Flex paddingX="8">Resume</Flex>
-                <IconButton
-                  href="https://drive.google.com/file/d/1lKl0QTRHvilr6q6A9S5xnp5Qlh8mwHK4/view?usp=sharing"
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="download"
-                />
-              </Flex>
-            </Flex>
-            <Heading className={styles.textAlign} variant="display-strong-xl">
-              {person.name}
-            </Heading>
-            <Text
-              className={styles.textAlign}
-              variant="display-default-xs"
-              onBackground="neutral-weak"
-            >
-              {person.role}
-            </Text>
-            {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
-                {social.map(
-                  (item) =>
-                    item.link && (
-            <Flex key={item.name}>
-              <Button
-                className="s-flex-hide"
-                href={item.link}
-                prefixIcon={item.icon}
-                size="s"
-                variant="secondary"
-                aria-label={item.name}
-              />
-              <IconButton
-                className="s-flex-show"
-                size="l"
-                href={item.link}
-                icon={item.icon}
-                variant="secondary"
-                tooltip={item.name}
-              />
-            </Flex>
-                    ),
-                )}
-              </Flex>
-            )}
-          </Column>
-
-          {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
-            </Column>
-          )}
-
-          {about.techStack.display && (
-            <>
-              <Heading as="h2" variant="display-strong-s" marginBottom="m">
-                Tools I Play With
-              </Heading>
-              <Flex wrap gap="16" marginBottom="40">
-                {about.techStack.icons.map((tech, index) => (
-                  <Flex
-                    key={`${tech.name}-${index}`}
-                    border="neutral-medium"
-                    radius="m"
-                    padding="16"
-                    gap="8"
-                    vertical="center"
-                  >
-                    <Image 
-                      src={tech.icon} 
-                      alt={`${tech.name} icon`} // Added descriptive alt text
-                      width={24}
-                      height={24}
-                    />
-                    <Text variant="body-default-s">{tech.name}</Text>
-                  </Flex>
-                ))}
-              </Flex>
-            </>
-          )}
-
-          {about.work.display && (
-            <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
-                {about.work.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
-                      </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
-                      </Text>
-                    </Flex>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                      {experience.role}
-                    </Text>
-                    <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
-                        <Text
-                          as="li"
-                          variant="body-default-m"
-                          key={`${experience.company}-${index}`}
-                        >
-                          {achievement}
-                        </Text>
-                      ))}
-                    </Column>
-                    {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.studies.display && (
-            <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
-                {about.studies.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
-                    </Text>
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.technical.display && (
-            <>
-              <Heading as="h2" id="Certifications" variant="display-strong-s" marginBottom="m">
-                Certifications
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.technical.certifications?.map((cert, index) => (
-                  <Column key={`certification-${index}`} fillWidth gap="4">
-                    <Text variant="heading-strong-l">{cert.title}</Text>
-                    <Column as="ul" gap="16">
-                      {Array.isArray(cert.description) && cert.description.map((desc, i) => (
-                        <Text
-                          as="li"
-                          key={`cert-desc-${index}-${i}`}
-                          variant="body-default-m"
-                          onBackground="neutral-weak"
-                        >
-                          {desc}
-                        </Text>
-                      ))}
-                    </Column>
-                    {/* Rest of certificate rendering */}
-                    {cert.images && cert.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {cert.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                              style={image.style}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                    {(cert.content || cert.link) && (
-                      <Flex gap="24" wrap marginTop="m">
-                        {cert.content && (
-                          <SmartLink
-                            suffixIcon="arrowRight"
-                            style={{ margin: "0", width: "fit-content" }}
-                            href={cert.href || "#"}
-                          >
-                            <Text variant="body-default-s">{cert.content}</Text>
-                          </SmartLink>
-                        )}
-                        {cert.link && (
-                          <SmartLink
-                            suffixIcon="arrowUpRightFromSquare"
-                            style={{ margin: "0", width: "fit-content" }}
-                            href={cert.link}
-                          >
-                            <Text variant="body-default-s">View Credential</Text>
-                          </SmartLink>
-                        )}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-
-              <Heading as="h2" id="Technical Skills" variant="display-strong-s" marginBottom="m">
-                Technical Skills
-              </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Flex gap="12" vertical="center">
-                      <Icon name={skill.icon} size="m" />
-                      <Text variant="heading-strong-l">{skill.title}</Text>
-                    </Flex>
-                    <Column as="ul" gap="16">
-                      {Array.isArray(skill.description) ? (
-                        skill.description.map((desc, i) => (
-                          <Text
-                            as="li"
-                            key={`${skill.title}-desc-${i}`}
-                            variant="body-default-m"
-                            onBackground="neutral-weak"
-                          >
-                            {desc}
-                          </Text>
-                        ))
-                      ) : (
-                        <Text
-                          as="li"
-                          variant="body-default-m"
-                          onBackground="neutral-weak"
-                        >
-                          {skill.description}
-                        </Text>
-                      )}
-                    </Column>
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-        </Column>
-      </Flex>
-    </Column>
-  );
+export default function AboutPage() {
+  const selected=about.work.experiences.filter(x=>["Ocean Yacht Registration","Independent Freelance / Consulting","Auto Levels Pvt.Ltd"].includes(x.company));
+  const earlier=about.work.experiences.filter(x=>!selected.includes(x));
+  return <Column maxWidth="xl" fillWidth gap="xl">
+    <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{__html:JSON.stringify({
+      "@context":"https://schema.org","@type":"Person",name:person.name,jobTitle:person.role,
+      url:"https://" + baseURL + "/about",image:"https://" + baseURL + person.avatar
+    })}} />
+    <section className={styles.hero}>
+      <div className={styles.intro}>
+        <p className={styles.kicker}>ABOUT / THE PERSON BEHIND THE PROJECTS</p>
+        <h1>Engineering is about <em>making things work.</em></h1>
+        <p className={styles.lead}>I'm Abdul Rehman, an independent engineer based in Lahore. My work connects full-stack applications, cloud operations and practical security to real business requirements.</p>
+        <p>I work on the things behind the interface too: access rules, workflows, data handling, deployments and the details that keep a product usable after launch.</p>
+        <div className={styles.links}><a href="/work">See client work ↗</a><a href="/contact">Start a conversation ↗</a></div>
+      </div>
+      <div className={styles.portraitCard}>
+        <img src={person.avatar} alt="Portrait of Abdul Rehman" />
+        <span>ABDUL REHMAN <small>LAHORE / REMOTE COLLABORATION</small></span>
+      </div>
+    </section>
+    <section className={styles.philosophy}>
+      <p className={styles.kicker}>WORKING PRINCIPLES</p>
+      <div><h2>From a problem to an operable system.</h2><p>Good engineering needs correct rules, maintainable architecture, honest testing and a responsible handover — not just an attractive user interface.</p></div>
+    </section>
+    <section className={styles.experience}>
+      <div className={styles.heading}><p className={styles.kicker}>SELECTED EXPERIENCE</p><h2>The work behind the portfolio.</h2></div>
+      {selected.map((exp,index)=><article key={exp.company} className={styles.role}>
+        <div className={styles.roleMeta}><strong>0{index+1}</strong><small>{exp.timeframe}</small></div>
+        <div><h3>{exp.company}</h3><p>{exp.role}</p><ul>{exp.achievements.slice(0,3).map((item,i)=><li key={i}>{item}</li>)}</ul></div>
+      </article>)}
+      <details className={styles.archive}><summary>Earlier roles and internships <span aria-hidden="true">+</span></summary>
+        {earlier.map(exp=><article key={exp.company}><h3>{exp.company}</h3><small>{exp.timeframe} / {exp.role}</small><ul>{exp.achievements.slice(0,2).map((item,i)=><li key={i}>{item}</li>)}</ul></article>)}
+      </details>
+    </section>
+    <section className={styles.credentials}>
+      <div><p className={styles.kicker}>EDUCATION & CREDENTIALS</p><h2>Always learning, always applying.</h2><p>Security, networking, engineering fundamentals and continued practical training inform my work.</p></div>
+      <div className={styles.credentialsList}>
+        {about.studies.institutions.map(x=><article key={x.name}><small>EDUCATION</small><strong>{x.name}</strong></article>)}
+        {about.technical.certifications.slice(0,6).map(x=><article key={x.title}><small>TRAINING / CERTIFICATION</small>{x.link?<a href={x.link} target="_blank" rel="noopener noreferrer">{x.title} ↗</a>:<strong>{x.title}</strong>}</article>)}
+      </div>
+    </section>
+    <aside className={styles.cta}><p className={styles.kicker}>LET'S TALK ABOUT YOUR PROJECT</p><h2>Clarity, craft and responsibility.</h2><a href="/contact">Start a conversation ↗</a></aside>
+  </Column>;
 }
