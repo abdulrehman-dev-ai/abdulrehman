@@ -2,6 +2,7 @@
 
 import { Button, Column, Heading, Text } from "@/once-ui/components";
 import { business } from "@/app/resources/content";
+import styles from "./OrderCheckout.module.scss";
 
 interface OrderCheckoutProps {
   serviceSlug: string;
@@ -15,7 +16,7 @@ export function OrderCheckout({ serviceTitle, price, currency = "PKR", priceNote
   const subject = encodeURIComponent(`Project inquiry: ${serviceTitle}`);
   const body = encodeURIComponent(`Hello, I'd like to discuss ${serviceTitle}. Please share scope, timeline and a tailored quote.`);
   return (
-    <Column id="order" fillWidth maxWidth="xs" border="neutral-medium" radius="l"
+    <Column id="order" fillWidth maxWidth="xs" className={styles.checkout} border="neutral-medium" radius="l"
       padding="24" gap="16" background="surface">
       <Heading as="h2" variant="heading-strong-l">Let's discuss your project</Heading>
       <Text onBackground="neutral-weak" variant="body-default-m">

@@ -15,6 +15,7 @@ import { person } from "@/app/resources/content";
 import ScrollToHash from "@/components/ScrollToHash";
 import { OrderCheckout } from "@/components/services/OrderCheckout";
 import { Metadata } from "next";
+import styles from "./service-detail.module.scss";
 
 type ServiceParams = Promise<{
   slug: string;
@@ -79,7 +80,7 @@ export default async function ServiceDetail({ params }: { params: ServiceParams 
   const { metadata } = service;
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <Column as="section" maxWidth="xl" horizontal="center" gap="l" className={styles.detail}>
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -103,7 +104,7 @@ export default async function ServiceDetail({ params }: { params: ServiceParams 
         }}
       />
 
-      <Column maxWidth="xs" gap="16">
+      <Column fillWidth gap="16" className={styles.intro}>
         <Button
           href="/services"
           variant="tertiary"
@@ -138,6 +139,7 @@ export default async function ServiceDetail({ params }: { params: ServiceParams 
       )}
 
       <Flex
+        className={styles.price}
         fillWidth
         maxWidth="xs"
         border="neutral-medium"
@@ -163,7 +165,7 @@ export default async function ServiceDetail({ params }: { params: ServiceParams 
         priceNote={metadata.priceNote}
       />
 
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
+      <Column as="article" className={styles.article} fillWidth>
         <CustomMDX source={service.content} />
       </Column>
 

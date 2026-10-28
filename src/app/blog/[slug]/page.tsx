@@ -7,6 +7,7 @@ import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
 import { Metadata } from "next";
+import styles from "./article.module.scss";
 
 type BlogParams = Promise<{
   slug: string;
@@ -71,7 +72,7 @@ export default async function Blog({ params }: { params: BlogParams }) {
     })) || [];
 
   return (
-    <Column as="section" maxWidth="xs" gap="l">
+    <Column as="section" maxWidth="m" gap="l" className={styles.layout}>
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -97,14 +98,14 @@ export default async function Blog({ params }: { params: BlogParams }) {
       <Button href="/blog" weight="default" variant="tertiary" size="s" prefixIcon="chevronLeft">
         Posts
       </Button>
-      <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+      <div className={styles.articleHeader}><p>ENGINEERING JOURNAL / FIELD NOTES</p><Heading variant="display-strong-s">{post.metadata.title}</Heading></div>
       <Row gap="12" vertical="center">
         {avatars.length > 0 && <AvatarGroup size="s" avatars={avatars} />}
         <Text variant="body-default-s" onBackground="neutral-weak">
           {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
         </Text>
       </Row>
-      <Column as="article" fillWidth>
+      <Column as="article" fillWidth className={styles.articleBody}>
         <CustomMDX source={post.content} />
       </Column>
       <ScrollToHash />

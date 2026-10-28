@@ -25,3 +25,6 @@
   border-color: var(--brand-border-strong);
   background: var(--brand-background-weak);
 }
+
+.checkout{width:100%;max-width:100%!important;border-radius:22px!important;padding:clamp(1.4rem,3vw,2.4rem)!important;background:radial-gradient(circle at 88% 0%,rgba(41,183,130,.12),transparent 46%),linear-gradient(145deg,#14392e,#0a211c)!important;border:1px solid var(--neo-border)!important;box-shadow:var(--neo-shadow),var(--neo-rim);}
+.checkout :global(a.button){border-radius:13px;box-shadow:var(--neo-shadow-small),var(--neo-rim);}

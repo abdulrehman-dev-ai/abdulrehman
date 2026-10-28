@@ -1,0 +1,6 @@
+.layout{width:100%;padding:clamp(1.2rem,4vw,3rem) 0 4rem;}
+.header{width:100%;padding:clamp(1.4rem,4vw,3rem);border:1px solid var(--neo-border);border-radius:23px;background:linear-gradient(145deg,#12372d,#091e1a);box-shadow:var(--neo-shadow),var(--neo-rim);}
+.body{width:100%;padding:clamp(1.4rem,4vw,3rem);border:1px solid var(--neo-border);border-radius:23px;background:linear-gradient(145deg,#102a24,#091c19);box-shadow:var(--neo-shadow),var(--neo-rim);line-height:1.85;}
+.body :global(h2){color:#d7ffe8;font-size:1.45rem;}
+.body :global(ul){margin-bottom:1.2rem;}
+@media(max-width:600px){.header,.body{padding:1.35rem;border-radius:18px;}}
