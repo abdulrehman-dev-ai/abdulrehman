@@ -1,24 +1,42 @@
 ---
-title: "Ocean Yacht Registration — Vessel Registration Platform"
-publishedAt: "2026-10-07"
-summary: "Production vessel-registration platform with customer journeys, a dealer portal, administrative workflows and automated email updates."
+title: "Ocean Yacht Registration — Production Registration Platform"
+publishedAt: "2026-10-23"
+summary: "Live yacht-registration platform with separate customer and dealer journeys, Polish and Delaware services, secure document intake and administrative case tracking."
 images: []
 link: "https://oceanyachtregistration.com/"
-category: "Full-stack Applications"
+category: "Full-stack Platform · Live"
+featuredRank: 1
 ---
 
-## Overview
+## The business challenge
 
-Built and delivered a vessel-registration website with public customer registration, dealer onboarding and a partner portal.
+An international yacht-registration provider needed more than a brochure website: customers and approved dealers required structured applications, accurate quotations, private document submission, and ongoing case visibility.
 
-## Engineering scope
+## My contribution
 
-- Customer and dealer-specific registration reference number formats.
-- Dealer onboarding, approval and role-aware administrative workflows.
-- Transactional emails for registration events and dealer updates.
-- Cloudflare Workers, D1 database migrations and GitHub-based source control.
-- Responsive interface improvements, deployment verification and operational handover.
+Led the implementation and delivery of the registration platform, including the frontend experience, backend workflows, integrations, environment separation, quality checks and client handover.
 
-## Outcome
+## What shipped
 
-Deployed to production and handed over in October 2026. Customer data, private configuration and credentials are intentionally excluded from this public case study.
+- **Two registration journeys:** public customer submissions and an authenticated dealer portal with dealer-attributed applications.
+- **Distinct services:** Polish flag registration and related services, plus a Delaware Deletion Certificate workflow.
+- **Authoritative pricing:** server-side calculations and saved pricing snapshots; Delaware deletion uses a fixed $99 USD fee.
+- **Case management:** administrative dashboard, status transitions, history, dealer management and customer tracking.
+- **Private documents:** protected uploads for registration evidence and application-specific supporting materials.
+- **Operational communications:** transactional customer and dealer email workflows with delivery safeguards.
+- **Release engineering:** Cloudflare Workers, D1, Supabase Auth and Storage, Resend, GitHub, production/staging separation, regression testing and deployment smoke checks.
+
+## Delivery
+
+**Live production platform.** The application was delivered and subsequently enhanced with additional dealer and Delaware functionality. The public site is available at [oceanyachtregistration.com](https://oceanyachtregistration.com/).
+
+## Engineering decisions
+
+- Customer and dealer data is linked through explicitly scoped records.
+- Sensitive configuration and uploaded identity documents remain outside the public portfolio.
+- Staging and production use distinct backend resources to reduce deployment risk.
+- Pricing is validated by the server instead of trusting totals submitted by the browser.
+
+## What I can demonstrate
+
+I can discuss the registration flow, role boundaries, dealer history, pricing rules, testing approach and release process without disclosing client records or credentials.
