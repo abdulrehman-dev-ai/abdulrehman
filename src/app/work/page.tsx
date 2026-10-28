@@ -1,78 +1,38 @@
 import { getPosts } from "@/app/utils/utils";
-import { Column, Heading, Text } from "@/once-ui/components";
-import { Projects } from "@/components/work/Projects";
+import { Column, Heading } from "@/once-ui/components";
+import { ClientShowcase } from "@/components/work/ClientShowcase";
 import { baseURL } from "@/app/resources";
-import { person, work } from "@/app/resources/content";
+import { work, person } from "@/app/resources/content";
+import styles from "./work.module.scss";
 
 export async function generateMetadata() {
-  const title = work.title;
-  const description = work.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `https://${baseURL}/work` },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `https://${baseURL}/work/`,
-      images: [
-        {
-          url: ogImage,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  const title = "Selected Engineering Work";
+  const description = "Real client projects spanning cloud applications, automotive web, WordPress commerce and Shopify.";
+  const image = "https://" + baseURL + "/og?title=" + encodeURIComponent(title);
+  return { title, description, alternates:{canonical:"https://" + baseURL + "/work"},
+    openGraph:{title,description,url:"https://" + baseURL + "/work",images:[{url:image}]},
+    twitter:{card:"summary_large_image",title,description,images:[image]} };
 }
 
 export default function Work() {
-  const allProjects = getPosts(["src", "app", "work", "projects"]);
-  const featuredProjects = allProjects.filter((project) => (project.metadata.featuredRank || 0) > 0);
-
-  return (
-    <Column maxWidth="xl" gap="xl">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            headline: work.title,
-            description: work.description,
-            url: `https://${baseURL}/work`,
-            image: `https://${baseURL}/og?title=Client%20Case%20Studies`,
-            author: {
-              "@type": "Person",
-              name: person.name,
-            },
-            hasPart: featuredProjects.map((project) => ({
-              "@type": "CreativeWork",
-              headline: project.metadata.title,
-              description: project.metadata.summary,
-              url: `https://${baseURL}/work/${project.slug}`,
-              image: project.metadata.image ? `https://${baseURL}${project.metadata.image}` : `https://${baseURL}/og?title=${encodeURIComponent(project.metadata.title)}`,
-            })),
-          }),
-        }}
-      />
-      <Column maxWidth="m" paddingY="l" gap="m">
-        <Text variant="label-default-s" onBackground="accent-medium">PRODUCTION WORK & CLIENT BUILDS</Text>
-        <Heading as="h1" variant="display-strong-m" wrap="balance">Work that goes beyond a demo.</Heading>
-        <Text variant="heading-default-l" onBackground="neutral-weak" wrap="balance">
-          Delivered web platforms, operational workflows and e-commerce implementations. Each case study explains the scope, technology and real delivery status.
-        </Text>
-      </Column>
-      <Projects clientWorkOnly columns="2" />
-    </Column>
-  );
+  const featured = getPosts(["src","app","work","projects"]).filter(p=>Number(p.metadata.featuredRank||0)>0);
+  return <Column maxWidth="xl" gap="xl" fillWidth>
+    <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{__html:JSON.stringify({
+      "@context":"https://schema.org","@type":"CollectionPage",name:work.title,
+      url:"https://" + baseURL + "/work",author:{"@type":"Person",name:person.name},
+      hasPart:featured.map(p=>({"@type":"CreativeWork",name:p.metadata.title,url:"https://" + baseURL + "/work/" + p.slug}))
+    })}} />
+    <header className={styles.header}>
+      <p className={styles.overline}>PORTFOLIO / SELECTED ENGAGEMENTS</p>
+      <Heading as="h1" variant="display-strong-l" wrap="balance">Proof of work. Not just promises.</Heading>
+      <p className={styles.summary}>Production platforms, client websites and active commerce projects. Explore what I built, the engineering decisions, and the actual delivery status.</p>
+      <div className={styles.factline}><span>CLIENT DELIVERY</span><span>PLATFORM ENGINEERING</span><span>RELEASE & OPERATIONS</span></div>
+    </header>
+    <ClientShowcase mode="all" />
+    <section className={styles.end}>
+      <p>Have a similar challenge?</p>
+      <h2>Build with someone who can take it to production.</h2>
+      <a href="/contact">Start a conversation <span aria-hidden="true">↗</span></a>
+    </section>
+  </Column>;
 }
