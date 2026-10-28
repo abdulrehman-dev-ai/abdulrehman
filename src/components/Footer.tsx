@@ -1,72 +1,30 @@
-import { Flex, IconButton, SmartLink, Text } from "@/once-ui/components";
-import { person, social } from "@/app/resources/content";
+import Link from "next/link";
+import { person, social, business } from "@/app/resources/content";
 import styles from "./Footer.module.scss";
 
-const legalLinks = [
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms & Conditions", href: "/terms" },
-  { label: "Refund Policy", href: "/refund-policy" },
-  { label: "Service Policy", href: "/service-policy" },
-  { label: "Contact", href: "/contact" },
-];
-
-export const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <Flex
-      as="footer"
-      position="relative"
-      fillWidth
-      padding="8"
-      horizontal="center"
-      mobileDirection="column"
-    >
-      <Flex
-        className={styles.mobile}
-        maxWidth="m"
-        paddingY="8"
-        paddingX="16"
-        gap="16"
-        horizontal="space-between"
-        vertical="center"
-        direction="column"
-      >
-        <Flex gap="12" wrap horizontal="center">
-          {legalLinks.map((link) => (
-            <SmartLink key={link.href} href={link.href}>
-              <Text variant="body-default-xs" onBackground="neutral-weak">
-                {link.label}
-              </Text>
-            </SmartLink>
-          ))}
-        </Flex>
-        <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textAlign: "center", lineHeight: 1.7 }}>
-          © {currentYear} {person.name}. Full-stack, cloud and security engineering.
-        </Text>
-        <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textAlign: "center" }}>
-          Adapted from{" "}
-          <SmartLink href="https://once-ui.com/templates/magic-portfolio">Once UI Magic Portfolio</SmartLink>
-          {" · "}
-          <SmartLink href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</SmartLink>
-        </Text>
-        <Flex gap="16">
-          {social.map(
-            (item) =>
-              item.link && (
-                <IconButton
-                  key={item.name}
-                  href={item.link}
-                  icon={item.icon}
-                  tooltip={item.name}
-                  size="s"
-                  variant="ghost"
-                />
-              ),
-          )}
-        </Flex>
-      </Flex>
-      <Flex height="80" show="s"></Flex>
-    </Flex>
-  );
-};
+const nav=[["Work","/work"],["Services","/services"],["About","/about"],["Journal","/blog"],["Contact","/contact"]];
+export function Footer(){
+  const year=new Date().getFullYear();
+  return <footer className={styles.outer}>
+    <div className={styles.main}>
+      <div className={styles.left}>
+        <span className={styles.eyebrow}>INDEPENDENT ENGINEERING / LAHORE · WORLDWIDE</span>
+        <h2>Good work.<br/><em>Built to last.</em></h2>
+        <a className={styles.mail} href={"mailto:"+business.email}>Let's talk about your project ↗</a>
+      </div>
+      <div className={styles.right}>
+        <div><p>EXPLORE</p><nav aria-label="Footer navigation">
+          {nav.map(([label,path])=><Link href={path} key={path}>{label}</Link>)}
+        </nav></div>
+        <div><p>FIND ME</p><nav aria-label="Social profiles">
+          {social.filter(item=>item.link&&["GitHub","LinkedIn","Fiverr","Upwork"].includes(item.name)).map(item=><a key={item.name} href={item.link} target="_blank" rel="noopener noreferrer">{item.name} ↗</a>)}
+        </nav></div>
+      </div>
+    </div>
+    <div className={styles.bottom}>
+      <span>© {year} {person.name}. Full-stack, cloud & security engineering.</span>
+      <div><Link href="/privacy-policy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/refund-policy">Refunds</Link><Link href="/service-policy">Service policy</Link></div>
+      <span className={styles.credits}>Adapted from <a href="https://once-ui.com/templates/magic-portfolio" target="_blank" rel="noopener noreferrer">Once UI Magic Portfolio</a> · <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a></span>
+    </div>
+  </footer>;
+}
