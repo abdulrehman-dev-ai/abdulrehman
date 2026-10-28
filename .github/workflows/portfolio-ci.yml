@@ -28,3 +28,17 @@ jobs:
           ORDER_CHECKOUT_ENABLED: 'false'
           NEXT_PUBLIC_ORDER_CHECKOUT_ENABLED: 'false'
         run: npm run build
+
+      - name: Smoke test navigation and disabled payments
+        env:
+          ORDER_CHECKOUT_ENABLED: 'false'
+          NEXT_PUBLIC_ORDER_CHECKOUT_ENABLED: 'false'
+        run: |
+          npm run start -- --hostname 127.0.0.1 --port 3100 > /tmp/portfolio-start.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:3100/ >/dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/smoke-portfolio.mjs
