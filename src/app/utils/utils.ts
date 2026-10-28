@@ -19,6 +19,7 @@ type Metadata = {
   team: Team[];
   link?: string;
   category?: string;
+  featuredRank?: number;
   price?: string;
   currency?: string;
   priceNote?: string;
@@ -54,6 +55,7 @@ function readMDXFile(filePath: string) {
             team: data.team || [],
             link: data.link || "",
             category: data.category || "",
+            featuredRank: Number.isFinite(Number(data.featuredRank)) ? Number(data.featuredRank) : 0,
             price: data.price || "",
             currency: data.currency || "PKR",
             priceNote: data.priceNote || "",
