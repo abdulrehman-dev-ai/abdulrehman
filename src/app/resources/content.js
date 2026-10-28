@@ -140,13 +140,13 @@ const social = [
 const home = {
   label: "Home",
   title: `${person.name}`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  description: `Real client case studies in full-stack engineering, cloud delivery, secure business platforms and e-commerce by ${person.name}.`,
   headline: <>Real products. Shipped with care.</>,
   subline: (
     <>
       I’m Abdul Rehman — a full-stack, cloud and security engineer building practical digital products for real businesses.
       <br />
-      Explore live client platforms, deployment architecture and honest case studies — not just internship assignments.
+      Explore live client platforms, technical case studies and e-commerce implementations with transparent delivery status.
     </>
   ),
 };
@@ -790,8 +790,8 @@ const blog = {
 
 const work = {
   label: "Work",
-  title: "My projects",
-  description: `Design and dev projects by ${person.name}`,
+  title: "Client Projects & Engineering Case Studies",
+  description: `Delivered web platforms, client websites and e-commerce implementations by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
