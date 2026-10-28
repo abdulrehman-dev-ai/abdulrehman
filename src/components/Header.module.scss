@@ -23,3 +23,38 @@
 .contact { border:1px solid var(--neo-border);border-radius:13px;background:linear-gradient(145deg,#164638,#0d2724);box-shadow:var(--neo-shadow-small),var(--neo-rim);color:#caffdf; }
 .contact:hover { background:linear-gradient(145deg,#1d6550,#0e3126); }
 @media (max-width:700px){.navigation {width:100%;} .navItem {border-radius:11px;}}
+
+/* Brand image — personal portrait inside the existing raised soft-UI badge. */
+.monogram {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  flex: 0 0 auto;
+  padding: 3px;
+  background: linear-gradient(145deg, #245448, #0b211c);
+}
+.profilePhoto {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 9px;
+  box-shadow: var(--neo-inset);
+}
+.statusDot {
+  position: absolute;
+  z-index: 2;
+  right: 2px;
+  bottom: 2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a8f6d5;
+  border: 1px solid #0d2c23;
+  box-shadow: 0 0 0 2px rgba(12, 38, 30, .78);
+}
+@media (max-width: 700px) {
+  .profilePhoto { border-radius: 8px; }
+  .statusDot { width: 6px; height: 6px; }
+}

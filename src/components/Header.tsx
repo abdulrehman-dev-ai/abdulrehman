@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 
@@ -15,7 +16,17 @@ export function Header(){
   return <header className={styles.shell}>
     <div className={styles.inner}>
       <Link className={styles.brand} href="/" aria-label="Abdul Rehman, homepage">
-        <span className={styles.monogram}>AR<span aria-hidden="true">.</span></span>
+        <span className={styles.monogram}>
+          <Image
+            src="/images/avatar.png"
+            alt=""
+            width={80}
+            height={80}
+            className={styles.profilePhoto}
+            priority
+          />
+          <span className={styles.statusDot} aria-hidden="true" />
+        </span>
         <span className={styles.brandText}>Abdul Rehman<small>Engineering & delivery</small></span>
       </Link>
       <nav aria-label="Primary navigation" className={styles.navigation}>
