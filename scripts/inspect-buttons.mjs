@@ -24,7 +24,7 @@ async function inspect(route, viewport, label) {
   }));
   console.log(label+" diagnostic "+JSON.stringify({status:response?.status(),...diagnostic}));
   await page.screenshot({path:path.join("button-check", label+".png"),fullPage:true});
-  const info = await page.locator('a[data-button-system="unified-v3"]').evaluateAll(elements =>
+  const info = await page.locator('a.neo-action').evaluateAll(elements =>
     elements.map(a => {
       const css = getComputedStyle(a);
       const icon = a.querySelector(".neo-action__icon");
@@ -32,6 +32,7 @@ async function inspect(route, viewport, label) {
         text:a.innerText.replace(/\s+/g," ").trim(),
         href:a.getAttribute("href"),
         variant:a.getAttribute("data-neo-action"),
+        system:a.getAttribute("data-button-system"),
         background:css.backgroundImage,
         color:css.color,
         radius:css.borderRadius,
@@ -45,6 +46,7 @@ async function inspect(route, viewport, label) {
   );
   if (info.length===0) failures.push(label+": missing unified-v3 controls");
   for (const item of info) {
+    if (item.system !== "unified-v3") failures.push(label+": missing current design marker for "+item.text);
     if (item.radius !== "13px") failures.push(label+": radius for "+item.text+" is "+item.radius);
     if (item.boxShadow === "none") failures.push(label+": no shadow for "+item.text);
     if (!item.background.includes("linear-gradient")) failures.push(label+": expected neumorphic gradient "+item.text);

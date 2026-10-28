@@ -48,5 +48,5 @@ export function ActionLink({
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{content}</a>;
   }
 
-  return <Link href={href} className={classes} data-neo-action={variant} aria-label={ariaLabel}>{content}</Link>;
+  return <Link href={href} className={classes} data-neo-action={variant} data-button-system="unified-v3" aria-label={ariaLabel}>{content}</Link>;
 }
