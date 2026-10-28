@@ -41,3 +41,7 @@
 @media (max-width:900px) { .lead {grid-template-columns:1fr;} .artLarge{min-height:310px;} .supporting{grid-template-columns:repeat(2,minmax(0,1fr));} }
 @media (max-width:600px) { .artLarge{min-height:250px;} .leadBody{padding:1.6rem;} .supporting{grid-template-columns:1fr;} .art{min-height:205px;} .leadBody h3{font-size:2.1rem;} }
 @media (prefers-reduced-motion:reduce) { .art {transition:none;} }
+/* Keep an attractive portfolio card even when a third-party image goes offline. */
+.visualFallback { display:flex; flex:1; width:100%; min-height:100px; align-items:center; justify-content:center; text-align:center; font-size:clamp(1.35rem,2.4vw,2.4rem); font-weight:780; letter-spacing:-.055em; color:#e6faf0; padding:1.6rem .7rem; }
+.organic .visualFallback { color:#e9d9a9; }
+.auto .visualFallback { color:#282820; }

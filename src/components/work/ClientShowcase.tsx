@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getPosts } from "@/app/utils/utils";
 import styles from "./ClientShowcase.module.scss";
+import ProjectArtImage from "./ProjectArtImage";
 
 type Project = ReturnType<typeof getPosts>[number];
 const visuals: Record<string, { src?: string; label: string; kind: string; tools: string[] }> = {
@@ -17,7 +18,7 @@ const visuals: Record<string, { src?: string; label: string; kind: string; tools
     tools: ["Web delivery", "Business operations"],
   },
   "maqwi-organics": {
-    src: "https://maqwiorganics.gt.tc/wp-content/themes/maqwi-organics/assets/images/hero-collection-v3.webp?v=studio-1",
+    src: "https://raw.githubusercontent.com/maqwiorganics/maqwiorganics/main/wp-content/themes/maqwi-organics/assets/images/hero-collection-v3.webp",
     label: "Maqwi Organics actual storefront collection imagery",
     kind: "WooCommerce · Pre-launch",
     tools: ["WordPress", "WooCommerce", "Responsive UX"],
@@ -49,8 +50,7 @@ export function ProjectVisual({ slug, title, large = false }: { slug: string; ti
         <span>↗</span>
       </div>
       {visual?.src
-        ? <img className={styles.brandImage} src={visual.src} alt={visual.label}
-            loading={large ? "eager" : "lazy"} referrerPolicy="no-referrer" />
+        ? <ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} />
         : <div className={styles.brandType} aria-label={title}>RICO<span>SCENTS</span></div>}
       <div className={styles.artFoot}>
         <span>{visual?.kind || "Engineering work"}</span>

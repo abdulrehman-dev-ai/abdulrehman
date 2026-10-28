@@ -19,7 +19,7 @@ const groups = [
   { n:"02", heading:"Cloud & automate", intro:"Move, deploy and maintain infrastructure with repeatable, observable workflows.",
     slugs:["cloud-infrastructure-setup","devops-cicd-pipeline","docker-containerization","linux-automation-scripting","server-migration-administration"], outcome:"Less manual work. Clearer releases. Better operational control." },
   { n:"03", heading:"Secure & improve", intro:"Identify risks and harden systems so security becomes part of delivery, not an afterthought.",
-    slugs:["vulnerability-assessment-penetration-testing"], outcome:"Actionable security findings and a practical remediation plan." },
+    slugs:["vulnerability-assessment-pentesting"], outcome:"Actionable security findings and a practical remediation plan." },
 ];
 export default function ServicesPage() {
   const all = getPosts(["src","app","services","items"]);
