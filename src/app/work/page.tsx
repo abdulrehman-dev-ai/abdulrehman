@@ -8,7 +8,7 @@ import { ActionLink } from "@/components/ui/ActionLink";
 
 export async function generateMetadata() {
   const title = "Selected Engineering Work";
-  const description = "Real client projects spanning cloud applications, automotive web, WordPress commerce and Shopify.";
+  const description = "Real client work across full-stack applications, WordPress and VPS migration, cloud infrastructure, automotive websites and commerce.";
   const image = "https://" + baseURL + "/og?title=" + encodeURIComponent(title);
   return { title, description, alternates:{canonical:"https://" + baseURL + "/work"},
     openGraph:{title,description,url:"https://" + baseURL + "/work",images:[{url:image}]},

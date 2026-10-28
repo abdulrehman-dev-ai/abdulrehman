@@ -41,7 +41,9 @@ export default function AboutPage() {
       <div className={styles.heading}><p className={styles.kicker}>SELECTED EXPERIENCE</p><h2>The work behind the portfolio.</h2></div>
       {selected.map((exp,index)=><article key={exp.company} className={styles.role}>
         <div className={styles.roleMeta}><strong>0{index+1}</strong><small>{exp.timeframe}</small></div>
-        <div><h3>{exp.company}</h3><p>{exp.role}</p><ul>{exp.achievements.slice(0,3).map((item,i)=><li key={i}>{item}</li>)}</ul></div>
+        <div><h3>{exp.company}</h3><p>{exp.role}</p><ul>{exp.achievements.slice(0,3).map((item,i)=><li key={i}>{item}</li>)}</ul>
+          {exp.company === "Independent Freelance / Consulting" && <ActionLink href="/work/anyarabic" size="sm" variant="quiet">AnyArabic — VPS migration case study</ActionLink>}
+        </div>
       </article>)}
       <details className={styles.archive}><summary>Earlier roles and internships <span aria-hidden="true">+</span></summary>
         {earlier.map(exp=><article key={exp.company}><h3>{exp.company}</h3><small>{exp.timeframe} / {exp.role}</small><ul>{exp.achievements.slice(0,2).map((item,i)=><li key={i}>{item}</li>)}</ul></article>)}

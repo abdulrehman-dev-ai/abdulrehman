@@ -71,3 +71,17 @@
 .browserTop,.artFoot {font-size:.68rem;line-height:1.4;letter-spacing:.045em;}
 .disclosure {font-size:.79rem;line-height:1.72;}
 @media(max-width:600px){.leadBody h3{font-size:clamp(1.85rem,7.5vw,2.35rem);}.smallBody h3{font-size:1.32rem;}.leadBody p,.smallBody p{font-size:.94rem;}}
+
+
+/* AnyArabic editorial treatment: distinct from a live website screenshot. */
+.academy {
+  color:#f4ebda;
+  background:radial-gradient(circle at 74% 24%,rgba(201,160,107,.24),transparent 46%),linear-gradient(150deg,#1c2a30,#0b1b22 70%);
+}
+.academy::after {border-color:rgba(229,201,151,.14);box-shadow:0 0 0 36px rgba(225,188,144,.028),0 0 0 76px rgba(231,200,151,.015);}
+.academyBrand {margin:auto;width:100%;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;text-align:center;color:#f5ebdc;}
+.academyGlyph {display:grid;place-items:center;width:clamp(54px,7vw,83px);height:clamp(54px,7vw,83px);color:#f0cf98;font:700 clamp(1.85rem,3.2vw,2.9rem)/1 Georgia,serif;background:linear-gradient(145deg,#30434a,#111e26);border:1px solid rgba(234,210,162,.23);border-radius:22px;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
+.academyBrand strong {font-family:var(--type-display),sans-serif;font-size:clamp(1.85rem,3vw,3.1rem);font-weight:780;letter-spacing:-.07em;line-height:1.1;}
+.academyBrand strong span {color:#e4bc85;}
+.academyBrand small {color:#c0c3b7;font:.68rem/1.55 var(--type-mono),monospace;letter-spacing:.09em;}
+@media(max-width:600px){.academyBrand{min-height:110px;}.academyBrand strong{font-size:clamp(1.7rem,7.5vw,2.2rem);}.academyBrand small{font-size:.64rem;}}

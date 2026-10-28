@@ -12,6 +12,11 @@ const visuals: Record<string, { src?: string; label: string; kind: string; tools
     kind: "Full-stack platform",
     tools: ["Cloudflare Workers", "D1", "Supabase", "Resend"],
   },
+  "anyarabic": {
+    label: "AnyArabic editorial identity — not a website screenshot",
+    kind: "WordPress / VPS Migration · Delivered",
+    tools: ["WordPress", "Vultr VPS", "Nginx", "Cloudflare"],
+  },
   "auto-levels": {
     src: "https://www.autolevels.pk/assets/black-tF-bFyqn.png",
     label: "Official Auto Levels website branding",
@@ -39,7 +44,8 @@ function sortedClientProjects(): Project[] {
 
 export function ProjectVisual({ slug, title, large = false }: { slug: string; title: string; large?: boolean }) {
   const visual = visuals[slug];
-  const variant = slug === "ocean-yacht-registration" ? styles.ocean
+  const variant = slug === "anyarabic" ? styles.academy
+    : slug === "ocean-yacht-registration" ? styles.ocean
     : slug === "maqwi-organics" ? styles.organic
     : slug === "auto-levels" ? styles.auto
     : styles.fragrance;
@@ -52,10 +58,16 @@ export function ProjectVisual({ slug, title, large = false }: { slug: string; ti
       </div>
       {visual?.src
         ? <ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} />
-        : <div className={styles.brandType} aria-label={title}>RICO<span>SCENTS</span></div>}
+        : slug === "anyarabic"
+          ? <div className={styles.academyBrand} role="img" aria-label="AnyArabic editorial project identity">
+              <span className={styles.academyGlyph} aria-hidden="true">ع</span>
+              <strong>Any<span>Arabic</span></strong>
+              <small>WORDPRESS · VPS · CLOUD DELIVERY</small>
+            </div>
+          : <div className={styles.brandType} aria-label={title}>RICO<span>SCENTS</span></div>}
       <div className={styles.artFoot}>
         <span>{visual?.kind || "Engineering work"}</span>
-        <span>PROJECT / {slug === "ocean-yacht-registration" || slug === "auto-levels" ? "LIVE" : "ONGOING"}</span>
+        <span>PROJECT / {slug === "ocean-yacht-registration" || slug === "auto-levels" || slug === "anyarabic" ? "LIVE" : "ONGOING"}</span>
       </div>
     </div>
   );
@@ -112,7 +124,7 @@ export function ClientShowcase({ mode = "home" }: { mode?: "home" | "all" }) {
       <div className={styles.supporting}>
         {projects.slice(1, mode === "home" ? 4 : undefined).map((project, index) => <SmallCard project={project} index={index} key={project.slug} />)}
       </div>
-      <p className={styles.disclosure}>Project photography and branding come from the respective public websites. Screenshots of private admin areas and customer data are intentionally excluded. Delivery status is indicated on each case study.</p>
+      <p className={styles.disclosure}>Project visuals use public brand assets or clearly marked editorial treatments. Confidential infrastructure, private dashboards and customer records are not shown. Individual case studies distinguish delivered work from work still in progress.</p>
     </div>
   );
 }

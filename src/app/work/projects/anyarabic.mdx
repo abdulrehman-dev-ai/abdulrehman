@@ -1,0 +1,51 @@
+---
+title: "AnyArabic — WordPress Infrastructure Recovery & VPS Migration"
+publishedAt: "2025-08-27"
+summary: "Fiverr client engagement for an Arabic-learning platform: recovered WordPress infrastructure, migrated the public site between Vultr VPS environments, and coordinated Nginx, HTTPS and Cloudflare DNS."
+images: []
+link: "https://anyarabic.com/"
+category: "WordPress & VPS Migration · Delivered"
+featuredRank: 2
+---
+
+## The client and the challenge
+
+**AnyArabic (Arabic4U)** is an online Arabic-learning platform. I worked with its client contact, Sam, through a Fiverr engagement in August 2025.
+
+This was an **infrastructure and WordPress operations engagement**, not a redesign of the learning platform or development of its course catalogue. The challenge was to restore reliable public service while moving a business website away from an older VPS environment.
+
+The work involved practical issues across several layers:
+
+- An older Ubuntu/Vultr WordPress installation with database availability and storage pressure.
+- Nginx configuration conflicts and overlapping subdomain routing.
+- WordPress site URL settings that could redirect visitors between the primary domain and the go subdomain.
+- Coordinating DNS, SSL certificates, web-server routing and the application configuration during migration.
+
+## My role and contribution
+
+I handled troubleshooting and migration coordination spanning Linux, WordPress, Nginx, PHP-FPM, MariaDB and Cloudflare.
+
+I assessed the legacy setup, investigated WordPress availability issues, helped configure the target VPS, corrected the main site's URL configuration, coordinated the Cloudflare cutover and checked the public website after the change.
+
+## Delivered engineering work
+
+- **VPS transition:** supported the migration from the original Atlanta Vultr WordPress setup to the replacement Chicago VPS environment.
+- **WordPress troubleshooting:** investigated database startup failures and configuration problems, including disk-space pressure and incorrect home/siteurl values.
+- **Nginx and PHP-FPM:** worked on the server configuration for the primary WordPress site, with secure virtual-host routing and PHP handling.
+- **Canonical domain behavior:** corrected the public domain settings and verified expected HTTP-to-HTTPS and www-to-apex redirects.
+- **Cloudflare and TLS:** coordinated the DNS record change and Let's Encrypt/Certbot certificate configuration.
+- **Public checks:** confirmed successful HTTPS responses, including HTTP/2 200, and validated public static assets after the cutover.
+
+## Technologies
+
+**Vultr VPS · Ubuntu Linux · WordPress · Nginx · PHP-FPM · MariaDB · Cloudflare DNS · Let's Encrypt / Certbot**
+
+The main engineering lesson: a server migration is not just a copy of files. Web-server routing, database state, application URLs, DNS and TLS all need to agree before traffic is moved.
+
+## Delivery and scope
+
+**Delivered infrastructure engagement — August 2025.** The public WordPress site was serving from the configured environment during the documented cutover. Explore the public platform at [anyarabic.com](https://anyarabic.com/).
+
+The website's current design, learning content and any later changes are not my claimed deliverables. A separate potential move to cPanel/shared hosting was discussed afterward, but **that later proposal is not claimed as completed here**.
+
+No customer data, credentials, server access details or private administrative screenshots are included. The project card uses editorial brand artwork rather than a screenshot of a private system.
