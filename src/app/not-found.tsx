@@ -11,3 +11,4 @@ export default function NotFound() {
       <ActionLink href="/work" variant="secondary">Explore projects</ActionLink>
     </Column>
   </Column>;
+}

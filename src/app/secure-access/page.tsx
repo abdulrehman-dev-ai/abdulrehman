@@ -18,3 +18,4 @@ export default function PrivateAccessPage() {
     <ActionLink href="/contact" variant="primary">Request access</ActionLink>
     <ActionLink href="/work" variant="quiet" icon="arrow-left">Back to public work</ActionLink>
   </Column>;
+}
