@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-// Email-only MVP. Do not claim persistence: CRM storage and abuse prevention
-// must be added before enabling this route for public production traffic.
+// Email-only MVP: no durable lead storage. Security verification is required
+// before any provider request; persistent CRM storage is a separate phase.
 export const runtime = "nodejs";
 
 const categories = new Set([
@@ -73,9 +73,34 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM_EMAIL;
   const to = process.env.RESEND_TO_EMAIL;
-  // No silent success: avoid collecting inquiries without a real destination.
-  if (!apiKey || !from || !to) {
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  // Fail closed until both email delivery and bot verification are configured.
+  if (!apiKey || !from || !to || !turnstileSecret) {
     return response("Direct submission is not configured. Please use the email option.", 503);
+  }
+
+  const token = field(payload.turnstileToken, 2048);
+  if (!token) return response("Complete the security verification and retry.", 400);
+  try {
+    const challengeResponse = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ secret: turnstileSecret, response: token }),
+        signal: AbortSignal.timeout(8000),
+        cache: "no-store",
+      },
+    );
+    if (!challengeResponse.ok) throw new Error("Turnstile API unavailable");
+    const verification: unknown = await challengeResponse.json();
+    const result = verification as { success?: boolean; hostname?: string };
+    if (!result?.success || result.hostname !== new URL(request.url).hostname) {
+      return response("Security verification failed. Please retry or use email.", 403);
+    }
+  } catch {
+    console.error("Portfolio inquiry security verification unavailable.");
+    return response("Security verification unavailable. Please use the email option.", 503);
   }
 
   const text = [
