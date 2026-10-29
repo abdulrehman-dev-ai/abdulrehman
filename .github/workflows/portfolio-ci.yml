@@ -20,7 +20,7 @@ jobs:
           node-version: '24'
           cache: npm
       - name: Verify D1 schema, integrity and idempotency
-        run: node --test infra/d1/tests/schema.test.mjs
+        run: node --test infra/d1/tests/*.test.mjs
 
       - name: Install exact dependencies
         run: npm ci
