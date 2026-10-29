@@ -23,7 +23,10 @@ export default function ProjectBrief({ email }: { email: string }) {
   const [sender, setSender] = useState("");
   const [goal, setGoal] = useState("");
   const [details, setDetails] = useState("");
+  const [website, setWebsite] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     const slug = new URLSearchParams(window.location.search).get("service") || "";
@@ -46,12 +49,33 @@ export default function ProjectBrief({ email }: { email: string }) {
     "Please reply with the next steps.",
   ].join("\n");
 
-  function prepare(event: React.FormEvent<HTMLFormElement>) {
+  const emailHref =
+    "mailto:" + email +
+    "?subject=" + encodeURIComponent("Project inquiry: " + (service || kind)) +
+    "&body=" + encodeURIComponent(message);
+
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setFeedback("Your email app should open with the prepared inquiry. Please press Send there to complete it.");
-    window.location.href = "mailto:" + email +
-      "?subject=" + encodeURIComponent("Project inquiry: " + (service || kind)) +
-      "&body=" + encodeURIComponent(message);
+    if (sending || sent) return;
+    setSending(true);
+    setFeedback("");
+    try {
+      const result = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind, service, budget, sender, goal, details, website }),
+      });
+      if (!result.ok) {
+        setFeedback("Direct submission couldn't be completed. Please use the email option below.");
+        return;
+      }
+      setSent(true);
+      setFeedback("Your inquiry was accepted for email sending. I'll follow up using the address you provided.");
+    } catch {
+      setFeedback("The connection failed. Please use the email option below.");
+    } finally {
+      setSending(false);
+    }
   }
 
   async function copyInquiry() {
@@ -65,19 +89,19 @@ export default function ProjectBrief({ email }: { email: string }) {
       );
       setFeedback("Inquiry copied. Paste it into your email app and send it to " + email + ".");
     } catch {
-      setFeedback("Copy isn't available in this browser. Use Prepare email inquiry or email " + email + " directly.");
+      setFeedback("Copy isn't available in this browser. Use the email option or contact " + email + " directly.");
     }
   }
 
-  return <form className={styles.form} onSubmit={prepare}>
+  return <form className={styles.form} onSubmit={submit}>
     <div className={styles.grid}>
       <label>What are you planning?
-        <select value={kind} onChange={e => setKind(e.target.value)}>
+        <select value={kind} onChange={e => setKind(e.target.value)} disabled={sending || sent}>
           {categories.map(option => <option key={option}>{option}</option>)}
         </select>
       </label>
       <label>Estimated budget
-        <select value={budget} onChange={e => setBudget(e.target.value)}>
+        <select value={budget} onChange={e => setBudget(e.target.value)} disabled={sending || sent}>
           <option>Let's discuss</option>
           <option>Below PKR 50,000</option>
           <option>PKR 50,000–150,000</option>
@@ -89,25 +113,39 @@ export default function ProjectBrief({ email }: { email: string }) {
     {service && <p className={styles.selectedService}>Selected service: {service.replace(/-/g, " ")}</p>}
     <label>Your email
       <input type="email" required maxLength={254} autoComplete="email"
-        value={sender} onChange={e => setSender(e.target.value)} placeholder="you@company.com"/>
+        value={sender} onChange={e => setSender(e.target.value)} disabled={sending || sent}
+        placeholder="you@company.com"/>
     </label>
     <label>What outcome do you need?
-      <input required minLength={10} maxLength={180}
-        value={goal} onChange={e => setGoal(e.target.value)} placeholder="A client portal with secure login…"/>
+      <input required minLength={10} maxLength={180} disabled={sending || sent}
+        value={goal} onChange={e => setGoal(e.target.value)}
+        placeholder="A client portal with secure login…"/>
     </label>
     <label>Anything else?
-      <textarea maxLength={2400} rows={5} value={details}
-        onChange={e => setDetails(e.target.value)} placeholder="Timeline, existing stack, links or constraints…"/>
+      <textarea maxLength={2400} rows={5} value={details} disabled={sending || sent}
+        onChange={e => setDetails(e.target.value)}
+        placeholder="Timeline, existing stack, links or constraints…"/>
     </label>
-    <div className={styles.actions}>
-      <button className={"neo-action neo-action--primary " + actionStyles.control + " " + actionStyles.primary} type="submit">
-        Prepare email inquiry <span className="neo-action__icon" aria-hidden="true">↗</span>
-      </button>
-      <button className={"neo-action neo-action--secondary " + actionStyles.control + " " + actionStyles.secondary} type="button" onClick={copyInquiry}>
-        Copy inquiry <span className="neo-action__icon" aria-hidden="true">⧉</span>
-      </button>
+    <div className={styles.honeypot} aria-hidden="true">
+      <label>Website <input type="text" name="website" tabIndex={-1} autoComplete="off"
+        value={website} onChange={e => setWebsite(e.target.value)} /></label>
     </div>
-    {feedback && <p className={styles.feedback} role="status">{feedback}</p>}
-    <p className={styles.notice}>Nothing is submitted automatically. Send the prepared email yourself, or copy it into your preferred email app.</p>
+    <div className={styles.actions}>
+      <button className={"neo-action neo-action--primary " + actionStyles.control + " " + actionStyles.primary}
+        type="submit" disabled={sending || sent}>
+        {sending ? "Sending inquiry…" : sent ? "Inquiry submitted" : "Send project inquiry"}
+        <span className="neo-action__icon" aria-hidden="true">↗</span>
+      </button>
+      {!sent && <a className={"neo-action neo-action--secondary " + actionStyles.control + " " + actionStyles.secondary}
+        href={emailHref}>
+        Open email app <span className="neo-action__icon" aria-hidden="true">↗</span>
+      </a>}
+      {!sent && <button className={"neo-action neo-action--secondary " + actionStyles.control + " " + actionStyles.secondary}
+        type="button" onClick={copyInquiry}>
+        Copy inquiry <span className="neo-action__icon" aria-hidden="true">⧉</span>
+      </button>}
+    </div>
+    {feedback && <p className={styles.feedback} role="status" aria-live="polite">{feedback}</p>}
+    <p className={styles.notice}>Submit directly, or use your email app as a backup. We only use your details to respond to your project inquiry.</p>
   </form>;
 }
