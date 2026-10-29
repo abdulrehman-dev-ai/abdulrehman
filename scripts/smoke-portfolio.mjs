@@ -63,6 +63,34 @@ for (const [path, method, expected] of [
   if (res.status !== expected) failures.push(`${method} ${path}: HTTP ${res.status} instead of ${expected}`);
 }
 
+
+const inquiryEndpoint = new URL("/api/inquiries", origin);
+const sampleInquiry = {
+  kind: "Cloud migration / DevOps",
+  budget: "Let's discuss",
+  sender: "client@example.com",
+  goal: "Migrate the existing website safely",
+  details: "Please assess the hosting setup.",
+  service: "cloud-migration",
+  website: "",
+};
+for (const [testName, options, expected] of [
+  ["no JSON content-type", { method: "POST" }, 415],
+  ["malformed JSON", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{" }, 400],
+  ["invalid fields", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...sampleInquiry, sender: "invalid" }) }, 400],
+  ["cross-origin rejection", { method: "POST", headers: { "Content-Type": "application/json", Origin: "https://not-our-site.example" }, body: JSON.stringify(sampleInquiry) }, 403],
+  ["honeypot", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...sampleInquiry, website: "bot.example" }) }, 202],
+  ["email provider not configured", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(sampleInquiry) }, 503],
+]) {
+  try {
+    const res = await fetch(inquiryEndpoint, options);
+    if (res.status !== expected) failures.push("Inquiry API " + testName + ": HTTP " + res.status + " instead of " + expected);
+  } catch (error) {
+    failures.push("Inquiry API " + testName + ": " + String(error));
+  }
+}
+console.log("Checked inquiry validation, honeypot, origin safeguards and missing provider configuration.");
+
 console.log(`Checked ${pages.length} pages, ${links.size} internal navigation destinations and payment safeguards.`);
 if (failures.length) {
   console.error(failures.join("\n"));
