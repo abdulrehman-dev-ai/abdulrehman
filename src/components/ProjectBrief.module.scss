@@ -14,3 +14,9 @@
 .feedback { border:1px solid rgba(164,241,202,.26);background:#113c2e;color:#dafce8;padding:.8rem 1rem;border-radius:12px;line-height:1.55;font-size:.84rem; }
 .selectedService { border:1px solid var(--neo-border);background:#102e25;box-shadow:var(--neo-inset);border-radius:12px;padding:.75rem 1rem;color:#c4f8d9;text-transform:capitalize;font-size:.85rem; }
 @media(max-width:480px){.actions > :global(.neo-action) {width:100%;}}
+
+/* Keep the abuse-prevention honeypot out of the visible layout and tab order. */
+.honeypot{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;pointer-events:none!important;}
+.form :is(input,select,textarea):disabled{opacity:.76;cursor:not-allowed;}
+.actions :is(button,a):focus-visible{outline:2px solid #a8eacf;outline-offset:3px;}
+.notice{color:var(--neutral-on-background-medium);font-size:.8rem;line-height:1.6;}
