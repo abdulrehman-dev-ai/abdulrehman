@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./ProjectBrief.module.scss";
 import actionStyles from "./ui/ActionLink.module.scss";
+import InquiryChallenge from "./InquiryChallenge";
 
 const categories = [
   "Full-stack application", "Business website / e-commerce",
@@ -27,6 +28,9 @@ export default function ProjectBrief({ email }: { email: string }) {
   const [feedback, setFeedback] = useState("");
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [challengeReset, setChallengeReset] = useState(0);
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
 
   useEffect(() => {
     const slug = new URLSearchParams(window.location.search).get("service") || "";
@@ -57,13 +61,17 @@ export default function ProjectBrief({ email }: { email: string }) {
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (sending || sent) return;
+    if (!turnstileSiteKey || !turnstileToken) {
+      setFeedback("Please complete the security check, or use the email option below.");
+      return;
+    }
     setSending(true);
     setFeedback("");
     try {
       const result = await fetch("/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind, service, budget, sender, goal, details, website }),
+        body: JSON.stringify({ kind, service, budget, sender, goal, details, website, turnstileToken }),
       });
       if (!result.ok) {
         setFeedback("Direct submission couldn't be completed. Please use the email option below.");
@@ -73,6 +81,7 @@ export default function ProjectBrief({ email }: { email: string }) {
       setFeedback("Your inquiry was accepted for email sending. I'll follow up using the address you provided.");
     } catch {
       setFeedback("The connection failed. Please use the email option below.");
+      setChallengeReset(n => n + 1);
     } finally {
       setSending(false);
     }
@@ -130,9 +139,14 @@ export default function ProjectBrief({ email }: { email: string }) {
       <label>Website <input type="text" name="website" tabIndex={-1} autoComplete="off"
         value={website} onChange={e => setWebsite(e.target.value)} /></label>
     </div>
+    {turnstileSiteKey ? (
+      <InquiryChallenge siteKey={turnstileSiteKey} onToken={setTurnstileToken} resetNonce={challengeReset} />
+    ) : (
+      <p className={styles.feedback} role="status">Direct submission is being configured. You can still send your brief by email below.</p>
+    )}
     <div className={styles.actions}>
       <button className={"neo-action neo-action--primary " + actionStyles.control + " " + actionStyles.primary}
-        type="submit" disabled={sending || sent}>
+        type="submit" disabled={sending || sent || !turnstileSiteKey || !turnstileToken}>
         {sending ? "Sending inquiry…" : sent ? "Inquiry submitted" : "Send project inquiry"}
         <span className="neo-action__icon" aria-hidden="true">↗</span>
       </button>
@@ -146,6 +160,6 @@ export default function ProjectBrief({ email }: { email: string }) {
       </button>}
     </div>
     {feedback && <p className={styles.feedback} role="status" aria-live="polite">{feedback}</p>}
-    <p className={styles.notice}>Submit directly, or use your email app as a backup. We only use your details to respond to your project inquiry.</p>
+    <p className={styles.notice}>Security-checked direct submission is available when configured. Email and copy options remain available. Your details are used to respond to your inquiry.</p>
   </form>;
 }
