@@ -27,6 +27,10 @@ jobs:
           node --check infra/worker/src/index.mjs
           node --test infra/worker/test/*.test.mjs
 
+      - name: Bundle Cloudflare Worker without deployment
+        working-directory: infra/worker
+        run: npx --yes wrangler@4.156.0 deploy --dry-run --outdir .wrangler/local-preview
+
       - name: Install exact dependencies
         run: npm ci
       - name: TypeScript check
