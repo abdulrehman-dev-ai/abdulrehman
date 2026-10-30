@@ -43,8 +43,8 @@ jobs:
           if [[ -n "$CLOUDFLARE_API_TOKEN" && -n "$CLOUDFLARE_ACCOUNT_ID" ]]; then
             echo "available=true" >> "$GITHUB_OUTPUT"
           else
-            echo "::notice::Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID as GitHub staging environment secrets; remote verification skipped."
-            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::error::Missing staging Cloudflare secrets; remote D1 verification cannot be marked successful."
+            exit 1
           fi
       - uses: actions/checkout@v4
         if: steps.credentials.outputs.available == 'true'
