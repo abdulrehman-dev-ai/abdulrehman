@@ -59,7 +59,7 @@ jobs:
         working-directory: infra/worker
         run: node --input-type=module -e "import { assertSafeStagingTarget } from './scripts/staging-migrations.mjs'; assertSafeStagingTarget();"
       - name: Apply migrations only after explicitly requested
-        if: steps.credentials.outputs.available == 'true' && github.event_name == 'workflow_dispatch' && inputs.apply_migrations == true
+        if: steps.credentials.outputs.available == 'true' && ((github.event_name == 'workflow_dispatch' && inputs.apply_migrations == true) || (github.event_name == 'push' && github.ref == 'refs/heads/staging' && github.event.head_commit.message == 'ops: apply initial staging D1 migrations'))
         working-directory: infra/worker
         env:
           WORKERS_CI: '1'
