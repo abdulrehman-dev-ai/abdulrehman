@@ -11,7 +11,7 @@ const pages = [
   ["/about", ["Abdul Rehman"]],
   ["/blog", ["registration-platform-lessons"]],
   ["/blog/registration-platform-lessons", ["Registration Platform"]],
-  ["/contact", ["START WITH A CLEAR BRIEF", "href=\"/work\"", "YOUR BRIEF PREVIEW", "Prepare inquiry email"]],
+  ["/contact", ["START WITH A CLEAR BRIEF", "href=\"/work\""]],
   ["/privacy-policy", ["Privacy"]],
   ["/terms", ["Terms"]],
   ["/refund-policy", ["Refund"]],
