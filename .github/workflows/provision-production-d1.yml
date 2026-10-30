@@ -1,0 +1,29 @@
+name: One-time Empty Production D1 Provisioning
+
+on:
+  push:
+    branches: [staging]
+    paths:
+      - '.github/workflows/provision-production-d1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  provision-empty-database:
+    if: ${{ github.event.head_commit.message == 'ops: provision approved empty production D1' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: staging
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Create empty database only if absent
+        run: node infra/worker/scripts/provision-production-d1.mjs
