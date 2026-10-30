@@ -17,7 +17,7 @@
 2. Authorize access to the existing repository `abdulrehman-dev-ai/abdulrehman` (prefer repository-only permissions).
 3. Set the Worker name `abdul-portfolio-api`, root directory `infra/worker`, production branch `main`.
 4. Choose no build command (single JavaScript module); deploy command `npx --yes wrangler@4.151.3 deploy`. Enable Worker Previews on the staging branch; preview command `npx --yes wrangler@4.151.3 preview`.
-5. First production bootstrap can be public at `*.workers.dev/healthz`, but business routes return 503 until the backend is finished. Confirm the response contains `service: portfolio-api` and `status: ok`.
+5. First production bootstrap can be public at `*.workers.dev/healthz`, but business routes return 503 until the backend is finished. Confirm the response contains `service: portfolio-api`, `status: ok`, and `ready_for_traffic: false`. `/readyz` intentionally returns 503 until the real backend is configured.
 6. IMPORTANT: **Do not** add a production D1 binding to Worker Previews. Later provision separate D1 staging and production databases and configure Worker Previews to bind to the isolated staging D1. If the dashboard uses shared bindings by default, disable preview builds until isolation is confirmed.
 7. Send the Worker URL back in chat (not a token). Cloudflare's native Git builds then run on pushes independently of GitHub Actions minutes.
 

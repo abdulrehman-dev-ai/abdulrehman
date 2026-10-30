@@ -7,7 +7,6 @@ const json = (body, status = 200) => new Response(JSON.stringify(body), {
     "cache-control": "no-store",
     "x-content-type-options": "nosniff",
     "referrer-policy": "no-referrer",
-    "access-control-allow-origin": "null",
   },
 });
 
@@ -16,7 +15,10 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === "/healthz" && request.method === "GET") {
       // Operational check must never reveal secrets, account IDs or customer data.
-      return json({ service: "portfolio-api", status: "ok", version: "bootstrap-1" });
+      return json({ service: "portfolio-api", status: "ok", ready_for_traffic: false, version: "bootstrap-1" });
+    }
+    if (url.pathname === "/readyz") {
+      return json({ service: "portfolio-api", status: "not_ready" }, 503);
     }
     if (url.pathname.startsWith("/api/")) {
       return json({
