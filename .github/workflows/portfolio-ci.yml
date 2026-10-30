@@ -26,6 +26,7 @@ jobs:
         run: |
           node --check infra/worker/src/index.mjs
           node --test infra/worker/test/*.test.mjs
+          node infra/worker/scripts/staging-migrations.mjs
 
       - name: Bundle Cloudflare Worker without deployment
         working-directory: infra/worker
