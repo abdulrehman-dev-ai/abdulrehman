@@ -20,5 +20,13 @@
         "database_id": "863b6d6f-3197-4f34-b24d-2c43d0e0c4e4"
       }
     ]
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "abdul-portfolio-production",
+      "database_id": "d24afa50-9b82-4b50-86b3-dc538396026b",
+      "migrations_dir": "../d1/migrations"
+    }
+  ]
 }
