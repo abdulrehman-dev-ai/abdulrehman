@@ -65,7 +65,7 @@ test("transient provider failure is retried with the same idempotency key", asyn
     return new Response("throttled",{status:429});
   }});
   assert.equal(first.failed,1);
-  assert.deepEqual(sqlite.prepare("SELECT status,attempts,next_attempt_at FROM email_outbox").get(),
+  assert.deepEqual({...sqlite.prepare("SELECT status,attempts,next_attempt_at FROM email_outbox").get()},
     {status:"pending",attempts:1,next_attempt_at:NOW+60});
   const notYet=await processOutbox(ENVS(db),{now:NOW+59,fetcher:async()=>{throw Error("unexpected retry");}});
   assert.equal(notYet.accepted,0);
@@ -80,7 +80,7 @@ test("transient provider failure is retried with the same idempotency key", asyn
 test("non-retriable 4xx errors are retained for admin inspection",async()=>{
   const {sqlite,db}=createDb();job(sqlite);
   await processOutbox(ENVS(db),{now:NOW,fetcher:async()=>new Response("bad sender",{status:422})});
-  assert.deepEqual(sqlite.prepare("SELECT status,attempts,last_error_code FROM email_outbox").get(),
+  assert.deepEqual({...sqlite.prepare("SELECT status,attempts,last_error_code FROM email_outbox").get()},
     {status:"failed",attempts:1,last_error_code:"HTTP_422"});
   sqlite.close();
 });
