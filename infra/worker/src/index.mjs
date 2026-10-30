@@ -2,7 +2,8 @@
 // Business rules are shared with the D1 repository under src/server/leads.
 // Do not enable INQUIRIES_ENABLED without D1 migrations, abuse controls,
 // verified Turnstile, tested Resend outbox consumer and private CRM visibility.
-import { recordInquiryAndQueue, InvalidInquiryError } from "../../../src/server/leads/d1.ts";
+import { recordInquiryAndQueue, InvalidInquiryError, validateInquiry } from "../../../src/server/leads/d1.ts";
+import { processOutbox, outboxConfigured } from "./outbox.mjs";
 
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), {
   status,
@@ -30,7 +31,8 @@ function corsHeaders(origin) {
 function isReady(env) {
   return env.INQUIRIES_ENABLED === "true" &&
     env.EMAIL_PIPELINE_READY === "true" &&
-    !!env.DB && !!env.TURNSTILE_SECRET_KEY && !!env.ADMIN_EMAIL &&
+    outboxConfigured(env) && !!env.TURNSTILE_SECRET_KEY && !!env.ADMIN_EMAIL &&
+    !!env.RATE_LIMIT_PEPPER &&
     allowedOrigins(env).length > 0;
 }
 async function parsePayload(request) {
@@ -70,8 +72,9 @@ async function checkRateLimit(env, request) {
   // Cloudflare supplies CF-Connecting-IP to the Worker, not to the browser.
   // Store only SHA-256 hash of origin, bucket and IP; no raw IP persisted.
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-  const windowStart = Math.floor(Date.now() / 900) * 900;
-  const value = "lead:" + ip;
+  const epochSeconds = Math.floor(Date.now() / 1000);
+  const windowStart = Math.floor(epochSeconds / 900) * 900;
+  const value = "lead:" + env.RATE_LIMIT_PEPPER + ":" + ip;
   const hash = Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value))))
     .map(x => x.toString(16).padStart(2, "0")).join("");
   const row = await env.DB.prepare(
@@ -99,8 +102,21 @@ async function inquiry(request, env, fetcher) {
   const body = payload.data;
   if (typeof body.website === "string" && body.website.trim())
     return json({ ok: true }, 202, cors); // bot trap: nothing stored
-  if (!await checkRateLimit(env, request))
-    return json({ error: "Please wait and try again later." }, 429, cors);
+  try {
+    validateInquiry(body);
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(body.requestKey))
+      return json({ error: "Invalid inquiry reference." }, 400, cors);
+  } catch (error) {
+    if (error instanceof InvalidInquiryError) return json({ error: error.message }, 400, cors);
+    return json({ error: "Invalid request." }, 400, cors);
+  }
+  try {
+    if (!await checkRateLimit(env, request))
+      return json({ error: "Please wait and try again later." }, 429, cors);
+  } catch {
+    console.error("Inquiry rate-limit storage unavailable");
+    return json({ error: "Temporarily unable to accept inquiries." }, 503, cors);
+  }
   let verified = false;
   try {
     verified = await verifyChallenge(body.turnstileToken, env, origin, fetcher);
@@ -118,6 +134,12 @@ async function inquiry(request, env, fetcher) {
   }
 }
 export default {
+  async scheduled(controller, env, ctx) {
+    // Never run when D1/Resend secrets or the pipeline switch are missing.
+    const run = processOutbox(env);
+    if (ctx?.waitUntil) ctx.waitUntil(run);
+    else await run;
+  },
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === "/healthz" && request.method === "GET") {
