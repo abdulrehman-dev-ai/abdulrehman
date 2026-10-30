@@ -27,6 +27,7 @@ jobs:
           node --check infra/worker/src/index.mjs
           node --test infra/worker/test/*.test.mjs
           node infra/worker/scripts/staging-migrations.mjs
+          node --input-type=module -e "import { assertSafeStagingTarget } from './infra/worker/scripts/staging-migrations.mjs'; assertSafeStagingTarget(); console.log('Staging D1 binding isolation verified');"
 
       - name: Bundle Cloudflare Worker without deployment
         working-directory: infra/worker
