@@ -1,0 +1,30 @@
+name: Approved Initial Production D1 Migration
+on:
+  push:
+    branches: [staging]
+    paths:
+      - '.github/workflows/production-d1-initial-migrate.yml'
+permissions:
+  contents: read
+jobs:
+  migrate:
+    if: >-
+      ${{ github.event.head_commit.message == 'ops: execute approved initial production D1 schema' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: staging
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      PRODUCTION_D1_APPROVED: 'yes'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Apply pinned initial production schema
+        run: node infra/worker/scripts/apply-production-d1.mjs
+      - name: Verify production schema with read-only query
+        run: node infra/worker/scripts/inspect-production-d1.mjs
