@@ -1,6 +1,15 @@
 name: Staging D1 Remote Verification
 
 on:
+  push:
+    branches: [staging]
+    paths:
+      - '.github/workflows/staging-d1-verify.yml'
+      - 'infra/worker/scripts/verify-staging-d1.mjs'
+      - 'infra/worker/scripts/staging-migrations.mjs'
+      - 'infra/d1/migrations/**'
+      - 'infra/worker/wrangler.preview-migrations.jsonc'
+      - 'infra/worker/wrangler.jsonc'
   workflow_dispatch:
     inputs:
       apply_migrations:
