@@ -1,0 +1,37 @@
+name: Portfolio Staging Live Smoke Test
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 7 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  staging-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check isolated staging Worker
+        env:
+          API_URL: https://staging-abdul-portfolio-api.abdulrehman-ai-dev.workers.dev
+        run: |
+          set -euo pipefail
+          curl -fsS --retry 3 --retry-delay 3 --max-time 15 "$API_URL/healthz" -o health.json
+          node -e "const x=require('./health.json'); if(x.service!=='portfolio-api'||x.status!=='ok') process.exit(1); console.log('Staging Worker healthy. ready_for_traffic='+x.ready_for_traffic)"
+          code=$(curl -sS --retry 2 --max-time 15 -o readiness.json -w '%{http_code}' "$API_URL/readyz")
+          if [ "$code" != '200' ] && [ "$code" != '503' ]; then echo "Unexpected readiness HTTP $code"; exit 1; fi
+          node -e "const x=require('./readiness.json'); if(x.service!=='portfolio-api'|| !['ready','not_ready'].includes(x.status)) process.exit(1); console.log('Staging readiness='+x.status)"
+          echo "Worker smoke checks passed; this does not prove D1 migrations or mail delivery."
+      - name: Check staging frontend response
+        run: |
+          set -euo pipefail
+          url='https://abdulrehmansarwar-git-staging-abdul-rehman-ai-devs-projects.vercel.app/'
+          status=$(curl -sSL --retry 2 --max-time 20 -o /dev/null -w '%{http_code}' "$url")
+          if [ "$status" = 401 ] || [ "$status" = 403 ]; then
+            echo "Preview access protected by Vercel SSO; do not disable protection just for this check."
+            exit 0
+          fi
+          if [ "$status" -lt 200 ] || [ "$status" -ge 400 ]; then echo "Unexpected frontend HTTP $status"; exit 1; fi
+          echo "Staging frontend HTTP $status"
