@@ -1,6 +1,10 @@
 name: Portfolio Staging Live Smoke Test
 
 on:
+  push:
+    branches: [staging]
+    paths:
+      - '.github/workflows/staging-live-smoke.yml'
   workflow_dispatch:
   schedule:
     - cron: '17 7 * * 1'
