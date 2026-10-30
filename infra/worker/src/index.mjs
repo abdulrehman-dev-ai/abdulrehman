@@ -15,7 +15,7 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === "/healthz" && request.method === "GET") {
       // Operational check must never reveal secrets, account IDs or customer data.
-      return json({ service: "portfolio-api", status: "ok", ready_for_traffic: false, version: "bootstrap-1" });
+      return json({ service: "portfolio-api", status: "ok", ready_for_traffic: false, version: "bootstrap-2" });
     }
     if (url.pathname === "/readyz") {
       return json({ service: "portfolio-api", status: "not_ready" }, 503);

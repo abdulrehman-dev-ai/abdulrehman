@@ -6,7 +6,7 @@ test("public health check is stateless, safe and no-store", async () => {
   const response = await worker.fetch(new Request("https://api.example.workers.dev/healthz"), {});
   assert.equal(response.status, 200);
   assert.equal(response.headers.get("cache-control"), "no-store");
-  assert.deepEqual(await response.json(), { service: "portfolio-api", status: "ok", ready_for_traffic: false, version: "bootstrap-1" });
+  assert.deepEqual(await response.json(), { service: "portfolio-api", status: "ok", ready_for_traffic: false, version: "bootstrap-2" });
 });
 test("public API routes are closed until backend, D1 and abuse controls are configured", async () => {
   for (const method of ["GET", "POST", "OPTIONS"]) {
