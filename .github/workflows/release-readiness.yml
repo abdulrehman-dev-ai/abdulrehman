@@ -1,0 +1,41 @@
+name: Release Readiness Audit
+on:
+  push:
+    branches: [staging]
+    paths:
+      - '.github/workflows/release-readiness.yml'
+  schedule:
+    - cron: '21 8 * * 1'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify environment separation
+        run: |
+          node infra/worker/scripts/verify-d1-isolation.mjs
+          node --test infra/worker/test/isolation.test.mjs
+      - name: Verify currently deployed production remains fail-closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://abdul-portfolio-api.abdulrehman-ai-dev.workers.dev"
+          code=$(curl -sS --max-time 20 -o health.json -w '%{http_code}' "$url/healthz")
+          test "$code" = "200"
+          node -e "const x=require('./health.json');if(x.service!=='portfolio-api'||x.status!=='ok'||x.ready_for_traffic!==false)process.exit(1)"
+          code=$(curl -sS --max-time 20 -o readiness.json -w '%{http_code}' "$url/readyz")
+          test "$code" = "503"
+          echo "Production API remains fail-closed; this is a safe non-mutating rehearsal."
+      - name: Verify public frontend
+        run: |
+          status=$(curl -sSL --max-time 30 -o /dev/null -w '%{http_code}' https://abdulrehmansarwar.vercel.app/)
+          test "$status" -ge 200 && test "$status" -lt 400
+          echo "Production frontend HTTP $status"
