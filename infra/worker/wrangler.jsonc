@@ -4,6 +4,21 @@
   "main": "src/index.mjs",
   "compatibility_date": "2026-10-29",
   "workers_dev": true,
-  "triggers": { "crons": ["*/5 * * * *"] },
-  "observability": { "enabled": true }
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
+  },
+  "observability": {
+    "enabled": true
+  },
+  "previews": {
+    "d1_databases": [
+      {
+        "binding": "DB",
+        "database_name": "abdul-portfolio-staging",
+        "database_id": "863b6d6f-3197-4f34-b24d-2c43d0e0c4e4"
+      }
+    ]
+  }
 }

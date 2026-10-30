@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/wrangler.json",
+  "name": "abdul-portfolio-api",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-10-29",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "abdul-portfolio-staging",
+      "database_id": "863b6d6f-3197-4f34-b24d-2c43d0e0c4e4",
+      "migrations_dir": "../d1/migrations"
+    }
+  ]
+}

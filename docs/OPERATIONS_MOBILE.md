@@ -58,3 +58,16 @@
 - Vercel project: https://vercel.com/abdul-rehman-ai-devs-projects/abdulrehmansarwar
 - Cloudflare: https://dash.cloudflare.com → Workers & Pages → abdul-portfolio-api → Deployments/Builds
 - Resend: https://resend.com/emails
+
+## 2026-10-30 — staging D1 database created
+
+- Dashboard screenshot confirms `abdul-portfolio-staging`, ID `863b6d6f-3197-4f34-b24d-2c43d0e0c4e4`.
+- Database is newly created; **zero user tables** before applying migrations.
+- Source `infra/worker/wrangler.jsonc` now specifies this database **only under `previews.d1_databases`**. No D1 binding exists on the top-level production Worker.
+- Migration-only configuration: `infra/worker/wrangler.preview-migrations.jsonc`; migration files: `infra/d1/migrations`.
+- Next action, **after scoped Cloudflare deployment authorization is available**, is to apply the first migration to **staging only**, using the migration-only config and verifying the target UUID. Do not run a D1 migration with the production Wrangler config and do not paste migration SQL directly into the dashboard without review.
+- Reference command (run in the Worker directory by automation, not the owner's phone):
+  `npx wrangler d1 migrations apply abdul-portfolio-staging --config wrangler.preview-migrations.jsonc --remote`
+- Verify `d1_migrations`, inquiries, email_outbox, and rate_limit_buckets exist, and check D1 usage after application.
+- Until migration + Turnstile + Resend verified config and isolated end-to-end testing are finished, `INQUIRIES_ENABLED` and `EMAIL_PIPELINE_READY` must stay unset/false. Health and readiness endpoints remain fail-closed.
+- Cloudflare Worker Previews have explicit resource configuration and may be public by default. Never add staging production email sending or production customer data to previews.
