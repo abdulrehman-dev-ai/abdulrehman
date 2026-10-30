@@ -38,6 +38,7 @@ test("origins are checked before enabling cross-origin submission", async () => 
   const dummyDB = { prepare() { throw new Error("DB should not be reached"); } };
   const env = { DB: dummyDB, INQUIRIES_ENABLED:"true", EMAIL_PIPELINE_READY:"true",
     ADMIN_EMAIL:"admin@example.com",TURNSTILE_SECRET_KEY:"test",
+    RATE_LIMIT_PEPPER:"test-pepper", RESEND_API_KEY:"test-resend", RESEND_FROM_EMAIL:"noreply@example.com",
     PUBLIC_ORIGINS:"https://staging.example.com" };
   const rejected = await worker.fetch(new Request("https://portfolio.workers.dev/api/inquiries", {
     method:"OPTIONS",headers:{Origin:"https://attacker.example"}
@@ -49,4 +50,52 @@ test("origins are checked before enabling cross-origin submission", async () => 
   }),env);
   assert.equal(allowed.status,204);
   assert.equal(allowed.headers.get("Access-Control-Allow-Origin"),"https://staging.example.com");
+});
+
+test("valid-format requests hit a 15-minute UTC rate bucket before provider verification", async () => {
+  const buckets = [];
+  const db = {
+    prepare(sql) {
+      return {
+        bind(...args) {
+          return { async first() {
+            if (sql.startsWith("INSERT INTO rate_limit_buckets")) {
+              buckets.push(args);
+              return { hit_count: 1 };
+            }
+            throw new Error("Unexpected query");
+          } };
+        }
+      };
+    }
+  };
+  const env = { DB: db, INQUIRIES_ENABLED:"true", EMAIL_PIPELINE_READY:"true",
+    ADMIN_EMAIL:"admin@example.com", TURNSTILE_SECRET_KEY:"test-secret",
+    RATE_LIMIT_PEPPER:"test-pepper", RESEND_API_KEY:"test-key",
+    RESEND_FROM_EMAIL:"noreply@example.com",PUBLIC_ORIGINS:"https://staging.example.com" };
+  const form = {
+    kind:"Cloud migration / DevOps",budget:"Let's discuss",
+    sender:"client@example.com",goal:"Migrate my website safely",
+    details:"",service:"",requestKey:"7c37dbf8-9166-4e3c-a78a-62e44900a50a",
+    turnstileToken:""
+  };
+  const invalid = await worker.fetch(new Request("https://portfolio.workers.dev/api/inquiries",{
+    method:"POST",headers:{"Content-Type":"application/json",Origin:"https://staging.example.com"},
+    body:JSON.stringify({ ...form,goal:"short" })
+  }),env);
+  assert.equal(invalid.status,400);
+  assert.equal(buckets.length,0,"invalid fields should not consume rate quota");
+  const valid = await worker.fetch(new Request("https://portfolio.workers.dev/api/inquiries",{
+    method:"POST",headers:{"Content-Type":"application/json",Origin:"https://staging.example.com"},
+    body:JSON.stringify(form)
+  }),env);
+  assert.equal(valid.status,403,"invalid Turnstile challenge must not accept inquiry");
+  assert.equal(buckets.length,1);
+  const now = Math.floor(Date.now()/1000);
+  const [hash,windowStart,expiresAt] = buckets[0];
+  assert.equal(typeof hash,"string");
+  assert.equal(hash.length,64);
+  assert.equal(windowStart % 900,0);
+  assert.ok(now >= windowStart && now < windowStart + 900);
+  assert.equal(expiresAt,windowStart+1800);
 });
