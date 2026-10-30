@@ -22,7 +22,10 @@ export function assertSafeStagingTarget(root = ROOT) {
   const binding = migration?.d1_databases?.[0];
   const preview = runtime?.previews?.d1_databases?.[0];
   if (migration?.d1_databases?.length !== 1 ||
-      runtime?.d1_databases !== undefined ||
+      runtime?.d1_databases?.length !== 1 ||
+      runtime.d1_databases[0]?.database_name !== "abdul-portfolio-production" ||
+      runtime.d1_databases[0]?.database_id !== "d24afa50-9b82-4b50-86b3-dc538396026b" ||
+      runtime.d1_databases[0]?.binding !== "DB" ||
       runtime?.previews?.d1_databases?.length !== 1 ||
       binding?.database_name !== STAGING_DATABASE_NAME ||
       binding?.database_id !== STAGING_DATABASE_ID ||
