@@ -22,6 +22,11 @@ jobs:
       - name: Verify D1 schema, integrity and idempotency
         run: node --test infra/d1/tests/*.test.mjs
 
+      - name: Check bootstrap Cloudflare Worker behavior and syntax
+        run: |
+          node --check infra/worker/src/index.mjs
+          node --test infra/worker/test/*.test.mjs
+
       - name: Install exact dependencies
         run: npm ci
       - name: TypeScript check
