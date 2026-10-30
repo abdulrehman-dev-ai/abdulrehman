@@ -15,7 +15,7 @@ if (production.length > 1) throw new Error("Unexpected multiple production D1 bi
 if (production.some(x => x.database_id === stagingId || x.database_name === "abdul-portfolio-staging")) {
   throw new Error("Production D1 points to staging: deployment blocked.");
 }
-if (production.length === 1 && (!production[0].database_id || production[0].database_name !== "abdul-portfolio-production" || production[0].binding !== "DB")) {
+if (production.length === 1 && (!production[0].database_id || production[0].database_name !== "abdul-portfolio-production" || production[0].database_id !== "d24afa50-9b82-4b50-86b3-dc538396026b" || production[0].binding !== "DB")) {
   throw new Error("Production D1 binding does not match isolated production naming.");
 }
 console.log(production.length ? "Production and staging D1 bindings isolated." : "Production D1 not yet configured; staging remains isolated.");
