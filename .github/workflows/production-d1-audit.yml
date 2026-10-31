@@ -1,0 +1,27 @@
+name: Read-only Production D1 Isolation Audit
+on:
+  push:
+    branches: [staging]
+    paths:
+      - '.github/workflows/production-d1-audit.yml'
+  schedule:
+    - cron: '39 8 * * 1'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: staging
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Inspect production D1 with SELECT only
+        run: node infra/worker/scripts/inspect-production-d1.mjs

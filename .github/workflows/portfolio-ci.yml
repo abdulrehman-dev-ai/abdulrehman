@@ -26,6 +26,13 @@ jobs:
         run: |
           node --check infra/worker/src/index.mjs
           node --test infra/worker/test/*.test.mjs
+          node infra/worker/scripts/staging-migrations.mjs
+          node infra/worker/scripts/verify-d1-isolation.mjs
+          node --input-type=module -e "import { assertSafeStagingTarget } from './infra/worker/scripts/staging-migrations.mjs'; assertSafeStagingTarget(); console.log('Staging D1 binding isolation verified');"
+
+      - name: Bundle Cloudflare Worker without deployment
+        working-directory: infra/worker
+        run: npx --yes wrangler@4.156.0 deploy --dry-run --outdir .wrangler/local-preview
 
       - name: Install exact dependencies
         run: npm ci

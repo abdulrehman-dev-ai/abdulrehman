@@ -1,0 +1,73 @@
+name: Staging D1 Remote Verification
+
+on:
+  push:
+    branches: [staging]
+    paths:
+      - '.github/workflows/staging-d1-verify.yml'
+      - 'infra/worker/scripts/verify-staging-d1.mjs'
+      - 'infra/worker/scripts/staging-migrations.mjs'
+      - 'infra/d1/migrations/**'
+      - 'infra/worker/wrangler.preview-migrations.jsonc'
+      - 'infra/worker/wrangler.jsonc'
+  workflow_dispatch:
+    inputs:
+      apply_migrations:
+        description: "Apply reviewed staging-only migrations before verifying (never production)"
+        type: boolean
+        required: true
+        default: false
+  schedule:
+    - cron: '43 6 * * 1'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-staging-d1-maintenance
+  cancel-in-progress: false
+
+jobs:
+  verify-staging-d1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: staging
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Check credential setup without leaking secrets
+        id: credentials
+        shell: bash
+        run: |
+          if [[ -n "$CLOUDFLARE_API_TOKEN" && -n "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Missing staging Cloudflare secrets; remote D1 verification cannot be marked successful."
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+        if: steps.credentials.outputs.available == 'true'
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        if: steps.credentials.outputs.available == 'true'
+        with:
+          node-version: '24'
+      - name: Confirm target is the isolated staging database
+        if: steps.credentials.outputs.available == 'true'
+        working-directory: infra/worker
+        run: node --input-type=module -e "import { assertSafeStagingTarget } from './scripts/staging-migrations.mjs'; assertSafeStagingTarget();"
+      - name: Apply migrations only after explicitly requested
+        if: >-
+          ${{ steps.credentials.outputs.available == 'true' &&
+              ((github.event_name == 'workflow_dispatch' && inputs.apply_migrations == true) ||
+               (github.event_name == 'push' && github.ref == 'refs/heads/staging' && github.event.head_commit.message == 'ops: apply initial staging D1 migrations')) }}
+        working-directory: infra/worker
+        env:
+          WORKERS_CI: '1'
+          WORKERS_CI_BRANCH: staging
+        run: node scripts/staging-migrations.mjs
+      - name: Read-only remote D1 schema verification
+        if: steps.credentials.outputs.available == 'true'
+        run: node infra/worker/scripts/verify-staging-d1.mjs

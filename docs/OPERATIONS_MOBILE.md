@@ -58,3 +58,29 @@
 - Vercel project: https://vercel.com/abdul-rehman-ai-devs-projects/abdulrehmansarwar
 - Cloudflare: https://dash.cloudflare.com → Workers & Pages → abdul-portfolio-api → Deployments/Builds
 - Resend: https://resend.com/emails
+
+## 2026-10-30 — staging D1 database created
+
+- Dashboard screenshot confirms `abdul-portfolio-staging`, ID `863b6d6f-3197-4f34-b24d-2c43d0e0c4e4`.
+- Database is newly created; **zero user tables** before applying migrations.
+- Source `infra/worker/wrangler.jsonc` now specifies this database **only under `previews.d1_databases`**. No D1 binding exists on the top-level production Worker.
+- Migration-only configuration: `infra/worker/wrangler.preview-migrations.jsonc`; migration files: `infra/d1/migrations`.
+- Next action, **after scoped Cloudflare deployment authorization is available**, is to apply the first migration to **staging only**, using the migration-only config and verifying the target UUID. Do not run a D1 migration with the production Wrangler config and do not paste migration SQL directly into the dashboard without review.
+- Reference command (run in the Worker directory by automation, not the owner's phone):
+  `npx wrangler d1 migrations apply abdul-portfolio-staging --config wrangler.preview-migrations.jsonc --remote`
+- Verify `d1_migrations`, inquiries, email_outbox, and rate_limit_buckets exist, and check D1 usage after application.
+- Until migration + Turnstile + Resend verified config and isolated end-to-end testing are finished, `INQUIRIES_ENABLED` and `EMAIL_PIPELINE_READY` must stay unset/false. Health and readiness endpoints remain fail-closed.
+- Cloudflare Worker Previews have explicit resource configuration and may be public by default. Never add staging production email sending or production customer data to previews.
+
+## One-time Cloudflare Workers Builds migration automation
+
+The checked-in `infra/worker/scripts/staging-migrations.mjs` script is **branch guarded**: it performs no remote actions unless both `WORKERS_CI=1` and `WORKERS_CI_BRANCH=staging`. It validates the exact verified staging database ID and Wrangler preview binding before running remote D1 migrations. The `main` branch always skips it.
+
+After tests pass, in Cloudflare Worker `abdul-portfolio-api` → **Settings → Builds → Build command**, change the optional build command from empty to:
+`node scripts/staging-migrations.mjs`
+
+Keep the existing root directory `infra/worker`, production deploy command `npx wrangler deploy` and Preview command `npx wrangler preview`. Do not change the Worker production branch from `main`. Cloudflare Workers Builds injects `WORKERS_CI_BRANCH`, and the existing Cloudflare-generated build token authenticates Wrangler. Ensure the build token is scoped to the correct Cloudflare account and supports D1 migrations.
+
+Once enabled, a new staging push will migrate **only** `abdul-portfolio-staging` and deploy a Worker Preview if its build passes; a main push will skip migrations. A migration error fails the staging build. Cloudflare Previews currently do not inherit production bindings, so their D1 binding is declared separately in `previews.d1_databases`.
+
+**Important:** Until D1 schema is confirmed by query, security challenge configuration and email delivery are tested, never enable direct lead acceptance.

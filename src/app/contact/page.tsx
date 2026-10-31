@@ -28,7 +28,7 @@ export default function ContactPage(){
         </div>
         <p className={styles.location}>Based in Lahore, Pakistan · Remote collaboration</p>
       </div>
-      <ProjectBrief email={business.email}/>
+      <ProjectBrief email={business.email} whatsapp={business.whatsapp}/>
     </section>
     <section className={styles.steps}><p className={styles.kicker}>WHAT HAPPENS NEXT</p>
       <div><strong>01 / Discuss</strong><p>We clarify the outcome and your constraints.</p></div>
