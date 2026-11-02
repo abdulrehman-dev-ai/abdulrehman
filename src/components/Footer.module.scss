@@ -25,3 +25,12 @@
 .right a{font-size:.93rem;line-height:1.5;}
 .bottom{font-size:.77rem;line-height:1.75;color:var(--type-muted);}
 @media(max-width:600px){.left h2{font-size:clamp(2.65rem,10vw,3.6rem);}.bottom{font-size:.74rem;}}
+
+
+/* Silky neutral footer treatment for Day Mode. */
+:global(html.neo-portfolio[data-theme="light"]) .outer {border-color:var(--neo-border);background:radial-gradient(ellipse at 88% 0%,#ffffff,transparent 65%),#f0f2f5;}
+:global(html.neo-portfolio[data-theme="light"]) .main {background:linear-gradient(145deg,#ffffff,#edf1f5);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .eyebrow,
+:global(html.neo-portfolio[data-theme="light"]) .left em {color:#536373;}
+:global(html.neo-portfolio[data-theme="light"]) .right a:hover,
+:global(html.neo-portfolio[data-theme="light"]) .bottom a:hover {color:#293e51;}
