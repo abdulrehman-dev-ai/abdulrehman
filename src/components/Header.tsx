@@ -15,9 +15,9 @@ const navigation=[
 ];
 export function Header(){
   const pathname=usePathname()||"/";
-  return <header className={styles.shell}>
-    <div className={styles.inner}>
-      <Link className={styles.brand} href="/" aria-label="Abdul Rehman, homepage">
+  return <header className={styles.shell} data-ui="site-header">
+    <div className={styles.inner} data-ui="header-inner">
+      <Link className={styles.brand} data-ui="brand" href="/" aria-label="Abdul Rehman, homepage">
         <span className={styles.monogram}>
           <Image
             src="/images/avatar.png"
@@ -31,14 +31,14 @@ export function Header(){
         </span>
         <span className={styles.brandText}>Abdul Rehman<small>Engineering & delivery</small></span>
       </Link>
-      <nav aria-label="Primary navigation" className={styles.navigation}>
+      <nav aria-label="Primary navigation" className={styles.navigation} data-ui="nav-links">
         {navigation.map(item=><Link key={item.href} href={item.href}
           className={styles.navItem}
           aria-current={pathname===item.href||pathname.startsWith(item.href+"/")?"page":undefined}>
           {item.label}
         </Link>)}
       </nav>
-      <div className={styles.controls}><ThemeToggle /><ActionLink href="/contact" size="sm" variant="secondary">Let's talk</ActionLink></div>
+      <div className={styles.controls} data-ui="header-controls"><ThemeToggle /><ActionLink href="/contact" size="sm" variant="secondary">Let's talk</ActionLink></div>
     </div>
   </header>;
 }
