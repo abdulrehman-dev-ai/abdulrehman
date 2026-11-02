@@ -1,0 +1,532 @@
+/*
+ * Portfolio visual refresh — Day & Night.
+ * This is deliberately loaded AFTER legacy page modules and premium-day.scss.
+ * Strongly scoped data-ui selectors ensure the design is visible on every page,
+ * without touching functionality, API endpoints, payments or saved theme choice.
+ */
+html.neo-portfolio[data-theme]:root {
+  --refresh-surface: linear-gradient(142deg,var(--neo-raise) 0%,var(--neo-base) 100%);
+  --refresh-subtle: var(--neo-soft);
+  --refresh-outline: var(--neo-border);
+  --refresh-ink: var(--neutral-on-background-strong);
+  --refresh-muted: var(--neutral-on-background-medium);
+  --refresh-label: var(--neo-mint);
+  --refresh-elevation: var(--neo-shadow),var(--neo-rim);
+  --refresh-card-elevation: var(--neo-shadow-small),var(--neo-rim);
+  --refresh-inset: var(--neo-inset),var(--neo-rim);
+}
+html.neo-portfolio[data-theme="light"]:root {
+  --refresh-surface: linear-gradient(145deg,#ffffff 0%,#f7f9fb 46%,#e8edf2 100%);
+  --refresh-subtle: #f2f5f8;
+  --refresh-label: #42596c;
+  --refresh-outline: rgba(122,142,163,.25);
+}
+html.neo-portfolio[data-theme="dark"]:root {
+  --refresh-surface:linear-gradient(145deg,#17372e 0%,#0d231e 55%,#081815 100%);
+  --refresh-subtle:#0d2721;
+  --refresh-label:#a8f6d5;
+}
+/* Distinct header: floating material shell with more generous brand spacing. */
+html.neo-portfolio[data-theme]:root [data-ui="site-header"] {
+  padding: .8rem clamp(.85rem,3vw,2.2rem);
+  border-bottom: 1px solid var(--refresh-outline);
+  box-shadow: 0 12px 32px rgba(0,0,0,.04);
+}
+html.neo-portfolio[data-theme]:root [data-ui="header-inner"] {
+  max-width: 1240px;
+  min-height: 65px;
+  gap: clamp(1rem,2.6vw,2.25rem);
+}
+html.neo-portfolio[data-theme]:root [data-ui="brand"] {
+  gap: .9rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="brand"] > span:first-child {
+  width: 49px;
+  height: 49px;
+  border-radius: 16px;
+  padding: 4px;
+}
+html.neo-portfolio[data-theme]:root [data-ui="brand"] > span:last-child {
+  font-size: 1rem;
+  letter-spacing: -.035em;
+  line-height: 1.3;
+}
+html.neo-portfolio[data-theme]:root [data-ui="brand"] small {
+  font-size: .72rem;
+  margin-top: .14rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="nav-links"] {
+  border-radius: 18px;
+  padding: .35rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="nav-links"] a {
+  font-size: .88rem;
+  min-height: 40px;
+  padding: .7rem clamp(.85rem,1.2vw,1.15rem);
+  border-radius: 13px;
+}
+html.neo-portfolio[data-theme]:root [data-ui="header-controls"] {
+  gap: .75rem;
+}
+
+/* A hero with stronger type, real depth, and a portrait that remains visible on mobile. */
+html.neo-portfolio[data-theme]:root [data-ui="hero"] {
+  position:relative;
+  isolation:isolate;
+  grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);
+  align-items:center;
+  padding:clamp(2.25rem,5vw,5rem);
+  border-radius:34px;
+  background:var(--refresh-surface);
+  border:1px solid var(--refresh-outline);
+  box-shadow:var(--refresh-elevation);
+  margin-top:1.25rem;
+  margin-bottom:1.35rem;
+  gap:clamp(2rem,5vw,4.75rem);
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero"]::after {
+  width:34%;
+  bottom:-42%;
+  right:0;
+  opacity:.38;
+}
+html.neo-portfolio[data-theme]:root [data-ui="eyebrow"] {
+  font-size: .78rem;
+  letter-spacing:.11em;
+  font-weight:740;
+  color:var(--refresh-label);
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero-title"] {
+  font-size:clamp(3.1rem,5.7vw,6.25rem)!important;
+  line-height:1.07!important;
+  font-weight:800;
+  letter-spacing:-.072em;
+  margin:1.2rem 0 1.45rem;
+  max-width:12.5ch;
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero-title"] em {
+  color:var(--refresh-label);
+}
+html.neo-portfolio[data-theme="light"]:root [data-ui="hero-title"] em {
+  color:#53697e;
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero-lead"] {
+  font-size:clamp(1.065rem,1.32vw,1.25rem);
+  line-height:1.82;
+  max-width:56ch;
+  color:var(--refresh-muted);
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero-actions"] {
+  margin-top:2.1rem;
+  gap:.9rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero-proof"] {
+  border-top:1px solid var(--refresh-outline);
+  margin:2.4rem 0 0;
+  padding-top:1.2rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.85rem 1.2rem;
+  align-items:center;
+  color:var(--refresh-muted);
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero-proof"] > span {
+  font-size:.73rem;
+  font-weight:760;
+  letter-spacing:.08em;
+  color:var(--refresh-label);
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero-proof"] ul {
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="hero-proof"] li {
+  margin:0;
+  padding:.42rem .75rem;
+  border-radius:9px;
+  border:1px solid var(--refresh-outline);
+  font-size:.75rem;
+  font-weight:650;
+  line-height:1.3;
+  background:var(--refresh-subtle);
+  box-shadow:var(--refresh-inset);
+  color:var(--refresh-muted);
+}
+html.neo-portfolio[data-theme]:root [data-ui="portrait"] {
+  display:flex;
+  max-width:400px;
+  justify-self:end;
+  gap:.8rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="portrait-frame"] {
+  border-radius:28px;
+  border:8px solid var(--neo-raise);
+  min-height:390px;
+  aspect-ratio:4 / 4.7;
+  box-shadow:var(--refresh-elevation);
+}
+html.neo-portfolio[data-theme]:root [data-ui="portrait-frame"] img {
+  border-radius:19px;
+}
+html.neo-portfolio[data-theme]:root [data-ui="portrait"] > div:last-child {
+  font-size:.7rem;
+  line-height:1.65;
+  border-radius:11px;
+  padding:.75rem;
+  color:var(--refresh-muted);
+  background:var(--refresh-subtle);
+  box-shadow:var(--refresh-inset);
+}
+
+/* Capability selector styled as an editorial icon-led row, not three repeated generic boxes. */
+html.neo-portfolio[data-theme]:root [data-ui="expertise"] {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.2rem;
+  margin:.6rem 0 2.2rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="expertise"] > div {
+  display:grid;
+  position:relative;
+  grid-template-columns:58px 1fr;
+  gap:0 1rem;
+  align-content:center;
+  align-items:center;
+  min-height:118px;
+  border-radius:22px!important;
+  border:1px solid var(--refresh-outline)!important;
+  background:var(--refresh-surface);
+  box-shadow:var(--refresh-card-elevation);
+  padding:1.35rem 1.4rem!important;
+}
+html.neo-portfolio[data-theme]:root [data-ui="expertise"] > div > span {
+  grid-row:1 / 3;
+  width:54px;
+  height:54px;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  background:var(--refresh-subtle);
+  border:1px solid var(--refresh-outline);
+  color:var(--refresh-label);
+  box-shadow:var(--refresh-inset);
+}
+html.neo-portfolio[data-theme]:root [data-ui="expertise"] strong {
+  font-size:1.17rem;
+  font-weight:780;
+  letter-spacing:-.03em;
+  color:var(--refresh-ink);
+}
+html.neo-portfolio[data-theme]:root [data-ui="expertise"] small {
+  grid-column:2;
+  padding:0;
+  font-size:.88rem;
+  line-height:1.5;
+  color:var(--refresh-muted);
+}
+html.neo-portfolio[data-theme]:root [data-ui="expertise"] b {
+  position:absolute;
+  right:1rem;
+  top:.65rem;
+  color:var(--neutral-on-background-weak);
+  opacity:.65;
+  font:600 .7rem var(--type-mono);
+}
+
+/* Project section: a substantial featured case with calm, balanced secondary projects. */
+html.neo-portfolio[data-theme]:root [data-ui="selected-work"] {
+  padding-top:clamp(2.2rem,5vw,5rem);
+}
+html.neo-portfolio[data-theme]:root [data-ui="selected-work"] > div:first-child,
+html.neo-portfolio[data-theme]:root [data-ui="journal"] > div:first-child {
+  margin-bottom:2.25rem;
+  gap:1.5rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="selected-work"] h2 {
+  font-size:clamp(2.35rem,4.2vw,4.2rem)!important;
+  max-width:17ch;
+  line-height:1.12!important;
+}
+html.neo-portfolio[data-theme]:root [data-ui="project-showcase"] {
+  gap:1.65rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="featured-project"] {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  border-radius:29px;
+  border:1px solid var(--refresh-outline);
+  background:var(--refresh-surface);
+  box-shadow:var(--refresh-elevation);
+  overflow:hidden;
+}
+html.neo-portfolio[data-theme]:root [data-ui="featured-project"] > a:first-child {
+  padding:14px;
+  min-width:0;
+}
+html.neo-portfolio[data-theme]:root [data-ui="featured-project"] [data-ui="project-art"] {
+  min-height:385px;
+  height:100%;
+  border-radius:21px;
+  overflow:hidden;
+}
+html.neo-portfolio[data-theme]:root [data-ui="featured-copy"] {
+  padding:clamp(2rem,4vw,4rem);
+  gap:1.25rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="featured-copy"] h3 {
+  font-size:clamp(2.5rem,3.9vw,3.95rem);
+  line-height:1.11;
+}
+html.neo-portfolio[data-theme]:root [data-ui="featured-copy"] p {
+  font-size:1.04rem;
+  line-height:1.75;
+}
+html.neo-portfolio[data-theme]:root [data-ui="project-grid"] {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.35rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="project-card"] {
+  background:var(--refresh-surface);
+  border-radius:24px;
+  border:1px solid var(--refresh-outline);
+  box-shadow:var(--refresh-card-elevation);
+  overflow:hidden;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+html.neo-portfolio[data-theme]:root [data-ui="project-card"] > a:first-child {
+  padding:12px 12px 0;
+}
+html.neo-portfolio[data-theme]:root [data-ui="project-card"] [data-ui="project-art"] {
+  min-height:235px;
+  aspect-ratio:16/9;
+  border-radius:17px;
+  overflow:hidden;
+}
+html.neo-portfolio[data-theme]:root [data-ui="project-copy"] {
+  padding:1.5rem 1.65rem 1.7rem;
+  gap:.7rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="project-copy"] h3 {
+  font-size:clamp(1.35rem,1.75vw,1.75rem);
+  line-height:1.25;
+}
+html.neo-portfolio[data-theme]:root [data-ui="project-copy"] p {
+  font-size:.95rem;
+  line-height:1.75;
+}
+@media (hover:hover) {
+  html.neo-portfolio[data-theme]:root [data-ui="project-card"]:hover {
+    transform:translateY(-4px);
+    box-shadow:var(--refresh-elevation);
+  }
+}
+
+/* Workflow becomes a deliberately recessed workbench. */
+html.neo-portfolio[data-theme]:root [data-ui="process"] {
+  margin-top:clamp(3rem,5vw,5.5rem);
+  border:1px solid var(--refresh-outline);
+  background:var(--refresh-surface);
+  border-radius:28px;
+  padding:clamp(2rem,4.3vw,4rem);
+  box-shadow:var(--refresh-card-elevation);
+  gap:clamp(2rem,5vw,4rem);
+}
+html.neo-portfolio[data-theme]:root [data-ui="process"] > div:first-child h2 {
+  max-width:15ch;
+}
+html.neo-portfolio[data-theme]:root [data-ui="process"] article {
+  border:1px solid var(--refresh-outline);
+  border-radius:17px;
+  background:var(--refresh-subtle);
+  box-shadow:var(--refresh-inset);
+  padding:1.25rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="process"] article h3 {
+  font-size:1.14rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="process"] article p {
+  font-size:.92rem;
+  line-height:1.75;
+}
+
+/* Journal and CTA have two distinct elevations. */
+html.neo-portfolio[data-theme]:root [data-ui="journal"] {
+  margin-top:1.3rem;
+  padding:clamp(2rem,4vw,3.6rem);
+  border-radius:29px;
+  border:1px solid var(--refresh-outline);
+  background:var(--refresh-surface);
+  box-shadow:var(--refresh-card-elevation);
+}
+html.neo-portfolio[data-theme]:root [data-ui="journal"] h2 {
+  font-size:clamp(2.2rem,3.6vw,3.6rem)!important;
+}
+html.neo-portfolio[data-theme]:root [data-ui="cta-panel"] {
+  margin:clamp(2.4rem,5vw,5rem) 0 4rem;
+  padding:clamp(2.2rem,4vw,4.2rem);
+  background:var(--refresh-surface);
+  border-radius:29px;
+  border:1px solid var(--refresh-outline);
+  box-shadow:var(--refresh-elevation);
+  gap:2.5rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="cta-panel"] h2 {
+  font-size:clamp(2.1rem,3.4vw,3.4rem)!important;
+  max-width:22ch;
+}
+/* Button affordances should remain clear in both themes. */
+html.neo-portfolio[data-theme]:root a[data-button-system="unified-v3"] {
+  min-height:48px;
+  font-size:.88rem!important;
+  padding-inline:1.15rem;
+}
+html.neo-portfolio[data-theme]:root [data-ui="header-controls"] button {
+  min-height:46px;
+}
+
+/* The Ocean Yacht hero is a real brand showcase, not a giant cropped logo. */
+.oceanNightArt { display:none; }
+.oceanBrand {
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(.65rem,1.5vw,1.1rem);
+  width:100%;
+  min-height:0;
+  padding:1rem;
+  text-align:center;
+  color:#f1f8fb;
+}
+.oceanLogoFrame {
+  display:grid;
+  place-items:center;
+  width:min(52%,172px);
+  height:clamp(72px,7vw,105px);
+  padding:.35rem;
+  border-radius:18px;
+  border:1px solid rgba(220,242,254,.2);
+  background:linear-gradient(140deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+  box-shadow:inset 2px 3px 9px rgba(0,0,0,.2);
+  overflow:hidden;
+}
+.oceanLogoFrame img {
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:none;
+}
+.oceanBrand strong {
+  color:#fff;
+  font-family:var(--type-display);
+  font-size:clamp(1.6rem,3vw,2.9rem);
+  font-weight:800;
+  line-height:1.16;
+  letter-spacing:-.045em;
+}
+.oceanBrand strong span {
+  display:block;
+  color:#c4d9e7;
+  letter-spacing:.15em;
+  font-size:.47em;
+  font-weight:650;
+  margin-top:.65rem;
+}
+.oceanBrand small {
+  color:#afc5d4;
+  font:600 clamp(.58rem,.85vw,.72rem)/1.7 var(--type-mono);
+  letter-spacing:.05em;
+}
+html.neo-portfolio[data-theme="dark"]:root .oceanBrand { display:flex; }
+html.neo-portfolio[data-theme="dark"]:root .oceanNightArt {display:none;}
+
+/* A naturally flowing layout at small screen widths. */
+@media (max-width:960px) {
+  html.neo-portfolio[data-theme]:root [data-ui="hero"] {
+    grid-template-columns:minmax(0,1fr) minmax(235px,.75fr);
+    gap:2rem;
+    padding:clamp(2rem,3.5vw,3rem);
+  }
+  html.neo-portfolio[data-theme]:root [data-ui="hero-title"] {font-size:clamp(2.7rem,5.6vw,4.6rem)!important;}
+  html.neo-portfolio[data-theme]:root [data-ui="portrait-frame"] {min-height:325px;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] {gap:.75rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] > div {grid-template-columns:45px 1fr;padding:1rem!important;gap:.65rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] > div > span {width:44px;height:44px;}
+}
+@media (max-width:760px) {
+  html.neo-portfolio[data-theme]:root [data-ui="header-inner"] {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:.6rem;
+  }
+  html.neo-portfolio[data-theme]:root [data-ui="brand"] {grid-column:1;grid-row:1;}
+  html.neo-portfolio[data-theme]:root [data-ui="header-controls"] {grid-column:2;grid-row:1; margin-left:0;}
+  html.neo-portfolio[data-theme]:root [data-ui="nav-links"] {
+    grid-column:1/-1;
+    grid-row:2;
+    width:100%;
+    justify-content:space-between;
+  }
+  html.neo-portfolio[data-theme]:root [data-ui="hero"] {
+    grid-template-columns:1fr;
+    padding:clamp(1.7rem,5vw,2.7rem);
+    gap:2rem;
+  }
+  html.neo-portfolio[data-theme]:root [data-ui="hero-title"] {
+    font-size:clamp(3rem,8vw,4.9rem)!important;
+    max-width:14ch;
+  }
+  html.neo-portfolio[data-theme]:root [data-ui="portrait"] {max-width:350px;justify-self:center;}
+  html.neo-portfolio[data-theme]:root [data-ui="portrait-frame"] {min-height:260px;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] {grid-template-columns:repeat(3,minmax(0,1fr));}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] > div {grid-template-columns:1fr;gap:.65rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] > div > span {grid-row:1;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] strong,
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] small {grid-column:1;}
+  html.neo-portfolio[data-theme]:root [data-ui="featured-project"] {grid-template-columns:1fr;}
+  html.neo-portfolio[data-theme]:root [data-ui="featured-project"] [data-ui="project-art"] {min-height:270px;aspect-ratio:16/9;}
+  html.neo-portfolio[data-theme]:root [data-ui="project-grid"] {grid-template-columns:1fr 1fr;}
+  html.neo-portfolio[data-theme]:root [data-ui="process"] {grid-template-columns:1fr;}
+}
+@media (max-width:620px) {
+  html.neo-portfolio[data-theme]:root [data-ui="site-header"] {padding:.6rem .7rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="brand"] > span:first-child {width:41px;height:41px;}
+  html.neo-portfolio[data-theme]:root [data-ui="brand"] > span:last-child {font-size:.86rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="brand"] small {display:none;}
+  html.neo-portfolio[data-theme]:root [data-ui="nav-links"] a {font-size:.8rem;padding:.58rem .52rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="hero"] {border-radius:23px;margin-top:.5rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="hero-title"] {font-size:clamp(2.65rem,11vw,4rem)!important;letter-spacing:-.056em;}
+  html.neo-portfolio[data-theme]:root [data-ui="hero-lead"] {font-size:1.04rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="hero-proof"] {margin-top:1.5rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="hero-proof"] li {font-size:.7rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="portrait"] {display:flex;max-width:275px;}
+  html.neo-portfolio[data-theme]:root [data-ui="portrait-frame"] {min-height:230px;aspect-ratio:4/4.5;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] {grid-template-columns:1fr;gap:.8rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] > div {
+    grid-template-columns:56px 1fr;min-height:95px;padding:1.1rem!important;
+  }
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] > div > span {grid-row:1/3;width:50px;height:50px;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] strong {grid-column:2;}
+  html.neo-portfolio[data-theme]:root [data-ui="expertise"] small {grid-column:2;}
+  html.neo-portfolio[data-theme]:root [data-ui="project-grid"] {grid-template-columns:1fr;}
+  html.neo-portfolio[data-theme]:root [data-ui="project-card"] [data-ui="project-art"] {min-height:205px;}
+  html.neo-portfolio[data-theme]:root [data-ui="project-copy"] {padding:1.3rem 1.4rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="featured-copy"] {padding:1.7rem;}
+  html.neo-portfolio[data-theme]:root [data-ui="featured-copy"] h3 {font-size:clamp(2.1rem,9vw,3rem);}
+  html.neo-portfolio[data-theme]:root [data-ui="process"],
+  html.neo-portfolio[data-theme]:root [data-ui="journal"],
+  html.neo-portfolio[data-theme]:root [data-ui="cta-panel"] {padding:1.5rem;border-radius:22px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  html.neo-portfolio[data-theme]:root [data-ui="project-card"] {transition:none;}
+}
