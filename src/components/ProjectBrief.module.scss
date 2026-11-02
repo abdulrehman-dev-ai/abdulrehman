@@ -26,3 +26,23 @@
 :global(html.neo-portfolio[data-theme="light"]) .form select:focus {outline-color:#1D4E7C;}
 :global(html.neo-portfolio[data-theme="light"]) .selectedService {background:#EAF0F6;color:#1D4E7C;}
 :global(html.neo-portfolio[data-theme="light"]) .feedback {background:#E7EEF5;border-color:#AEC2D7;color:#2E465F;}
+
+
+/* Light mode only — frosted form with clear recessed fields. */
+:global(html.neo-portfolio[data-theme="light"]) .form {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}
+:global(html.neo-portfolio[data-theme="light"]) .form input,
+:global(html.neo-portfolio[data-theme="light"]) .form select,
+:global(html.neo-portfolio[data-theme="light"]) .form textarea {
+  background:rgba(250,253,255,.96);
+  border-color:var(--glass-line);
+  box-shadow:var(--neo-inset);
+}
+:global(html.neo-portfolio[data-theme="light"]) .selectedService,
+:global(html.neo-portfolio[data-theme="light"]) .feedback {
+  background:var(--glass-well);
+  border-color:var(--glass-line);
+}

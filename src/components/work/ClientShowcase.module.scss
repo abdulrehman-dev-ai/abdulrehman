@@ -267,3 +267,22 @@
 @media(max-width:620px) {
   .oceanBrand strong {font-size:clamp(1.5rem,6.4vw,2.3rem);}
 }
+
+
+/* Light-mode frosted card shells; original project art remains untouched. */
+:global(html.neo-portfolio[data-theme="light"]) .lead,
+:global(html.neo-portfolio[data-theme="light"]) .smallCard {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-elevated);
+}
+:global(html.neo-portfolio[data-theme="light"]) .smallCard {
+  background:var(--glass-panel-soft);
+  box-shadow:var(--glass-small);
+}
+:global(html.neo-portfolio[data-theme="light"]) .techs span,
+:global(html.neo-portfolio[data-theme="light"]) .cardTechs span {
+  background:var(--glass-well);
+  border-color:var(--glass-line);
+  box-shadow:var(--neo-inset),var(--glass-rim);
+}

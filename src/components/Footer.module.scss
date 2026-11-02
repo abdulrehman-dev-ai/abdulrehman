@@ -34,3 +34,17 @@
 :global(html.neo-portfolio[data-theme="light"]) .left em {color:#26486E;}
 :global(html.neo-portfolio[data-theme="light"]) .right a:hover,
 :global(html.neo-portfolio[data-theme="light"]) .bottom a:hover {color:#123956;}
+
+
+/* Day-only pearlescent footer: matching surfaces without changing geometry. */
+:global(html.neo-portfolio[data-theme="light"]) .outer {
+  background:linear-gradient(180deg,rgba(240,248,255,.64),rgba(230,241,253,.84));
+  border-top-color:var(--glass-line);
+}
+:global(html.neo-portfolio[data-theme="light"]) .main {
+  background:var(--glass-panel-soft);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-elevated);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}

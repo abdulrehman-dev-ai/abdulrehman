@@ -116,3 +116,17 @@
   .articleHeader h1, .articleHeader h2 { overflow-wrap: anywhere; }
   .articleBody :global(h2), .articleBody :global(h3) { overflow-wrap: anywhere; }
 }
+
+
+/* Frosted reading panels, with unchanged readable article text. */
+:global(html.neo-portfolio[data-theme="light"]) .articleHeader,
+:global(html.neo-portfolio[data-theme="light"]) .articleBody {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-elevated);
+}
+:global(html.neo-portfolio[data-theme="light"]) .articleBody :global(blockquote),
+:global(html.neo-portfolio[data-theme="light"]) .articleBody :global(th) {
+  background:var(--glass-well);
+  border-color:var(--glass-line);
+}

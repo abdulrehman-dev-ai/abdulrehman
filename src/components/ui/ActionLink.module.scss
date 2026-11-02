@@ -119,3 +119,39 @@
 }
 :global(html.neo-portfolio[data-theme="light"]) .icon {background:rgba(131,146,163,.1);border-color:rgba(143,153,167,.20);box-shadow:var(--neo-inset);}
 :global(html.neo-portfolio[data-theme="light"]) .control:focus-visible {outline-color:#1D4E7C!important;}
+
+
+/* Frosted secondary actions and a restrained blue sheen on primary CTAs. */
+:global(html.neo-portfolio[data-theme="light"]) .control {
+  --action-surface:var(--glass-panel);
+  --action-hover:linear-gradient(145deg,#fff,rgba(219,237,255,.96));
+  border-color:var(--glass-line)!important;
+  box-shadow:var(--glass-small)!important;
+}
+:global(html.neo-portfolio[data-theme="light"]) .primary {
+  --action-surface:linear-gradient(165deg,#3476BD 0%,#1D4E7C 47%,#123956 100%);
+  --action-hover:linear-gradient(165deg,#4187CE,#205B92 48%,#123956);
+  --action-fg:#FFFFFF;
+  border-color:rgba(91,154,223,.57)!important;
+  box-shadow:0 7px 17px rgba(35,81,139,.22),inset 0 1px 1px rgba(255,255,255,.48),inset 1px 0 0 rgba(255,255,255,.22)!important;
+}
+:global(html.neo-portfolio[data-theme="light"]) .secondary,
+:global(html.neo-portfolio[data-theme="light"]) .quiet {
+  --action-surface:var(--glass-panel);
+  --action-hover:linear-gradient(145deg,#fff,rgba(219,237,255,.96));
+  --action-fg:#153750;
+}
+:global(html.neo-portfolio[data-theme="light"]) .icon {
+  background:rgba(237,246,255,.73);
+  border-color:rgba(111,160,218,.23);
+  box-shadow:var(--neo-inset);
+}
+@media(hover:hover) {
+  :global(html.neo-portfolio[data-theme="light"]) .control:hover {
+    border-color:rgba(112,168,232,.56)!important;
+    box-shadow:0 9px 19px rgba(56,106,172,.16),inset 0 1px 1px #fff!important;
+  }
+  :global(html.neo-portfolio[data-theme="light"]) .primary:hover {
+    box-shadow:0 10px 22px rgba(29,75,134,.24),inset 0 1px 1px rgba(255,255,255,.5)!important;
+  }
+}

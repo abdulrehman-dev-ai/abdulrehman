@@ -80,3 +80,29 @@
 :global(html.neo-portfolio[data-theme="light"]) .statusDot {border-color:#ffffff;box-shadow:0 0 0 2px rgba(255,255,255,.9);background:#335B89;}
 :global(html.neo-portfolio[data-theme="light"]) .themeToggle {background:linear-gradient(145deg,#ffffff,#E5EDF4);color:#123956;border-color:var(--neo-border);}
 :global(html.neo-portfolio[data-theme="light"]) .themeToggle:focus-visible {outline-color:#1D4E7C;}
+
+
+/* Icy glass, light mode only. */
+:global(html.neo-portfolio[data-theme="light"]) .shell {
+  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(241,248,255,.83));
+  border-bottom:1px solid var(--glass-line);
+  box-shadow:0 7px 24px rgba(67,113,178,.085),inset 0 1px 0 #fff;
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  backdrop-filter:blur(18px) saturate(140%);
+}
+:global(html.neo-portfolio[data-theme="light"]) .navigation {
+  background:var(--glass-well);
+  border-color:var(--glass-line);
+  box-shadow:var(--neo-inset),var(--glass-rim);
+}
+:global(html.neo-portfolio[data-theme="light"]) .themeToggle,
+:global(html.neo-portfolio[data-theme="light"]) .monogram {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}
+:global(html.neo-portfolio[data-theme="light"]) .navItem:hover,
+:global(html.neo-portfolio[data-theme="light"]) .navItem[aria-current="page"] {
+  background:linear-gradient(145deg,#fff,rgba(228,242,255,.9));
+  box-shadow:var(--glass-small);
+}
