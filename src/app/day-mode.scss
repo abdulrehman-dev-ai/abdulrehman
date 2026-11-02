@@ -1,65 +1,67 @@
 /*
- * Portfolio Day Mode — silky white and soft cool grey.
- * Every rule is scoped to light; the existing night design stays unchanged.
+ * Day Mode / White + Deep Emerald
+ * Keep the Night Mode untouched. These are the shared daylight design tokens.
+ * White remains the main surface; pale mint gives the neoprene-like raised/inset depth.
  */
 html.neo-portfolio[data-theme="light"] {
-  color-scheme: light;
-  --neo-bg: #f7f8fa;
-  --neo-base: #f1f3f6;
-  --neo-raise: #ffffff;
-  --neo-soft: #eef1f4;
-  --neo-border: rgba(122,134,149,.24);
-  --neo-highlight: rgba(255,255,255,.84);
-  --neo-mint: #485665;
-  --neo-text: #26313b;
-  --neo-shadow: 13px 13px 32px rgba(145,155,171,.18), -11px -11px 28px #ffffff;
-  --neo-shadow-small: 6px 7px 16px rgba(133,146,162,.16), -6px -6px 15px rgba(255,255,255,.98);
-  --neo-inset: inset 5px 5px 11px rgba(139,150,164,.13), inset -5px -5px 11px #ffffff;
-  --neo-rim: inset 1px 1px 1px rgba(255,255,255,.93), inset -1px -1px 1px rgba(151,164,179,.15);
-  --page-background: #f7f8fa;
-  --neutral-background-weak: #f7f8fa;
-  --neutral-background-medium: #edf0f3;
-  --neutral-background-strong: #e5e9ee;
-  --neutral-on-background-strong: #24313e;
-  --neutral-on-background-medium: #4d5966;
-  --neutral-on-background-weak: #66727e;
-  --neutral-border-strong: #aeb8c3;
-  --neutral-border-medium: #c4ccd5;
-  --neutral-border-weak: #dbe1e7;
-  --neutral-alpha-strong: rgba(54,70,86,.34);
-  --neutral-alpha-medium: rgba(68,84,100,.20);
-  --neutral-alpha-weak: rgba(68,84,100,.10);
-  --brand-on-background-medium: #3c5262;
-  --brand-on-background-weak: #596b78;
-  --accent-on-background-medium: #42586b;
-  --type-ink: #26313c;
-  --type-secondary: #52606d;
-  --type-muted: #647280;
-  --neo-btn-border: rgba(117,131,147,.35);
-  --neo-btn-text: #26343f;
-  --neo-btn-face: linear-gradient(145deg,#ffffff,#e9edf2);
-  --neo-btn-hover: linear-gradient(145deg,#ffffff,#dde4eb);
-  --neo-btn-shadow: 5px 6px 14px rgba(143,153,169,.18), -5px -5px 13px #ffffff;
+  color-scheme:light;
+  --neo-bg:#F6FAF7;
+  --neo-base:#E8F2EC;
+  --neo-raise:#FFFFFF;
+  --neo-soft:#F0F7F2;
+  --neo-border:rgba(29,92,66,.19);
+  --neo-highlight:rgba(255,255,255,.95);
+  --neo-mint:#205640;
+  --neo-text:#123D30;
+  --neo-shadow:12px 14px 28px rgba(40,92,67,.12),-10px -10px 24px rgba(255,255,255,.98);
+  --neo-shadow-small:6px 7px 16px rgba(40,92,67,.12),-5px -5px 13px #FFFFFF;
+  --neo-inset:inset 5px 5px 11px rgba(48,100,72,.11),inset -5px -5px 12px #FFFFFF;
+  --neo-rim:inset 1px 1px 0 rgba(255,255,255,.96),inset -1px -1px 0 rgba(73,119,91,.14);
+  --page-background:#F6FAF7;
+  --neutral-background-weak:#F6FAF7;
+  --neutral-background-medium:#EDF5EF;
+  --neutral-background-strong:#DCEBE0;
+  --neutral-on-background-strong:#14372D;
+  --neutral-on-background-medium:#425E50;
+  --neutral-on-background-weak:#597364;
+  --neutral-border-strong:#9BBEAA;
+  --neutral-border-medium:#B6D2BF;
+  --neutral-border-weak:#D5E7DA;
+  --neutral-alpha-strong:rgba(22,76,51,.36);
+  --neutral-alpha-medium:rgba(28,83,57,.2);
+  --neutral-alpha-weak:rgba(38,94,65,.1);
+  --brand-on-background-medium:#205640;
+  --brand-on-background-weak:#397B5E;
+  --accent-on-background-medium:#205640;
+  --type-ink:#14372D;
+  --type-secondary:#435E50;
+  --type-muted:#5A7466;
+  --neo-btn-border:rgba(32,86,64,.28);
+  --neo-btn-text:#123D30;
+  --neo-btn-face:linear-gradient(145deg,#FFFFFF,#E7F2EA);
+  --neo-btn-hover:linear-gradient(145deg,#FFFFFF,#DBEBDF);
+  --neo-btn-shadow:5px 6px 14px rgba(35,92,65,.13),-5px -5px 14px #FFFFFF;
 }
 html.neo-portfolio[data-theme="light"] body {
-  background: radial-gradient(ellipse 60% 25% at 85% 0%, #ffffff 0%, transparent 92%), var(--neo-bg);
-  color: var(--type-ink);
+  background:radial-gradient(ellipse 62% 35% at 88% 0%,#FFFFFF,transparent 80%),
+             linear-gradient(180deg,#FBFDFC,#F1F8F3 65%,#F7FAF7);
+  color:var(--type-ink);
 }
 html.neo-portfolio[data-theme="light"] :where(a,button,input,select,textarea,summary):focus-visible {
-  outline: 2px solid #536d83 !important;
-  outline-offset: 3px;
+  outline:2px solid #205640!important;
+  outline-offset:4px;
 }
 html.neo-portfolio[data-theme="light"] :where(input:not([type="hidden"]),textarea,select) {
-  color: var(--neo-text);
-  background-color: #fafdff;
-  border-color: var(--neo-border);
+  color:var(--neo-text);
+  background-color:#FCFEFC;
+  border-color:var(--neo-border);
 }
-@media (prefers-contrast: more) {
+@media(prefers-contrast:more) {
   html.neo-portfolio[data-theme="light"] {
-    --neo-border: rgba(48,63,79,.65);
-    --type-secondary: #303e4c;
-    --type-muted: #384755;
-    --neo-shadow: 0 0 0 1px var(--neo-border);
-    --neo-shadow-small: 0 0 0 1px var(--neo-border);
+    --neo-border:rgba(18,61,48,.72);
+    --type-secondary:#294737;
+    --type-muted:#375645;
+    --neo-shadow:0 0 0 1px var(--neo-border);
+    --neo-shadow-small:0 0 0 1px var(--neo-border);
   }
 }
