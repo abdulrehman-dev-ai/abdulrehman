@@ -4,3 +4,34 @@
 .body :global(h2){color:#d7ffe8;font-size:1.45rem;}
 .body :global(ul){margin-bottom:1.2rem;}
 @media(max-width:600px){.header,.body{padding:1.35rem;border-radius:18px;}}
+
+
+/* Policies use the same readable day surfaces as project and journal articles. */
+:global(html.neo-portfolio[data-theme="light"]) .header,
+:global(html.neo-portfolio[data-theme="light"]) .body {
+  background: var(--reading-surface);
+  border-color: var(--reading-outline);
+  color: var(--reading-copy);
+}
+:global(html.neo-portfolio[data-theme="light"]) .header :global(h1),
+:global(html.neo-portfolio[data-theme="light"]) .body :global(h1),
+:global(html.neo-portfolio[data-theme="light"]) .body :global(h2),
+:global(html.neo-portfolio[data-theme="light"]) .body :global(h3),
+:global(html.neo-portfolio[data-theme="light"]) .body :global(strong) {
+  color: var(--reading-heading);
+}
+:global(html.neo-portfolio[data-theme="light"]) .body :global(p),
+:global(html.neo-portfolio[data-theme="light"]) .body :global(li) {
+  color: var(--reading-copy);
+  line-height: 1.82;
+}
+:global(html.neo-portfolio[data-theme="light"]) .header :global(p) {
+  color: var(--reading-muted);
+}
+:global(html.neo-portfolio[data-theme="light"]) .body :global(a) {
+  color: var(--reading-link);
+  text-underline-offset: 3px;
+}
+.body :global(h2) { line-height: 1.3; margin-top: .55rem; }
+.body :global(ul) { padding-left: 1.25rem; }
+.body :global(li) { overflow-wrap: anywhere; }
