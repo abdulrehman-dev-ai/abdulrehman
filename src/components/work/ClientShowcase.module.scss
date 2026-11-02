@@ -201,3 +201,69 @@
 @media(max-width:620px) {
   :global(html.neo-portfolio[data-theme="light"]) .oceanBrand strong {font-size:clamp(1.5rem,6.5vw,2.3rem);}
 }
+
+
+/* Shared featured identity frame: scale the genuine logo without cropping it. */
+.oceanNightArt {display:none;}
+.oceanBrand {
+  display:flex;
+  flex:1;
+  width:100%;
+  min-height:0;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:1rem;
+  gap:clamp(.65rem,1.45vw,1.1rem);
+  text-align:center;
+  color:#f3f9fc;
+}
+.oceanLogoFrame {
+  width:min(52%,170px);
+  height:clamp(72px,7vw,102px);
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  padding:.4rem;
+  border-radius:17px;
+  border:1px solid rgba(223,241,252,.22);
+  background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.025));
+  box-shadow:inset 2px 3px 9px rgba(0,0,0,.17);
+  overflow:hidden;
+}
+.oceanLogoFrame .brandImage {
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  min-height:0;
+  object-fit:contain;
+  object-position:center;
+  filter:none;
+  flex:0 0 auto;
+}
+.oceanBrand strong {
+  font-family:var(--type-display);
+  font-weight:800;
+  font-size:clamp(1.55rem,2.7vw,2.8rem);
+  line-height:1.15;
+  letter-spacing:-.04em;
+  color:#ffffff;
+}
+.oceanBrand strong span {
+  display:block;
+  font-size:.48em;
+  font-weight:650;
+  letter-spacing:.13em;
+  color:#c7dbe8;
+  margin-top:.55rem;
+}
+.oceanBrand small {
+  color:#b2cad8;
+  font:600 clamp(.55rem,.85vw,.72rem)/1.65 var(--type-mono);
+  letter-spacing:.05em;
+}
+@media(max-width:620px) {
+  .oceanBrand strong {font-size:clamp(1.5rem,6.4vw,2.3rem);}
+}

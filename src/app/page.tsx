@@ -1,4 +1,5 @@
 import { Heading, Column } from "@/once-ui/components";
+import { FiCode, FiCloud, FiShield } from "react-icons/fi";
 import { ActionLink } from "@/components/ui/ActionLink";
 import { ClientShowcase } from "@/components/work/ClientShowcase";
 import { Posts } from "@/components/blog/Posts";
@@ -34,7 +35,7 @@ export default function Home() {
           <ActionLink href="/work" variant="primary">See selected work</ActionLink>
           <ActionLink href="/contact">Discuss a project</ActionLink>
         </div>
-        <p className={styles.proof}><span>IN PRACTICE</span> Full-stack delivery / Cloud & DevOps / Security-aware implementation</p>
+        <div className={styles.proof} data-ui="hero-proof" aria-label="Engineering focus areas"><span>IN PRACTICE</span><ul><li>Full-stack delivery</li><li>Cloud & DevOps</li><li>Security engineering</li></ul></div>
       </div>
       <aside className={styles.heroAside} data-ui="portrait" aria-label="Meet the engineer">
         <div className={styles.portraitWrap} data-ui="portrait-frame">
@@ -48,14 +49,14 @@ export default function Home() {
       </aside>
     </section>
     <section className={styles.servicesRibbon} data-ui="expertise" aria-label="What I do">
-      <div><span>01 /</span><strong>Build</strong><small>Platforms & commerce</small></div>
-      <div><span>02 /</span><strong>Operate</strong><small>Cloud & automation</small></div>
-      <div><span>03 /</span><strong>Secure</strong><small>Hardening & resilience</small></div>
+      <div><span aria-hidden="true"><FiCode size={21}/></span><strong>Build</strong><small>Platforms & commerce</small><b aria-hidden="true">01</b></div>
+      <div><span aria-hidden="true"><FiCloud size={21}/></span><strong>Operate</strong><small>Cloud & automation</small><b aria-hidden="true">02</b></div>
+      <div><span aria-hidden="true"><FiShield size={21}/></span><strong>Secure</strong><small>Hardening & resilience</small><b aria-hidden="true">03</b></div>
     </section>
     <section className={styles.selected} data-ui="selected-work" aria-labelledby="featured-title">
       <div className={styles.sectionHead}>
         <div>
-          <p className={styles.kicker}>SELECTED WORK / 2025—2026</p>
+          <p className={styles.kicker}>01 / SELECTED CLIENT WORK · 2025—2026</p>
           <Heading as="h2" id="featured-title" className={styles.sectionTitle}>Built for real businesses.</Heading>
           <p className={styles.sectionSub}>Client platforms, commerce systems and operational engineering — the work, the approach, and its delivery status.</p>
         </div>
@@ -65,7 +66,7 @@ export default function Home() {
     </section>
     <section className={styles.approach} data-ui="process" aria-labelledby="approach-title">
       <div>
-        <p className={styles.kicker}>HOW I WORK</p>
+        <p className={styles.kicker}>02 / HOW I WORK</p>
         <Heading as="h2" id="approach-title" className={styles.sectionTitle}>More than a polished interface.</Heading>
         <p className={styles.sectionSub}>A good product needs a clear workflow, sound technical choices and a responsible release process. My work spans all three.</p>
         <ActionLink href="/services" size="sm">Explore engineering services</ActionLink>
@@ -79,7 +80,7 @@ export default function Home() {
     {routes["/blog"] && <section className={styles.journal} data-ui="journal" aria-labelledby="journal-title">
       <div className={styles.sectionHead}>
         <div>
-          <p className={styles.kicker}>FIELD NOTES / JOURNAL</p>
+          <p className={styles.kicker}>03 / FIELD NOTES & JOURNAL</p>
           <Heading as="h2" id="journal-title" className={styles.sectionTitle}>Things worth documenting.</Heading>
           <p className={styles.sectionSub}>Engineering decisions, lessons from delivery and security-minded development.</p>
         </div>
@@ -88,7 +89,7 @@ export default function Home() {
       <Posts range={[1, 2]} columns="2" thumbnail />
     </section>}
     <aside className={styles.contactPanel} data-ui="cta-panel">
-      <div><p className={styles.kicker}>NEW ENGAGEMENTS</p>
+      <div><p className={styles.kicker}>04 / NEW ENGAGEMENTS</p>
         <Heading as="h2" className={styles.sectionTitle}>Have something ambitious to build?</Heading>
         <p className={styles.sectionSub}>Tell me what you're planning and I'll help define a practical approach.</p>
       </div>
