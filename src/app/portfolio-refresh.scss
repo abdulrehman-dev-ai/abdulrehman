@@ -16,10 +16,12 @@ html.neo-portfolio[data-theme]:root {
   --refresh-inset: var(--neo-inset),var(--neo-rim);
 }
 html.neo-portfolio[data-theme="light"]:root {
-  --refresh-surface: linear-gradient(145deg,#ffffff 0%,#f7f9fb 46%,#e8edf2 100%);
-  --refresh-subtle: #f2f5f8;
-  --refresh-label: #42596c;
-  --refresh-outline: rgba(122,142,163,.25);
+  --refresh-surface: linear-gradient(145deg,#FFFFFF 0%,#F8FCF9 46%,#E7F2EA 100%);
+  --refresh-subtle: #EAF5ED;
+  --refresh-label: #205640;
+  --refresh-outline: rgba(29,92,66,.19);
+  --refresh-ink: #14372D;
+  --refresh-muted: #435E50;
 }
 html.neo-portfolio[data-theme="dark"]:root {
   --refresh-surface:linear-gradient(145deg,#17372e 0%,#0d231e 55%,#081815 100%);
@@ -108,7 +110,7 @@ html.neo-portfolio[data-theme]:root [data-ui="hero-title"] em {
   color:var(--refresh-label);
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="hero-title"] em {
-  color:#53697e;
+  color:#205640;
 }
 html.neo-portfolio[data-theme]:root [data-ui="hero-lead"] {
   font-size:clamp(1.065rem,1.32vw,1.25rem);
