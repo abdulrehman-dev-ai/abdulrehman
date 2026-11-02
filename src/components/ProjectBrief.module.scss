@@ -1,28 +1,28 @@
-.form{width:100%;display:grid;gap:1.2rem;padding:clamp(1rem,3vw,2.2rem);border:1px solid var(--neutral-alpha-medium);border-radius:1.15rem;background:linear-gradient(135deg,rgba(23,41,35,.8),rgba(14,17,18,.95));}
+.form{width:100%;display:grid;gap:1.2rem;padding:clamp(1rem,3vw,2.2rem);border:1px solid var(--neutral-alpha-medium);border-radius:1.15rem;background:linear-gradient(135deg,rgba(22,31,42,.8),rgba(14,17,18,.95));}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 .form label{display:flex;flex-direction:column;gap:.55rem;color:var(--neutral-on-background-medium);font-size:.75rem;font-weight:650;}
 .form input,.form select,.form textarea{width:100%;padding:.95rem;color:var(--neutral-on-background-strong);background:#101719;border:1px solid rgba(255,255,255,.19);border-radius:.6rem;font-size:.88rem;font-weight:400;line-height:1.5;font-family:inherit;}
-.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid #a8eacf;outline-offset:1px;}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid #A3C6EF;outline-offset:1px;}
 .form textarea{resize:vertical;}
 
 @media(max-width:600px){.grid{grid-template-columns:1fr;}}
 
-.form {border:1px solid var(--neo-border);border-radius:24px;padding:clamp(1.3rem,3vw,2.4rem);background:linear-gradient(145deg,#12372d,#081e1a);box-shadow:var(--neo-shadow),var(--neo-rim);}
-.form input,.form select,.form textarea {background:#0c2521;border:1px solid rgba(143,234,194,.2);border-radius:14px;box-shadow:var(--neo-inset),var(--neo-rim);}
+.form {border:1px solid var(--neo-border);border-radius:24px;padding:clamp(1.3rem,3vw,2.4rem);background:linear-gradient(145deg,#0F223A,#061120);box-shadow:var(--neo-shadow),var(--neo-rim);}
+.form input,.form select,.form textarea {background:#0A1627;border:1px solid rgba(136,185,241,.2);border-radius:14px;box-shadow:var(--neo-inset),var(--neo-rim);}
 
 .actions { display:flex;gap:.75rem;align-items:center;flex-wrap:wrap; }
-.feedback { border:1px solid rgba(164,241,202,.26);background:#113c2e;color:#dafce8;padding:.8rem 1rem;border-radius:12px;line-height:1.55;font-size:.84rem; }
-.selectedService { border:1px solid var(--neo-border);background:#102e25;box-shadow:var(--neo-inset);border-radius:12px;padding:.75rem 1rem;color:#c4f8d9;text-transform:capitalize;font-size:.85rem; }
+.feedback { border:1px solid rgba(158,200,247,.26);background:#0E243F;color:#D9EAFD;padding:.8rem 1rem;border-radius:12px;line-height:1.55;font-size:.84rem; }
+.selectedService { border:1px solid var(--neo-border);background:#0E1D30;box-shadow:var(--neo-inset);border-radius:12px;padding:.75rem 1rem;color:#C0DDFC;text-transform:capitalize;font-size:.85rem; }
 @media(max-width:480px){.actions > :global(.neo-action) {width:100%;}}
 
 
 /* Day Mode — keep the contact form visually consistent and accessible. */
-:global(html.neo-portfolio[data-theme="light"]) .form {background:linear-gradient(145deg,#ffffff,#EAF5ED);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .form {background:linear-gradient(145deg,#ffffff,#E9F0F6);border-color:var(--neo-border);}
 :global(html.neo-portfolio[data-theme="light"]) .form input,
 :global(html.neo-portfolio[data-theme="light"]) .form textarea,
-:global(html.neo-portfolio[data-theme="light"]) .form select {background:#FCFFFC;border-color:#B5D4BF;color:#14372D;}
+:global(html.neo-portfolio[data-theme="light"]) .form select {background:#FCFEFF;border-color:#B3C4D6;color:#153750;}
 :global(html.neo-portfolio[data-theme="light"]) .form input:focus,
 :global(html.neo-portfolio[data-theme="light"]) .form textarea:focus,
-:global(html.neo-portfolio[data-theme="light"]) .form select:focus {outline-color:#205640;}
-:global(html.neo-portfolio[data-theme="light"]) .selectedService {background:#EBF5ED;color:#205640;}
-:global(html.neo-portfolio[data-theme="light"]) .feedback {background:#E8F4EC;border-color:#B1D4BC;color:#315C43;}
+:global(html.neo-portfolio[data-theme="light"]) .form select:focus {outline-color:#1D4E7C;}
+:global(html.neo-portfolio[data-theme="light"]) .selectedService {background:#EAF0F6;color:#1D4E7C;}
+:global(html.neo-portfolio[data-theme="light"]) .feedback {background:#E7EEF5;border-color:#AEC2D7;color:#2E465F;}

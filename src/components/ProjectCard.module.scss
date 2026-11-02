@@ -174,14 +174,14 @@
 }
 .toneOcean { background: radial-gradient(circle at 75% 5%, rgba(52, 181, 208, .30), transparent 58%), linear-gradient(135deg,#05212c,#0a131c); }
 .toneAutomotive { background: radial-gradient(circle at 80% 1%, rgba(194, 87, 65, .30), transparent 57%), linear-gradient(135deg,#20121a,#111319); }
-.toneOrganics { background: radial-gradient(circle at 85% 10%, rgba(164, 170, 76, .29), transparent 62%), linear-gradient(135deg,#202618,#101b16); }
+.toneOrganics { background: radial-gradient(circle at 85% 10%, rgba(164, 170, 76, .29), transparent 62%), linear-gradient(135deg,#172027,#0F151C); }
 .toneFragrance { background: radial-gradient(circle at 80% 8%, rgba(175, 128, 201, .28), transparent 60%), linear-gradient(135deg,#1d1325,#11131a); }
 .toneDefault { background: radial-gradient(circle at 80% 8%, rgba(114, 164, 187, .22), transparent 60%), linear-gradient(135deg,#18212b,#11151b); }
 .visualTop { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: rgba(255,255,255,.73); font-size: .60rem; letter-spacing: .14em; font-weight: 700; }
-.visualAccent { width: 8px; height: 8px; border-radius: 50%; background: #9fe8c9; box-shadow: 0 0 0 5px rgba(159,232,201,.1); }
+.visualAccent { width: 8px; height: 8px; border-radius: 50%; background: #9AC0ED; box-shadow: 0 0 0 5px rgba(154,192,237,.1); }
 .visualBody { display: flex; flex-direction: column; gap: .65rem; max-width: 83%; }
-.visualBody strong { color: #fafcfb; font-size: clamp(1.45rem, 3vw, 2.15rem); font-weight: 750; line-height: 1.14; letter-spacing: -.04em; text-wrap: balance; }
-.visualBody span { color: rgba(244,248,247,.69); font-size: .77rem; letter-spacing: .02em; }
+.visualBody strong { color: #FAFBFC; font-size: clamp(1.45rem, 3vw, 2.15rem); font-weight: 750; line-height: 1.14; letter-spacing: -.04em; text-wrap: balance; }
+.visualBody span { color: rgba(244,246,248,.69); font-size: .77rem; letter-spacing: .02em; }
 .projectDecoration { position: absolute; right: 24px; bottom: 22px; color: rgba(255,255,255,.6); font-size: 1.65rem; font-weight: 300; }
 @media (prefers-reduced-motion: reduce) {
   .projectCard { transition: none; }

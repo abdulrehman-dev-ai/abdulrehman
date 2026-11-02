@@ -16,17 +16,17 @@ html.neo-portfolio[data-theme]:root {
   --refresh-inset: var(--neo-inset),var(--neo-rim);
 }
 html.neo-portfolio[data-theme="light"]:root {
-  --refresh-surface: linear-gradient(145deg,#FFFFFF 0%,#F8FCF9 46%,#E7F2EA 100%);
-  --refresh-subtle: #EAF5ED;
-  --refresh-label: #205640;
-  --refresh-outline: rgba(29,92,66,.19);
-  --refresh-ink: #14372D;
-  --refresh-muted: #435E50;
+  --refresh-surface: linear-gradient(145deg,#FFFFFF 0%,#F8FAFC 46%,#E6EDF3 100%);
+  --refresh-subtle: #E9F0F6;
+  --refresh-label: #1D4E7C;
+  --refresh-outline: rgba(24,58,97,.19);
+  --refresh-ink: #153750;
+  --refresh-muted: #415060;
 }
 html.neo-portfolio[data-theme="dark"]:root {
-  --refresh-surface:linear-gradient(145deg,#17372e 0%,#0d231e 55%,#081815 100%);
-  --refresh-subtle:#0d2721;
-  --refresh-label:#a8f6d5;
+  --refresh-surface:linear-gradient(145deg,#152539 0%,#0B1625 55%,#070F19 100%);
+  --refresh-subtle:#0B1829;
+  --refresh-label:#B2DCFF;
 }
 /* Distinct header: floating material shell with more generous brand spacing. */
 html.neo-portfolio[data-theme]:root [data-ui="site-header"] {
@@ -110,7 +110,7 @@ html.neo-portfolio[data-theme]:root [data-ui="hero-title"] em {
   color:var(--refresh-label);
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="hero-title"] em {
-  color:#205640;
+  color:#1D4E7C;
 }
 html.neo-portfolio[data-theme]:root [data-ui="hero-lead"] {
   font-size:clamp(1.065rem,1.32vw,1.25rem);
@@ -675,11 +675,11 @@ html.neo-portfolio[data-theme]:root [data-ui="hero-actions"] a[data-button-syste
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="featured-project"],
 html.neo-portfolio[data-theme="light"]:root [data-ui="project-card"] {
-  background:linear-gradient(150deg,#FFFFFF,#F8FCF9 82%);
+  background:linear-gradient(150deg,#FFFFFF,#F8FAFC 82%);
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="process"] article,
 html.neo-portfolio[data-theme="light"]:root [data-ui="hero-proof"] li {
-  background:linear-gradient(145deg,#EDF6EF,#F9FDFA);
+  background:linear-gradient(145deg,#ECF2F7,#F9FBFD);
 }
 @media (min-width: 1180px) {
   html.neo-portfolio[data-theme]:root [data-ui="hero-title"] { max-width: 17ch; }

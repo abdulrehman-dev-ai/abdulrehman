@@ -4,40 +4,40 @@
  * Three depth tiers: raised, recessed, and low-elevation supporting surfaces.
  */
 html.neo-portfolio[data-theme="light"] {
-  --neo-bg: #F6FAF7;
-  --neo-base: #E8F2EC;
+  --neo-bg: #F6F9FD;
+  --neo-base: #E8F1FB;
   --neo-raise: #FFFFFF;
-  --neo-soft: #F0F7F2;
-  --neo-border: rgba(29,92,66,.19);
-  --neo-mint: #205640;
-  --neo-text: #14372D;
-  --type-ink: #14372D;
-  --type-secondary: #435E50;
-  --type-muted: #5A7466;
-  --page-background: #F6FAF7;
-  --neutral-background-weak: #F6FAF7;
-  --neutral-background-medium: #E8F2EC;
-  --neutral-background-strong: #DCEBE0;
-  --neutral-on-background-strong: #14372D;
-  --neutral-on-background-medium: #435E50;
-  --neutral-on-background-weak: #597364;
-  --brand-on-background-medium: #205640;
-  --brand-on-background-weak: #397B5E;
-  --neo-shadow: 12px 14px 28px rgba(40,92,67,.12),-10px -10px 24px rgba(255,255,255,.98);
-  --neo-shadow-small: 6px 7px 16px rgba(40,92,67,.12),-5px -5px 13px #FFFFFF;
-  --neo-inset: inset 5px 5px 11px rgba(48,100,72,.11),inset -5px -5px 12px #FFFFFF;
-  --neo-rim: inset 1px 1px 0 rgba(255,255,255,.96),inset -1px -1px 0 rgba(73,119,91,.14);
-  --portfolio-stroke: rgba(32,86,64,.2);
-  --portfolio-raised: linear-gradient(145deg,#FFFFFF 0%,#F8FCF9 52%,#E7F2EA 100%);
-  --portfolio-inset: linear-gradient(145deg,#E6F1E9,#F8FCFA);
-  --portfolio-quiet: #F0F7F2;
-  --portfolio-ink-muted: #526E5D;
+  --neo-soft: #F0F6FD;
+  --neo-border: rgba(24,58,97,.19);
+  --neo-mint: #1D4E7C;
+  --neo-text: #153750;
+  --type-ink: #153750;
+  --type-secondary: #415060;
+  --type-muted: #586676;
+  --page-background: #F6F9FD;
+  --neutral-background-weak: #F6F9FD;
+  --neutral-background-medium: #E8F1FB;
+  --neutral-background-strong: #DBE4EC;
+  --neutral-on-background-strong: #153750;
+  --neutral-on-background-medium: #415060;
+  --neutral-on-background-weak: #576575;
+  --brand-on-background-medium: #1D4E7C;
+  --brand-on-background-weak: #345780;
+  --neo-shadow: 12px 14px 28px rgba(36,64,96,.12),-10px -10px 24px rgba(255,255,255,.98);
+  --neo-shadow-small: 6px 7px 16px rgba(36,64,96,.12),-5px -5px 13px #FFFFFF;
+  --neo-inset: inset 5px 5px 11px rgba(44,73,104,.11),inset -5px -5px 12px #FFFFFF;
+  --neo-rim: inset 1px 1px 0 rgba(255,255,255,.96),inset -1px -1px 0 rgba(70,95,122,.14);
+  --portfolio-stroke: rgba(28,57,90,.2);
+  --portfolio-raised: linear-gradient(145deg,#FFFFFF 0%,#F8FAFC 52%,#E6EDF3 100%);
+  --portfolio-inset: linear-gradient(145deg,#E5ECF2,#F8FAFC);
+  --portfolio-quiet: #F0F6FD;
+  --portfolio-ink-muted: #506070;
   --portfolio-elevation: var(--neo-shadow), var(--neo-rim);
   color-scheme: light;
 }
 html.neo-portfolio[data-theme="light"] body {
   background: radial-gradient(ellipse 68% 42% at 85% -12%,#FFFFFF 0%,transparent 72%),
-              linear-gradient(180deg,#FAFDFA 0%,#F8FCF9 45%,#F6FAF7 100%);
+              linear-gradient(180deg,#FAFCFD 0%,#F8FAFC 45%,#F6F9FD 100%);
   color: var(--type-ink);
 }
 /* Once UI's fixed emerald ambiance is specific to the existing night palette. */
@@ -48,11 +48,11 @@ html.neo-portfolio[data-theme="light"] :where(h1,h2,h3,h4) {
   color: var(--type-ink);
 }
 html.neo-portfolio[data-theme="light"] :where(a,button,input,textarea,select,summary):focus-visible {
-  outline: 2px solid #205640 !important;
+  outline: 2px solid #1D4E7C !important;
   outline-offset: 4px;
 }
 html.neo-portfolio[data-theme="light"] :where(input,textarea,select) {
-  accent-color: #2A694C;
+  accent-color: #25476E;
 }
 
 /* Header: slim floating shell, recessed navigation and purposeful CTA. */
@@ -73,22 +73,22 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="brand"] {
   min-width: 0;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="nav-links"] {
-  background: linear-gradient(145deg,#E6F1E9,#FCFFFC);
+  background: linear-gradient(145deg,#E5ECF2,#FCFEFF);
   border: 1px solid rgba(121,139,158,.2);
   border-radius: 17px;
   padding: .3rem;
   box-shadow: inset 4px 4px 10px rgba(137,152,172,.13), inset -4px -4px 11px white;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="nav-links"] a {
-  color: #456752;
+  color: #42566A;
   font-weight: 690;
   font-size: .86rem;
   padding: .65rem 1rem;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="nav-links"] a:hover,
 html.neo-portfolio[data-theme="light"]:root [data-ui="nav-links"] a[aria-current="page"] {
-  color: #123D30;
-  background: linear-gradient(145deg,#FFFFFF,#E6F2E8);
+  color: #123956;
+  background: linear-gradient(145deg,#FFFFFF,#E5ECF3);
   box-shadow: 4px 5px 11px rgba(139,151,168,.13), -3px -3px 9px white;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="header-controls"] {
@@ -125,7 +125,7 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="hero-copy"] {
   max-width: 740px;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="eyebrow"] {
-  color: #397B5E;
+  color: #345780;
   font-size: .78rem;
   line-height: 1.8;
   letter-spacing: .085em;
@@ -139,10 +139,10 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="hero-title"] {
   max-width: 13ch;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="hero-title"] em {
-  color: #205640;
+  color: #1D4E7C;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="hero-lead"] {
-  color: #496753;
+  color: #475869;
   font-size: clamp(1.05rem,1.3vw,1.22rem);
   max-width: 54ch;
   line-height: 1.8;
@@ -155,7 +155,7 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="hero-copy"] > p:last-child
   border-top: 1px solid rgba(124,143,162,.18);
   margin-top: 2.2rem;
   padding-top: 1.25rem;
-  color: #5E7767;
+  color: #5C6A79;
   font-size: .87rem;
   line-height: 1.75;
 }
@@ -166,9 +166,9 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="portrait"] {
   gap: .85rem;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="portrait-frame"] {
-  border: 8px solid #F7FAF7;
+  border: 8px solid #F7F9FA;
   border-radius: 24px;
-  background: #E6F1E9;
+  background: #E5ECF2;
   box-shadow: 12px 15px 28px rgba(137,152,167,.16), -10px -10px 24px #FFFFFF, inset 0 0 0 1px rgba(125,146,160,.23);
   min-height: 350px;
   aspect-ratio: 4 / 4.5;
@@ -180,10 +180,10 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="portrait"] > div:last-chil
   border-radius: 10px;
   font-size: .72rem;
   line-height: 1.55;
-  background: #ECF6EE;
+  background: #EBF1F7;
   border: 1px solid rgba(132,148,162,.12);
   padding: .7rem .75rem;
-  color: #4E6D5B;
+  color: #4C5D6F;
 }
 
 /* Three clearly distinguishable service capabilities. */
@@ -207,7 +207,7 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="expertise"] > div > span {
   border-radius: 14px;
   border: 1px solid rgba(122,141,157,.16);
   background: var(--portfolio-inset);
-  color: #39785A;
+  color: #34567D;
   box-shadow: var(--neo-inset);
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="expertise"] strong {
@@ -217,7 +217,7 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="expertise"] strong {
 html.neo-portfolio[data-theme="light"]:root [data-ui="expertise"] small {
   padding-left: 3.6rem;
   font-size: .87rem;
-  color: #536C5B;
+  color: #515F6E;
 }
 
 /* Case-study hierarchy: big featured project, two-column supporting grid. */
@@ -306,13 +306,13 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="project-copy"] h3 {
   letter-spacing: -.035em;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="project-copy"] > p {
-  color: #496452;
+  color: #475666;
   font-size: .98rem;
   line-height: 1.73;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="project-copy"] > div:first-child {
   font-size: .78rem;
-  color: #567361;
+  color: #546475;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="project-showcase"] > p:last-child {
   max-width: 90ch;
@@ -325,7 +325,7 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="project-showcase"] > p:las
 
 /* Reading/workflow sections should sit below the featured cases in elevation. */
 html.neo-portfolio[data-theme="light"]:root [data-ui="process"] {
-  background: linear-gradient(145deg,#FFFFFF,#F0F7F2);
+  background: linear-gradient(145deg,#FFFFFF,#F0F6FD);
   border: 1px solid var(--portfolio-stroke);
   border-radius: 25px;
   padding: clamp(2rem,4vw,3.5rem);
@@ -336,7 +336,7 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="process"] h2 {
   max-width: 15ch;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="process"] p {
-  color: #3F5C4A;
+  color: #3D4D5E;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="process"] article {
   padding: 1.15rem 1.25rem;
@@ -361,10 +361,10 @@ html.neo-portfolio[data-theme="light"]:root [data-ui="journal"] {
   padding: clamp(1.6rem,3.3vw,3rem);
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="journal"] a {
-  color: #205640;
+  color: #1D4E7C;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="cta-panel"] {
-  background: linear-gradient(135deg,#FFFFFF,#E6F2E8);
+  background: linear-gradient(135deg,#FFFFFF,#E5ECF3);
   border: 1px solid var(--portfolio-stroke);
   border-radius: 26px;
   box-shadow: var(--portfolio-elevation);
@@ -493,8 +493,8 @@ html.neo-portfolio[data-theme="light"] footer {
 @media (prefers-contrast: more) {
   html.neo-portfolio[data-theme="light"] {
     --portfolio-stroke: rgba(51,67,83,.65);
-    --type-secondary: #294737;
-    --type-muted: #375645;
+    --type-secondary: #273749;
+    --type-muted: #354658;
     --neo-shadow: 0 0 0 1px var(--portfolio-stroke);
     --neo-shadow-small: 0 0 0 1px var(--portfolio-stroke);
   }

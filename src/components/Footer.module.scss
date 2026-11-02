@@ -1,20 +1,20 @@
-.outer{width:100%;border-top:1px solid var(--neutral-alpha-medium);background:linear-gradient(180deg,rgba(7,12,12,.3),rgba(9,13,14,.95));}
+.outer{width:100%;border-top:1px solid var(--neutral-alpha-medium);background:linear-gradient(180deg,rgba(7,9,12,.3),rgba(9,13,14,.95));}
 .main{max-width:1250px;margin:auto;padding:clamp(2.5rem,6vw,5.5rem) clamp(1rem,3vw,2rem);display:grid;grid-template-columns:1.3fr .7fr;gap:3rem;}
-.eyebrow{color:#a4e8c9;font-family:var(--font-code),monospace;font-weight:700;font-size:.68rem;letter-spacing:.12em;}
+.eyebrow{color:#9FC3ED;font-family:var(--font-code),monospace;font-weight:700;font-size:.68rem;letter-spacing:.12em;}
 .left h2{font-size:clamp(3rem,6vw,6rem);line-height:1.04;letter-spacing:-.068em;font-weight:770;margin:1.5rem 0 2rem;}
-.left em{color:#b3e9d3;font-style:normal;}.mail{color:white;border-bottom:1px solid #94e0bc;text-decoration:none;padding-bottom:.5rem;font-size:.94rem;font-weight:700;}
+.left em{color:#AFCCED;font-style:normal;}.mail{color:white;border-bottom:1px solid #8EB7E6;text-decoration:none;padding-bottom:.5rem;font-size:.94rem;font-weight:700;}
 .right{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;align-content:center;}
 .right p{color:var(--neutral-on-background-weak);font-family:var(--font-code),monospace;font-size:.68rem;font-weight:750;letter-spacing:.12em;margin-bottom:1.3rem;}
 .right nav{display:flex;flex-direction:column;gap:.9rem;align-items:start;}.right a{color:var(--neutral-on-background-strong);font-size:.85rem;text-decoration:none;}
-.right a:hover,.bottom a:hover{color:#adeacc;}
+.right a:hover,.bottom a:hover{color:#A8C9EF;}
 .bottom{max-width:1250px;margin:auto;border-top:1px solid var(--neutral-alpha-medium);padding:1.3rem clamp(1rem,3vw,2rem) 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.9rem 2rem;color:var(--neutral-on-background-weak);font-size:.67rem;line-height:1.8;}
 .bottom>div{display:flex;flex-wrap:wrap;gap:1rem;}.bottom a{color:inherit;text-decoration:none;}.credits{opacity:.8;}
 @media(max-width:850px){.main{grid-template-columns:1fr;gap:2.5rem;}.right{max-width:500px;}}
 @media(max-width:500px){.right{grid-template-columns:1fr 1fr;}.main{padding-top:2rem;}.bottom{flex-direction:column;align-items:start;}}
 
 /* Neumorphic footer: one intentional surface rather than a flat black band. */
-.outer { border-top:1px solid rgba(138,249,202,.13);background:radial-gradient(ellipse at 88% 0%,rgba(35,143,102,.11),transparent 60%),#091713; }
-.main { max-width:1230px;position:relative;margin:clamp(1rem,2vw,2rem) auto 0;border:1px solid var(--neo-border);border-radius:26px;padding:clamp(2rem,4vw,4rem);background:linear-gradient(140deg,#122b26,#081b18);box-shadow:var(--neo-shadow),var(--neo-rim); }
+.outer { border-top:1px solid rgba(137,189,250,.13);background:radial-gradient(ellipse at 88% 0%,rgba(27,84,151,.11),transparent 60%),#080F18; }
+.main { max-width:1230px;position:relative;margin:clamp(1rem,2vw,2rem) auto 0;border:1px solid var(--neo-border);border-radius:26px;padding:clamp(2rem,4vw,4rem);background:linear-gradient(140deg,#101D2D,#07101C);box-shadow:var(--neo-shadow),var(--neo-rim); }
 .bottom { border:0;opacity:.86;padding-block:1.6rem 2rem; }
 @media(max-width:1280px){.main{margin-inline:clamp(.75rem,2vw,2rem);}}
 
@@ -28,9 +28,9 @@
 
 
 /* Silky neutral footer treatment for Day Mode. */
-:global(html.neo-portfolio[data-theme="light"]) .outer {border-color:var(--neo-border);background:radial-gradient(ellipse at 88% 0%,#ffffff,transparent 65%),#EDF5EF;}
-:global(html.neo-portfolio[data-theme="light"]) .main {background:linear-gradient(145deg,#ffffff,#EAF5ED);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .outer {border-color:var(--neo-border);background:radial-gradient(ellipse at 88% 0%,#ffffff,transparent 65%),#ECF1F6;}
+:global(html.neo-portfolio[data-theme="light"]) .main {background:linear-gradient(145deg,#ffffff,#E9F0F6);border-color:var(--neo-border);}
 :global(html.neo-portfolio[data-theme="light"]) .eyebrow,
-:global(html.neo-portfolio[data-theme="light"]) .left em {color:#2B694C;}
+:global(html.neo-portfolio[data-theme="light"]) .left em {color:#26486E;}
 :global(html.neo-portfolio[data-theme="light"]) .right a:hover,
-:global(html.neo-portfolio[data-theme="light"]) .bottom a:hover {color:#123D30;}
+:global(html.neo-portfolio[data-theme="light"]) .bottom a:hover {color:#123956;}

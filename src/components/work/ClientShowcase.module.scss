@@ -1,12 +1,12 @@
 .showcase { width:100%; display:grid; gap:1.3rem; }
-.lead { border:1px solid rgba(255,255,255,.12); border-radius:1.4rem; overflow:hidden; display:grid; grid-template-columns:1.16fr 1fr; background:linear-gradient(135deg,rgba(24,39,37,.88),rgba(12,16,18,.95)); box-shadow:0 25px 90px rgba(0,0,0,.13); }
+.lead { border:1px solid rgba(255,255,255,.12); border-radius:1.4rem; overflow:hidden; display:grid; grid-template-columns:1.16fr 1fr; background:linear-gradient(135deg,rgba(23,30,40,.88),rgba(12,16,18,.95)); box-shadow:0 25px 90px rgba(0,0,0,.13); }
 .leadVisualLink,.artLink { display:block; min-width:0; text-decoration:none; }
 .art { position:relative; isolation:isolate; display:flex; flex-direction:column; justify-content:space-between; gap:1.2rem; min-height:215px; overflow:hidden; padding:1rem 1.2rem; background:#0d1820; transition:filter .25s ease; }
 .art::after { content:""; position:absolute; width:64%; aspect-ratio:1; border:1px solid rgba(255,255,255,.08); border-radius:50%; right:-18%; top:13%; z-index:-1; box-shadow:0 0 0 36px rgba(255,255,255,.025),0 0 0 75px rgba(255,255,255,.012); }
 .artLink:hover .art,.leadVisualLink:hover .art { filter:brightness(1.15); }
 .artLarge { height:100%; min-height:360px; padding:1.4rem 1.5rem; }
 .ocean { background:linear-gradient(144deg,#072c3b,#091521 76%); }
-.organic { background:linear-gradient(144deg,#22271a,#121911 76%); }
+.organic { background:linear-gradient(144deg,#192228,#10151A 76%); }
 .auto { background:linear-gradient(144deg,#f8f7f3,#dedbd4 76%); color:#202121; }
 .fragrance { background:radial-gradient(circle at 70% 25%,#493049,#19111b 68%); }
 .browserTop,.artFoot { display:flex; justify-content:space-between; align-items:center; gap:.5rem; color:rgba(255,255,255,.58); font-family:var(--font-code),monospace; font-size:.59rem; font-weight:650; letter-spacing:.04em; text-transform:uppercase; }
@@ -19,10 +19,10 @@
 .brandType span { display:block; font-family:var(--font-primary),sans-serif; font-size:.65rem; letter-spacing:.7em; font-weight:400; margin-top:.8rem; }
 .leadBody { padding:clamp(1.7rem,3vw,3rem); display:flex; flex-direction:column; justify-content:center; align-items:start; gap:1.25rem; }
 .leadEyebrow,.itemOverline { font-family:var(--font-code),monospace; font-size:.65rem; color:var(--neutral-on-background-medium); letter-spacing:.05em; display:flex; align-items:center; gap:.6rem; }
-.dot { width:6px; height:6px; border-radius:50%; background:#7fe0bd; display:inline-block; box-shadow:0 0 0 4px rgba(127,224,189,.08); }
+.dot { width:6px; height:6px; border-radius:50%; background:#78AAE7; display:inline-block; box-shadow:0 0 0 4px rgba(120,170,231,.08); }
 .leadBody h3 { font-size:clamp(2rem,4vw,3.55rem); letter-spacing:-.06em; line-height:1.09; font-weight:750; }
 .leadBody h3 a,.smallBody h3 a { text-decoration:none; color:inherit; }
-.leadBody h3 a:hover,.smallBody h3 a:hover { color:#a4ebd1; }
+.leadBody h3 a:hover,.smallBody h3 a:hover { color:#9FC4F0; }
 .leadBody p { color:var(--neutral-on-background-medium); line-height:1.75; font-size:.95rem; max-width:32rem; }
 .techs { display:flex; flex-wrap:wrap; gap:.4rem; }
 .techs span { padding:.35rem .55rem; border:1px solid rgba(255,255,255,.12); border-radius:5rem; font-size:.67rem; color:var(--neutral-on-background-medium); }
@@ -39,24 +39,24 @@
 @media (max-width:600px) { .artLarge{min-height:250px;} .leadBody{padding:1.6rem;} .supporting{grid-template-columns:1fr;} .art{min-height:205px;} .leadBody h3{font-size:2.1rem;} }
 @media (prefers-reduced-motion:reduce) { .art {transition:none;} }
 /* Keep an attractive portfolio card even when a third-party image goes offline. */
-.visualFallback { display:flex; flex:1; width:100%; min-height:100px; align-items:center; justify-content:center; text-align:center; font-size:clamp(1.35rem,2.4vw,2.4rem); font-weight:780; letter-spacing:-.055em; color:#e6faf0; padding:1.6rem .7rem; }
+.visualFallback { display:flex; flex:1; width:100%; min-height:100px; align-items:center; justify-content:center; text-align:center; font-size:clamp(1.35rem,2.4vw,2.4rem); font-weight:780; letter-spacing:-.055em; color:#E5EFFB; padding:1.6rem .7rem; }
 .organic .visualFallback { color:#e9d9a9; }
 .auto .visualFallback { color:#282820; }
 
 
 /* Client gallery: substantial embossed panels and inset media frames */
 .showcase { gap:1.35rem; }
-.lead { border:1px solid var(--neo-border);border-radius:25px;overflow:hidden;background:linear-gradient(135deg,#122c29,#091a18);box-shadow:var(--neo-shadow),var(--neo-rim); }
+.lead { border:1px solid var(--neo-border);border-radius:25px;overflow:hidden;background:linear-gradient(135deg,#101D2E,#08101B);box-shadow:var(--neo-shadow),var(--neo-rim); }
 .leadVisualLink { padding:11px;display:flex;min-width:0; }
 .leadVisualLink > .art { flex:1; }
-.art { border-radius:17px;box-shadow:var(--neo-inset),var(--neo-rim);border:1px solid rgba(181,252,216,.16); }
-.art::after { border-color:rgba(146,255,218,.12);box-shadow:0 0 0 44px rgba(108,221,173,.026),0 0 0 97px rgba(108,221,173,.016); }
+.art { border-radius:17px;box-shadow:var(--neo-inset),var(--neo-rim);border:1px solid rgba(181,215,252,.16); }
+.art::after { border-color:rgba(150,196,251,.12);box-shadow:0 0 0 44px rgba(100,160,229,.026),0 0 0 97px rgba(100,160,229,.016); }
 .artLarge { border-radius:18px; }
-.smallCard { border:1px solid var(--neo-border);border-radius:21px;background:linear-gradient(145deg,#142a26,#091a18);box-shadow:var(--neo-shadow-small),var(--neo-rim); }
+.smallCard { border:1px solid var(--neo-border);border-radius:21px;background:linear-gradient(145deg,#121D2C,#08101B);box-shadow:var(--neo-shadow-small),var(--neo-rim); }
 .artLink { padding:9px 9px 0; }
 .smallCard .art {border-radius:15px;}
-.leadEyebrow .dot,.dot { box-shadow:0 0 0 5px rgba(124,230,189,.13),0 0 16px rgba(99,240,176,.28); }
-.techs span { background:#0e2622;border:1px solid rgba(162,245,202,.2);box-shadow:var(--neo-inset);border-radius:11px;padding:.45rem .65rem; }
+.leadEyebrow .dot,.dot { box-shadow:0 0 0 5px rgba(116,172,238,.13),0 0 16px rgba(91,164,248,.28); }
+.techs span { background:#0C1828;border:1px solid rgba(156,201,251,.2);box-shadow:var(--neo-inset);border-radius:11px;padding:.45rem .65rem; }
 .visualFallback { text-shadow:0 6px 20px rgba(0,0,0,.15); }
 @media(max-width:900px){.leadVisualLink{padding:8px;}.artLarge{min-height:310px;}}
 
@@ -89,10 +89,10 @@
 
 /* Day Mode: bright cases/copy, project artwork intentionally remains authentic. */
 :global(html.neo-portfolio[data-theme="light"]) .lead,
-:global(html.neo-portfolio[data-theme="light"]) .smallCard {background:linear-gradient(145deg,#ffffff,#EAF5ED);border-color:var(--neo-border);}
-:global(html.neo-portfolio[data-theme="light"]) .techs span {background:#EDF7F0;border-color:var(--neo-border);color:#205640;}
+:global(html.neo-portfolio[data-theme="light"]) .smallCard {background:linear-gradient(145deg,#ffffff,#E9F0F6);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .techs span {background:#ECF2F8;border-color:var(--neo-border);color:#1D4E7C;}
 :global(html.neo-portfolio[data-theme="light"]) .leadBody h3 a:hover,
-:global(html.neo-portfolio[data-theme="light"]) .smallBody h3 a:hover {color:#205640;}
+:global(html.neo-portfolio[data-theme="light"]) .smallBody h3 a:hover {color:#1D4E7C;}
 :global(html.neo-portfolio[data-theme="light"]) .art {border-color:rgba(127,140,155,.22);}
 
 
@@ -112,7 +112,7 @@
   padding: .3rem .6rem;
   border: 1px solid var(--neo-border);
   border-radius: 9px;
-  background: rgba(13,35,30,.42);
+  background: rgba(11,22,37,.42);
   color: var(--type-secondary);
   font-size: .73rem;
   line-height: 1.35;
@@ -121,8 +121,8 @@
 .supporting { grid-template-columns: repeat(2,minmax(0,1fr)); }
 @media(max-width:620px) { .supporting {grid-template-columns:1fr;} }
 :global(html.neo-portfolio[data-theme="light"]) .cardTechs span {
-  background: linear-gradient(145deg,#EAF5ED,#FCFFFC);
-  color: #456C51;
+  background: linear-gradient(145deg,#E9F0F6,#FCFEFF);
+  color: #42586F;
   border-color: rgba(122,140,159,.18);
   box-shadow: inset 3px 3px 7px rgba(132,148,165,.1), inset -3px -3px 7px white;
 }

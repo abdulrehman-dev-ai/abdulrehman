@@ -1,9 +1,9 @@
 /* Source of truth for all portfolio ActionLink visuals.
    The selectors below intentionally outrank legacy project styles. */
 :global(html.neo-portfolio) .control {
-  --action-surface: linear-gradient(150deg,#153a30 0%,#0d2822 100%);
-  --action-hover: linear-gradient(150deg,#1b4a3a 0%,#12352b 100%);
-  --action-fg: #e6fff0;
+  --action-surface: linear-gradient(150deg,#12253D 0%,#0B192A 100%);
+  --action-hover: linear-gradient(150deg,#17304E 0%,#0F2138 100%);
+  --action-fg: #E7F2FE;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
@@ -16,10 +16,10 @@
   padding: .63rem 1.08rem;
   color: var(--action-fg) !important;
   background: var(--action-surface) !important;
-  border: 1px solid rgba(166,242,201,.4) !important;
+  border: 1px solid rgba(160,202,248,.4) !important;
   border-radius: 13px !important;
-  box-shadow: 6px 7px 15px rgba(0,0,0,.5), -5px -5px 13px rgba(69,151,111,.18),
-    inset 1px 1px 1px rgba(214,255,231,.17), inset -1px -1px 1px rgba(0,0,0,.23) !important;
+  box-shadow: 6px 7px 15px rgba(0,0,0,.5), -5px -5px 13px rgba(63,107,157,.18),
+    inset 1px 1px 1px rgba(216,234,253,.17), inset -1px -1px 1px rgba(0,0,0,.23) !important;
   font-family: var(--font-primary), sans-serif !important;
   font-size: .82rem !important;
   font-weight: 700 !important;
@@ -33,18 +33,18 @@
   transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
 :global(html.neo-portfolio) .primary {
-  --action-surface: linear-gradient(150deg,#205842 0%,#123d30 100%);
-  --action-hover: linear-gradient(150deg,#2b6c52 0%,#184c3c 100%);
-  --action-fg: #edfff5;
+  --action-surface: linear-gradient(150deg,#1C395C 0%,#123956 100%);
+  --action-hover: linear-gradient(150deg,#264871 0%,#142F50 100%);
+  --action-fg: #EEF6FE;
 }
 :global(html.neo-portfolio) .secondary {
-  --action-surface: linear-gradient(150deg,#153c31 0%,#0b2923 100%);
-  --action-hover: linear-gradient(150deg,#1d4e3f 0%,#12382e 100%);
+  --action-surface: linear-gradient(150deg,#12263F 0%,#09182B 100%);
+  --action-hover: linear-gradient(150deg,#193352 0%,#0F223B 100%);
 }
 :global(html.neo-portfolio) .quiet {
-  --action-surface: linear-gradient(150deg,#112f29 0%,#0a211d 100%);
-  --action-hover: linear-gradient(150deg,#194236 0%,#0d2b25 100%);
-  --action-fg: #cdf5df;
+  --action-surface: linear-gradient(150deg,#0F1E31 0%,#081423 100%);
+  --action-hover: linear-gradient(150deg,#162B45 0%,#0B1A2D 100%);
+  --action-fg: #CAE0F8;
 }
 :global(html.neo-portfolio) .small {
   min-height: 43px;
@@ -63,10 +63,10 @@
   width:21px;
   height:21px;
   flex: 0 0 21px;
-  background:rgba(1,17,12,.19);
+  background:rgba(1,8,17,.19);
   border-radius:7px;
-  border:1px solid rgba(165,244,203,.15);
-  box-shadow: inset 1px 2px 4px rgba(0,0,0,.33), inset -1px -1px 3px rgba(141,242,200,.12);
+  border:1px solid rgba(159,202,250,.15);
+  box-shadow: inset 1px 2px 4px rgba(0,0,0,.33), inset -1px -1px 3px rgba(133,187,250,.12);
   line-height:1;
 }
 @media(hover:hover) {
@@ -74,9 +74,9 @@
     background: var(--action-hover) !important;
     color:var(--action-fg) !important;
     transform:translateY(-2px);
-    border-color:rgba(199,255,226,.7) !important;
-    box-shadow:9px 10px 22px rgba(0,0,0,.52),-7px -7px 16px rgba(74,161,116,.2),
-      inset 1px 1px 1px rgba(218,255,234,.20) !important;
+    border-color:rgba(201,226,253,.7) !important;
+    box-shadow:9px 10px 22px rgba(0,0,0,.52),-7px -7px 16px rgba(67,115,168,.2),
+      inset 1px 1px 1px rgba(219,236,254,.20) !important;
   }
 }
 :global(html.neo-portfolio) .control:active {
@@ -84,7 +84,7 @@
   box-shadow:var(--neo-inset) !important;
 }
 :global(html.neo-portfolio) .control:focus-visible {
-  outline:2px solid #c3ffe1 !important;
+  outline:2px solid #C5DFFD !important;
   outline-offset:4px;
 }
 @media (max-width:480px) {
@@ -96,26 +96,26 @@
 
 /* Day Mode: the same button geometry, with white/grey tactile material. */
 :global(html.neo-portfolio[data-theme="light"]) .control {
-  --action-surface:linear-gradient(145deg,#ffffff,#E6F3E9);
-  --action-hover:linear-gradient(145deg,#ffffff,#DCEDE0);
-  --action-fg:#14372D;
+  --action-surface:linear-gradient(145deg,#ffffff,#E5EDF4);
+  --action-hover:linear-gradient(145deg,#ffffff,#DBE5EE);
+  --action-fg:#153750;
   border-color:rgba(119,132,148,.34)!important;
   box-shadow:5px 6px 14px rgba(134,147,163,.18),-5px -5px 13px #ffffff,inset 1px 1px 1px #ffffff!important;
 }
 :global(html.neo-portfolio[data-theme="light"]) .primary {
-  --action-surface:linear-gradient(145deg,#205640,#123D30);
-  --action-hover:linear-gradient(145deg,#2B694C,#194D39);
+  --action-surface:linear-gradient(145deg,#1D4E7C,#123956);
+  --action-hover:linear-gradient(145deg,#26486E,#153051);
   --action-fg:#ffffff;
-  border-color:#1A4A38!important;
+  border-color:#16304E!important;
 }
 :global(html.neo-portfolio[data-theme="light"]) .quiet {
-  --action-surface:linear-gradient(145deg,#F1F8F3,#E6F3E9);
-  --action-hover:linear-gradient(145deg,#ffffff,#DCEDE0);
-  --action-fg:#205640;
+  --action-surface:linear-gradient(145deg,#F0F5F9,#E5EDF4);
+  --action-hover:linear-gradient(145deg,#ffffff,#DBE5EE);
+  --action-fg:#1D4E7C;
 }
 :global(html.neo-portfolio[data-theme="light"]) .control:hover {
   border-color:rgba(103,117,133,.54)!important;
   box-shadow:7px 9px 19px rgba(140,150,165,.2),-6px -6px 15px #ffffff!important;
 }
 :global(html.neo-portfolio[data-theme="light"]) .icon {background:rgba(131,146,163,.1);border-color:rgba(143,153,167,.20);box-shadow:var(--neo-inset);}
-:global(html.neo-portfolio[data-theme="light"]) .control:focus-visible {outline-color:#205640!important;}
+:global(html.neo-portfolio[data-theme="light"]) .control:focus-visible {outline-color:#1D4E7C!important;}
