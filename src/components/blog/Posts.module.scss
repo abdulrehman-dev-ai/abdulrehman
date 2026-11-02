@@ -17,7 +17,7 @@
   overflow: hidden;
   border-radius: 19px;
   border: 1px solid var(--neo-border);
-  background: linear-gradient(145deg, #12332b, #0a211b);
+  background: linear-gradient(145deg, #102F4B, #081423);
   box-shadow: var(--neo-shadow-small), var(--neo-rim);
   transition: transform .2s ease, box-shadow .2s ease;
 }
@@ -101,14 +101,14 @@
 }
 .link:focus-visible { outline: 2px solid var(--neo-mint); outline-offset: -4px; border-radius: 19px; }
 :global(html.neo-portfolio[data-theme="light"]) .card {
-  background: linear-gradient(145deg, #ffffff, #F4FAF6 85%, #EAF5ED);
+  background: linear-gradient(145deg, #ffffff, #F4F7FA 85%, #E9F0F6);
 }
-:global(html.neo-portfolio[data-theme="light"]) .title { color: #14372D; }
+:global(html.neo-portfolio[data-theme="light"]) .title { color: #153750; }
 :global(html.neo-portfolio[data-theme="light"]) .eyebrow,
-:global(html.neo-portfolio[data-theme="light"]) .read { color: #205640; }
+:global(html.neo-portfolio[data-theme="light"]) .read { color: #1D4E7C; }
 :global(html.neo-portfolio[data-theme="light"]) .tag {
-  background: linear-gradient(145deg, #F4FAF6, #E5F2E8);
-  color: #315E44;
+  background: linear-gradient(145deg, #F4F7FA, #E4ECF3);
+  color: #2E4761;
 }
 @media (max-width: 900px) {
   .threeColumns { grid-template-columns: repeat(2,minmax(0,1fr)); }
