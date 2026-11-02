@@ -73,10 +73,10 @@
 @media(max-width:700px){.controls{margin-left:auto;gap:.4rem;}.themeToggle{padding:.55rem;}.themeLabel{display:none;}}
 @media(prefers-reduced-motion:reduce){.themeToggle{transition:none;}}
 :global(html.neo-portfolio[data-theme="light"]) .shell {background:linear-gradient(180deg,rgba(248,249,251,.98),rgba(246,248,250,.92) 82%,transparent);}
-:global(html.neo-portfolio[data-theme="light"]) .monogram {background:linear-gradient(145deg,#ffffff,#e4e9ee);border-color:var(--neo-border);}
-:global(html.neo-portfolio[data-theme="light"]) .navigation {background:#eff2f5;border-color:var(--neo-border);box-shadow:var(--neo-inset),0 7px 20px rgba(111,126,145,.08);}
+:global(html.neo-portfolio[data-theme="light"]) .monogram {background:linear-gradient(145deg,#ffffff,#E2EFE6);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .navigation {background:#EBF6EE;border-color:var(--neo-border);box-shadow:var(--neo-inset),0 7px 20px rgba(111,126,145,.08);}
 :global(html.neo-portfolio[data-theme="light"]) .navItem:hover,
-:global(html.neo-portfolio[data-theme="light"]) .navItem[aria-current="page"] {background:linear-gradient(145deg,#ffffff,#e3e9ef);color:#253543;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
-:global(html.neo-portfolio[data-theme="light"]) .statusDot {border-color:#ffffff;box-shadow:0 0 0 2px rgba(255,255,255,.9);background:#708b9a;}
-:global(html.neo-portfolio[data-theme="light"]) .themeToggle {background:linear-gradient(145deg,#ffffff,#e7ecf1);color:#2e3c48;border-color:var(--neo-border);}
-:global(html.neo-portfolio[data-theme="light"]) .themeToggle:focus-visible {outline-color:#536d83;}
+:global(html.neo-portfolio[data-theme="light"]) .navItem[aria-current="page"] {background:linear-gradient(145deg,#ffffff,#E4F1E7);color:#123D30;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
+:global(html.neo-portfolio[data-theme="light"]) .statusDot {border-color:#ffffff;box-shadow:0 0 0 2px rgba(255,255,255,.9);background:#398360;}
+:global(html.neo-portfolio[data-theme="light"]) .themeToggle {background:linear-gradient(145deg,#ffffff,#E6F3E9);color:#123D30;border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .themeToggle:focus-visible {outline-color:#205640;}
