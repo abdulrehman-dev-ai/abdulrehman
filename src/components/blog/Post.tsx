@@ -1,63 +1,49 @@
-"use client";
-
-import { Column, Flex, Heading, SmartImage, SmartLink, Tag, Text } from "@/once-ui/components";
-import styles from "./Posts.module.scss";
+import Link from "next/link";
 import { formatDate } from "@/app/utils/formatDate";
+import styles from "./Posts.module.scss";
 
 interface PostProps {
-  post: any;
+  post: {
+    slug: string;
+    metadata: {
+      title: string;
+      publishedAt?: string;
+      tag?: string;
+      image?: string;
+    };
+  };
   thumbnail: boolean;
 }
 
+/* Native semantic cards avoid typography inheritance from Once UI Heading/Flex.
+   The title has an explicit, fluid line-height and can never collide with metadata. */
 export default function Post({ post, thumbnail }: PostProps) {
-  const tags = post.metadata.tag.split(",").map((tag: string) => tag.trim());
-
+  const tags = (post.metadata.tag || "").split(",").map(tag => tag.trim()).filter(Boolean).slice(0, 3);
+  const published = post.metadata.publishedAt;
   return (
-    <SmartLink
-      fillWidth
-      className={styles.hover}
-      unstyled
-      key={post.slug}
-      href={`/blog/${post.slug}`}
-    >
-      <Flex
-        position="relative"
-        mobileDirection="column"
-        fillWidth
-        paddingY="12"
-        paddingX="16"
-        gap="32"
-      >
-        {post.metadata.image && thumbnail && (
-          <SmartImage
-            priority
-            maxWidth={20}
-            className={styles.image}
-            sizes="640px"
-            border="neutral-alpha-weak"
-            cursor="interactive"
-            radius="m"
-            src={post.metadata.image}
-            alt={"Thumbnail of " + post.metadata.title}
-            aspectRatio="16 / 9"
-          />
+    <article className={styles.card}>
+      <Link className={styles.link} href={`/blog/${post.slug}`}>
+        {thumbnail && post.metadata.image && (
+          <div className={styles.imageWrap}>
+            <img src={post.metadata.image} alt="" className={styles.image} loading="lazy" />
+          </div>
         )}
-        <Column position="relative" fillWidth gap="8" vertical="center">
-          <Heading as="h2" variant="heading-strong-l" wrap="balance">
-            {post.metadata.title}
-          </Heading>
-          <Text variant="label-default-s" onBackground="neutral-weak">
-            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt, false)}
-          </Text>
-          {tags.length > 0 && (
-            <Flex gap="8">
-              {tags.map((tag: string, index: number) =>
-                index < 3 ? <Tag key={index} label={tag} variant="neutral" /> : null
-              )}
-            </Flex>
+        <div className={styles.content}>
+          <span className={styles.eyebrow}>FIELD NOTE <span aria-hidden="true">/</span> ENGINEERING</span>
+          <h3 className={styles.title}>{post.metadata.title}</h3>
+          {published && (
+            <time className={styles.date} dateTime={published}>
+              {formatDate(published, false)}
+            </time>
           )}
-        </Column>
-      </Flex>
-    </SmartLink>
+          {tags.length > 0 && (
+            <div className={styles.tags} aria-label="Topics">
+              {tags.map(tag => <span className={styles.tag} key={tag}>{tag}</span>)}
+            </div>
+          )}
+          <span className={styles.read}>Read article <span aria-hidden="true">↗</span></span>
+        </div>
+      </Link>
+    </article>
   );
 }
