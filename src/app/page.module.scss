@@ -78,3 +78,25 @@
 .asideBottom {font-size:.68rem;letter-spacing:.03em;}
 .portraitOverlay small {font-size:.69rem;letter-spacing:.1em;}
 @media(max-width:600px){.display{font-size:clamp(2.52rem,11.5vw,3.75rem)!important;line-height:1.08!important;letter-spacing:-.052em;}.sectionTitle{font-size:clamp(1.9rem,7.6vw,2.55rem)!important;}.lead{font-size:1.01rem;line-height:1.74;}.kicker{font-size:.69rem;}}
+
+
+/* Day Mode only: preserve the existing layout and editorial hierarchy. */
+:global(html.neo-portfolio[data-theme="light"]) .hero {background:linear-gradient(145deg,#ffffff,#eef1f5 76%);}
+:global(html.neo-portfolio[data-theme="light"]) .hero::before {border-color:rgba(139,153,170,.13);box-shadow:0 0 0 46px rgba(139,153,170,.028),0 0 0 100px rgba(139,153,170,.015);}
+:global(html.neo-portfolio[data-theme="light"]) .hero::after {background:radial-gradient(circle,rgba(187,199,211,.22),transparent 70%);}
+:global(html.neo-portfolio[data-theme="light"]) .display {text-shadow:none;}
+:global(html.neo-portfolio[data-theme="light"]) .display em,
+:global(html.neo-portfolio[data-theme="light"]) .kicker,
+:global(html.neo-portfolio[data-theme="light"]) .proof span,
+:global(html.neo-portfolio[data-theme="light"]) .process article span {color:#536474;}
+:global(html.neo-portfolio[data-theme="light"]) .liveDot {background:#788c9e;box-shadow:0 0 0 5px rgba(115,131,151,.13);}
+:global(html.neo-portfolio[data-theme="light"]) .portraitWrap {background:linear-gradient(145deg,#ffffff,#e5ebf0);border-color:var(--neo-border);box-shadow:var(--neo-shadow),var(--neo-rim);}
+:global(html.neo-portfolio[data-theme="light"]) .asideBottom {background:#eff2f6;}
+:global(html.neo-portfolio[data-theme="light"]) .servicesRibbon div {background:linear-gradient(145deg,#ffffff,#edf0f3);}
+:global(html.neo-portfolio[data-theme="light"]) .servicesRibbon span {background:#edf1f5;color:#586a7a;border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .servicesRibbon strong {color:var(--neo-text);}
+:global(html.neo-portfolio[data-theme="light"]) .approach,
+:global(html.neo-portfolio[data-theme="light"]) .journal {background:linear-gradient(145deg,#ffffff,#edf1f5);}
+:global(html.neo-portfolio[data-theme="light"]) .process article {background:linear-gradient(145deg,#fcfdff,#edf1f5);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .contactPanel {background:radial-gradient(circle at 95% 6%,#ffffff,transparent 44%),linear-gradient(145deg,#ffffff,#e9edf2);}
+:global(html.neo-portfolio[data-theme="light"]) .contactPanel::after {background:linear-gradient(90deg,transparent,rgba(114,129,147,.25),transparent);}
