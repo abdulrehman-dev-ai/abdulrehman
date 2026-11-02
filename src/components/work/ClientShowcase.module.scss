@@ -89,10 +89,10 @@
 
 /* Day Mode: bright cases/copy, project artwork intentionally remains authentic. */
 :global(html.neo-portfolio[data-theme="light"]) .lead,
-:global(html.neo-portfolio[data-theme="light"]) .smallCard {background:linear-gradient(145deg,#ffffff,#edf0f4);border-color:var(--neo-border);}
-:global(html.neo-portfolio[data-theme="light"]) .techs span {background:#f1f4f7;border-color:var(--neo-border);color:#425462;}
+:global(html.neo-portfolio[data-theme="light"]) .smallCard {background:linear-gradient(145deg,#ffffff,#EAF5ED);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .techs span {background:#EDF7F0;border-color:var(--neo-border);color:#205640;}
 :global(html.neo-portfolio[data-theme="light"]) .leadBody h3 a:hover,
-:global(html.neo-portfolio[data-theme="light"]) .smallBody h3 a:hover {color:#445c70;}
+:global(html.neo-portfolio[data-theme="light"]) .smallBody h3 a:hover {color:#205640;}
 :global(html.neo-portfolio[data-theme="light"]) .art {border-color:rgba(127,140,155,.22);}
 
 
@@ -121,8 +121,8 @@
 .supporting { grid-template-columns: repeat(2,minmax(0,1fr)); }
 @media(max-width:620px) { .supporting {grid-template-columns:1fr;} }
 :global(html.neo-portfolio[data-theme="light"]) .cardTechs span {
-  background: linear-gradient(145deg,#edf1f5,#f8fafc);
-  color: #506172;
+  background: linear-gradient(145deg,#EAF5ED,#FCFFFC);
+  color: #456C51;
   border-color: rgba(122,140,159,.18);
   box-shadow: inset 3px 3px 7px rgba(132,148,165,.1), inset -3px -3px 7px white;
 }
