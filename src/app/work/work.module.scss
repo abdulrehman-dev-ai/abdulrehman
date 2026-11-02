@@ -29,3 +29,17 @@
 :global(html.neo-portfolio[data-theme="light"]) .overline,
 :global(html.neo-portfolio[data-theme="light"]) .end p {color:#1D4E7C;}
 :global(html.neo-portfolio[data-theme="light"]) .factline span {background:#eef2f6;border-color:var(--neo-border);}
+
+
+/* Case-study listing: premium light glass without content changes. */
+:global(html.neo-portfolio[data-theme="light"]) .header,
+:global(html.neo-portfolio[data-theme="light"]) .end {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-elevated);
+}
+:global(html.neo-portfolio[data-theme="light"]) .factline span {
+  background:var(--glass-well);
+  border-color:var(--glass-line);
+  box-shadow:var(--neo-inset);
+}

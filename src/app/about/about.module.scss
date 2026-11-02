@@ -79,3 +79,20 @@
 :global(html.neo-portfolio[data-theme="light"]) .archive summary {color:#1D4E7C;}
 :global(html.neo-portfolio[data-theme="light"]) .credentialsList article {background:#F0F6FD;border-color:var(--neo-border);}
 :global(html.neo-portfolio[data-theme="light"]) .cta a {background:linear-gradient(145deg,#ffffff,#E4ECF3);color:#1D4E7C;}
+
+
+/* White / blue pearlescent glass in Day Mode only. */
+:global(html.neo-portfolio[data-theme="light"]) .hero,
+:global(html.neo-portfolio[data-theme="light"]) .philosophy,
+:global(html.neo-portfolio[data-theme="light"]) .credentials,
+:global(html.neo-portfolio[data-theme="light"]) .cta {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-elevated);
+}
+:global(html.neo-portfolio[data-theme="light"]) .role,
+:global(html.neo-portfolio[data-theme="light"]) .credentialsList article {
+  background:var(--glass-panel-soft);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}

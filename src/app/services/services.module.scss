@@ -97,3 +97,23 @@
 :global(html.neo-portfolio[data-theme="light"]) .extra {background:#F0F6FD;}
 :global(html.neo-portfolio[data-theme="light"]) .extra a {color:#1D4E7C;}
 :global(html.neo-portfolio[data-theme="light"]) .steps>div {background:#F2F7FB;border-color:var(--neo-border);}
+
+
+/* Day Mode service cards: softly raised frosted glass. */
+:global(html.neo-portfolio[data-theme="light"]) .hero,
+:global(html.neo-portfolio[data-theme="light"]) .group,
+:global(html.neo-portfolio[data-theme="light"]) .process,
+:global(html.neo-portfolio[data-theme="light"]) .cta {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-elevated);
+}
+:global(html.neo-portfolio[data-theme="light"]) .service,
+:global(html.neo-portfolio[data-theme="light"]) .service:first-child {
+  background:var(--glass-panel-soft);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}
+:global(html.neo-portfolio[data-theme="light"]) .service:hover {
+  background:linear-gradient(145deg,#fff,rgba(224,240,255,.96));
+}
