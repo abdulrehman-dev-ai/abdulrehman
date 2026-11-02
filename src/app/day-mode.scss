@@ -81,3 +81,17 @@ html.neo-portfolio[data-theme="light"] :where(input:not([type="hidden"]),textare
     --neo-shadow-small:0 0 0 1px var(--neo-border);
   }
 }
+
+
+/* Long-form reading surfaces shared by journal, case studies and legal content. */
+html.neo-portfolio[data-theme="light"] {
+  --reading-surface: linear-gradient(145deg, #FFFFFF 0%, #FBFEFC 55%, #F0F8F2 100%);
+  --reading-muted-surface: #EDF7EF;
+  --reading-inset: #F1F8F3;
+  --reading-ink: #14372D;
+  --reading-copy: #385747;
+  --reading-muted: #506C5B;
+  --reading-link: #14603F;
+  --reading-outline: rgba(32,86,64,.2);
+  --reading-heading: #123D30;
+}

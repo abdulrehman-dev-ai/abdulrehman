@@ -37,3 +37,22 @@
 .control:hover .visibility,.visibility:focus-visible { opacity: 1; }
 .visibility:active { box-shadow: var(--neo-inset); }
 @media(prefers-reduced-motion:reduce){.visibility{transition:none;}}
+
+
+/* The reusable MDX anchor control must match its article's day surface. */
+:global(html.neo-portfolio[data-theme="light"]) .visibility {
+  background: linear-gradient(145deg,#FFFFFF,#E6F2E9);
+  color: #205640;
+  border-color: var(--reading-outline);
+  box-shadow: var(--neo-shadow-small),var(--neo-rim);
+}
+:global(html.neo-portfolio[data-theme="light"]) .visibility:hover {
+  background: linear-gradient(145deg,#FFFFFF,#DDECE1);
+}
+:global(html.neo-portfolio[data-theme="light"]) .visibility:focus-visible {
+  outline: 2px solid #205640;
+  outline-offset: 3px;
+}
+:global(html.neo-portfolio[data-theme="light"]) .text {
+  color: var(--reading-heading);
+}
