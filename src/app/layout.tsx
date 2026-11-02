@@ -1,6 +1,7 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 import "./neumorphism.scss";
+import "./day-mode.scss";
 import "./typography.scss";
 import classNames from "classnames";
 import { Footer, Header, RouteGuard, GoogleAnalytics, LocationGif } from "@/components";
@@ -117,6 +118,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <Flex
       as="html"
       lang="en"
+      suppressHydrationWarning
       background="page"
       data-neutral={style.neutral}
       data-brand={style.brand}
@@ -129,6 +131,13 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       data-transition={style.transition}
       className={classNames("neo-portfolio", primary.variable, heading.variable, code.variable)}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "(function(){try{var t=localStorage.getItem('abdul-portfolio-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');document.documentElement.style.colorScheme='dark';}}catch(e){}})();",
+          }}
+        />
+      </head>
       <ToastProvider>
         <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
           <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
