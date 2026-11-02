@@ -24,8 +24,8 @@
 
 /* Day Mode */
 :global(html.neo-portfolio[data-theme="light"]) .header,
-:global(html.neo-portfolio[data-theme="light"]) .end {background:linear-gradient(145deg,#ffffff,#edf1f5);}
+:global(html.neo-portfolio[data-theme="light"]) .end {background:linear-gradient(145deg,#ffffff,#EAF5ED);}
 :global(html.neo-portfolio[data-theme="light"]) .header::after {border-color:rgba(129,143,158,.16);box-shadow:0 0 0 42px rgba(124,140,160,.03),0 0 0 86px rgba(124,140,160,.015);}
 :global(html.neo-portfolio[data-theme="light"]) .overline,
-:global(html.neo-portfolio[data-theme="light"]) .end p {color:#596d7c;}
+:global(html.neo-portfolio[data-theme="light"]) .end p {color:#205640;}
 :global(html.neo-portfolio[data-theme="light"]) .factline span {background:#eef2f6;border-color:var(--neo-border);}

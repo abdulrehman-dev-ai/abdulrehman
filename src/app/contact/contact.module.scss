@@ -52,12 +52,12 @@
 /* Day Mode */
 :global(html.neo-portfolio[data-theme="light"]) .header,
 :global(html.neo-portfolio[data-theme="light"]) .left,
-:global(html.neo-portfolio[data-theme="light"]) .steps {background:linear-gradient(145deg,#ffffff,#edf1f5);}
+:global(html.neo-portfolio[data-theme="light"]) .steps {background:linear-gradient(145deg,#ffffff,#EAF5ED);}
 :global(html.neo-portfolio[data-theme="light"]) .header::after {border-color:rgba(137,151,167,.17);box-shadow:0 0 0 38px rgba(132,150,170,.025),0 0 0 78px rgba(132,150,170,.015);}
 :global(html.neo-portfolio[data-theme="light"]) .kicker,
 :global(html.neo-portfolio[data-theme="light"]) .header em,
 :global(html.neo-portfolio[data-theme="light"]) .links b,
-:global(html.neo-portfolio[data-theme="light"]) .steps strong {color:#516776;}
+:global(html.neo-portfolio[data-theme="light"]) .steps strong {color:#205640;}
 :global(html.neo-portfolio[data-theme="light"]) .links a,
-:global(html.neo-portfolio[data-theme="light"]) .steps>div {background:#f1f4f7;border-color:var(--neo-border);}
-:global(html.neo-portfolio[data-theme="light"]) .links a:hover {background:#e5ecf2;}
+:global(html.neo-portfolio[data-theme="light"]) .steps>div {background:#EFF8F1;border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .links a:hover {background:#E3F1E6;}

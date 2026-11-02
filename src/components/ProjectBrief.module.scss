@@ -17,12 +17,12 @@
 
 
 /* Day Mode — keep the contact form visually consistent and accessible. */
-:global(html.neo-portfolio[data-theme="light"]) .form {background:linear-gradient(145deg,#ffffff,#edf1f5);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .form {background:linear-gradient(145deg,#ffffff,#EAF5ED);border-color:var(--neo-border);}
 :global(html.neo-portfolio[data-theme="light"]) .form input,
 :global(html.neo-portfolio[data-theme="light"]) .form textarea,
-:global(html.neo-portfolio[data-theme="light"]) .form select {background:#fafcff;border-color:#c9d3dd;color:#293a48;}
+:global(html.neo-portfolio[data-theme="light"]) .form select {background:#FCFFFC;border-color:#B5D4BF;color:#14372D;}
 :global(html.neo-portfolio[data-theme="light"]) .form input:focus,
 :global(html.neo-portfolio[data-theme="light"]) .form textarea:focus,
-:global(html.neo-portfolio[data-theme="light"]) .form select:focus {outline-color:#526a7d;}
-:global(html.neo-portfolio[data-theme="light"]) .selectedService {background:#eff3f6;color:#3d5364;}
-:global(html.neo-portfolio[data-theme="light"]) .feedback {background:#e9eff4;border-color:#bccbd6;color:#354756;}
+:global(html.neo-portfolio[data-theme="light"]) .form select:focus {outline-color:#205640;}
+:global(html.neo-portfolio[data-theme="light"]) .selectedService {background:#EBF5ED;color:#205640;}
+:global(html.neo-portfolio[data-theme="light"]) .feedback {background:#E8F4EC;border-color:#B1D4BC;color:#315C43;}

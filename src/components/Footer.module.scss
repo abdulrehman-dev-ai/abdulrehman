@@ -28,9 +28,9 @@
 
 
 /* Silky neutral footer treatment for Day Mode. */
-:global(html.neo-portfolio[data-theme="light"]) .outer {border-color:var(--neo-border);background:radial-gradient(ellipse at 88% 0%,#ffffff,transparent 65%),#f0f2f5;}
-:global(html.neo-portfolio[data-theme="light"]) .main {background:linear-gradient(145deg,#ffffff,#edf1f5);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .outer {border-color:var(--neo-border);background:radial-gradient(ellipse at 88% 0%,#ffffff,transparent 65%),#EDF5EF;}
+:global(html.neo-portfolio[data-theme="light"]) .main {background:linear-gradient(145deg,#ffffff,#EAF5ED);border-color:var(--neo-border);}
 :global(html.neo-portfolio[data-theme="light"]) .eyebrow,
-:global(html.neo-portfolio[data-theme="light"]) .left em {color:#536373;}
+:global(html.neo-portfolio[data-theme="light"]) .left em {color:#2B694C;}
 :global(html.neo-portfolio[data-theme="light"]) .right a:hover,
-:global(html.neo-portfolio[data-theme="light"]) .bottom a:hover {color:#293e51;}
+:global(html.neo-portfolio[data-theme="light"]) .bottom a:hover {color:#123D30;}
