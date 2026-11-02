@@ -23,21 +23,21 @@ export default function Home() {
       mainEntity:{"@type":"Person",name:person.name,image:"https://" + baseURL + person.avatar,
         jobTitle:"Full-Stack, Cloud & Security Engineer"}
     })}} />
-    <section className={styles.hero} aria-labelledby="home-intro">
-      <div className={styles.heroCopy}>
-        <p className={styles.kicker}><span className={styles.liveDot} /> INDEPENDENT ENGINEERING CONSULTANT · LAHORE, PAKISTAN</p>
-        <Heading as="h1" id="home-intro" className={styles.display} wrap="balance">
+    <section className={styles.hero} data-ui="hero" aria-labelledby="home-intro">
+      <div className={styles.heroCopy} data-ui="hero-copy">
+        <p className={styles.kicker} data-ui="eyebrow"><span className={styles.liveDot} /> INDEPENDENT ENGINEERING CONSULTANT · LAHORE, PAKISTAN</p>
+        <Heading as="h1" id="home-intro" className={styles.display} data-ui="hero-title" wrap="balance">
           Engineering the digital products <em>businesses rely on.</em>
         </Heading>
-        <p className={styles.lead}>I’m Abdul Rehman. I turn business requirements into secure applications, dependable cloud infrastructure and websites built for real customers.</p>
-        <div className={styles.actions}>
+        <p className={styles.lead} data-ui="hero-lead">I’m Abdul Rehman. I turn business requirements into secure applications, dependable cloud infrastructure and websites built for real customers.</p>
+        <div className={styles.actions} data-ui="hero-actions">
           <ActionLink href="/work" variant="primary">See selected work</ActionLink>
           <ActionLink href="/contact">Discuss a project</ActionLink>
         </div>
         <p className={styles.proof}><span>IN PRACTICE</span> Full-stack delivery / Cloud & DevOps / Security-aware implementation</p>
       </div>
-      <aside className={styles.heroAside} aria-label="Meet the engineer">
-        <div className={styles.portraitWrap}>
+      <aside className={styles.heroAside} data-ui="portrait" aria-label="Meet the engineer">
+        <div className={styles.portraitWrap} data-ui="portrait-frame">
           <img src="/images/avatar.png" alt="Portrait of Abdul Rehman" className={styles.portrait} />
           <span className={styles.portraitOverlay}>ABDUL REHMAN <small>INDEPENDENT ENGINEER</small></span>
         </div>
@@ -47,12 +47,12 @@ export default function Home() {
         </div>
       </aside>
     </section>
-    <section className={styles.servicesRibbon} aria-label="What I do">
+    <section className={styles.servicesRibbon} data-ui="expertise" aria-label="What I do">
       <div><span>01 /</span><strong>Build</strong><small>Platforms & commerce</small></div>
       <div><span>02 /</span><strong>Operate</strong><small>Cloud & automation</small></div>
       <div><span>03 /</span><strong>Secure</strong><small>Hardening & resilience</small></div>
     </section>
-    <section className={styles.selected} aria-labelledby="featured-title">
+    <section className={styles.selected} data-ui="selected-work" aria-labelledby="featured-title">
       <div className={styles.sectionHead}>
         <div>
           <p className={styles.kicker}>SELECTED WORK / 2025—2026</p>
@@ -63,7 +63,7 @@ export default function Home() {
       </div>
       <ClientShowcase mode="home" />
     </section>
-    <section className={styles.approach} aria-labelledby="approach-title">
+    <section className={styles.approach} data-ui="process" aria-labelledby="approach-title">
       <div>
         <p className={styles.kicker}>HOW I WORK</p>
         <Heading as="h2" id="approach-title" className={styles.sectionTitle}>More than a polished interface.</Heading>
@@ -76,7 +76,7 @@ export default function Home() {
         <article><span>03</span><div><h3>Verify and deliver</h3><p>Test critical journeys, deploy carefully and document what is ready — and what is not.</p></div></article>
       </div>
     </section>
-    {routes["/blog"] && <section className={styles.journal} aria-labelledby="journal-title">
+    {routes["/blog"] && <section className={styles.journal} data-ui="journal" aria-labelledby="journal-title">
       <div className={styles.sectionHead}>
         <div>
           <p className={styles.kicker}>FIELD NOTES / JOURNAL</p>
@@ -87,7 +87,7 @@ export default function Home() {
       </div>
       <Posts range={[1, 2]} columns="2" thumbnail />
     </section>}
-    <aside className={styles.contactPanel}>
+    <aside className={styles.contactPanel} data-ui="cta-panel">
       <div><p className={styles.kicker}>NEW ENGAGEMENTS</p>
         <Heading as="h2" className={styles.sectionTitle}>Have something ambitious to build?</Heading>
         <p className={styles.sectionSub}>Tell me what you're planning and I'll help define a practical approach.</p>
