@@ -57,3 +57,21 @@
 :global(html.neo-portfolio[data-theme="light"]) .number {background:#E9F0F6;color:#345780;}
 :global(html.neo-portfolio[data-theme="light"]) .arrow {background:linear-gradient(145deg,#ffffff,#DCE6F0);color:#1D4E7C;}
 :global(html.neo-portfolio[data-theme="light"]) .meta span {background:#E8EFF5;color:#28476A;}
+
+
+/* Day Mode: give the journal listing the same glass vocabulary. */
+:global(html.neo-portfolio[data-theme="light"]) .header,
+:global(html.neo-portfolio[data-theme="light"]) .cta {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-elevated);
+}
+:global(html.neo-portfolio[data-theme="light"]) .entry {
+  background:var(--glass-panel-soft);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}
+:global(html.neo-portfolio[data-theme="light"]) .entry:hover {
+  background:linear-gradient(145deg,#fff,rgba(222,239,255,.91));
+  box-shadow:var(--glass-elevated);
+}

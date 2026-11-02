@@ -61,3 +61,19 @@
 :global(html.neo-portfolio[data-theme="light"]) .links a,
 :global(html.neo-portfolio[data-theme="light"]) .steps>div {background:#EEF4F9;border-color:var(--neo-border);}
 :global(html.neo-portfolio[data-theme="light"]) .links a:hover {background:#E2EAF2;}
+
+
+/* Day Mode glass treatment for contact surfaces. */
+:global(html.neo-portfolio[data-theme="light"]) .header,
+:global(html.neo-portfolio[data-theme="light"]) .left,
+:global(html.neo-portfolio[data-theme="light"]) .steps {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}
+:global(html.neo-portfolio[data-theme="light"]) .links a,
+:global(html.neo-portfolio[data-theme="light"]) .steps>div {
+  background:var(--glass-well);
+  border-color:var(--glass-line);
+  box-shadow:var(--neo-inset),var(--glass-rim);
+}

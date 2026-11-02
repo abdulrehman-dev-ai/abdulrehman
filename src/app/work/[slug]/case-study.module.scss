@@ -136,3 +136,20 @@
 }
 .prose :global(pre) { max-width: 100%; overflow-x: auto; }
 .prose :global(img) { max-width: 100%; height: auto; }
+
+
+/* Case study day surface follows the same icy-glass visual system. */
+:global(html.neo-portfolio[data-theme="light"]) .header,
+:global(html.neo-portfolio[data-theme="light"]) .sidebar,
+:global(html.neo-portfolio[data-theme="light"]) .prose,
+:global(html.neo-portfolio[data-theme="light"]) .visual {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}
+:global(html.neo-portfolio[data-theme="light"]) .sidebar>div,
+:global(html.neo-portfolio[data-theme="light"]) .tags span {
+  background:var(--glass-well);
+  border-color:var(--glass-line);
+  box-shadow:var(--neo-inset);
+}

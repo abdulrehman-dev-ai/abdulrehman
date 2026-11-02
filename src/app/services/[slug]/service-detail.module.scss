@@ -16,3 +16,13 @@
 .article :global(h2){font-family:var(--type-display);font-weight:770;letter-spacing:-.038em;line-height:1.23;}
 .article :global(p){line-height:1.82;max-width:75ch;}
 @media(max-width:600px){.article{font-size:1rem;line-height:1.8;}}
+
+
+/* Day Mode service detail glass: typography and fields unchanged. */
+:global(html.neo-portfolio[data-theme="light"]) .intro,
+:global(html.neo-portfolio[data-theme="light"]) .article,
+:global(html.neo-portfolio[data-theme="light"]) .price {
+  background:var(--glass-panel)!important;
+  border-color:var(--glass-line)!important;
+  box-shadow:var(--glass-elevated);
+}
