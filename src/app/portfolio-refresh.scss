@@ -390,66 +390,6 @@ html.neo-portfolio[data-theme]:root [data-ui="header-controls"] button {
   min-height:46px;
 }
 
-/* The Ocean Yacht hero is a real brand showcase, not a giant cropped logo. */
-.oceanNightArt { display:none; }
-.oceanBrand {
-  display:flex;
-  flex:1;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:clamp(.65rem,1.5vw,1.1rem);
-  width:100%;
-  min-height:0;
-  padding:1rem;
-  text-align:center;
-  color:#f1f8fb;
-}
-.oceanLogoFrame {
-  display:grid;
-  place-items:center;
-  width:min(52%,172px);
-  height:clamp(72px,7vw,105px);
-  padding:.35rem;
-  border-radius:18px;
-  border:1px solid rgba(220,242,254,.2);
-  background:linear-gradient(140deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
-  box-shadow:inset 2px 3px 9px rgba(0,0,0,.2);
-  overflow:hidden;
-}
-.oceanLogoFrame img {
-  display:block;
-  width:100%;
-  height:100%;
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-  filter:none;
-}
-.oceanBrand strong {
-  color:#fff;
-  font-family:var(--type-display);
-  font-size:clamp(1.6rem,3vw,2.9rem);
-  font-weight:800;
-  line-height:1.16;
-  letter-spacing:-.045em;
-}
-.oceanBrand strong span {
-  display:block;
-  color:#c4d9e7;
-  letter-spacing:.15em;
-  font-size:.47em;
-  font-weight:650;
-  margin-top:.65rem;
-}
-.oceanBrand small {
-  color:#afc5d4;
-  font:600 clamp(.58rem,.85vw,.72rem)/1.7 var(--type-mono);
-  letter-spacing:.05em;
-}
-html.neo-portfolio[data-theme="dark"]:root .oceanBrand { display:flex; }
-html.neo-portfolio[data-theme="dark"]:root .oceanNightArt {display:none;}
-
 /* A naturally flowing layout at small screen widths. */
 @media (max-width:960px) {
   html.neo-portfolio[data-theme]:root [data-ui="hero"] {
