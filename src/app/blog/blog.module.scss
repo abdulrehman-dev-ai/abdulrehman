@@ -50,10 +50,10 @@
 /* Day Mode, retaining existing decorative article thumbnail artwork. */
 :global(html.neo-portfolio[data-theme="light"]) .header,
 :global(html.neo-portfolio[data-theme="light"]) .entry,
-:global(html.neo-portfolio[data-theme="light"]) .cta {background:linear-gradient(145deg,#ffffff,#edf1f5);}
-:global(html.neo-portfolio[data-theme="light"]) .entry:hover {background:linear-gradient(145deg,#ffffff,#e6ecf1);box-shadow:var(--neo-shadow),var(--neo-rim);}
-:global(html.neo-portfolio[data-theme="light"]) .header::after {border-color:var(--neo-border);background:linear-gradient(145deg,#ffffff,#dfe7ed);}
+:global(html.neo-portfolio[data-theme="light"]) .cta {background:linear-gradient(145deg,#ffffff,#EAF5ED);}
+:global(html.neo-portfolio[data-theme="light"]) .entry:hover {background:linear-gradient(145deg,#ffffff,#E5F2E8);box-shadow:var(--neo-shadow),var(--neo-rim);}
+:global(html.neo-portfolio[data-theme="light"]) .header::after {border-color:var(--neo-border);background:linear-gradient(145deg,#ffffff,#DCEDE0);}
 :global(html.neo-portfolio[data-theme="light"]) .kicker {color:#536979;}
-:global(html.neo-portfolio[data-theme="light"]) .number {background:#edf1f5;color:#5b7080;}
-:global(html.neo-portfolio[data-theme="light"]) .arrow {background:linear-gradient(145deg,#ffffff,#e2e9ef);color:#4b6475;}
-:global(html.neo-portfolio[data-theme="light"]) .meta span {background:#e9eff3;color:#536a7c;}
+:global(html.neo-portfolio[data-theme="light"]) .number {background:#EAF5ED;color:#397B5E;}
+:global(html.neo-portfolio[data-theme="light"]) .arrow {background:linear-gradient(145deg,#ffffff,#DDEFE2);color:#205640;}
+:global(html.neo-portfolio[data-theme="light"]) .meta span {background:#E9F4EB;color:#2C6649;}
