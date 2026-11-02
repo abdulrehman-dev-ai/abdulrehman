@@ -5,6 +5,7 @@ import "./day-mode.scss";
 import "./typography.scss";
 import "./premium-day.scss";
 import "./portfolio-refresh.scss";
+import "./portfolio-polish.scss";
 import classNames from "classnames";
 import { Footer, Header, RouteGuard, GoogleAnalytics, LocationGif } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
