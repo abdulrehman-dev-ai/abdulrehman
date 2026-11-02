@@ -93,3 +93,29 @@
 @media (prefers-reduced-motion:reduce) {
   :global(html.neo-portfolio) .control{transition:none;}
 }
+
+/* Day Mode: the same button geometry, with white/grey tactile material. */
+:global(html.neo-portfolio[data-theme="light"]) .control {
+  --action-surface:linear-gradient(145deg,#ffffff,#e5eaf0);
+  --action-hover:linear-gradient(145deg,#ffffff,#dfe6ed);
+  --action-fg:#26343f;
+  border-color:rgba(119,132,148,.34)!important;
+  box-shadow:5px 6px 14px rgba(134,147,163,.18),-5px -5px 13px #ffffff,inset 1px 1px 1px #ffffff!important;
+}
+:global(html.neo-portfolio[data-theme="light"]) .primary {
+  --action-surface:linear-gradient(145deg,#455361,#26323e);
+  --action-hover:linear-gradient(145deg,#536373,#2e3d4a);
+  --action-fg:#ffffff;
+  border-color:#354350!important;
+}
+:global(html.neo-portfolio[data-theme="light"]) .quiet {
+  --action-surface:linear-gradient(145deg,#f4f6f8,#e7ecf1);
+  --action-hover:linear-gradient(145deg,#ffffff,#dfe7ed);
+  --action-fg:#42515e;
+}
+:global(html.neo-portfolio[data-theme="light"]) .control:hover {
+  border-color:rgba(103,117,133,.54)!important;
+  box-shadow:7px 9px 19px rgba(140,150,165,.2),-6px -6px 15px #ffffff!important;
+}
+:global(html.neo-portfolio[data-theme="light"]) .icon {background:rgba(131,146,163,.1);border-color:rgba(143,153,167,.20);box-shadow:var(--neo-inset);}
+:global(html.neo-portfolio[data-theme="light"]) .control:focus-visible {outline-color:#536d83!important;}

@@ -14,3 +14,15 @@
 .feedback { border:1px solid rgba(164,241,202,.26);background:#113c2e;color:#dafce8;padding:.8rem 1rem;border-radius:12px;line-height:1.55;font-size:.84rem; }
 .selectedService { border:1px solid var(--neo-border);background:#102e25;box-shadow:var(--neo-inset);border-radius:12px;padding:.75rem 1rem;color:#c4f8d9;text-transform:capitalize;font-size:.85rem; }
 @media(max-width:480px){.actions > :global(.neo-action) {width:100%;}}
+
+
+/* Day Mode — keep the contact form visually consistent and accessible. */
+:global(html.neo-portfolio[data-theme="light"]) .form {background:linear-gradient(145deg,#ffffff,#edf1f5);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .form input,
+:global(html.neo-portfolio[data-theme="light"]) .form textarea,
+:global(html.neo-portfolio[data-theme="light"]) .form select {background:#fafcff;border-color:#c9d3dd;color:#293a48;}
+:global(html.neo-portfolio[data-theme="light"]) .form input:focus,
+:global(html.neo-portfolio[data-theme="light"]) .form textarea:focus,
+:global(html.neo-portfolio[data-theme="light"]) .form select:focus {outline-color:#526a7d;}
+:global(html.neo-portfolio[data-theme="light"]) .selectedService {background:#eff3f6;color:#3d5364;}
+:global(html.neo-portfolio[data-theme="light"]) .feedback {background:#e9eff4;border-color:#bccbd6;color:#354756;}

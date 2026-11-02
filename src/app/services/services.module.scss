@@ -74,3 +74,26 @@
 .cta h2{font-family:var(--type-display);font-size:clamp(1.7rem,2.8vw,2.2rem);font-weight:760;}
 .cta p:not(.kicker){font-size:.94rem;line-height:1.72;}
 @media(max-width:600px){.hero h1{font-size:clamp(2.5rem,9.5vw,3.4rem);}.service h3{font-size:1.11rem;}}
+
+
+/* Day Mode */
+:global(html.neo-portfolio[data-theme="light"]) .hero,
+:global(html.neo-portfolio[data-theme="light"]) .group,
+:global(html.neo-portfolio[data-theme="light"]) .process,
+:global(html.neo-portfolio[data-theme="light"]) .cta {background:linear-gradient(145deg,#ffffff,#edf1f5);}
+:global(html.neo-portfolio[data-theme="light"]) .kicker,
+:global(html.neo-portfolio[data-theme="light"]) .hero h1 em,
+:global(html.neo-portfolio[data-theme="light"]) .groupIntro small,
+:global(html.neo-portfolio[data-theme="light"]) .steps strong {color:#536777;}
+:global(html.neo-portfolio[data-theme="light"]) .hero::before,
+:global(html.neo-portfolio[data-theme="light"]) .hero::after {background:linear-gradient(145deg,#fdfefe,#e1e8ee);color:#586e7e;border-color:var(--neo-border);text-shadow:none;box-shadow:var(--neo-shadow-small),var(--neo-rim);}
+:global(html.neo-portfolio[data-theme="light"]) .group::after {background:linear-gradient(90deg,transparent,rgba(129,142,159,.32));}
+:global(html.neo-portfolio[data-theme="light"]) .groupIntro::before {color:#566878;background:linear-gradient(145deg,#ffffff,#e3e9ef);}
+:global(html.neo-portfolio[data-theme="light"]) .service,
+:global(html.neo-portfolio[data-theme="light"]) .service:first-child {background:linear-gradient(145deg,#fafbfd,#eaf0f4);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .service:hover {background:#e8edf2;}
+:global(html.neo-portfolio[data-theme="light"]) .service h3 {color:#2e4150;}
+:global(html.neo-portfolio[data-theme="light"]) .serviceAside strong {background:linear-gradient(145deg,#ffffff,#e2e9ef);color:#425a6a;}
+:global(html.neo-portfolio[data-theme="light"]) .extra {background:#f0f3f6;}
+:global(html.neo-portfolio[data-theme="light"]) .extra a {color:#445e70;}
+:global(html.neo-portfolio[data-theme="light"]) .steps>div {background:#f3f5f7;border-color:var(--neo-border);}

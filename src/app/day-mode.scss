@@ -1,0 +1,65 @@
+/*
+ * Portfolio Day Mode — silky white and soft cool grey.
+ * Every rule is scoped to light; the existing night design stays unchanged.
+ */
+html.neo-portfolio[data-theme="light"] {
+  color-scheme: light;
+  --neo-bg: #f7f8fa;
+  --neo-base: #f1f3f6;
+  --neo-raise: #ffffff;
+  --neo-soft: #eef1f4;
+  --neo-border: rgba(122,134,149,.24);
+  --neo-highlight: rgba(255,255,255,.84);
+  --neo-mint: #485665;
+  --neo-text: #26313b;
+  --neo-shadow: 13px 13px 32px rgba(145,155,171,.18), -11px -11px 28px #ffffff;
+  --neo-shadow-small: 6px 7px 16px rgba(133,146,162,.16), -6px -6px 15px rgba(255,255,255,.98);
+  --neo-inset: inset 5px 5px 11px rgba(139,150,164,.13), inset -5px -5px 11px #ffffff;
+  --neo-rim: inset 1px 1px 1px rgba(255,255,255,.93), inset -1px -1px 1px rgba(151,164,179,.15);
+  --page-background: #f7f8fa;
+  --neutral-background-weak: #f7f8fa;
+  --neutral-background-medium: #edf0f3;
+  --neutral-background-strong: #e5e9ee;
+  --neutral-on-background-strong: #24313e;
+  --neutral-on-background-medium: #4d5966;
+  --neutral-on-background-weak: #66727e;
+  --neutral-border-strong: #aeb8c3;
+  --neutral-border-medium: #c4ccd5;
+  --neutral-border-weak: #dbe1e7;
+  --neutral-alpha-strong: rgba(54,70,86,.34);
+  --neutral-alpha-medium: rgba(68,84,100,.20);
+  --neutral-alpha-weak: rgba(68,84,100,.10);
+  --brand-on-background-medium: #3c5262;
+  --brand-on-background-weak: #596b78;
+  --accent-on-background-medium: #42586b;
+  --type-ink: #26313c;
+  --type-secondary: #52606d;
+  --type-muted: #647280;
+  --neo-btn-border: rgba(117,131,147,.35);
+  --neo-btn-text: #26343f;
+  --neo-btn-face: linear-gradient(145deg,#ffffff,#e9edf2);
+  --neo-btn-hover: linear-gradient(145deg,#ffffff,#dde4eb);
+  --neo-btn-shadow: 5px 6px 14px rgba(143,153,169,.18), -5px -5px 13px #ffffff;
+}
+html.neo-portfolio[data-theme="light"] body {
+  background: radial-gradient(ellipse 60% 25% at 85% 0%, #ffffff 0%, transparent 92%), var(--neo-bg);
+  color: var(--type-ink);
+}
+html.neo-portfolio[data-theme="light"] :where(a,button,input,select,textarea,summary):focus-visible {
+  outline: 2px solid #536d83 !important;
+  outline-offset: 3px;
+}
+html.neo-portfolio[data-theme="light"] :where(input:not([type="hidden"]),textarea,select) {
+  color: var(--neo-text);
+  background-color: #fafdff;
+  border-color: var(--neo-border);
+}
+@media (prefers-contrast: more) {
+  html.neo-portfolio[data-theme="light"] {
+    --neo-border: rgba(48,63,79,.65);
+    --type-secondary: #303e4c;
+    --type-muted: #384755;
+    --neo-shadow: 0 0 0 1px var(--neo-border);
+    --neo-shadow-small: 0 0 0 1px var(--neo-border);
+  }
+}

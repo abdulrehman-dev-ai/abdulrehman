@@ -25,7 +25,7 @@ const protectedRoutes = {
 };
 
 const style = {
-  theme: "dark", // dark | light
+  theme: "light", // default day; existing night design remains available
   neutral: "gray", // sand | gray | slate
   brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
