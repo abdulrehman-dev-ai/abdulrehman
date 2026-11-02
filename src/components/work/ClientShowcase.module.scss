@@ -85,3 +85,12 @@
 .academyBrand strong span {color:#e4bc85;}
 .academyBrand small {color:#c0c3b7;font:.68rem/1.55 var(--type-mono),monospace;letter-spacing:.09em;}
 @media(max-width:600px){.academyBrand{min-height:110px;}.academyBrand strong{font-size:clamp(1.7rem,7.5vw,2.2rem);}.academyBrand small{font-size:.64rem;}}
+
+
+/* Day Mode: bright cases/copy, project artwork intentionally remains authentic. */
+:global(html.neo-portfolio[data-theme="light"]) .lead,
+:global(html.neo-portfolio[data-theme="light"]) .smallCard {background:linear-gradient(145deg,#ffffff,#edf0f4);border-color:var(--neo-border);}
+:global(html.neo-portfolio[data-theme="light"]) .techs span {background:#f1f4f7;border-color:var(--neo-border);color:#425462;}
+:global(html.neo-portfolio[data-theme="light"]) .leadBody h3 a:hover,
+:global(html.neo-portfolio[data-theme="light"]) .smallBody h3 a:hover {color:#445c70;}
+:global(html.neo-portfolio[data-theme="light"]) .art {border-color:rgba(127,140,155,.22);}
