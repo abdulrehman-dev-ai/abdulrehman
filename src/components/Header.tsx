@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 import { ActionLink } from "@/components/ui/ActionLink";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navigation=[
   {href:"/work",label:"Work"},
@@ -37,7 +38,7 @@ export function Header(){
           {item.label}
         </Link>)}
       </nav>
-      <ActionLink href="/contact" size="sm" variant="secondary">Let's talk</ActionLink>
+      <div className={styles.controls}><ThemeToggle /><ActionLink href="/contact" size="sm" variant="secondary">Let's talk</ActionLink></div>
     </div>
   </header>;
 }
