@@ -50,13 +50,22 @@ export function ProjectVisual({ slug, title, large = false }: { slug: string; ti
     : slug === "auto-levels" ? styles.auto
     : styles.fragrance;
   return (
-    <div className={[styles.art, variant, large ? styles.artLarge : ""].join(" ")}>
+    <div className={[styles.art, variant, large ? styles.artLarge : ""].join(" ")} data-ui="project-art">
       <div className={styles.browserTop}>
         <span aria-hidden="true" className={styles.dots}>● ● ●</span>
         <span>{slug.replace(/-/g, ".")}</span>
         <span>↗</span>
       </div>
-      {visual?.src
+      {slug === "ocean-yacht-registration" && visual?.src
+        ? <>
+            <div className={styles.oceanBrand}>
+              <div className={styles.oceanLogoFrame}><ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} /></div>
+              <strong>OCEAN YACHT <span>REGISTRATION</span></strong>
+              <small>VESSEL REGISTRATION · DIGITAL WORKFLOWS</small>
+            </div>
+            <div className={styles.oceanNightArt}><ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} /></div>
+          </>
+        : visual?.src
         ? <ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} />
         : slug === "anyarabic"
           ? <div className={styles.academyBrand} role="img" aria-label="AnyArabic editorial project identity">
@@ -77,17 +86,20 @@ function SmallCard({ project, index }: { project: Project; index: number }) {
   const visual = visuals[project.slug];
   const title = project.metadata.title.split(" — ")[0];
   return (
-    <article className={styles.smallCard}>
+    <article className={styles.smallCard} data-ui="project-card">
       <Link href={"/work/" + project.slug} className={styles.artLink} aria-label={"Read " + title + " case study"}>
         <ProjectVisual slug={project.slug} title={title} />
       </Link>
-      <div className={styles.smallBody}>
+      <div className={styles.smallBody} data-ui="project-copy">
         <div className={styles.itemOverline}>
           <span>0{index + 2} / {visual?.kind || project.metadata.category}</span>
           <span className={styles.dot} aria-hidden="true" />
         </div>
         <h3><Link href={"/work/" + project.slug}>{title}</Link></h3>
         <p>{project.metadata.summary}</p>
+        <div className={styles.cardTechs} aria-label="Technologies used">
+          {(visual?.tools || []).slice(0, 3).map(tool => <span key={tool}>{tool}</span>)}
+        </div>
         <div className={styles.smallFooter}>
           <ActionLink href={"/work/" + project.slug} size="sm" variant="quiet">Explore case study</ActionLink>
         </div>
@@ -103,12 +115,12 @@ export function ClientShowcase({ mode = "home" }: { mode?: "home" | "all" }) {
   const title = lead.metadata.title.split(" — ")[0];
   const visual = visuals[lead.slug];
   return (
-    <div className={styles.showcase}>
-      <article className={styles.lead}>
+    <div className={styles.showcase} data-ui="project-showcase">
+      <article className={styles.lead} data-ui="featured-project">
         <Link className={styles.leadVisualLink} href={"/work/" + lead.slug} aria-label={"Explore " + title}>
           <ProjectVisual slug={lead.slug} title={title} large />
         </Link>
-        <div className={styles.leadBody}>
+        <div className={styles.leadBody} data-ui="featured-copy">
           <div className={styles.leadEyebrow}><span className={styles.dot} /> 01 / FEATURED DELIVERY</div>
           <h3><Link href={"/work/" + lead.slug}>{title}</Link></h3>
           <p>{lead.metadata.summary}</p>
@@ -121,8 +133,8 @@ export function ClientShowcase({ mode = "home" }: { mode?: "home" | "all" }) {
           </div>
         </div>
       </article>
-      <div className={styles.supporting}>
-        {projects.slice(1, mode === "home" ? 4 : undefined).map((project, index) => <SmallCard project={project} index={index} key={project.slug} />)}
+      <div className={styles.supporting} data-ui="project-grid">
+        {projects.slice(1, mode === "home" ? 5 : undefined).map((project, index) => <SmallCard project={project} index={index} key={project.slug} />)}
       </div>
       <p className={styles.disclosure}>Project visuals use public brand assets or clearly marked editorial treatments. Confidential infrastructure, private dashboards and customer records are not shown. Individual case studies distinguish delivered work from work still in progress.</p>
     </div>

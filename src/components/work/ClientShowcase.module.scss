@@ -94,3 +94,110 @@
 :global(html.neo-portfolio[data-theme="light"]) .leadBody h3 a:hover,
 :global(html.neo-portfolio[data-theme="light"]) .smallBody h3 a:hover {color:#445c70;}
 :global(html.neo-portfolio[data-theme="light"]) .art {border-color:rgba(127,140,155,.22);}
+
+
+/* Editorial media presentation: the official brand art stays unmodified in Night Mode. */
+.oceanNightArt { display: contents; }
+.oceanBrand { display: none; }
+.cardTechs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-top: .3rem;
+}
+.cardTechs span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 29px;
+  padding: .3rem .6rem;
+  border: 1px solid var(--neo-border);
+  border-radius: 9px;
+  background: rgba(13,35,30,.42);
+  color: var(--type-secondary);
+  font-size: .73rem;
+  line-height: 1.35;
+  box-shadow: var(--neo-inset);
+}
+.supporting { grid-template-columns: repeat(2,minmax(0,1fr)); }
+@media(max-width:620px) { .supporting {grid-template-columns:1fr;} }
+:global(html.neo-portfolio[data-theme="light"]) .cardTechs span {
+  background: linear-gradient(145deg,#edf1f5,#f8fafc);
+  color: #506172;
+  border-color: rgba(122,140,159,.18);
+  box-shadow: inset 3px 3px 7px rgba(132,148,165,.1), inset -3px -3px 7px white;
+}
+:global(html.neo-portfolio[data-theme="light"]) .oceanNightArt {display:none;}
+:global(html.neo-portfolio[data-theme="light"]) .oceanBrand {
+  display:flex;
+  flex:1;
+  width:100%;
+  min-height:0;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:clamp(.6rem,1.35vw,1.1rem);
+  padding:1.2rem;
+  text-align:center;
+  color:#edf5fb;
+}
+:global(html.neo-portfolio[data-theme="light"]) .oceanLogoFrame {
+  display:grid;
+  place-items:center;
+  width:min(56%,170px);
+  height:clamp(58px,7vw,94px);
+  padding:.4rem;
+  border-radius:16px;
+  border:1px solid rgba(222,238,250,.22);
+  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.015));
+  box-shadow:inset 2px 3px 8px rgba(0,0,0,.16);
+  overflow:hidden;
+}
+:global(html.neo-portfolio[data-theme="light"]) .oceanLogoFrame .brandImage {
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  min-height:0;
+  object-fit:contain;
+  align-self:center;
+  filter:none;
+}
+:global(html.neo-portfolio[data-theme="light"]) .oceanBrand strong {
+  display:block;
+  font-family:var(--type-display);
+  font-size:clamp(1.3rem,2.7vw,2.65rem);
+  font-weight:800;
+  line-height:1.16;
+  letter-spacing:-.045em;
+  color:#ffffff;
+}
+:global(html.neo-portfolio[data-theme="light"]) .oceanBrand strong span {
+  display:block;
+  color:#c6d9e6;
+  font-weight:650;
+  letter-spacing:.12em;
+  font-size:.48em;
+  margin-top:.65rem;
+}
+:global(html.neo-portfolio[data-theme="light"]) .oceanBrand small {
+  color:#abc1d1;
+  font-family:var(--type-mono);
+  font-size:clamp(.55rem,.8vw,.7rem);
+  line-height:1.6;
+  letter-spacing:.075em;
+}
+:global(html.neo-portfolio[data-theme="light"]) .ocean {
+  background: radial-gradient(circle at 74% 22%,#15394e 0%,transparent 60%),
+    linear-gradient(145deg,#0a2d42,#061926 78%);
+}
+:global(html.neo-portfolio[data-theme="light"]) .smallCard .brandImage {
+  max-height:175px;
+  object-fit:contain;
+}
+:global(html.neo-portfolio[data-theme="light"]) .organic .brandImage {
+  max-height:none;
+  object-fit:cover;
+}
+@media(max-width:620px) {
+  :global(html.neo-portfolio[data-theme="light"]) .oceanBrand strong {font-size:clamp(1.5rem,6.5vw,2.3rem);}
+}

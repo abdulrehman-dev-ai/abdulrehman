@@ -3,6 +3,7 @@ import "@/once-ui/tokens/index.scss";
 import "./neumorphism.scss";
 import "./day-mode.scss";
 import "./typography.scss";
+import "./premium-day.scss";
 import classNames from "classnames";
 import { Footer, Header, RouteGuard, GoogleAnalytics, LocationGif } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
@@ -142,6 +143,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
           <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
           <Background
+            className="portfolio-ambient"
             mask={{
               cursor: effects.mask.cursor,
               x: effects.mask.x,
