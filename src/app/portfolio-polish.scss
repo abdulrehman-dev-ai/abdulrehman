@@ -108,32 +108,32 @@ html.neo-portfolio[data-theme]:root [data-ui="cta-panel"] {
   margin-top:var(--polish-space);
 }
 html.neo-portfolio[data-theme="light"]:root {
-  --neo-shadow: 10px 12px 24px rgba(35,92,65,.095),-8px -8px 22px rgba(255,255,255,.98);
-  --neo-shadow-small: 5px 6px 13px rgba(35,92,65,.085),-4px -4px 11px #fff;
-  --neo-inset: inset 4px 4px 9px rgba(35,92,65,.09),inset -4px -4px 10px #fff;
-  --refresh-surface:linear-gradient(145deg,#fff 0%,#FBFEFC 57%,#F0F8F2 100%);
-  --refresh-subtle:#F0F8F2;
+  --neo-shadow: 10px 12px 24px rgba(31,61,96,.095),-8px -8px 22px rgba(255,255,255,.98);
+  --neo-shadow-small: 5px 6px 13px rgba(31,61,96,.085),-4px -4px 11px #fff;
+  --neo-inset: inset 4px 4px 9px rgba(31,61,96,.09),inset -4px -4px 10px #fff;
+  --refresh-surface:linear-gradient(145deg,#fff 0%,#FBFCFE 57%,#F0F6FD 100%);
+  --refresh-subtle:#F0F6FD;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="hero"],
 html.neo-portfolio[data-theme="light"]:root [data-ui="featured-project"],
 html.neo-portfolio[data-theme="light"]:root [data-ui="cta-panel"] {
-  background:linear-gradient(145deg,#fff 0%,#FCFEFC 50%,#EEF7F0 100%);
+  background:linear-gradient(145deg,#fff 0%,#FCFDFE 50%,#EDF3F8 100%);
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="project-card"],
 html.neo-portfolio[data-theme="light"]:root [data-ui="journal"],
 html.neo-portfolio[data-theme="light"]:root [data-ui="process"] {
-  background:linear-gradient(145deg,#fff,#F6FBF7);
+  background:linear-gradient(145deg,#fff,#F6F9FB);
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="project-copy"] p,
 html.neo-portfolio[data-theme="light"]:root [data-ui="featured-copy"] p {
-  color:#365847;
+  color:#33465B;
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="journal"] article {
-  background:linear-gradient(145deg,#FFFFFF,#F0F8F2);
+  background:linear-gradient(145deg,#FFFFFF,#F0F6FD);
   box-shadow:var(--neo-shadow-small),var(--neo-rim);
 }
 html.neo-portfolio[data-theme="light"]:root [data-ui="journal"] :where(h3) {
-  color:#14372D;
+  color:#153750;
 }
 @media(max-width:900px) {
   html.neo-portfolio[data-theme]:root [data-ui="hero"] {
