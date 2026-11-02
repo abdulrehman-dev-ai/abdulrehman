@@ -57,11 +57,14 @@ export function ProjectVisual({ slug, title, large = false }: { slug: string; ti
         <span>↗</span>
       </div>
       {slug === "ocean-yacht-registration" && visual?.src
-        ? <div className={styles.oceanBrand}>
-            <div className={styles.oceanLogoFrame}><ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} /></div>
-            <strong>OCEAN YACHT <span>REGISTRATION</span></strong>
-            <small>VESSEL REGISTRATION · DIGITAL WORKFLOWS</small>
-          </div>
+        ? <>
+            <div className={styles.oceanBrand}>
+              <div className={styles.oceanLogoFrame}><ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} /></div>
+              <strong>OCEAN YACHT <span>REGISTRATION</span></strong>
+              <small>VESSEL REGISTRATION · DIGITAL WORKFLOWS</small>
+            </div>
+            <div className={styles.oceanNightArt}><ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} /></div>
+          </>
         : visual?.src
         ? <ProjectArtImage src={visual.src} alt={visual.label} title={title} slug={slug} priority={large} />
         : slug === "anyarabic"
