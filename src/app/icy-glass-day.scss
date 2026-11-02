@@ -1,0 +1,175 @@
+/*
+ * Icy Glass — Day Mode only.
+ * A visual treatment layered onto the established blue neumorphic design.
+ * Intentionally changes NO dark-mode selector, typography, geometry or content.
+ */
+html.neo-portfolio[data-theme="light"]:root {
+  --neo-border: rgba(106, 158, 220, .29);
+  --neo-highlight: rgba(255,255,255,.98);
+  --neo-shadow:
+    10px 14px 30px rgba(57,103,164,.125),
+    -9px -9px 25px rgba(255,255,255,.99);
+  --neo-shadow-small:
+    5px 7px 17px rgba(60,111,176,.115),
+    -5px -5px 15px rgba(255,255,255,.99);
+  --neo-inset:
+    inset 4px 5px 11px rgba(77,122,180,.105),
+    inset -4px -4px 12px rgba(255,255,255,.99);
+  --neo-rim:
+    inset 1px 1px 1px rgba(255,255,255,1),
+    inset -1px -1px 1px rgba(92,147,214,.13);
+  --glass-panel:
+    linear-gradient(145deg,
+      rgba(255,255,255,.94) 0%,
+      rgba(249,252,255,.86) 42%,
+      rgba(224,238,254,.76) 100%);
+  --glass-panel-soft:
+    linear-gradient(145deg,
+      rgba(255,255,255,.90),
+      rgba(238,247,255,.77) 68%,
+      rgba(223,238,254,.72));
+  --glass-well:
+    linear-gradient(145deg,
+      rgba(226,240,254,.81),
+      rgba(251,253,255,.95));
+  --glass-line: rgba(126,169,223,.31);
+  --glass-rim:
+    inset 0 1px 1px rgba(255,255,255,.99),
+    inset 1px 1px 0 rgba(255,255,255,.8),
+    inset -1px -1px 0 rgba(119,169,226,.17);
+  --glass-elevated:
+    11px 14px 31px rgba(56,104,164,.12),
+    -8px -8px 23px rgba(255,255,255,.99),
+    var(--glass-rim);
+  --glass-small:
+    5px 8px 18px rgba(65,113,175,.11),
+    -5px -5px 15px rgba(255,255,255,.98),
+    var(--glass-rim);
+  --portfolio-raised:var(--glass-panel);
+  --portfolio-inset:var(--glass-well);
+  --portfolio-quiet:rgba(242,248,255,.86);
+  --portfolio-stroke:var(--glass-line);
+  --portfolio-elevation:var(--glass-elevated);
+  --refresh-surface:var(--glass-panel);
+  --refresh-subtle:rgba(237,246,255,.89);
+  --refresh-outline:var(--glass-line);
+  --refresh-elevation:var(--glass-elevated);
+  --refresh-card-elevation:var(--glass-small);
+  --reading-surface:var(--glass-panel);
+  --reading-muted-surface:rgba(234,245,255,.84);
+  --reading-inset:rgba(238,247,255,.92);
+  --reading-outline:var(--glass-line);
+}
+html.neo-portfolio[data-theme="light"] body {
+  background:
+    radial-gradient(ellipse 59% 24% at 86% 0%,
+      rgba(207,229,255,.53),transparent 83%),
+    radial-gradient(ellipse 45% 23% at 4% 38%,
+      rgba(222,239,255,.38),transparent 85%),
+    linear-gradient(180deg,#F9FCFF 0%,#F2F8FF 55%,#F7FBFF 100%);
+}
+html.neo-portfolio[data-theme="light"]:root
+  :is([data-ui="hero"],[data-ui="featured-project"],[data-ui="cta-panel"]) {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-elevated);
+  -webkit-backdrop-filter:blur(13px) saturate(128%);
+  backdrop-filter:blur(13px) saturate(128%);
+}
+html.neo-portfolio[data-theme="light"]:root
+  :is([data-ui="project-card"],[data-ui="journal"],[data-ui="process"],[data-ui="expertise"] > div) {
+  background:var(--glass-panel-soft);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}
+html.neo-portfolio[data-theme="light"]:root
+  :is([data-ui="project-card"],[data-ui="expertise"] > div) {
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+html.neo-portfolio[data-theme="light"]:root [data-ui="site-header"] {
+  background:linear-gradient(180deg,rgba(255,255,255,.91),rgba(242,249,255,.82));
+  border-bottom:1px solid rgba(134,178,226,.27);
+  box-shadow:0 7px 24px rgba(70,119,175,.085),inset 0 1px 0 #fff;
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  backdrop-filter:blur(18px) saturate(140%);
+}
+html.neo-portfolio[data-theme="light"]:root [data-ui="nav-links"] {
+  background:var(--glass-well);
+  border:1px solid var(--glass-line);
+  box-shadow:var(--neo-inset),var(--glass-rim);
+}
+html.neo-portfolio[data-theme="light"]:root [data-ui="nav-links"]
+  :is(a:hover,a[aria-current="page"]) {
+  background:linear-gradient(145deg,#fff,rgba(231,243,255,.93));
+  box-shadow:var(--glass-small);
+}
+html.neo-portfolio[data-theme="light"]:root [data-ui="portrait-frame"] {
+  border-color:rgba(255,255,255,.97);
+  box-shadow:var(--glass-elevated),0 0 0 1px rgba(118,167,222,.16);
+}
+html.neo-portfolio[data-theme="light"]:root [data-ui="hero-proof"] li,
+html.neo-portfolio[data-theme="light"]:root [data-ui="expertise"] > div > span,
+html.neo-portfolio[data-theme="light"]:root [data-ui="process"] article {
+  background:var(--glass-well);
+  border-color:var(--glass-line);
+  box-shadow:var(--neo-inset),var(--glass-rim);
+}
+html.neo-portfolio[data-theme="light"]:root [data-ui="journal"] article {
+  background:var(--glass-panel-soft);
+  border:1px solid rgba(127,174,224,.21);
+  box-shadow:var(--glass-small);
+}
+html.neo-portfolio[data-theme="light"]:root
+  [data-ui="featured-project"] [data-ui="project-art"],
+html.neo-portfolio[data-theme="light"]:root
+  [data-ui="project-card"] [data-ui="project-art"] {
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.3),0 0 0 1px rgba(103,149,206,.17);
+}
+/* Primary CTAs gain a bright, subtle top-edge sheen; no change to dimensions. */
+html.neo-portfolio[data-theme="light"]:root .neo-action--primary {
+  background:linear-gradient(165deg,#3476BD 0%,#1D4E7C 45%,#123956 100%);
+  border-color:rgba(89,153,221,.61);
+  box-shadow:0 7px 17px rgba(35,81,139,.19),
+    inset 0 1px 1px rgba(255,255,255,.46),
+    inset 1px 0 0 rgba(255,255,255,.22);
+}
+html.neo-portfolio[data-theme="light"]:root .neo-action--secondary,
+html.neo-portfolio[data-theme="light"]:root .neo-action--quiet {
+  background:var(--glass-panel);
+  border-color:var(--glass-line);
+  box-shadow:var(--glass-small);
+}
+html.neo-portfolio[data-theme="light"]:root
+  :where(input:not([type="hidden"]),textarea,select) {
+  background:rgba(250,253,255,.93);
+  border-color:var(--glass-line);
+  box-shadow:var(--neo-inset);
+}
+@media (hover:hover) {
+  html.neo-portfolio[data-theme="light"]:root
+    :is([data-ui="project-card"],[data-ui="expertise"] > div):hover {
+    box-shadow:0 14px 31px rgba(52,104,171,.16),
+      -7px -7px 20px #fff,var(--glass-rim);
+  }
+}
+@media (max-width:620px) {
+  html.neo-portfolio[data-theme="light"]:root
+    :is([data-ui="hero"],[data-ui="featured-project"],[data-ui="cta-panel"]) {
+    -webkit-backdrop-filter:blur(7px);
+    backdrop-filter:blur(7px);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  html.neo-portfolio[data-theme="light"]:root
+    :is([data-ui="project-card"],[data-ui="expertise"] > div) {
+    transition:none;
+  }
+}
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more) {
+  html.neo-portfolio[data-theme="light"]:root
+    :is([data-ui="hero"],[data-ui="featured-project"],[data-ui="cta-panel"],[data-ui="site-header"]) {
+    background:#F9FCFF;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+}
