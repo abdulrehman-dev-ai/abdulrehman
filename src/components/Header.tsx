@@ -29,7 +29,7 @@ export function Header(){
           />
           <span className={styles.statusDot} aria-hidden="true" />
         </span>
-        <span className={styles.brandText}>Abdul Rehman<small>Engineering & delivery</small></span>
+        <span className={styles.brandText}>Abdul Rehman<small>Technical Solutions Engineer</small></span>
       </Link>
       <nav aria-label="Primary navigation" className={styles.navigation} data-ui="nav-links">
         {navigation.map(item=><Link key={item.href} href={item.href}

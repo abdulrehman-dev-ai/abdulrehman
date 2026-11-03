@@ -8,7 +8,7 @@ import { ActionLink } from "@/components/ui/ActionLink";
 
 export async function generateMetadata() {
   const title = "Selected Engineering Work";
-  const description = "Real client work across full-stack applications, WordPress and VPS migration, cloud infrastructure, automotive websites and commerce.";
+  const description = "Selected work by a Technical Solutions Engineer: customer platforms, cloud migration, operational integrations and commerce delivery, with clear project status.";
   const image = "https://" + baseURL + "/og?title=" + encodeURIComponent(title);
   return { title, description, alternates:{canonical:"https://" + baseURL + "/work"},
     openGraph:{title,description,url:"https://" + baseURL + "/work",images:[{url:image}]},
@@ -27,7 +27,7 @@ export default function Work() {
       <p className={styles.overline}>PORTFOLIO / SELECTED ENGAGEMENTS</p>
       <Heading as="h1" variant="display-strong-l" wrap="balance">Proof of work. Not just promises.</Heading>
       <p className={styles.summary}>Production platforms, client websites and active commerce projects. Explore what I built, the engineering decisions, and the actual delivery status.</p>
-      <div className={styles.factline}><span>CLIENT DELIVERY</span><span>PLATFORM ENGINEERING</span><span>RELEASE & OPERATIONS</span></div>
+      <div className={styles.factline}><span>TECHNICAL SOLUTIONS</span><span>CLOUD & AUTOMATION</span><span>CLIENT DELIVERY</span></div>
     </header>
     <ClientShowcase mode="all" />
     <section className={styles.end}>

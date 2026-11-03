@@ -6,7 +6,7 @@ import { ActionLink } from "@/components/ui/ActionLink";
 
 export async function generateMetadata() {
   const title="About Abdul Rehman";
-  const description="Independent full-stack, cloud and security engineer with experience delivering real applications, commerce and infrastructure.";
+  const description="Technical Solutions Engineer with practical experience in cloud infrastructure, automation, systems integration and AI-assisted digital product delivery.";
   const img="https://" + baseURL + "/og?title=" + encodeURIComponent(title);
   return {title,description,alternates:{canonical:"https://" + baseURL + "/about"},
     openGraph:{title,description,url:"https://" + baseURL + "/about",images:[{url:img}]},
@@ -23,9 +23,9 @@ export default function AboutPage() {
     <section className={styles.hero}>
       <div className={styles.intro}>
         <p className={styles.kicker}>ABOUT / THE PERSON BEHIND THE PROJECTS</p>
-        <h1>Engineering is about <em>making things work.</em></h1>
-        <p className={styles.lead}>I'm Abdul Rehman, an independent engineer based in Lahore. My work connects full-stack applications, cloud operations and practical security to real business requirements.</p>
-        <p>I work on the things behind the interface too: access rules, workflows, data handling, deployments and the details that keep a product usable after launch.</p>
+        <h1>Technology is useful when <em>it solves something real.</em></h1>
+        <p className={styles.lead}>I'm Abdul Rehman, a Technical Solutions Engineer based in Lahore. I connect cloud infrastructure, automation, systems integration and AI-assisted application delivery to practical business needs.</p>
+        <p>My background began in IT operations in 2022. Today I work on client platforms, websites, cloud configurations and deployment workflows, using the right tools and collaborators for each problem.</p>
         <div className={styles.links}><ActionLink href="/work" variant="primary">See client work</ActionLink><ActionLink href="/contact">Start a conversation</ActionLink></div>
       </div>
       <div className={styles.portraitCard}>

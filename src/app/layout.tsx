@@ -25,10 +25,10 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(`https://${baseURL}`),
     title: {
       template: "%s | Abdul Rehman",
-      default: "Abdul Rehman | Full-Stack, Cloud & Security Engineer",
+      default: `${person.name} | ${person.role}`,
     },
     description: home.description,
-    keywords: ["Abdul Rehman", "Full-Stack Development", "Cloud Engineering", "DevOps", "Cybersecurity", "Client Case Studies", "Next.js"],
+    keywords: ["Abdul Rehman", "Technical Solutions Engineer", "Cloud Infrastructure", "DevOps Automation", "Systems Integration", "AI-Assisted Development", "Client Case Studies"],
     authors: [{ name: person.name, url: `https://${baseURL}` }],
     creator: person.name,
     publisher: person.name,
@@ -45,14 +45,14 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "en_US",
       url: `https://${baseURL}`,
       siteName: "Abdul Rehman Portfolio",
-      title: "Abdul Rehman | Full-Stack, Cloud & Security Engineer",
+      title: `${person.name} | ${person.role}`,
       description: home.description,
       images: [
         {
           url: ogImageUrl,
           width: 3840,
           height: 2102,
-          alt: "Abdul Rehman - Software Engineer & Cyber Security Researcher",
+          alt: "Abdul Rehman — Technical Solutions Engineer",
         },
         {
           url: avatarUrl,
@@ -66,8 +66,8 @@ export async function generateMetadata(): Promise<Metadata> {
     // Twitter metadata
     twitter: {
       card: "summary_large_image",
-      title: "Abdul Rehman – Software Engineer & Cyber Security Researcher",
-      description: "Portfolio of Abdul Rehman, a passionate Software Engineer and Cyber Security Researcher from Pakistan, showcasing innovative projects and creative solutions.",
+      title: `${person.name} | ${person.role}`,
+      description: home.description,
             images: [twitterImageUrl],
     },
     

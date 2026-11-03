@@ -5,7 +5,7 @@ import ProjectBrief from "@/components/ProjectBrief";
 import styles from "./contact.module.scss";
 export async function generateMetadata() {
   const title="Discuss Your Project";
-  const description="Get in touch about web applications, commerce websites, cloud engineering, migrations and application security.";
+  const description="Contact Abdul Rehman, Technical Solutions Engineer, about cloud infrastructure, automation, system integrations and AI-assisted applications.";
   const img="https://" + baseURL + "/og?title=" + encodeURIComponent(title);
   return {title,description,alternates:{canonical:"https://" + baseURL + "/contact"},
     openGraph:{title,description,url:"https://" + baseURL + "/contact",images:[{url:img}]},
@@ -15,7 +15,7 @@ export default function ContactPage(){
   return <Column maxWidth="xl" gap="xl" fillWidth>
     <header className={styles.header}><p className={styles.kicker}>NEW ENGAGEMENTS / LET'S TALK</p>
       <h1>Tell me what you're <em>building.</em></h1>
-      <p>I work with businesses and founders who need reliable engineering. Start with the problem you want to solve, not a list of technologies.</p>
+      <p>I help teams and businesses scope practical cloud, automation and application solutions. Tell me what needs to work better, where you are today and what outcome you need.</p>
     </header>
     <section className={styles.layout}>
       <div className={styles.left}><p className={styles.kicker}>START WITH A CLEAR BRIEF</p>

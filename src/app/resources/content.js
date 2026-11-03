@@ -1,7 +1,6 @@
 import { InlineCode } from "@/once-ui/components";
 // import { Certificate } from "crypto"; <- Remove this line
 import { display } from "./config";
-import { title } from "process";
 
 const person = {
   firstName: "Abdul",
@@ -9,7 +8,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Full-Stack, Cloud & Security Engineer",
+  role: "Technical Solutions Engineer",
   avatar: "/images/avatar.png", 
   displayLocation: "Pakistan/Lahore",
   location: "Pakistan/Lahore",
@@ -18,7 +17,7 @@ const person = {
 
 const business = {
   name: "Abdul Rehman Tech Solutions",
-  tagline: "Cloud, DevOps & Cybersecurity Services",
+  tagline: "Cloud Infrastructure, Automation & Digital Solutions",
   email: "iamabdulrehman.technophile@gmail.com",
   phone: "+92 308 0305828",
   address: " H No.20 Ali Town R Rd Lahore, Punjab 54000, Pakistan",
@@ -53,13 +52,13 @@ const payments = {
 const services = {
   label: "Services",
   title: "Professional Services",
-  description: `Cloud, DevOps, cybersecurity, and web development services by ${person.name}`,
+  description: `Cloud infrastructure, automation, system integration and AI-assisted application services by ${person.name}`,
 };
 
 const contact = {
   label: "Contact",
   title: "Get in Touch",
-  description: `Contact ${person.name} for cloud, DevOps, cybersecurity, and web development services`,
+  description: `Contact ${person.name} to discuss cloud operations, automation, integrations and business application delivery`,
 };
 
 const legal = {
@@ -139,11 +138,11 @@ const social = [
 
 const home = {
   label: "Home",
-  title: `${person.name}`,
-  description: `Real client case studies in full-stack engineering, cloud delivery, secure business platforms and e-commerce by ${person.name}.`,
+  title: `${person.name} | Technical Solutions Engineer`,
+  description: `${person.name} is a Technical Solutions Engineer working across cloud infrastructure, systems integration, DevOps automation and AI-assisted digital product delivery. Explore real client projects.`,
   headline: <>Real products. Shipped with care.</>,
   subline: (
-    <>I’m Abdul Rehman. I build secure websites, business platforms and cloud infrastructure — from planning and architecture to dependable delivery.</>
+    <>I’m Abdul Rehman. I connect cloud platforms, automation and AI-assisted development to deliver practical solutions for real businesses.</>
   ),
 };
 
@@ -168,11 +167,11 @@ const about = {
     description: (
       <>
       <p style={{ textAlign: "justify" }}>
-        I engineer and deliver full-stack applications, e-commerce experiences and cloud infrastructure for real businesses.
+        I work on cloud infrastructure, systems integration, AI-assisted web applications and e-commerce solutions for real businesses.
         Recent work includes the live <strong>Ocean Yacht Registration</strong> platform, the <strong>Auto Levels</strong>
         business website and e-commerce projects such as <strong>Maqwi Organics</strong> and <strong>Rico Scents</strong>.
-        My delivery approach combines accessible interfaces, server-side validation, role-aware workflows, secure data
-        handling and careful release verification. Earlier internships and certifications remain part of my background,
+        My approach combines requirements discovery, platform configuration, integration work,
+        practical verification and responsible handover. Earlier internships and certifications remain part of my background,
         while the main portfolio focuses on client work and demonstrable systems.
       </p>
     </>
@@ -199,7 +198,7 @@ const about = {
       {
         company: "Ocean Yacht Registration",
         timeframe: "2026 (Client project · delivered)",
-        role: "Full-Stack Platform & Cloud Engineering",
+        role: "Client platform implementation & cloud integration",
         achievements: [
           <span key="oyr-case-1">Delivered a live yacht-registration platform with public and dealer journeys, an admin workspace, registration tracking and protected document submission.</span>,
           <span key="oyr-case-2">Implemented Cloudflare Workers/D1 infrastructure, Supabase integrations, server-side pricing rules, regression tests and isolated staging releases.</span>,
@@ -210,19 +209,19 @@ const about = {
       {
   company: "Independent Freelance / Consulting",
   timeframe: "2025 - Present",
-  role: "Cloud, DevOps & Systems Infrastructure Engineer",
+  role: "Technical Solutions Engineer (Freelance)",
   achievements: [
     <span key="cloud-ext-1">
-      Successfully architected and executed full-scale live server migrations (including Atlanta-to-Chicago data center transitions), ensuring zero downtime and complete data integrity for client WordPress and web applications.
+      Troubleshot WordPress and Linux server issues and supported a Vultr VPS transition for the AnyArabic client engagement.
     </span>,
     <span key="cloud-ext-2">
-      Built and deployed automated Bash/Shell scripts to optimize Linux system administration tasks, cron job scheduling, log monitoring, and backup routines.
+      Coordinated Nginx, DNS, TLS, application URLs and public-service checks during infrastructure troubleshooting and migration.
     </span>,
     <span key="cloud-ext-3">
-      Containerized monolithic applications using Docker, implementing secure multi-stage builds and restrictive system permissions to minimize attack surfaces.
+      Worked with Cloudflare Workers, D1, Supabase, Vercel and GitHub Actions across web applications and deployment workflows.
     </span>,
     <span key="cloud-ext-4">
-      Configured cloud infrastructure environments utilizing secure Identity & Access Management (IAM) policies, firewall rules, and automated CI/CD deployment pipelines via GitHub Actions.
+      Used AI-assisted development for implementation while coordinating requirements, integrations, testing and release preparation.
     </span>,
   ],
   images: [],
@@ -292,13 +291,13 @@ const about = {
   role: "AI Enhanced Web App Development Intern",
   achievements: [
     <span key="nexium-achievement-1">
-      Collaborating on AI-integrated web applications with a focus on innovative UX and smart automation features.
+      Worked on AI-assisted web application exercises, including a blog summarizer and resume customization project.
     </span>,
     <span key="nexium-achievement-2">
-      Learning to leverage AI APIs and tools to enhance user experience and business workflows.
+      Explored AI APIs, integrations and component-based application workflows.
     </span>,
     <span key="nexium-achievement-3">
-      Working under mentorship to follow best practices in modern web development, component-based design, and performance optimization.
+      Practiced responsive interfaces, application structure and deployment workflows under internship mentorship.
     </span>,
   ],
   images: [
@@ -319,13 +318,13 @@ const about = {
   role: "MERN Stack Developer Intern",
   achievements: [
     <span key="hiskytech-achievement-1">
-      Currently building a full-stack SaaS Freelancing Marketplace as part of a remote internship project.
+      Worked on a SaaS freelancing-marketplace project during a remote internship.
     </span>,
     <span key="hiskytech-achievement-2">
-      Working on core modules such as authentication with role-based access, job posting and bidding system, task tracking, chat messaging, and feedback/rating features.
+      Explored role-based authentication, job posting and bidding, chat, task tracking and feedback features.
     </span>,
     <span key="hiskytech-achievement-3">
-      Practicing modular MERN architecture using MongoDB, Express.js, React.js, and Node.js to deliver a production-ready application.
+      Practiced modular MERN application structure using MongoDB, Express.js, React.js and Node.js.
     </span>,
   ],
   images: [
@@ -343,13 +342,13 @@ const about = {
       {
         company: "Auto Levels Pvt.Ltd",
         timeframe: "2022 - 2025 (Onsite)",
-        role: "IT Manager & CTO",
+        role: "IT Manager",
         achievements: [
           <span key="autolevels-achievement-1">
             Developed the Auto Levels portfolio website to showcase services and projects.
           </span>,
           <span key="autolevels-achievement-2">
-            Currently developing an expense/accounts management system for Auto Levels to streamline financial tracking.
+            Supported operational IT requirements, website maintenance and business-facing technical work during my employment.
           </span>,
         ],
         images: [
@@ -449,7 +448,7 @@ const about = {
     institutions: [
       {
         name: "Virtual University of Pakistan",
-        description: <span key="study-vu">Studying Software Engineering.</span>,
+        description: <span key="study-vu">Computer science studies.</span>,
       },
     ],
   },
@@ -479,7 +478,7 @@ const about = {
         ],
       },
       {
-        title: "Ethical Hacker License by CISCO",
+        title: "Cisco Ethical Hacker",
         href: "#",
         content: "View details",
         link: "https://www.credly.com/badges/d9af35bf-fbd6-4c20-939c-e777359cf7ae/linked_in_profile",
