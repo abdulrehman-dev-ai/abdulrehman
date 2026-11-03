@@ -8,7 +8,7 @@ import { ActionLink } from "@/components/ui/ActionLink";
 
 export async function generateMetadata() {
   const title = "Engineering Services";
-  const description = "Full-stack business applications, commerce websites, cloud migration, CI/CD and security-aware engineering. Scoped project proposals.";
+  const description = "Cloud infrastructure, CI/CD automation, systems integration and AI-assisted application delivery. Scope-led solutions for businesses.";
   const image = "https://" + baseURL + "/og?title=" + encodeURIComponent(title);
   return { title, description, alternates:{canonical:"https://" + baseURL + "/services"},
     openGraph:{title,description,url:"https://" + baseURL + "/services",images:[{url:image}]},
@@ -34,9 +34,9 @@ export default function ServicesPage() {
       url:"https://" + baseURL + "/services",description:services.description
     })}}/>
     <header className={styles.hero}>
-      <p className={styles.kicker}>WAYS TO WORK TOGETHER / ENGINEERING SERVICES</p>
+      <p className={styles.kicker}>WAYS TO WORK TOGETHER / TECHNICAL SOLUTIONS</p>
       <h1>Solutions first. <em>Technology with purpose.</em></h1>
-      <p>Whether you need a working product, reliable infrastructure or a safer system, I scope the work around your goals, constraints and operations.</p>
+      <p>From cloud deployment and troubleshooting to integrations and business applications, I scope each engagement around the problem, the constraints and a verifiable outcome.</p>
       <div className={styles.heroAction}><ActionLink href="/contact" variant="primary">Discuss your requirements</ActionLink></div>
     </header>
     <div className={styles.groups}>

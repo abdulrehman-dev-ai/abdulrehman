@@ -9,7 +9,7 @@ export function Footer(){
   return <footer className={styles.outer}>
     <div className={styles.main}>
       <div className={styles.left}>
-        <span className={styles.eyebrow}>INDEPENDENT ENGINEERING / LAHORE · WORLDWIDE</span>
+        <span className={styles.eyebrow}>TECHNICAL SOLUTIONS ENGINEERING / LAHORE · REMOTE</span>
         <h2>Good work.<br/><em>Built to last.</em></h2>
         <ActionLink href={"/contact"} variant="primary">Let's talk about your project</ActionLink>
       </div>
@@ -23,7 +23,7 @@ export function Footer(){
       </div>
     </div>
     <div className={styles.bottom}>
-      <span>© {year} {person.name}. Full-stack, cloud & security engineering.</span>
+      <span>© {year} {person.name}. Technical Solutions Engineer.</span>
       <div><Link href="/privacy-policy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/refund-policy">Refunds</Link><Link href="/service-policy">Service policy</Link></div>
       <span className={styles.credits}>Adapted from <a href="https://once-ui.com/templates/magic-portfolio" target="_blank" rel="noopener noreferrer">Once UI Magic Portfolio</a> · <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a></span>
     </div>
