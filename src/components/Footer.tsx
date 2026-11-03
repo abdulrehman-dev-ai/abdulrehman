@@ -1,26 +1,27 @@
 import Link from "next/link";
-import { person, social, business } from "@/app/resources/content";
+import { person, social } from "@/app/resources/content";
 import styles from "./Footer.module.scss";
-import { ActionLink } from "@/components/ui/ActionLink";
 
-const nav=[["Work","/work"],["Services","/services"],["About","/about"],["Journal","/blog"],["Contact","/contact"]];
-export function Footer(){
-  const year=new Date().getFullYear();
-  return <footer className={styles.outer}>
+const navigation = [
+  ["Home","/"],["Work","/work"],["Services","/services"],
+  ["About","/about"],["Journal","/blog"],["Contact","/contact"]
+];
+
+export function Footer() {
+  const year = new Date().getFullYear();
+  return <footer className={styles.outer} data-ui="bento-footer">
     <div className={styles.main}>
-      <div className={styles.left}>
-        <span className={styles.eyebrow}>TECHNICAL SOLUTIONS ENGINEERING / LAHORE · REMOTE</span>
-        <h2>Good work.<br/><em>Built to last.</em></h2>
-        <ActionLink href={"/contact"} variant="primary">Let's talk about your project</ActionLink>
-      </div>
-      <div className={styles.right}>
-        <div><p>EXPLORE</p><nav aria-label="Footer navigation">
-          {nav.map(([label,path])=><Link href={path} key={path}>{label}</Link>)}
-        </nav></div>
-        <div><p>FIND ME</p><nav aria-label="Social profiles">
-          {social.filter(item=>item.link&&["GitHub","LinkedIn","Fiverr","Upwork"].includes(item.name)).map(item=><a key={item.name} href={item.link} target="_blank" rel="noopener noreferrer">{item.name} ↗</a>)}
-        </nav></div>
-      </div>
+      <Link className={styles.brand} href="/" aria-label="Abdul Rehman, home">
+        <span className={styles.mark} aria-hidden="true">AR</span>
+        <span><strong>{person.name}</strong><small>{person.role}</small></span>
+      </Link>
+      <nav className={styles.navigation} aria-label="Footer navigation">
+        {navigation.map(([label,path]) => <Link href={path} key={path}>{label}</Link>)}
+      </nav>
+      <nav className={styles.social} aria-label="Professional profiles">
+        {social.filter(item => item.link && ["GitHub","LinkedIn","Fiverr","Upwork"].includes(item.name))
+          .map(item => <a key={item.name} href={item.link} target="_blank" rel="noopener noreferrer">{item.name} ↗</a>)}
+      </nav>
     </div>
     <div className={styles.bottom}>
       <span>© {year} {person.name}. Technical Solutions Engineer.</span>

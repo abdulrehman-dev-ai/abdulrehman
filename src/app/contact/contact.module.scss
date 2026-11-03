@@ -77,3 +77,17 @@
   border-color:var(--glass-line);
   box-shadow:var(--neo-inset),var(--glass-rim);
 }
+
+
+/* Bento interior: more approachable contact and scope workflow. */
+.header{min-height:0;padding:clamp(1.6rem,3.6vw,3rem);border-radius:23px;}
+.header h1{font-size:clamp(2.45rem,4vw,4.05rem)!important;line-height:1.1!important;}
+.header>p:not(.kicker){font-size:1rem;line-height:1.7;}
+.layout{grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);gap:1rem;padding:0;border:0;align-items:start;}
+.left{padding:clamp(1.3rem,2.5vw,2rem);border-radius:20px;}
+.left h2{font-size:clamp(1.5rem,2.2vw,2rem)!important;}
+.links{margin-top:1.4rem;}
+.links a{padding:.85rem .6rem;border-radius:11px;margin-top:.4rem;}
+.steps{margin-bottom:2rem;gap:.8rem;padding:1.3rem;border-radius:20px;}
+.steps>div{padding:1rem;border-radius:13px;}
+@media(max-width:880px){.layout{grid-template-columns:1fr;}.steps{grid-template-columns:1fr;}}

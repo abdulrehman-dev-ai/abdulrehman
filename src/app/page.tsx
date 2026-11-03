@@ -1,122 +1,180 @@
-import { Heading, Column } from "@/once-ui/components";
-import { FiCloud, FiGitBranch, FiLayers } from "react-icons/fi";
+import Link from "next/link";
+import { Column } from "@/once-ui/components";
+import {
+  FiArrowUpRight, FiBox, FiCheckCircle, FiCloud, FiCpu, FiGitBranch,
+  FiLayers, FiSettings, FiShield, FiZap
+} from "react-icons/fi";
 import { ActionLink } from "@/components/ui/ActionLink";
 import { ClientShowcase } from "@/components/work/ClientShowcase";
-import { Posts } from "@/components/blog/Posts";
+import { getPosts } from "@/app/utils/utils";
 import { baseURL, routes } from "@/app/resources";
 import { home, person } from "@/app/resources/content";
-import styles from "./page.module.scss";
+import styles from "./BentoHome.module.scss";
+
+const capabilities = [
+  { title: "Cloud infrastructure", text: "Hosting, DNS & operations", icon: FiCloud, href: "/services/cloud-infrastructure-setup" },
+  { title: "Automation & DevOps", text: "CI/CD & release workflows", icon: FiGitBranch, href: "/services/devops-cicd-pipeline" },
+  { title: "AI-assisted development", text: "Practical digital solutions", icon: FiCpu, href: "/services/full-stack-web-development" },
+  { title: "Systems integration", text: "Platforms, APIs & data", icon: FiLayers, href: "/services" },
+];
+
+const workflow = [
+  { number: "01", title: "Discover", description: "Understand the problem and constraints", icon: FiBox },
+  { number: "02", title: "Plan", description: "Choose systems and set a clear scope", icon: FiSettings },
+  { number: "03", title: "Build", description: "Configure, integrate and automate", icon: FiZap },
+  { number: "04", title: "Verify", description: "Test, release and document", icon: FiCheckCircle },
+];
 
 export async function generateMetadata() {
   const title = home.title;
   const description = home.description;
   const ogImage = "https://" + baseURL + "/og?title=" + encodeURIComponent(title);
-  return { title: { absolute: title }, description, alternates: { canonical: "https://" + baseURL + "/" },
-    openGraph: { title, description, type: "website" as const, url: "https://" + baseURL + "/", images: [{url:ogImage,alt:title}] },
-    twitter: { card:"summary_large_image", title, description, images:[ogImage] } };
+  return {
+    title: { absolute: title }, description,
+    alternates: { canonical: "https://" + baseURL + "/" },
+    openGraph: { title, description, type: "website" as const, url: "https://" + baseURL + "/", images: [{ url: ogImage, alt: title }] },
+    twitter: { card: "summary_large_image", title, description, images: [ogImage] },
+  };
 }
 
 export default function Home() {
-  return <Column maxWidth="xl" gap="xl" fillWidth horizontal="center">
-    <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{__html:JSON.stringify({
-      "@context":"https://schema.org","@type":"ProfilePage",name:home.title,
-      description:home.description,url:"https://" + baseURL + "/",
-      mainEntity:{"@type":"Person",name:person.name,image:"https://" + baseURL + person.avatar,
-        jobTitle:person.role}
-    })}} />
-    <section className={styles.hero} data-ui="hero" aria-labelledby="home-intro">
-      <div className={styles.heroCopy} data-ui="hero-copy">
-        <p className={styles.kicker} data-ui="eyebrow"><span className={styles.liveDot} /> TECHNICAL SOLUTIONS ENGINEER · LAHORE / REMOTE</p>
-        <Heading as="h1" id="home-intro" className={styles.display} data-ui="hero-title" wrap="balance">
-          Turning technical challenges into <em>working solutions.</em>
-        </Heading>
-        <p className={styles.lead} data-ui="hero-lead">I’m Abdul Rehman, a Technical Solutions Engineer working across cloud infrastructure, automation, systems integration and AI-assisted application delivery. I help connect the right tools and turn requirements into deployable solutions.</p>
-        <div className={styles.actions} data-ui="hero-actions">
-          <ActionLink href="/work" variant="primary">Explore real projects</ActionLink>
-          <ActionLink href="/contact">Work with me</ActionLink>
+  const insights = getPosts(["src", "app", "blog", "posts"])
+    .sort((a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime())
+    .slice(0, 2);
+
+  return <Column maxWidth="xl" fillWidth>
+    <main className={styles.page}>
+      <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "ProfilePage",
+        name: home.title, description: home.description, url: "https://" + baseURL + "/",
+        mainEntity: { "@type": "Person", name: person.name, image: "https://" + baseURL + person.avatar, jobTitle: person.role },
+      }) }} />
+      <section className={styles.hero} aria-labelledby="home-title">
+        <div className={styles.heroCopy}>
+          <p className={styles.overline}><span className={styles.pulse} aria-hidden="true" /> TECHNICAL SOLUTIONS ENGINEER</p>
+          <h1 id="home-title">Build. Deploy. Automate.<br /><em>Scale with confidence.</em></h1>
+          <p className={styles.lead}>I’m Abdul Rehman. I help businesses connect cloud infrastructure, automation, systems integration and AI-assisted development to deliver practical digital solutions.</p>
+          <div className={styles.heroActions}>
+            <ActionLink href="/work" variant="primary">View my work</ActionLink>
+            <ActionLink href="/contact" variant="secondary">Let’s talk</ActionLink>
+          </div>
+          <p className={styles.heroNote}><FiShield size={15} aria-hidden="true" /> Real projects · Transparent delivery status · Practical technical solutions</p>
         </div>
-        <div className={styles.proof} data-ui="hero-proof" aria-label="Technical focus areas"><span>MY PRACTICE</span><ul><li>Cloud operations</li><li>Automation & CI/CD</li><li>AI-assisted delivery</li></ul></div>
-      </div>
-      <aside className={styles.heroAside} data-ui="portrait" aria-label="Meet the engineer">
-        <div className={styles.portraitWrap} data-ui="portrait-frame">
-          <img src="/images/avatar.png" alt="Portrait of Abdul Rehman" className={styles.portrait} />
-          <span className={styles.portraitOverlay}>ABDUL REHMAN <small>TECHNICAL SOLUTIONS ENGINEER</small></span>
+        <aside className={styles.identity} aria-label="About Abdul Rehman">
+          <div className={styles.identityPhoto}>
+            <span className={styles.availability}><span aria-hidden="true" /> Open to projects</span>
+            <img src={person.avatar} alt="Portrait of Abdul Rehman" />
+            <div className={styles.identityCaption}><strong>{person.name}</strong><small>{person.role}</small></div>
+          </div>
+          <div className={styles.identityFoot}><span>Lahore, Pakistan</span><span>Remote collaboration</span></div>
+        </aside>
+      </section>
+
+      <section className={styles.dashboard} aria-label="Technical experience and core expertise">
+        <div className={styles.factCard}>
+          <p className={styles.miniLabel}>AT A GLANCE</p>
+          <div className={styles.fact}><strong>2022</strong><span>IT operations foundation</span></div>
+          <div className={styles.fact}><strong>2025–26</strong><span>Real client delivery experience</span></div>
+          <div className={styles.fact}><strong>Cloud + Web</strong><span>Integration and automation focus</span></div>
         </div>
-        <div className={styles.asideBottom}>
-          <span>DISCOVER → INTEGRATE → DEPLOY</span>
-          <span>LAHORE · REMOTE COLLABORATION</span>
+        <div className={styles.cloudArt} aria-hidden="true">
+          <div className={styles.cloudHalo} />
+          <div className={styles.cloudIcon}><FiCloud size={83} strokeWidth={1.2} /></div>
+          <div className={styles.stackTop}><span /><span /></div>
+          <div className={styles.stackBottom}><span /><span /></div>
+          <div className={styles.cloudOrbit}><FiGitBranch size={19} /></div>
         </div>
-      </aside>
-    </section>
-    <section className={styles.servicesRibbon} data-ui="expertise" aria-label="What I do">
-      <div><span aria-hidden="true"><FiCloud size={21}/></span><strong>Cloud operations</strong><small>Hosting, DNS & migrations</small><b aria-hidden="true">01</b></div>
-      <div><span aria-hidden="true"><FiGitBranch size={21}/></span><strong>Automation</strong><small>CI/CD & integrations</small><b aria-hidden="true">02</b></div>
-      <div><span aria-hidden="true"><FiLayers size={21}/></span><strong>Digital delivery</strong><small>Web & commerce platforms</small><b aria-hidden="true">03</b></div>
-    </section>
-    <section className={styles.selected} data-ui="selected-work" aria-labelledby="featured-title">
-      <div className={styles.sectionHead}>
-        <div>
-          <p className={styles.kicker}>01 / SELECTED CLIENT WORK · 2025—2026</p>
-          <Heading as="h2" id="featured-title" className={styles.sectionTitle}>Built for real businesses.</Heading>
-          <p className={styles.sectionSub}>Real client platforms, infrastructure work and commerce projects. Each case study explains the contribution and clearly distinguishes delivered work from work in progress.</p>
+        <div className={styles.capabilityPanel}>
+          <div className={styles.capabilityHeading}><p className={styles.miniLabel}>WHAT I WORK ON</p><h2>Core expertise</h2></div>
+          <div className={styles.capabilityGrid}>
+            {capabilities.map(({ title, text, icon: Icon, href }) =>
+              <Link key={title} href={href} className={styles.capability}>
+                <span className={styles.capIcon}><Icon size={22} aria-hidden="true" /></span>
+                <span><strong>{title}</strong><small>{text}</small></span>
+                <FiArrowUpRight size={14} className={styles.capArrow} aria-hidden="true" />
+              </Link>
+            )}
+          </div>
         </div>
-        <ActionLink href="/work" size="sm">Explore the portfolio</ActionLink>
-      </div>
-      <ClientShowcase mode="home" />
-    </section>
-    <section className={styles.fit} data-ui="audiences" aria-labelledby="audiences-title">
-      <div className={styles.fitHeading}>
-        <p className={styles.kicker}>02 / A PRACTICAL WAY TO COLLABORATE</p>
-        <Heading as="h2" id="audiences-title" className={styles.sectionTitle}>The right support for the right problem.</Heading>
-        <p className={styles.sectionSub}>My experience spans IT operations, modern cloud platforms and AI-assisted technical implementation. Here’s where I can contribute.</p>
-      </div>
-      <div className={styles.fitGrid}>
-        <article className={styles.fitCard} data-ui="audience-card">
-          <span className={styles.fitLabel}>FOR HIRING TEAMS</span>
-          <h3>Technical delivery with an operations mindset.</h3>
-          <p>IT operations experience since 2022, hands-on cloud troubleshooting and deployment workflows, and a practical approach to integrating business systems.</p>
-          <div className={styles.fitTags}><span>Cloud operations</span><span>CI/CD</span><span>Integration</span></div>
-          <ActionLink href="/about" variant="secondary" size="sm">Experience & background</ActionLink>
-        </article>
-        <article className={styles.fitCard} data-ui="audience-card">
-          <span className={styles.fitLabel}>FOR FOUNDERS & BUSINESSES</span>
-          <h3>From a requirement to a working solution.</h3>
-          <p>Need an existing system repaired, a workflow automated or a new customer-facing platform delivered? We start with scope, operational needs and a way to verify the result.</p>
-          <div className={styles.fitTags}><span>Web platforms</span><span>Automation</span><span>Cloud setup</span></div>
-          <ActionLink href="/contact" variant="primary" size="sm">Discuss a solution</ActionLink>
-        </article>
-      </div>
-    </section>
-    <section className={styles.approach} data-ui="process" aria-labelledby="approach-title">
-      <div>
-        <p className={styles.kicker}>03 / HOW I WORK</p>
-        <Heading as="h2" id="approach-title" className={styles.sectionTitle}>Tools are only useful when the solution works.</Heading>
-        <p className={styles.sectionSub}>I use AI-assisted tools to move faster, but the essentials remain the same: clear requirements, sensible integrations, technical review and careful handover.</p>
-        <ActionLink href="/services" size="sm">Explore engineering services</ActionLink>
-      </div>
-      <div className={styles.process}>
-        <article><span>01</span><div><h3>Clarify the real requirement</h3><p>Understand the users, existing systems, constraints and outcome before implementation.</p></div></article>
-        <article><span>02</span><div><h3>Connect the right systems</h3><p>Choose suitable platforms, configure integrations and automate repeatable work.</p></div></article>
-        <article><span>03</span><div><h3>Validate and hand over</h3><p>Check important user journeys, release carefully and document known limits.</p></div></article>
-      </div>
-    </section>
-    {routes["/blog"] && <section className={styles.journal} data-ui="journal" aria-labelledby="journal-title">
-      <div className={styles.sectionHead}>
-        <div>
-          <p className={styles.kicker}>04 / FIELD NOTES & JOURNAL</p>
-          <Heading as="h2" id="journal-title" className={styles.sectionTitle}>Things worth documenting.</Heading>
-          <p className={styles.sectionSub}>Engineering decisions, lessons from delivery and security-minded development.</p>
+      </section>
+
+      <section className={styles.work} aria-labelledby="featured-title">
+        <div className={styles.sectionHead}>
+          <div><p className={styles.miniLabel}>SELECTED CLIENT WORK</p><h2 id="featured-title">Featured work<span className={styles.headingDot}>.</span></h2>
+            <p>Real projects, documented contributions and clear delivery status.</p></div>
+          <ActionLink href="/work" size="sm" variant="quiet">All projects</ActionLink>
         </div>
-        <ActionLink href="/blog" size="sm">Read the journal</ActionLink>
-      </div>
-      <Posts range={[1, 2]} columns="2" thumbnail />
-    </section>}
-    <aside className={styles.contactPanel} data-ui="cta-panel">
-      <div><p className={styles.kicker}>05 / NEW ENGAGEMENTS</p>
-        <Heading as="h2" className={styles.sectionTitle}>Have a technical problem worth solving?</Heading>
-        <p className={styles.sectionSub}>Share the challenge, your current setup and what success looks like. We'll start with a realistic scope.</p>
-      </div>
-      <ActionLink href="/contact" variant="primary">Start the conversation</ActionLink>
-    </aside>
+        <ClientShowcase mode="home" />
+      </section>
+
+      <section className={styles.workflow} aria-labelledby="workflow-title">
+        <div className={styles.sectionHead}>
+          <div><p className={styles.miniLabel}>A PRACTICAL APPROACH</p><h2 id="workflow-title">How I work<span className={styles.headingDot}>.</span></h2>
+            <p>From the initial problem to a tested, documented release.</p></div>
+          <ActionLink href="/services" size="sm" variant="quiet">Explore services</ActionLink>
+        </div>
+        <div className={styles.steps}>
+          {workflow.map(({ number, title, description, icon: Icon }) =>
+            <article key={number} className={styles.step}>
+              <div className={styles.stepIcon}><Icon size={22} aria-hidden="true" /></div>
+              <div><span className={styles.stepNumber}>{number} / DELIVERY</span><h3>{title}</h3><p>{description}</p></div>
+            </article>
+          )}
+        </div>
+      </section>
+
+      <section className={styles.value} aria-labelledby="why-title">
+        <div className={styles.valueVisual} aria-hidden="true">
+          <div className={styles.valueOrb} />
+          <span className={styles.valueCubeA} /><span className={styles.valueCubeB} /><span className={styles.valueCubeC} />
+          <div className={styles.valueOverlay}><FiLayers size={30} /></div>
+        </div>
+        <div className={styles.valueContent}>
+          <p className={styles.miniLabel}>BUSINESS FIRST · TOOLS WITH PURPOSE</p>
+          <h2 id="why-title">Why work with me?</h2>
+          <ul>
+            <li><FiCheckCircle size={17} aria-hidden="true" /> Technical solutions scoped around actual business needs</li>
+            <li><FiCheckCircle size={17} aria-hidden="true" /> Practical experience across cloud, websites and integrations</li>
+            <li><FiCheckCircle size={17} aria-hidden="true" /> AI-assisted implementation with transparent contributions</li>
+            <li><FiCheckCircle size={17} aria-hidden="true" /> Clear communication, testing priorities and delivery status</li>
+          </ul>
+          <div className={styles.valueActions}>
+            <Link href="/about">For hiring teams: explore my background <FiArrowUpRight size={15} aria-hidden="true" /></Link>
+            <Link href="/contact">For businesses: discuss a project <FiArrowUpRight size={15} aria-hidden="true" /></Link>
+          </div>
+        </div>
+      </section>
+
+      {routes["/blog"] && insights.length > 0 &&
+        <section className={styles.insights} aria-labelledby="insights-title">
+          <div className={styles.sectionHead}>
+            <div><p className={styles.miniLabel}>FIELD NOTES & ENGINEERING LESSONS</p><h2 id="insights-title">Latest insights<span className={styles.headingDot}>.</span></h2>
+              <p>What real implementations and troubleshooting have taught me.</p></div>
+            <ActionLink href="/blog" size="sm" variant="quiet">All articles</ActionLink>
+          </div>
+          <div className={styles.insightGrid}>
+            {insights.map((post, index) =>
+              <Link key={post.slug} href={"/blog/" + post.slug} className={styles.insightCard}>
+                <div className={styles.insightIllustration}>{index === 0 ? <FiGitBranch size={36} aria-hidden="true" /> : <FiShield size={36} aria-hidden="true" />}</div>
+                <div className={styles.insightCopy}>
+                  <span>{post.metadata.publishedAt} · ENGINEERING NOTE</span>
+                  <h3>{post.metadata.title}</h3>
+                  <small>Read the article <FiArrowUpRight size={13} aria-hidden="true" /></small>
+                </div>
+              </Link>
+            )}
+          </div>
+        </section>}
+
+      <section className={styles.cta} aria-labelledby="cta-title">
+        <div className={styles.ctaEmblem}><FiZap size={28} aria-hidden="true" /></div>
+        <div className={styles.ctaCopy}>
+          <p className={styles.miniLabel}>LET'S MAKE IT WORK</p>
+          <h2 id="cta-title">Let’s build your next solution together.</h2>
+          <p>From cloud setup to business workflows, start with a conversation about the right approach.</p>
+        </div>
+        <ActionLink href="/contact" variant="primary">Start a project</ActionLink>
+      </section>
+    </main>
   </Column>;
 }

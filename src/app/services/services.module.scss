@@ -117,3 +117,30 @@
 :global(html.neo-portfolio[data-theme="light"]) .service:hover {
   background:linear-gradient(145deg,#fff,rgba(224,240,255,.96));
 }
+
+
+/* Bento interior: three coherent capability workstreams. */
+.hero{min-height:0;padding:clamp(1.6rem,3.6vw,3rem);border-radius:23px;}
+.hero h1{font-size:clamp(2.4rem,4vw,4rem)!important;line-height:1.12!important;max-width:850px;}
+.hero>p:not(.kicker){font-size:1rem;line-height:1.72;}
+.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:1rem;border:0;}
+.group{display:flex;flex-direction:column;gap:1.2rem;min-width:0;margin:0;padding:1.2rem;border:1px solid var(--neo-border);border-radius:20px;background:linear-gradient(145deg,#12273d,#091826);box-shadow:var(--neo-shadow-small),var(--neo-rim);}
+.groupIntro h2{font-size:clamp(1.45rem,1.9vw,1.85rem)!important;line-height:1.2;margin:.45rem 0;}
+.groupIntro p{font-size:.86rem;line-height:1.7;}
+.groupIntro small{font-size:.72rem;line-height:1.65;padding:.55rem 0 0;}
+.list{gap:.55rem;}
+.service,.service:first-child{display:flex;flex-direction:column;align-items:flex-start;gap:.55rem;min-width:0;padding:.9rem;border:1px solid var(--neo-border);border-radius:13px;background:linear-gradient(145deg,#152d44,#0c1e30);box-shadow:var(--neo-shadow-small),var(--neo-rim);transition:transform .18s ease,border-color .18s ease;}
+.service:hover{padding-left:.9rem;transform:translateY(-2px);border-color:rgba(127,187,253,.56);}
+.service h3{font-size:clamp(.92rem,1.2vw,1.06rem);line-height:1.35;}
+.service p{font-size:.73rem;line-height:1.55;}
+.serviceAside{font-size:.68rem;line-height:1.4;white-space:normal;justify-content:space-between;width:100%;margin-top:.1rem;}
+.process{grid-template-columns:.7fr 1.3fr;gap:1.5rem;margin-top:.5rem;padding:1.7rem;border-radius:20px;}
+.steps{gap:.7rem;}
+.steps>div{padding:1rem;border-radius:13px;}
+.cta{margin:0 0 2rem;border-radius:21px;padding:clamp(1.4rem,2.8vw,2rem);}
+:global(html.neo-portfolio[data-theme="light"]) .group{background:var(--glass-panel);border-color:var(--glass-line);box-shadow:var(--glass-small);}
+:global(html.neo-portfolio[data-theme="light"]) .service,
+:global(html.neo-portfolio[data-theme="light"]) .service:first-child {background:var(--glass-panel-soft);border-color:var(--glass-line);box-shadow:var(--glass-small);}
+@media(max-width:1050px){.groups{grid-template-columns:repeat(2,minmax(0,1fr));}.group:last-child{grid-column:1/-1;}}
+@media(max-width:720px){.groups{grid-template-columns:1fr;}.group:last-child{grid-column:auto;}.process{grid-template-columns:1fr;}.steps{grid-template-columns:1fr;}}
+@media(prefers-reduced-motion:reduce){.service{transition:none;}}

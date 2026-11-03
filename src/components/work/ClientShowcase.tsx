@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getPosts } from "@/app/utils/utils";
 import styles from "./ClientShowcase.module.scss";
+import bento from "./BentoWork.module.scss";
 import ProjectArtImage from "./ProjectArtImage";
 import { ActionLink } from "@/components/ui/ActionLink";
 
@@ -82,30 +83,24 @@ export function ProjectVisual({ slug, title, large = false }: { slug: string; ti
   );
 }
 
-function SmallCard({ project, index }: { project: Project; index: number }) {
+
+function MiniVisual({ project }: { project: Project }) {
   const visual = visuals[project.slug];
+  return <span className={[bento.miniVisual, project.slug === "maqwi-organics" ? bento.organic : project.slug === "auto-levels" ? bento.auto : project.slug === "rico-scents" ? bento.rico : bento.navy].join(" ")}>
+    {visual?.src ? <img loading="lazy" src={visual.src} alt="" /> : <strong aria-hidden="true">{project.slug === "anyarabic" ? "ع" : "R"}</strong>}
+  </span>;
+}
+
+function ProjectRow({ project }: { project: Project }) {
   const title = project.metadata.title.split(" — ")[0];
-  return (
-    <article className={styles.smallCard} data-ui="project-card">
-      <Link href={"/work/" + project.slug} className={styles.artLink} aria-label={"Read " + title + " case study"}>
-        <ProjectVisual slug={project.slug} title={title} />
-      </Link>
-      <div className={styles.smallBody} data-ui="project-copy">
-        <div className={styles.itemOverline}>
-          <span>0{index + 2} / {visual?.kind || project.metadata.category}</span>
-          <span className={styles.dot} aria-hidden="true" />
-        </div>
-        <h3><Link href={"/work/" + project.slug}>{title}</Link></h3>
-        <p>{project.metadata.summary}</p>
-        <div className={styles.cardTechs} aria-label="Technologies used">
-          {(visual?.tools || []).slice(0, 3).map(tool => <span key={tool}>{tool}</span>)}
-        </div>
-        <div className={styles.smallFooter}>
-          <ActionLink href={"/work/" + project.slug} size="sm" variant="quiet">Explore case study</ActionLink>
-        </div>
-      </div>
-    </article>
-  );
+  return <Link className={bento.projectRow} href={"/work/" + project.slug} aria-label={"Read case study: " + title}>
+    <MiniVisual project={project} />
+    <span className={bento.rowDetails}>
+      <strong>{title}</strong>
+      <small>{visuals[project.slug]?.kind || project.metadata.category}</small>
+    </span>
+    <span className={bento.rowArrow} aria-hidden="true">↗</span>
+  </Link>;
 }
 
 export function ClientShowcase({ mode = "home" }: { mode?: "home" | "all" }) {
@@ -114,29 +109,48 @@ export function ClientShowcase({ mode = "home" }: { mode?: "home" | "all" }) {
   if (!lead) return null;
   const title = lead.metadata.title.split(" — ")[0];
   const visual = visuals[lead.slug];
-  return (
-    <div className={styles.showcase} data-ui="project-showcase">
-      <article className={styles.lead} data-ui="featured-project">
-        <Link className={styles.leadVisualLink} href={"/work/" + lead.slug} aria-label={"Explore " + title}>
-          <ProjectVisual slug={lead.slug} title={title} large />
+  const archive = mode === "all"
+    ? getPosts(["src", "app", "work", "projects"])
+      .filter(project => Number(project.metadata.featuredRank || 0) === 0 && project.slug !== "simple-portfolio-builder")
+      .sort((a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime())
+    : [];
+
+  return <div className={bento.root} aria-label="Selected client case studies">
+    <div className={bento.layout}>
+      <article className={bento.featured}>
+        <Link className={bento.visualLink} href={"/work/" + lead.slug} aria-label={"Explore " + title}>
+          <ProjectVisual slug={lead.slug} title={title} />
         </Link>
-        <div className={styles.leadBody} data-ui="featured-copy">
-          <div className={styles.leadEyebrow}><span className={styles.dot} /> 01 / FEATURED DELIVERY</div>
+        <div className={bento.featureBody}>
+          <div className={bento.featureMeta}><span className={bento.liveDot} /> FEATURED DELIVERY <span className={bento.status}>{lead.metadata.category}</span></div>
           <h3><Link href={"/work/" + lead.slug}>{title}</Link></h3>
           <p>{lead.metadata.summary}</p>
-          <div className={styles.techs}>
-            {(visual?.tools || []).map((tool) => <span key={tool}>{tool}</span>)}
-          </div>
-          <div className={styles.leadActions}>
-            <ActionLink href={"/work/" + lead.slug} variant="primary">Explore case study</ActionLink>
-            {lead.metadata.link && <ActionLink href={lead.metadata.link} variant="quiet">View live platform</ActionLink>}
+          <div className={bento.tags} aria-label="Technologies used">{(visual?.tools || []).slice(0, 4).map(tool => <span key={tool}>{tool}</span>)}</div>
+          <div className={bento.actions}>
+            <ActionLink href={"/work/" + lead.slug} variant="primary" size="sm">Read case study</ActionLink>
+            {lead.metadata.link && <ActionLink href={lead.metadata.link} variant="quiet" size="sm">View live website</ActionLink>}
           </div>
         </div>
       </article>
-      <div className={styles.supporting} data-ui="project-grid">
-        {projects.slice(1, mode === "home" ? 5 : undefined).map((project, index) => <SmallCard project={project} index={index} key={project.slug} />)}
+      <div className={bento.projectList} aria-label="More selected projects">
+        <div className={bento.listHeading}><strong>More projects</strong><span>CLIENT & BUSINESS WORK</span></div>
+        {projects.slice(1, mode === "home" ? 5 : undefined).map(project => <ProjectRow project={project} key={project.slug} />)}
       </div>
-      <p className={styles.disclosure}>Project visuals use public brand assets or clearly marked editorial treatments. Confidential infrastructure, private dashboards and customer records are not shown. Individual case studies distinguish delivered work from work still in progress.</p>
     </div>
-  );
+    {mode === "all" && archive.length > 0 && <section className={bento.archive} aria-labelledby="archive-title">
+      <div className={bento.archiveHeading}>
+        <div><span>ADDITIONAL EXPERIENCE</span><h2 id="archive-title">Earlier projects & learning work</h2></div>
+        <p>Internship exercises, prototypes and experiments — shown separately from paid client deliveries.</p>
+      </div>
+      <div className={bento.archiveGrid}>
+        {archive.map(project => <Link href={"/work/" + project.slug} key={project.slug} className={bento.archiveCard}>
+          <span>{project.metadata.category || "Practice project"}</span>
+          <h3>{project.metadata.title.split(" — ")[0]}</h3>
+          <p>{project.metadata.summary}</p>
+          <small>Explore project ↗</small>
+        </Link>)}
+      </div>
+    </section>}
+    <p className={bento.disclosure}>Visuals use public brand assets or clearly labeled editorial representations. Case studies distinguish delivered work from ongoing work; private dashboards, customer records and credentials are not displayed.</p>
+  </div>;
 }

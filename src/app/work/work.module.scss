@@ -43,3 +43,13 @@
   border-color:var(--glass-line);
   box-shadow:var(--neo-inset);
 }
+
+
+/* Bento interior: compact work directory intro and project navigation. */
+.header{min-height:0;padding:clamp(1.6rem,3.6vw,3rem);border-radius:23px;margin-top:.5rem;}
+.header h1{font-size:clamp(2.4rem,4vw,4rem)!important;line-height:1.13!important;max-width:900px;}
+.summary{font-size:1rem;line-height:1.7;}
+.factline{margin-top:1.4rem;gap:.5rem;}
+.factline span{border-radius:10px;padding:.42rem .68rem;font-size:.67rem;}
+.end{margin:1rem 0 2rem;border-radius:21px;padding:clamp(1.4rem,2.7vw,2rem);display:flex;align-items:flex-start;gap:.7rem;}
+.end h2{font-size:clamp(1.5rem,2.7vw,2.2rem);}
