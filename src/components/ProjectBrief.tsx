@@ -4,15 +4,17 @@ import styles from "./ProjectBrief.module.scss";
 import actionStyles from "./ui/ActionLink.module.scss";
 
 const categories = [
-  "Full-stack application", "Business website / e-commerce",
-  "Cloud migration / DevOps", "Security assessment", "Other",
+  "Cloud infrastructure / deployment", "Automation / systems integration",
+  "Business website / e-commerce", "AI-assisted application",
+  "Security review", "Other",
 ];
 
 function describeService(slug: string) {
   if (/wordpress|website|commerce/i.test(slug)) return "Business website / e-commerce";
-  if (/cloud|devops|docker|linux|server|migration/i.test(slug)) return "Cloud migration / DevOps";
-  if (/vulnerability|penetration|security/i.test(slug)) return "Security assessment";
-  if (/full-stack|application/i.test(slug)) return "Full-stack application";
+  if (/cloud|devops|docker|linux|server|migration/i.test(slug)) return "Cloud infrastructure / deployment";
+  if (/automation|integration/i.test(slug)) return "Automation / systems integration";
+  if (/vulnerability|penetration|security/i.test(slug)) return "Security review";
+  if (/full-stack|application/i.test(slug)) return "AI-assisted application";
   return "Other";
 }
 
@@ -93,7 +95,7 @@ export default function ProjectBrief({ email }: { email: string }) {
     </label>
     <label>What outcome do you need?
       <input required minLength={10} maxLength={180}
-        value={goal} onChange={e => setGoal(e.target.value)} placeholder="A client portal with secure login…"/>
+        value={goal} onChange={e => setGoal(e.target.value)} placeholder="Move a website to a new VPS, automate deployment…"/>
     </label>
     <label>Anything else?
       <textarea maxLength={2400} rows={5} value={details}
