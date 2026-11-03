@@ -75,3 +75,22 @@
   background:linear-gradient(145deg,#fff,rgba(222,239,255,.91));
   box-shadow:var(--glass-elevated);
 }
+
+
+/* Bento interior: readable compact journal index rather than long full-width rows. */
+.header{min-height:0;padding:clamp(1.6rem,3.7vw,3rem);border-radius:23px;}
+.header h1{font-size:clamp(2.45rem,4.1vw,4rem)!important;line-height:1.1!important;}
+.header>p:not(.kicker){font-size:1rem;line-height:1.7;}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;border:0;align-items:stretch;}
+.entry{position:relative;display:grid;grid-template-columns:72px minmax(0,1fr) 22px;gap:.9rem;min-width:0;align-items:center;padding:1rem;border:1px solid var(--neo-border);border-radius:18px;box-shadow:var(--neo-shadow-small),var(--neo-rim);background:linear-gradient(145deg,#11293e,#0a1c2d);}
+.number{display:none;}
+.thumbnail{grid-column:1;grid-row:1;max-width:72px;width:72px;height:88px;border-radius:12px;}
+.details{grid-column:2;grid-row:1;min-width:0;}
+.details h2{font-size:clamp(1rem,1.4vw,1.3rem)!important;line-height:1.38!important;letter-spacing:-.025em;}
+.details p{font-size:.76rem;line-height:1.6;}
+.meta{font-size:.62rem;gap:.45rem;}
+.arrow{grid-column:3;grid-row:1;margin:0;font-size:1.1rem;}
+.cta{padding:1.6rem;margin:0 0 2rem;border-radius:20px;}
+:global(html.neo-portfolio[data-theme="light"]) .entry{background:var(--glass-panel-soft);border-color:var(--glass-line);box-shadow:var(--glass-small);}
+@media(max-width:940px){.list{grid-template-columns:1fr;}}
+@media(max-width:510px){.entry{grid-template-columns:54px minmax(0,1fr) 14px;padding:.8rem;gap:.65rem;}.thumbnail{width:54px;max-width:54px;height:74px;}.details h2{font-size:1rem!important;}.details p{font-size:.72rem;}}
